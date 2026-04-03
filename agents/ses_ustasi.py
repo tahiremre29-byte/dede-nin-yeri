@@ -129,12 +129,6 @@ class SesUstasi:
             im = None
 
         if im and im.confidence >= 0.6:
-            # Yüksek güvenli eşleşme — example_reply + netleştirici soru
-            clarification_q = get_clarification_question(im)
-            reply = im.example_reply
-            if clarification_q and clarification_q not in reply:
-                reply = reply  # zaten example_reply içinde birleşik
-
             # Context'e intent bilgilerini yaz (downstream kullanım için)
             ctx.update({
                 "user_intent":               im.user_intent,
@@ -143,20 +137,8 @@ class SesUstasi:
                 "inside_vs_outside_priority": im.inside_vs_outside_priority,
                 "spl_vs_sq_profile":         im.spl_vs_sq_profile,
             })
-            return {
-                "reply":        reply,
-                "intake":       None,
-                "route_to":     None,
-                "needs_more_info": True,
-                "questions":    clarification_q or "",
-                "intent_match": {
-                    "user_intent":    im.user_intent,
-                    "confidence":     im.confidence,
-                    "system_style":   im.system_style,
-                    "clarification":  im.clarification_question_type,
-                    "secondary":      im.secondary_intent,
-                },
-            }
+            # ERKEN DÖNÜŞ İPTAL: Kullanıcı "GT12, sedan" gibi veriler de girmiş olabilir.
+            # Veri kaybını önlemek ve direkt üretime paslamak için akışa devam ediyoruz.
 
         # ── Adım 2: Klasik intent sınıflandırması ─────────────────────
         intent, confidence = classify_intent(message)
@@ -175,22 +157,75 @@ class SesUstasi:
 
         # Akustik veya üretim niyetinde paket oluştur
         intake = self._build_intake_from_message(message, intent, confidence, ctx)
-        # Eski router'dan eksik field almak yerine direkt interpreter'ın zeki önceliğini kullan:
         missing_q = ""
         _np_ctx = ctx.get("normalized_panel", {})
-        print(f"DEBUG SES_USTASI: ctx keys: {ctx.keys()}")
-        print(f"DEBUG SES_USTASI: _np_ctx next_questions: {_np_ctx.get('next_questions')}")
         
         if _np_ctx.get("next_questions"):
             missing_q = " ".join(_np_ctx["next_questions"])
         elif request_missing_fields(intake):
             missing_q = request_missing_fields(intake)
 
+        # ── YENİ: TS Parametre Lookup Akışı (ARTIK HER ZAMAN ÇALIŞIR) ──
+        ts_fetched = False
+        ts_message = ""
+        ts_technical_info = ""
+        
+        if intake.woofer_model and not intake.has_ts_params:
+            brand_str = intake.brand or ""
+            model_str = intake.woofer_model
+            lookup_prompt = (
+                f"{brand_str} {model_str} subwoofer (car audio) için fabrika T/S parametrelerinden "
+                f"Fs, Qts ve Vas değerlerini kesin olarak biliyor musun? Biliyorsan SADECE JSON formatında dön: "
+                f"{{\"fs\": 30.0, \"qts\": 0.45, \"vas\": 55.0}}. Emin değilsen veya bulamazsan "
+                f"SADECE 'BİLİNMİYOR' kelimesini dön. Başka hiçbir açıklama yazma."
+            )
+            try:
+                ts_resp = self._llm.generate(prompt=lookup_prompt, temperature=0.1)
+                import json, re
+                if ts_resp and "{" in ts_resp and "fs" in ts_resp.lower():
+                    start_idx = ts_resp.find("{")
+                    end_idx = ts_resp.rfind("}") + 1
+                    json_str = ts_resp[start_idx:end_idx]
+                    ts_data = json.loads(json_str)
+                    
+                    def safe_float(v):
+                        try:
+                            # clean non-numeric chars except dot
+                            v_clean = re.sub(r'[^\d.]', '', str(v))
+                            return float(v_clean) if v_clean else 0.0
+                        except:
+                            return 0.0
+
+                    fs = safe_float(ts_data.get("fs", 0))
+                    qts = safe_float(ts_data.get("qts", 0))
+                    vas = safe_float(ts_data.get("vas", 0))
+                    
+                    if fs > 0 and qts > 0 and vas > 0:
+                        from schemas.intake_packet import TSParams
+                        intake.ts_params = TSParams(fs=fs, qts=qts, vas=vas, xmax=12.0, re=4.0)
+                        ts_fetched = True
+                        ts_technical_info = f"Cihazın fabrika verisi: Fs: {fs}Hz. (Yani çok alt frekans isteniyorsa cihaz limiti {fs}Hz etrafındadır, bu durumu kullanıcıya belli ederek gerçeği söyle)."
+                        ts_message = f"Reis cihazın ({brand_str} {model_str}) parametrelerini veritabanından çektim (Fs: {fs}Hz, Qts: {qts:.2f}, Vas: {vas}L). Hemen üretim hattına, hesap kitabına paslıyorum işi."
+                    else:
+                        ts_fail_msg = "Ayrıca Reis cihazın parametrelerini (Fs, Qts, Vas) veritabanında bulamadım (özel seri olabilir). Sana zahmet kataloğundan Fs, Qts ve Vas değerlerini yazar mısın?"
+                        missing_q = missing_q + " " + ts_fail_msg if missing_q else ts_fail_msg
+                else:
+                    ts_fail_msg = "Ayrıca Reis cihazın parametrelerini (Fs, Qts, Vas) veritabanında bulamadım (özel seri olabilir). Sana zahmet kataloğundan Fs, Qts ve Vas değerlerini yazar mısın?"
+                    missing_q = missing_q + " " + ts_fail_msg if missing_q else ts_fail_msg
+            except Exception as e:
+                logger.error("[SES USTASI] TS Lookup Hatası: %s", e)
+                ts_fail_msg = "Ayrıca Reis cihazın parametrelerini (Fs, Qts, Vas) veritabanında bulamadım (özel seri olabilir). Sana zahmet kataloğundan Fs, Qts ve Vas değerlerini yazar mısın?"
+                missing_q = missing_q + " " + ts_fail_msg if missing_q else ts_fail_msg
+
         print(f"DEBUG SES_USTASI: finalized missing_q: {missing_q}")
         if missing_q:
-            # Eksik bilgi var — kullanıcıdan iste
+            # Eksik bilgi var — AI uzerinden doğal forma sok
+            # Teknik bilgiyi context'e ekleyelim
+            if ts_fetched:
+                ctx["ts_technical_info"] = ts_technical_info
+                
             intro = self._ask_gemini(message, ctx=ctx, missing_q=missing_q)
-            # Guard: AI None veya 'None' prefix döndürürse fallback kullan
+            # Guard
             if not intro or str(intro).strip().startswith("None"):
                 intro = missing_q
             else:
@@ -204,8 +239,9 @@ class SesUstasi:
             }
 
         agent = route(intake)
+        reply_str = ts_message if ts_fetched else f"Talebinizi {agent.replace('_', ' ').title()}'na iletiyorum."
         return {
-            "reply": f"Talebinizi {agent.replace('_', ' ').title()}'na iletiyorum.",
+            "reply": reply_str,
             "intake": intake,
             "route_to": agent,
             "needs_more_info": False,
@@ -235,10 +271,17 @@ class SesUstasi:
                 "\n\nBU BİLGİLER ZATEN ELİMİZDE, KESİNLİKLE TEKRAR SORMA:\n"
                 + "\n".join(known_info)
             )
+            
+        if ctx.get("ts_technical_info"):
+            system_prompt += (
+                f"\n\nTEKNİK UYARI: {ctx['ts_technical_info']}\n"
+                "Kullanıcıya bu bilgiyi sezdirerek (Örn: 'Reis senin cihazın frekansı şu, yani anca buraya kadar ineriz' şeklinde) gerçekçi bir yaklaşım sergile."
+            )
+            
         if missing_q:
             system_prompt += (
-                f"\n\nBİLGİ EKSİĞİ: Kullanıcıdan şunu öğren: {missing_q.strip()}\n"
-                "Tek soru sor, kısa tut, usta ağzıyla."
+                f"\n\nSİSTEM MESAJI: Tasarımı tamamlamak için şu bilgi eksik: '{missing_q.strip()}'. "
+                "Bu eksiği kullanıcıya doğal, usta ağzıyla ve doğrudan sor. Yukarıdaki teknik uyarıyı (varsa) soruyla harmanla. 'Dinliyorum' vb. robotik girişler yapma. Tek soru sor."
             )
 
         try:

@@ -418,7 +418,7 @@ def _get_missing_fields(domain: str, ext: dict) -> list[str]:
     brand = ext.get('brand')
     model_status = ext.get('model_status', 'missing')
     
-    # Kullanıcı markayı verdiyse ama modeli vermediyse modelini sormalıyız.
+    # Model ve parametre araştırması için kesin model gerekli.
     if model_status == 'missing':
         if not brand:
             missing.append('brand_or_model')
@@ -485,12 +485,12 @@ def _next_questions(missing: list[str], domain: str) -> list[str]:
     else:  # car_audio
         PRIORITY = ['partial_model', 'brand_or_model', 'diameter', 'vehicle_type', 'goal', 'trunk_dims']
         Q_TEXT = {
-            'partial_model': 'Tamam, bu işi halledebiliriz. Markanın tam modelini yaz, sana uygun kabini çıkaralım.',
-            'brand_or_model': 'Tamam, buna uygun kabin çıkarabiliriz. Basın marka ve tam modelini yaz, doğru yerden başlayalım.',
-            'diameter': 'Sürücü çapı ne kadar?',
-            'vehicle_type': 'Güzel, cihaz belli oldu. Şimdi aracına uygun litreli kabini kuralım. Aracı söyle, oradan devam edelim.',
-            'goal': 'Önceliğin temiz dinlemek mi yoksa daha yüksek ses mi?',
-            'trunk_dims': 'Tamam, cihaz ve araç belli oldu. Bu cihaza göre elimizde mantıklı kabin yolları var. Şimdi bagajda ne kadar yer ayırabileceğini söyle, sana uygun yapıyı netleştirelim.',
+            'partial_model': 'Markayı anladım reis. Ama parametrelerini (Fs, Qts) veritabanından çekebilmem için cihazın tam modelini de yazar mısın? (Örn: GT12)',
+            'brand_or_model': 'Reis, akustik hesaba girmek için marka ve modelini söylemen lazım ki parametrelerini çekeyim.',
+            'diameter': 'Sürücü çapı ne kadar olacak reis? (30cm, 38cm vs.)',
+            'vehicle_type': 'Cihaz tamam. Arabanın kasasını da söyleyelim, rezonans frekansını (tuning) ona göre hizalayalım (Sedan, HB, SUV vs).',
+            'goal': 'Müzikteki amacın ne? (Temiz dengeli bas mı yoksa yeri göğü inletmek mi?)',
+            'trunk_dims': 'Son olarak bagajda ayırdığın yerin en, boy, derinliği var mı yoksa limitsiz salla gitsin mi?',
         }
     questions = [Q_TEXT[f] for f in PRIORITY if f in missing]
     return questions[:1]
