@@ -766,7 +766,7 @@ class TestDXFWriter:
         r = SealedBox().build(SealedBoxInput(
             net_volume_l=28.0, width_mm=420, height_mm=380, depth_mm=320,
             thickness_mm=18, driver_hole_mm=0))
-        w = DXFWriter(output_dir="C:/tmp/dd1_tests")
+        w = DXFWriter(output_dir="./tmp_dd1_tests")
         # DXF ya basarili olur ya da delta limiti asildigi icin ValueError
         try:
             report = w.write(r["cabinet"], design_id="test_sealed")
@@ -781,7 +781,7 @@ class TestDXFWriter:
         r = PortedBox().build(PortedBoxInput(
             net_volume_l=40.0, width_mm=480, height_mm=420, depth_mm=360,
             thickness_mm=18, driver_hole_mm=0, target_fb_hz=38.0))
-        w = DXFWriter(output_dir="C:/tmp/dd1_tests")
+        w = DXFWriter(output_dir="./tmp_dd1_tests")
         try:
             report = w.write(r["cabinet"], design_id="test_ported")
             assert "PORT_GREEN" in report["layer_map"]
@@ -791,7 +791,7 @@ class TestDXFWriter:
     def test_dxf_write_bandpass4(self):
         from core.dxf_writer import DXFWriter, LAYER_DIVIDER
         r = Bandpass4thBox().build(_bp4())
-        w = DXFWriter(output_dir="C:/tmp/dd1_tests")
+        w = DXFWriter(output_dir="./tmp_dd1_tests")
         report = w.write(r["cabinet"], design_id="test_bp4")
         assert LAYER_DIVIDER in report["layer_map"]
 
@@ -800,7 +800,7 @@ class TestDXFWriter:
         r = SealedBox().build(SealedBoxInput(
             net_volume_l=28.0, width_mm=420, height_mm=380, depth_mm=320,
             thickness_mm=18, driver_hole_mm=0))
-        w = DXFWriter(output_dir="C:/tmp/dd1_tests")
+        w = DXFWriter(output_dir="./tmp_dd1_tests")
         try:
             report = w.write(r["cabinet"], design_id="test_layers")
             assert len(report["layer_map"]) >= 2
@@ -810,7 +810,7 @@ class TestDXFWriter:
     def test_dxf_4_layers_bandpass(self):
         from core.dxf_writer import DXFWriter
         r = Bandpass4thBox().build(_bp4())
-        w = DXFWriter(output_dir="C:/tmp/dd1_tests")
+        w = DXFWriter(output_dir="./tmp_dd1_tests")
         report = w.write(r["cabinet"], design_id="test_bp_layers")
         # CUT_RED, ENGRAVE_BLUE, PORT_GREEN, DIVIDER_YELLOW
         assert len(report["layer_map"]) == 4
