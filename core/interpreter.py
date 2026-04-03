@@ -263,7 +263,7 @@ def _extract_brand_model_type(message: str, msg_lower: str) -> tuple[str | None,
         for mf in m_likes:
             mf_low = mf.lower()
             # Ölçü birimleri, frekans ve güçleri filtrele
-            if not re.fullmatch(r'\d+(cm|santim|mm|milim|inc|inch|inç|hz|w|watt)', mf_low):
+            if not re.fullmatch(r'\d+(cm|santim|mm|milim|inc|inch|inç|hz|w|watt|rms|ohm)', mf_low):
                 if mf_low not in ['kabin', 'arac', 'doğru', 'zaten', 'önemi']:  # safety
                     valid_models.append(mf)
         
