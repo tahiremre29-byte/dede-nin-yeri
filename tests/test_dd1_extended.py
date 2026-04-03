@@ -17,7 +17,10 @@ import sys
 import pytest
 import math
 
-sys.path.insert(0, "C:/Users/DDSOUND/Desktop/exemiz/dd1_platform")
+from pathlib import Path
+project_root = str(Path(__file__).parent.parent)
+if project_root not in sys.path:
+    sys.path.insert(0, project_root)
 
 from core.box.sealed import SealedBox, SealedBoxInput, compute_sealed_acoustic
 from core.box.ported import PortedBox, PortedBoxInput
