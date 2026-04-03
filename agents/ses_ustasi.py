@@ -162,8 +162,6 @@ class SesUstasi:
         
         if _np_ctx.get("next_questions"):
             missing_q = " ".join(_np_ctx["next_questions"])
-        elif request_missing_fields(intake):
-            missing_q = request_missing_fields(intake)
 
         # ── YENİ: TS Parametre Lookup Akışı (ARTIK HER ZAMAN ÇALIŞIR) ──
         ts_fetched = False
@@ -171,7 +169,7 @@ class SesUstasi:
         ts_technical_info = ""
         
         if intake.woofer_model and not intake.has_ts_params:
-            brand_str = intake.brand or ""
+            brand_str = ctx.get("brand", "")
             model_str = intake.woofer_model
             lookup_prompt = (
                 f"{brand_str} {model_str} subwoofer (car audio) için fabrika T/S parametrelerinden "

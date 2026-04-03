@@ -291,9 +291,11 @@ def process_message(
         # ext normalied_panel'den ek bilgileri context'e doldur
         _np = ext.get("normalized_panel", {})
         for _k in ("brand", "diameter_inch", "diameter_raw",
-                   "vehicle_type", "goal", "enclosure_preference"):
-            if _np.get(_k) and not normalized_ctx.get(_k):
+                   "vehicle_type", "goal", "enclosure_preference",
+                   "trunk_width_cm", "trunk_height_cm", "trunk_depth_cm", "missing_fields"):
+            if _k in _np and _np[_k] is not None and not normalized_ctx.get(_k):
                 normalized_ctx[_k] = _np[_k]
+                
         if ext.get("rms_power") and not normalized_ctx.get("rms_power"):
             normalized_ctx["rms_power"] = ext["rms_power"]
         # normalized_panel'i de context'e ekle (ses_ustasi ctx.get("normalized_panel") kullanır)
