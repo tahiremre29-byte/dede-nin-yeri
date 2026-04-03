@@ -1,0 +1,55 @@
+# ══════════════════════════════════════════════════
+# DD1 Platform — .gitignore
+# ══════════════════════════════════════════════════
+
+# 🔐 GİZLİ: Asla GitHub'a gitmesin!
+.env
+*.env
+.env.local
+.env.production
+
+# 🐍 Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.so
+
+# 📦 Virtual environment
+venv/
+env/
+.venv/
+ENV/
+
+# 🧪 Test & debug çıktıları
+.pytest_cache/
+*.log
+debug_output.txt
+test_out.json
+*_dump.json
+parse*.txt
+
+# 📁 Export & data (hassas olabilir)
+exports/
+data/*.json
+data/*.dxf
+
+# 🛠️ IDE dosyaları
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 💻 OS dosyaları
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# 📊 Büyük / gereksiz dosyalar
+*.sqlite
+*.db
+openapi.txt
+system_inventory.*
+runtime_map.*
+bridge_debug.log

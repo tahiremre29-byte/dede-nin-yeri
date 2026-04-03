@@ -1,0 +1,1867 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DD1 Dijital Atölye — Usta Interface</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0b0f;--surface:#111318;--surface2:#1a1d24;--border:#2a2d35;
+  --accent:#f59e0b;--accent2:#3b82f6;--green:#22c55e;--yellow:#eab308;--red:#ef4444;
+  --text:#f1f5f9;--text2:#94a3b8;--text3:#64748b;
+  --r:12px;--r2:8px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+/* ── Layout */
+.app{display:grid;grid-template-rows:auto 1fr;min-height:100vh}
+header{
+  padding:1rem 2rem;background:rgba(17,19,24,.9);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);display:flex;align-items:center;gap:1rem;
+  position:sticky;top:0;z-index:100;
+}
+.logo{font-size:1.4rem;font-weight:900;color:var(--accent);letter-spacing:.05em}
+.logo span{color:var(--text2);font-weight:300}
+.header-sub{font-size:.8rem;color:var(--text3)}
+.header-right{margin-left:auto;display:flex;gap:.75rem}
+/* ── AI Mod Göstergesi */
+#ai-mode-badge{
+  font-size:.7rem;font-weight:600;padding:.25rem .6rem;
+  border-radius:20px;letter-spacing:.04em;transition:all .4s;
+  border:1px solid;
+}
+#ai-mode-badge.smart{background:rgba(34,197,94,.12);color:#22c55e;border-color:rgba(34,197,94,.3)}
+#ai-mode-badge.standard{background:rgba(234,179,8,.12);color:#eab308;border-color:rgba(234,179,8,.3)}
+/* ── Stepper */
+.stepper{
+  display:flex;gap:0;padding:1.5rem 2rem .5rem;
+  background:var(--surface);border-bottom:1px solid var(--border);
+}
+.step{
+  display:flex;align-items:center;gap:.5rem;padding:.5rem 1rem;
+  border-radius:var(--r2);cursor:pointer;transition:all .2s;flex:1;
+}
+.step-num{
+  width:28px;height:28px;border-radius:50%;background:var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.75rem;font-weight:700;transition:all .2s;flex-shrink:0;
+}
+.step-label{font-size:.8rem;color:var(--text3);font-weight:500}
+.step.active .step-num{background:var(--accent);color:#000}
+.step.active .step-label{color:var(--text)}
+.step.done .step-num{background:var(--green);color:#000}
+.step.done .step-label{color:var(--text2)}
+.step-sep{color:var(--border);font-size:1.2rem;padding:0 .25rem;align-self:center}
+/* ── Main Content */
+.main{padding:2rem;max-width:1200px;margin:0 auto;width:100%}
+/* ── Panels */
+.panel{display:none}
+.panel.active{display:block}
+/* ── Chat (Step 1) */
+.chat-container{display:grid;grid-template-rows:1fr auto;height:60vh;background:var(--surface);border-radius:var(--r);border:1px solid var(--border);overflow:hidden}
+.chat-messages{overflow-y:auto;padding:1.5rem;display:flex;flex-direction:column;gap:1rem}
+.msg{max-width:80%;padding:.75rem 1rem;border-radius:var(--r2);font-size:.9rem;line-height:1.5}
+.msg.ai{background:var(--surface2);color:var(--text);align-self:flex-start;border:1px solid var(--border)}
+.msg.ai .sender{font-size:.7rem;color:var(--accent);font-weight:600;margin-bottom:.3rem}
+.msg.user{background:var(--accent);color:#000;align-self:flex-end;font-weight:500}
+.chat-input-row{padding:1rem;border-top:1px solid var(--border);display:flex;gap:.75rem}
+.chat-input{
+  flex:1;background:var(--surface2);border:1px solid var(--border);
+  color:var(--text);border-radius:var(--r2);padding:.75rem 1rem;font-size:.9rem;
+  font-family:inherit;resize:none;
+}
+.chat-input:focus{outline:none;border-color:var(--accent)}
+.btn{
+  padding:.75rem 1.5rem;border-radius:var(--r2);border:none;cursor:pointer;
+  font-family:inherit;font-weight:600;font-size:.85rem;transition:all .15s;
+}
+.btn-primary{background:var(--accent);color:#000}
+.btn-primary:hover{background:#fbbf24}
+.btn-primary:disabled{background:var(--border);color:var(--text3);cursor:not-allowed}
+.btn-secondary{background:var(--surface2);color:var(--text);border:1px solid var(--border)}
+.btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
+.btn-sm{padding:.4rem .9rem;font-size:.78rem}
+/* ── Mode Cards (Step 2) */
+.mode-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:1.5rem}
+.mode-card{
+  background:var(--surface);border:2px solid var(--border);border-radius:var(--r);
+  padding:1.5rem;cursor:pointer;transition:all .2s;
+}
+.mode-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.mode-card.selected{border-color:var(--accent);background:rgba(245,158,11,.06)}
+.mode-card h3{font-size:1rem;font-weight:700;margin-bottom:.5rem;color:var(--text)}
+.mode-card p{font-size:.82rem;color:var(--text2);line-height:1.5}
+.mode-icon{font-size:2rem;margin-bottom:.75rem}
+.lock-notice{
+  background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.3);
+  border-radius:var(--r2);padding:.75rem 1rem;margin-top:1rem;
+  font-size:.85rem;color:#93c5fd;display:none;align-items:center;gap:.5rem;
+}
+.lock-notice.visible{display:flex}
+/* ── Option Cards (Step 3) */
+.section-title{font-size:1.2rem;font-weight:700;margin-bottom:1.5rem;color:var(--text)}
+.options-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.option-card{
+  background:var(--surface);border:2px solid var(--border);border-radius:var(--r);
+  overflow:hidden;transition:all .2s;cursor:pointer;
+}
+.option-card:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,.4)}
+.option-card.selected{border-color:var(--accent)}
+.option-header{padding:1rem 1rem .75rem;border-bottom:1px solid var(--border)}
+.option-letter{font-size:2rem;font-weight:900;color:var(--accent);line-height:1}
+.option-strategy{font-size:.72rem;color:var(--text3);margin-top:.2rem}
+.badges{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.6rem}
+.badge{
+  padding:.2rem .6rem;border-radius:100px;font-size:.68rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:.04em;
+}
+.badge-Recommended{background:rgba(245,158,11,.2);color:var(--accent);border:1px solid rgba(245,158,11,.3)}
+.badge-Fits{background:rgba(34,197,94,.15);color:var(--green);border:1px solid rgba(34,197,94,.3)}
+.badge-Ready{background:rgba(59,130,246,.15);color:#93c5fd;border:1px solid rgba(59,130,246,.3)}
+.badge-Warning{background:rgba(234,179,8,.15);color:var(--yellow);border:1px solid rgba(234,179,8,.3)}
+.badge-Blocked{background:rgba(239,68,68,.15);color:var(--red);border:1px solid rgba(239,68,68,.3)}
+.warning-bar{
+  height:3px;width:100%;
+}
+.warning-green .warning-bar{background:var(--green)}
+.warning-yellow .warning-bar{background:var(--yellow)}
+.warning-red_block .warning-bar{background:var(--red)}
+.option-body{padding:1rem}
+.option-summary{font-size:.82rem;color:var(--text2);line-height:1.6;margin-bottom:.75rem}
+.option-specs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.5rem}
+.spec{background:var(--surface2);border-radius:var(--r2);padding:.5rem;text-align:center}
+.spec-val{font-size:1rem;font-weight:700;color:var(--text)}
+.spec-lbl{font-size:.65rem;color:var(--text3);margin-top:.1rem}
+.expand-btn{
+  width:100%;background:var(--surface2);border:none;border-top:1px solid var(--border);
+  color:var(--text3);padding:.6rem;font-size:.75rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:.35rem;transition:all .15s;
+  font-family:inherit;
+}
+.expand-btn:hover{color:var(--text);background:var(--border)}
+.expand-drawer{
+  display:none;padding:1rem;border-top:1px solid var(--border);background:rgba(0,0,0,.2);
+}
+.expand-drawer.open{display:block}
+.displ-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+.displ-item{font-size:.78rem;color:var(--text2);display:flex;justify-content:space-between}
+.displ-item span:last-child{color:var(--text);font-weight:600}
+/* ── 3D Wireframe ────────────────────────────────────────────────────── */
+.wireframe-block{
+  margin-top:.75rem;background:rgba(0,0,0,.3);border:1px solid var(--border);
+  border-radius:var(--r2);padding:.75rem;text-align:center;
+}
+.wireframe-title{font-size:.7rem;color:var(--text3);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.06em}
+.wireframe-svg{overflow:visible;display:block;margin:auto}
+.wf-front{fill:rgba(245,158,11,.08);stroke:var(--accent);stroke-width:1.2}
+.wf-top{fill:rgba(245,158,11,.14);stroke:var(--accent);stroke-width:1.2;opacity:.9}
+.wf-right{fill:rgba(245,158,11,.05);stroke:var(--accent);stroke-width:1.2;opacity:.7}
+.wf-edge{fill:none;stroke:rgba(245,158,11,.5);stroke-width:.7}
+.wf-label{font-size:8px;fill:var(--text3);font-family:'Inter',sans-serif}
+/* ── Maliyet Kutusu */
+.cost-grid{
+  display:grid;grid-template-columns:1fr 1fr 1fr;gap:.5rem;margin-top:.75rem;
+}
+.cost-item{
+  background:rgba(34,197,94,.06);border:1px solid rgba(34,197,94,.2);
+  border-radius:var(--r2);padding:.5rem;text-align:center;
+}
+.cost-val{font-size:.95rem;font-weight:800;color:var(--green)}
+.cost-lbl{font-size:.62rem;color:var(--text3);margin-top:.15rem}
+.cost-mat{font-size:.72rem;color:var(--text2);margin-top:.5rem;text-align:center}
+/* ── Compare */
+.compare-bar{
+  display:flex;gap:.75rem;margin-bottom:1.5rem;align-items:center;flex-wrap:wrap;
+}
+.compare-select{
+  background:var(--surface2);border:1px solid var(--border);color:var(--text);
+  border-radius:var(--r2);padding:.5rem .75rem;font-size:.85rem;font-family:inherit;
+}
+.compare-table{width:100%;border-collapse:collapse;font-size:.85rem}
+.compare-table th{background:var(--surface2);padding:.6rem 1rem;text-align:left;color:var(--text2);font-weight:500;font-size:.78rem}
+.compare-table td{padding:.6rem 1rem;border-bottom:1px solid var(--border);color:var(--text)}
+.compare-table tr:last-child td{border-bottom:none}
+.compare-table td:first-child{color:var(--text3);font-size:.78rem}
+/* ── Seal (Step 4) */
+.seal-card{background:var(--surface);border-radius:var(--r);border:1px solid var(--border);padding:2rem;max-width:600px;margin:0 auto}
+.seal-title{font-size:1.4rem;font-weight:800;margin-bottom:.5rem}
+.seal-id{font-size:.78rem;color:var(--text3);margin-bottom:1.5rem;font-family:monospace}
+.seal-specs{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.5rem 0}
+.seal-spec{text-align:center;background:var(--surface2);border-radius:var(--r2);padding:1rem}
+.seal-spec-val{font-size:1.5rem;font-weight:900;color:var(--accent)}
+.seal-spec-lbl{font-size:.72rem;color:var(--text3);margin-top:.2rem}
+.dxf-btn{
+  width:100%;padding:1rem;border-radius:var(--r2);border:none;font-family:inherit;
+  font-size:1rem;font-weight:700;cursor:pointer;transition:all .2s;
+  display:flex;align-items:center;justify-content:center;gap:.5rem;
+}
+.dxf-btn.ready{background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff}
+.dxf-btn.ready:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(34,197,94,.3)}
+.dxf-btn.blocked{background:var(--surface2);color:var(--red);border:2px solid rgba(239,68,68,.3);cursor:not-allowed}
+.blocked-reason{font-size:.8rem;color:var(--red);text-align:center;margin-top:.75rem}
+/* ── Archive Panel */
+.archive-toggle{
+  position:fixed;right:1.5rem;bottom:1.5rem;
+  background:var(--accent);color:#000;border:none;border-radius:100px;
+  padding:.75rem 1.25rem;font-family:inherit;font-weight:700;font-size:.85rem;
+  cursor:pointer;z-index:200;display:flex;align-items:center;gap:.5rem;
+  box-shadow:0 4px 20px rgba(245,158,11,.4);transition:all .2s;
+}
+.archive-toggle:hover{background:#fbbf24;transform:translateY(-2px)}
+.archive-panel{
+  position:fixed;right:0;top:0;bottom:0;width:400px;
+  background:var(--surface);border-left:1px solid var(--border);
+  z-index:300;transform:translateX(100%);transition:transform .3s ease;
+  overflow-y:auto;display:flex;flex-direction:column;
+}
+.archive-panel.open{transform:translateX(0)}
+.archive-header{
+  padding:1.25rem 1.5rem;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:.75rem;
+}
+.archive-header h3{flex:1;font-size:1rem;font-weight:700}
+.archive-search-row{display:flex;gap:.5rem;padding:1rem 1.5rem;border-bottom:1px solid var(--border)}
+.archive-input{
+  flex:1;background:var(--surface2);border:1px solid var(--border);color:var(--text);
+  border-radius:var(--r2);padding:.5rem .75rem;font-size:.85rem;font-family:inherit;
+}
+.archive-list{flex:1;padding:1rem 1.5rem;display:flex;flex-direction:column;gap:.75rem}
+.archive-item{
+  background:var(--surface2);border-radius:var(--r2);border:1px solid var(--border);
+  padding:.75rem 1rem;
+}
+.archive-item-id{font-size:.72rem;font-family:monospace;color:var(--accent);margin-bottom:.3rem}
+.archive-item-meta{font-size:.78rem;color:var(--text2);display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:.5rem}
+.archive-item-actions{display:flex;gap:.5rem}
+/* ── Compare Modal */
+.modal-overlay{
+  display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:400;
+  align-items:center;justify-content:center;
+}
+.modal-overlay.open{display:flex}
+.modal{background:var(--surface);border-radius:var(--r);border:1px solid var(--border);padding:1.5rem;width:90%;max-width:640px;max-height:90vh;overflow-y:auto}
+.modal-title{font-size:1.1rem;font-weight:700;margin-bottom:1.25rem;display:flex;justify-content:space-between;align-items:center}
+.modal-close{background:none;border:none;color:var(--text3);cursor:pointer;font-size:1.2rem}
+/* ── Status toast */
+.toast{
+  position:fixed;bottom:5rem;left:50%;transform:translateX(-50%);
+  background:var(--surface2);border:1px solid var(--border);border-radius:var(--r2);
+  padding:.75rem 1.5rem;font-size:.85rem;z-index:500;
+  opacity:0;transition:opacity .3s;pointer-events:none;
+}
+.toast.show{opacity:1}
+/* ── Fit Validation Block */
+.fit-validation-block{
+  margin-top:.75rem;padding:.6rem .75rem;
+  background:rgba(255,255,255,.04);border-radius:var(--r2);
+  border:1px solid var(--border);
+}
+.fit-summary-row{display:flex;align-items:center;gap:.5rem;font-size:.82rem;font-weight:600}
+.fit-icon{font-size:1rem}
+.fit-text{color:var(--text2)}
+.fit-checks{
+  display:grid;grid-template-columns:1fr 1fr;gap:.25rem .5rem;
+  margin-top:.5rem;font-size:.78rem;
+}
+.fit-check-item{display:flex;align-items:center;gap:.3rem;color:var(--text2);padding:.15rem 0}
+.fit-check-item.fail{color:#ff7875}
+.fit-check-item.pass{color:#52c41a}
+.fit-toggle-btn{
+  margin-top:.4rem;background:none;border:none;color:var(--accent);
+  font-size:.75rem;cursor:pointer;padding:0;
+}
+.fit-toggle-btn:hover{text-decoration:underline}
+/* ── Responsive */
+@media(max-width:768px){
+  .mode-grid,.options-grid{grid-template-columns:1fr}
+  .archive-panel{width:100%}
+  .stepper{overflow-x:auto}
+  .step-1-layout{flex-direction:column}
+}
+/* ── CollectedInfo Kutusu */
+.collected-info-box{
+  background:var(--surface2);border:1px solid var(--border);
+  border-radius:var(--r);padding:1rem;min-width:220px;
+  flex-shrink:0;
+}
+.ci-title{
+  font-size:.72rem;font-weight:700;color:var(--text3);text-transform:uppercase;
+  letter-spacing:.07em;margin-bottom:.75rem;display:flex;align-items:center;gap:.4rem;
+}
+.ci-row{display:flex;justify-content:space-between;align-items:baseline;gap:.5rem;margin-bottom:.45rem;font-size:.8rem}
+.ci-lbl{color:var(--text3);flex-shrink:0;font-size:.75rem}
+.ci-val{color:var(--text);font-weight:600;text-align:right;word-break:break-word}
+.ci-val.empty{color:var(--text3);font-weight:400;font-style:italic}
+.ci-missing{color:var(--yellow);font-size:.75rem}
+.ci-status{
+  margin-top:.75rem;border-radius:var(--r2);padding:.4rem .75rem;
+  font-size:.75rem;font-weight:700;text-align:center;transition:all .3s;
+}
+.ci-status.ready{background:rgba(34,197,94,.15);color:var(--green);border:1px solid rgba(34,197,94,.3)}
+.ci-status.not-ready{background:rgba(234,179,8,.1);color:var(--yellow);border:1px solid rgba(234,179,8,.3)}
+/* Step1 layout */
+.step-1-layout{display:flex;gap:1.25rem;align-items:flex-start}
+.step-1-chat{flex:1;min-width:0}
+/* Mode lock rule */
+.mode-lock-rule{
+  font-size:.75rem;margin-top:.6rem;padding:.45rem .6rem;
+  background:rgba(0,0,0,.25);border-radius:var(--r2);
+  color:var(--text3);border-left:2px solid var(--border);
+  line-height:1.4;
+}
+.mode-card.selected .mode-lock-rule{color:var(--accent);border-left-color:var(--accent)}
+/* Gate msg */
+.gate-msg{
+  font-size:.75rem;color:var(--text3);margin-top:.4rem;text-align:right;
+  transition:opacity .3s;
+}
+/* compare warning diff */
+.diff-better{color:var(--green);font-weight:700}
+.diff-worse{color:var(--red);font-weight:700}
+.diff-equal{color:var(--text3)}
+/* seal detail rows */
+.seal-detail{display:flex;justify-content:space-between;font-size:.8rem;padding:.3rem 0;border-bottom:1px solid var(--border)}
+.seal-detail:last-child{border-bottom:none}
+.seal-detail-lbl{color:var(--text3)}
+.seal-detail-val{color:var(--text);font-weight:600}
+/* archive card extras */
+.archive-tag{font-size:.68rem;padding:.15rem .5rem;border-radius:100px;background:var(--surface);border:1px solid var(--border);color:var(--text3)}
+</style>
+</head>
+<body>
+<div class="app">
+<header>
+  <div>
+    <div class="logo">DD1 <span>Dijital Atölye</span></div>
+    <div class="header-sub">Usta Interface v2.0 — Akustik & Üretim</div>
+  </div>
+  <div class="header-right">
+    <button class="btn btn-secondary btn-sm" onclick="openArchive()">📁 Arşiv</button>
+  </div>
+</header>
+
+<!-- STEPPER -->
+<div class="stepper">
+  <div class="step active" id="step-1" onclick="goTo(1)">
+    <div class="step-num">1</div>
+    <div class="step-label">Tanışma</div>
+  </div>
+  <div class="step-sep">›</div>
+  <div class="step" id="step-2" onclick="goTo(2)">
+    <div class="step-num">2</div>
+    <div class="step-label">Mod Seçimi</div>
+  </div>
+  <div class="step-sep">›</div>
+  <div class="step" id="step-3" onclick="goTo(3)">
+    <div class="step-num">3</div>
+    <div class="step-label">Çözüm Havuzu</div>
+  </div>
+  <div class="step-sep">›</div>
+  <div class="step" id="step-4" onclick="goTo(4)">
+    <div class="step-num">4</div>
+    <div class="step-label">Mühürleme</div>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- PANEL 1: TANIŞMA -->
+<div class="panel active" id="panel-1">
+  <div style="margin-bottom:1rem">
+    <h2 style="font-size:1.3rem;font-weight:800">Ses Ustadı ile Tanışma</h2>
+    <p style="color:var(--text2);font-size:.85rem;margin-top:.3rem">Araç, sürücü ve hedefini anlat. Usta dinliyor.</p>
+  </div>
+  <div class="step-1-layout">
+    <div class="step-1-chat">
+      <div class="chat-container">
+        <div class="chat-messages" id="chatMessages">
+          <div class="msg ai">
+            <div class="sender">⚡ Ses Ustadı</div>
+            Selam! Hangi araç için çalışıyoruz, ne koymak istiyorsun? Araç tipini ve sürüycü bilgisini söylersen başlayabiliriz.
+          </div>
+        </div>
+        <div class="chat-input-row">
+          <textarea class="chat-input" id="chatInput" rows="2" placeholder="Örn: Sedan, JBL 300W, günlük bas..."></textarea>
+          <button class="btn btn-primary" onclick="sendMessage()">Gönder ↵</button>
+        </div>
+      </div>
+      <div class="privacy-disclaimer" style="font-size: 11px; color: rgba(255,255,255,0.4); text-align: center; margin-top: 8px;">
+          Yazdığınız sorular ve işlem kayıtları, hizmetin düzgün çalışması, teknik doğrulama ve kalite iyileştirme amaçlarıyla güvenli şekilde işlenebilir.
+      </div>
+    </div>
+    <!-- Toplanan Bilgiler Kutusu -->
+    <div class="collected-info-box">
+      <div class="ci-title">📋 Toplanan Bilgiler</div>
+      <div class="ci-row"><span class="ci-lbl">Marka</span><span class="ci-val empty" id="ci-brand">—</span></div>
+      <div class="ci-row"><span class="ci-lbl">Sürücü Tipi</span><span class="ci-val empty" id="ci-dtype">—</span></div>
+      <div class="ci-row"><span class="ci-lbl">Çap (ham)</span><span class="ci-val empty" id="ci-dia-raw">—</span></div>
+      <div class="ci-row"><span class="ci-lbl">Çap (mm)</span><span class="ci-val empty" id="ci-dia-mm">—</span></div>
+      <div class="ci-row"><span class="ci-lbl">Çap (inch)</span><span class="ci-val empty" id="ci-dia-in">—</span></div>
+      <div class="ci-row"><span class="ci-lbl">Kutu Tipi</span><span class="ci-val empty" id="ci-enclosure">—</span></div>
+      <div class="ci-row"><span class="ci-lbl">Hedef</span><span class="ci-val empty" id="ci-goal">—</span></div>
+      <div class="ci-row"><span class="ci-lbl">Araç</span><span class="ci-val empty" id="ci-vehicle">—</span></div>
+      <div class="ci-row"><span class="ci-lbl">Bagaj Ölçüsü</span><span class="ci-val empty" id="ci-trunk-dims">—</span></div>
+      <div class="ci-row"><span class="ci-lbl">Fiziksel Kısıt</span><span class="ci-val empty" id="ci-trunk-notes">—</span></div>
+      <div style="margin-top:.5rem;">
+        <div class="ci-lbl" style="margin-bottom:.3rem">Eksik Alanlar</div>
+        <div class="ci-missing" id="ci-missing">araç tipi, marka, çap, hedef, bagaj ölçüsü</div>
+      </div>
+      <div class="ci-status not-ready" id="ci-status">⏳ Veri toplanıyor...</div>
+    </div>
+  </div>
+  <div style="display:flex;justify-content:flex-end;flex-direction:column;align-items:flex-end;margin-top:1.25rem">
+    <button class="btn btn-primary" id="modeNextBtnP1" disabled onclick="goTo(2)">Mod Seçimine Geç →</button>
+    <div class="gate-msg" id="gateMsgP1">🔒 Önce araç, sürücü ve hedef netleşmeli.</div>
+  </div>
+</div>
+
+<!-- PANEL 2: MOD SEÇİMİ -->
+<div class="panel" id="panel-2">
+  <h2 style="font-size:1.3rem;font-weight:800;margin-bottom:.5rem">Tasarım Modunu Seç</h2>
+  <p style="color:var(--text2);font-size:.85rem;margin-bottom:1.5rem">Her modun kendi kural seti var. Hangisi senin durumuna uyar?</p>
+  <div class="mode-grid">
+    <div class="mode-card" id="mode-fixed_external" onclick="selectMode('fixed_external')">
+      <div class="mode-icon">🚗</div>
+      <h3>Bagaj Odaklı</h3>
+      <p>Dış ölçüler kutsaldır. 0.1mm bile değişmez. Akustik kısıtlar içinde en iyi tasarımı üretiriz.</p>
+      <div class="mode-lock-rule">🔒 Dış ölçü kilitli. Sistem sessiz resize yapmaz.</div>
+    </div>
+    <div class="mode-card" id="mode-fixed_acoustic" onclick="selectMode('fixed_acoustic')">
+      <div class="mode-icon">🎵</div>
+      <h3>Akustik Odaklı</h3>
+      <p>Hacim ve tuning öncelik. Dış ölçüleri hedef akustiğe göre otomatik ayarla.</p>
+      <div class="mode-lock-rule">🎯 Net litre ve tuning korunur. Gerekirse dış ölçü değişebilir.</div>
+    </div>
+    <div class="mode-card" id="mode-compromise" onclick="selectMode('compromise')">
+      <div class="mode-icon">⚖️</div>
+      <h3>Uzlaşma</h3>
+      <p>Hem bagaj hem akustik için en makul orta yol.</p>
+      <div class="mode-lock-rule">⚙️ Sistem 3 uygulanabilir alternatif üretir.</div>
+    </div>
+  </div>
+  <div class="lock-notice" id="lockNotice">
+    🔒 <strong>Dış ölçü kilitli.</strong>&nbsp;Sistem sessiz resize yapmaz.
+  </div>
+  <div style="display:flex;justify-content:space-between;margin-top:1.5rem">
+    <button class="btn btn-secondary" onclick="goTo(1)">← Geri</button>
+    <button class="btn btn-primary" id="modeNextBtn" disabled onclick="goTo(3)">Çözüm Havuzuna Geç →</button>
+  </div>
+</div>
+
+<!-- PANEL 3: ÇÖZÜM HAVUZU -->
+<div class="panel" id="panel-3">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem">
+    <div>
+      <h2 class="section-title" style="margin-bottom:.25rem">Çözüm Havuzu</h2>
+      <p style="color:var(--text2);font-size:.82rem">Seçenek kartına tıkla, detayları gör, kıyasla.</p>
+    </div>
+    <button class="btn btn-secondary btn-sm" onclick="openCompare()">⚖ Kıyasla</button>
+  </div>
+
+  <div class="options-grid" id="optionsGrid">
+    <!-- Demo cards — gerçek veriler API'den gelir -->
+    <div class="option-card warning-green" onclick="selectOption('A', this)">
+      <div class="warning-bar"></div>
+      <div class="option-header">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between">
+          <div>
+            <div class="option-letter">A</div>
+            <div class="option-strategy">Dış ölçü korunuyor, port kısaltıldı</div>
+          </div>
+        </div>
+        <div class="badges">
+          <span class="badge badge-Recommended">Recommended</span>
+          <span class="badge badge-Fits">Fits</span>
+          <span class="badge badge-Ready">Ready</span>
+        </div>
+      </div>
+      <div class="option-body">
+        <div class="option-summary">
+          Bu seçenek dış ölçüyü milimi milimine koruyor. Tek tavizi tuning'den veriyoruz; 32Hz yerine 34Hz olacak. Kulak çok fark etmez ama bagaja cuk oturur.
+        </div>
+        <div class="option-specs">
+          <div class="spec"><div class="spec-val" id="A-net">45.2L</div><div class="spec-lbl">Net Hacim</div></div>
+          <div class="spec"><div class="spec-val" id="A-tune">34 Hz</div><div class="spec-lbl">Tuning</div></div>
+          <div class="spec"><div class="spec-val">400×500×350</div><div class="spec-lbl">mm (WxHxD)</div></div>
+        </div>
+        <button class="expand-btn" onclick="toggleDrawer('drawer-A', event)">▸ Detaylar + 3D Önızleme</button>
+        <div class="expand-drawer" id="drawer-A">
+          <div class="displ-grid">
+            <div class="displ-item"><span>Gross Hacim</span><span>52.1 L</span></div>
+            <div class="displ-item"><span>Net Hacim</span><span>45.2 L</span></div>
+            <div class="displ-item"><span>Sürücü Kayıp</span><span>3.2 L</span></div>
+            <div class="displ-item"><span>Port Kayıp</span><span>2.1 L</span></div>
+            <div class="displ-item"><span>Takviye Kayıp</span><span>1.6 L</span></div>
+            <div class="displ-item"><span>Delta</span><span style="color:var(--green)">%0.8</span></div>
+          </div>
+          <div class="displ-grid" style="margin-top:.5rem">
+            <div class="displ-item"><span>Orijinal Dış Ölçü</span><span>400×500×350 mm</span></div>
+            <div class="displ-item"><span>Final Dış Ölçü</span><span style="color:var(--green)">400×500×350 mm</span></div>
+            <div class="displ-item"><span>Tuning Hedefi</span><span>32 Hz</span></div>
+            <div class="displ-item"><span>Final Tuning</span><span style="color:var(--yellow)">34 Hz</span></div>
+            <div class="displ-item"><span>Malzeme</span><span>18mm MDF</span></div>
+            <div class="displ-item"><span>Port Tipi</span><span>Slot port</span></div>
+            <div class="displ-item"><span>Finger Joint</span><span style="color:var(--green)">✅ Aktif</span></div>
+            <div class="displ-item"><span>Uyarı Düzeyi</span><span style="color:var(--green)">Yeşil — Ürete bilirsin</span></div>
+          </div>
+          <!-- Fiziksel Fit Kontrolü -->
+          <div class="fit-validation-block" id="fit-A">
+            <div class="fit-summary-row" id="fit-A-summary">
+              <span class="fit-icon">⏳</span>
+              <span class="fit-text">Fiziksel doğrulama yükleniyor...</span>
+            </div>
+            <div class="fit-checks" id="fit-A-checks" style="display:none"></div>
+            <button class="fit-toggle-btn" onclick="toggleFitChecks('fit-A-checks',this)">▸ 5 Kontrol Detayı</button>
+          </div>
+          <!-- 3D Wireframe -->
+          <div class="wireframe-block">
+            <div class="wireframe-title">📦 3D Bounding Box — 400×500×350mm</div>
+            <svg class="wireframe-svg" id="wf-A" width="200" height="140" viewBox="0 0 200 140"></svg>
+          </div>
+          <!-- Maliyet -->
+          <div class="cost-grid">
+            <div class="cost-item"><div class="cost-val" id="cost-A-m2">1.13 m²</div><div class="cost-lbl">Levha Alanı</div></div>
+            <div class="cost-item"><div class="cost-val" id="cost-A-tl">~107 TL</div><div class="cost-lbl">Tahmini Maliyet</div></div>
+            <div class="cost-item"><div class="cost-val" id="cost-A-kg">13.9 kg</div><div class="cost-lbl">Ağırlık</div></div>
+          </div>
+          <div class="cost-mat" id="cost-A-mat">📋 18mm MDF — 95 TL/m² — %10 fire payı dahil</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="option-card warning-yellow" onclick="selectOption('B', this)">
+      <div class="warning-bar"></div>
+      <div class="option-header">
+        <div class="option-letter">B</div>
+        <div class="option-strategy">Malzeme değişimi — 15mm huş kontraplak</div>
+        <div class="badges">
+          <span class="badge badge-AkustikOncelikli">AKUSTİK ÖNCELİKLİ</span>
+          <span class="badge badge-Warning">Warning</span>
+        </div>
+      </div>
+      <div class="option-body">
+        <div class="option-summary">
+          18mm MDF yerine 15mm huş kontraplak. Toplam +1.8L iç hacim kazandık. Parmak birleşim hesabı sıfırdan yapıldı, üretime hazır ama akustik %1.6 sapıyor.
+        </div>
+        <div class="option-specs">
+          <div class="spec"><div class="spec-val">47.0L</div><div class="spec-lbl">Net Hacim</div></div>
+          <div class="spec"><div class="spec-val">32 Hz</div><div class="spec-lbl">Tuning</div></div>
+          <div class="spec"><div class="spec-val">400×500×350</div><div class="spec-lbl">mm (WxHxD)</div></div>
+        </div>
+        <button class="expand-btn" onclick="toggleDrawer('drawer-B', event)">▸ Detaylar + 3D Önızleme</button>
+        <div class="expand-drawer" id="drawer-B">
+          <div class="displ-grid">
+            <div class="displ-item"><span>Gross Hacim</span><span>53.8 L</span></div>
+            <div class="displ-item"><span>Net Hacim</span><span>47.0 L</span></div>
+            <div class="displ-item"><span>Sürücü Kayıp</span><span>3.2 L</span></div>
+            <div class="displ-item"><span>Port Kayıp</span><span>2.1 L</span></div>
+            <div class="displ-item"><span>Takviye Kayıp</span><span>1.5 L</span></div>
+            <div class="displ-item"><span>Delta</span><span style="color:var(--yellow)">%1.6</span></div>
+          </div>
+          <div class="displ-grid" style="margin-top:.5rem">
+            <div class="displ-item"><span>Orijinal Dış Ölçü</span><span>400×500×350 mm</span></div>
+            <div class="displ-item"><span>Final Dış Ölçü</span><span style="color:var(--green)">400×500×350 mm</span></div>
+            <div class="displ-item"><span>Tuning Hedefi</span><span>32 Hz</span></div>
+            <div class="displ-item"><span>Final Tuning</span><span style="color:var(--green)">32 Hz</span></div>
+            <div class="displ-item"><span>Malzeme</span><span style="color:var(--yellow)">15mm Huş Kontraplak</span></div>
+            <div class="displ-item"><span>Port Tipi</span><span>Slot port</span></div>
+            <div class="displ-item"><span>Finger Joint</span><span style="color:var(--green)">✅ Aktif (15mm baz)</span></div>
+            <div class="displ-item"><span>Uyarı Düzeyi</span><span style="color:var(--yellow)">⚠️ Sarı — Akustik %1.6 sapma</span></div>
+          </div>
+          <!-- 3D Wireframe -->
+          <div class="wireframe-block">
+            <div class="wireframe-title">📦 3D Bounding Box — 400×500×350mm</div>
+            <svg class="wireframe-svg" id="wf-B" width="200" height="140" viewBox="0 0 200 140"></svg>
+          </div>
+          <!-- Maliyet -->
+          <div class="cost-grid">
+            <div class="cost-item"><div class="cost-val">1.13 m²</div><div class="cost-lbl">Levha Alanı</div></div>
+            <div class="cost-item"><div class="cost-val" style="color:#fbbf24">~158 TL</div><div class="cost-lbl">Tahmini Maliyet</div></div>
+            <div class="cost-item"><div class="cost-val">12.0 kg</div><div class="cost-lbl">Ağırlık</div></div>
+          </div>
+          <div class="cost-mat">📋 15mm Huş Kontraplak — 140 TL/m² — %10 fire payı dahil</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="option-card warning-red_block" onclick="selectOption('C', this)">
+      <div class="warning-bar"></div>
+      <div class="option-header">
+        <div class="option-letter" style="color:var(--red)">C</div>
+        <div class="option-strategy">Port dışarı taşıma — harici montaj</div>
+        <div class="badges">
+          <span class="badge badge-Blocked">Blocked</span>
+        </div>
+      </div>
+      <div class="option-body">
+        <div class="option-summary" style="color:var(--red)">
+          ⚠️ Bu seçenek üretim için hazır değil. Port bagaj boyutuna sığmıyor. Fiziksel imkansızlık tespit edildi.
+        </div>
+        <div class="option-specs">
+          <div class="spec"><div class="spec-val" style="color:var(--red)">—</div><div class="spec-lbl">Net Hacim</div></div>
+          <div class="spec"><div class="spec-val" style="color:var(--red)">—</div><div class="spec-lbl">Tuning</div></div>
+          <div class="spec"><div class="spec-val" style="color:var(--red)">—</div><div class="spec-lbl">Ölçü</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;margin-top:1.5rem">
+    <button class="btn btn-secondary" onclick="goTo(2)">← Geri</button>
+    <button class="btn btn-primary" id="sealBtn" disabled onclick="goTo(4)">Seçili Opsiyon Mühürle →</button>
+  </div>
+</div>
+
+<!-- PANEL 4: MÜHÜRLEME -->
+<div class="panel" id="panel-4">
+  <div class="seal-card">
+    <div class="seal-title">🔒 Tasarım Mühürlendi</div>
+    <div class="seal-id" id="sealDesignId">design_id: dd1_demo0001 — Seçenek A</div>
+    <div style="background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.2);border-radius:var(--r2);padding:.75rem 1rem;margin-bottom:1rem;font-size:.85rem;color:var(--text2);line-height:1.7" id="sealSummary">
+      A seçeneğini mühürledik. Dış ölçü korundu, tuning 34 Hz’e çıktı. Bu çözüm üretime hazır, şimdi DXF tarafına geçiyoruz.
+    </div>
+    <div class="seal-specs">
+      <div class="seal-spec"><div class="seal-spec-val" id="sealNet">45.2L</div><div class="seal-spec-lbl">Net Hacim</div></div>
+      <div class="seal-spec"><div class="seal-spec-val" id="sealTune">34Hz</div><div class="seal-spec-lbl">Tuning</div></div>
+      <div class="seal-spec"><div class="seal-spec-val" id="sealMat">18mm</div><div class="seal-spec-lbl">Malzeme</div></div>
+    </div>
+    <div style="margin-bottom:1rem">
+      <div class="seal-detail"><span class="seal-detail-lbl">Mod</span><span class="seal-detail-val" id="sealMode">—</span></div>
+      <div class="seal-detail"><span class="seal-detail-lbl">Strateji</span><span class="seal-detail-val" id="sealStrategy">—</span></div>
+      <div class="seal-detail"><span class="seal-detail-lbl">Korunan</span><span class="seal-detail-val" id="sealKept">—</span></div>
+      <div class="seal-detail"><span class="seal-detail-lbl">Taviz</span><span class="seal-detail-val" id="sealTaviz">—</span></div>
+      <div class="seal-detail"><span class="seal-detail-lbl">Üretim Durumu</span><span class="seal-detail-val" id="sealPR">—</span></div>
+    </div>
+    <button class="dxf-btn ready" id="dxfBtn" onclick="downloadDXF()">
+      ⬇ DXF Dosyasını İndir
+    </button>
+    <div class="blocked-reason" id="blockedReason" style="display:none">
+      Bu seçenek üretim onayı bekliyor. DXF indirme sadece Production Ready tasarımlar için aktif.
+    </div>
+    <div style="display:flex;justify-content:space-between;margin-top:1.25rem">
+      <button class="btn btn-secondary btn-sm" onclick="goTo(3)">← Seçeneklere Dön</button>
+      <button class="btn btn-secondary btn-sm" onclick="openArchive()">📁 Arşive Kaydet</button>
+    </div>
+  </div>
+</div>
+
+</div><!-- end .main -->
+</div><!-- end .app -->
+
+<!-- ARCHIVE PANEL -->
+<button class="archive-toggle" onclick="openArchive()">📁 Dükkan Hafızası</button>
+<div class="archive-panel" id="archivePanel">
+  <div class="archive-header">
+    <h3>📁 Dükkan Hafızası</h3>
+    <button class="btn btn-secondary btn-sm" onclick="closeArchive()">✕</button>
+  </div>
+  <div class="archive-search-row">
+    <input class="archive-input" id="archiveVehicle" placeholder="Araç adı (Egea, Transit...)" onkeyup="searchArchive()">
+    <button class="btn btn-primary btn-sm" onclick="searchArchive()">Ara</button>
+  </div>
+  <div class="archive-list" id="archiveList">
+    <div style="color:var(--text3);font-size:.85rem;text-align:center;padding:2rem">
+      Arşiv yükleniyor...
+    </div>
+  </div>
+</div>
+
+<!-- COMPARE MODAL -->
+<div class="modal-overlay" id="compareModal">
+  <div class="modal">
+    <div class="modal-title">
+      ⚖ Seçenek Kıyaslama
+      <button class="modal-close" onclick="closeCompare()">✕</button>
+    </div>
+    <div class="compare-bar">
+      <select class="compare-select" id="compareA">
+        <option value="A">Seçenek A</option>
+        <option value="B">Seçenek B</option>
+        <option value="C">Seçenek C</option>
+      </select>
+      <span style="color:var(--text3)">vs</span>
+      <select class="compare-select" id="compareB">
+        <option value="A">Seçenek A</option>
+        <option value="B" selected>Seçenek B</option>
+        <option value="C">Seçenek C</option>
+      </select>
+      <button class="btn btn-primary btn-sm" onclick="runCompare()">Kıyasla</button>
+    </div>
+    <table class="compare-table" id="compareTable">
+      <thead>
+        <tr><th>Kriter</th><th id="colA">Seçenek A</th><th id="colB">Seçenek B</th><th>Fark</th></tr>
+      </thead>
+    <tbody id="compareBody">
+      <tr><td>Net Hacim</td><td>45.2 L</td><td>47.0 L</td><td class="diff-better">+1.8 L</td></tr>
+      <tr><td>Tuning</td><td>34 Hz</td><td>32 Hz</td><td class="diff-worse">-2 Hz</td></tr>
+      <tr><td>Dış Ölçü (W×H×D)</td><td>400×500×350</td><td>400×500×350</td><td class="diff-equal">Eşit</td></tr>
+      <tr><td>Fit / Sığma</td><td>✅ OK</td><td>✅ OK</td><td class="diff-equal">Eşit</td></tr>
+      <tr><td>Üretim Hazır</td><td>✅ Ready</td><td>⚠️ Onay Bekliyor</td><td class="diff-better">A daha iyi</td></tr>
+      <tr><td>Malzeme</td><td>18mm MDF</td><td>15mm Huş</td><td class="diff-equal">Farklı</td></tr>
+      <tr><td>Uyarı Seviyesi</td><td style="color:var(--green)">Yeşil</td><td style="color:var(--yellow)">ℹ️ Sarı</td><td class="diff-better">A daha güvenli</td></tr>
+    </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- CLONE MODAL -->
+<div class="modal-overlay" id="cloneModal">
+  <div class="modal">
+    <div class="modal-title">
+      🔁 Clone & Modify
+      <button class="modal-close" onclick="closeClone()">✕</button>
+    </div>
+    <div style="margin-bottom:1rem;color:var(--text2);font-size:.85rem">
+      Klonlanacak proje: <strong id="cloneSourceId" style="color:var(--accent);font-family:monospace"></strong>
+    </div>
+    <div style="display:grid;gap:.75rem;margin-bottom:1.25rem">
+      <label style="font-size:.82rem;color:var(--text2)">Malzeme kalınlığı (mm)
+        <input class="archive-input" id="cloneThickness" type="number" value="18" style="margin-top:.35rem;display:block;width:100%">
+      </label>
+      <label style="font-size:.82rem;color:var(--text2)">Araç (opsiyonel)
+        <input class="archive-input" id="cloneVehicle" placeholder="aynı kalır" style="margin-top:.35rem;display:block;width:100%">
+      </label>
+    </div>
+    <button class="btn btn-primary" style="width:100%" onclick="submitClone()">Klonla & Yükle</button>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- Auth/Registration Modal (Feature Flag Controlled, Hidden Initially) -->
+<div class="modal-overlay" id="authOverlay" style="z-index:9999;">
+  <div class="modal" style="max-width:400px;">
+    <h2 style="margin: 0 0 5px 0; color: var(--accent);">DDSOUND Kayıt</h2>
+    <p style="color: var(--text2); font-size: 14px; margin-bottom: 20px;">Sistemi kullanmaya devam etmek için lütfen üye olun.</p>
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+        <input type="text" placeholder="Ad Soyad" class="archive-input" style="width: 100%; box-sizing: border-box;">
+        <input type="email" placeholder="E-Posta" class="archive-input" style="width: 100%; box-sizing: border-box;">
+        
+        <div style="font-size: 12px; color: var(--text3); display: flex; align-items: flex-start; gap: 8px; margin-top: 10px;">
+            <input type="checkbox" id="gdprConsent" style="margin-top: 3px;">
+            <label for="gdprConsent">Kullanım Koşullarını ve Açık Rıza Metnini okudum, onaylıyorum.</label>
+        </div>
+        <div style="font-size: 12px; color: var(--text3); display: flex; align-items: flex-start; gap: 8px;">
+            <input type="checkbox" id="marketingConsent">
+            <label for="marketingConsent">Kampanya ve sistem duyurularından haberdar olmak istiyorum.</label>
+        </div>
+
+        <button class="btn btn-primary" style="margin-top: 15px; width: 100%;">Kayıt Ol ve Başla</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── State
+const state = {
+  currentStep: 1,
+  selectedMode: null,
+  selectedOption: null,
+  currentDesignId: 'dd1_demo0001',
+  cloneSourceId: null,
+  API: '',
+};
+
+// ── Stepper
+function goTo(step) {
+  if (step < 1 || step > 4) return;
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('panel-' + step).classList.add('active');
+  document.querySelectorAll('.step').forEach((s, i) => {
+    s.classList.remove('active', 'done');
+    if (i + 1 < step) s.classList.add('done');
+    else if (i + 1 === step) s.classList.add('active');
+  });
+  state.currentStep = step;
+  // Step 3'e ge\u00e7i\u015fte dinamik kart y\u00fckleme
+  if (step === 3) loadUICards();
+}
+
+// \u2500\u2500 Dynamic Card Loader \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+
+async function loadUICards() {
+  const designId = state.currentDesignId;
+  if (!designId || designId === 'dd1_demo0001') return; // demo fallback: statik HTML kal\u0131r
+
+  const grid = document.getElementById('optionsGrid');
+  if (!grid) return;
+
+  // Y\u00fckleniyor g\u00f6stergesi
+  grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:2rem;color:var(--text3)">
+    <div style="font-size:1.4rem;margin-bottom:.5rem">\u23f3</div>
+    <div>Kabin Ustas\u0131 hesapl\u0131yor...</div>
+  </div>`;
+
+  try {
+    const res = await fetch(`${state.API}/design/${designId}/ui_cards?selected_option=A&use_ai_summary=false`);
+    if (!res.ok) throw new Error('ui_cards HTTP ' + res.status);
+    const data = await res.json();
+    state.cards = data.cards || [];
+    renderDynamicCards(data);
+  } catch (err) {
+    console.warn('[UI_CARDS] API hata, demo veri korundu:', err.message);
+    // Demo HTML'e geri d\u00f6n
+    grid.innerHTML = _DEMO_CARDS_HTML;
+    enforceUniqueBadge();
+  }
+}
+
+// Demo kartlar\u0131 sakla (fallback i\u00e7in)
+let _DEMO_CARDS_HTML = '';
+document.addEventListener('DOMContentLoaded', () => {
+  const grid = document.getElementById('optionsGrid');
+  if (grid) _DEMO_CARDS_HTML = grid.innerHTML;
+  
+  // DDSound Auth verification
+  fetch('/api/config/features').then(r=>r.json()).then(features=>{
+      if(features.auth_registration_required){
+          document.getElementById('authOverlay').style.display = 'flex';
+      }
+  }).catch(console.error);
+});
+
+function renderDynamicCards(data) {
+  const cards = data.cards || [];
+  const grid = document.getElementById('optionsGrid');
+  if (!grid || !cards.length) return;
+
+  const WL_COLOR = { green: 'var(--green)', yellow: 'var(--yellow)', red_block: 'var(--red)' };
+  const WL_CLASS = { green: 'warning-green', yellow: 'warning-yellow', red_block: 'warning-red_block' };
+
+  grid.innerHTML = cards.map(card => {
+    const id       = card.option_id || '?';
+    const wl       = card.warning_level || 'green';
+    const dims     = (card.outer_dims_mm || [0,0,0]).join('\u00d7');
+    const net      = (card.net_l || 0).toFixed(1);
+    const tuning   = (card.tuning_hz || 0).toFixed(0);
+    const delta    = (card.acoustic_delta_pct || 0).toFixed(1);
+    const pr       = card.production_ready;
+    const fit      = card.fit_status;
+    const summary  = card.usta_summary || card.strategy || '';
+    const matT     = card.material_thickness_mm || 18;
+    const fitSumm  = card.fit_validation_summary || '';
+
+    // Badges HTML
+    const badgesHtml = (card.badges || []).map(b => {
+      const cls = 'badge badge-' + b.replace(/\s+/g, '');
+      return `<span class="${cls}">${b.toUpperCase()}</span>`;
+    }).join('');
+
+    // Blocked detay
+    const blockedMsg = (wl === 'red_block' || fit === 'fail')
+      ? `<div class="blocked-msg">\u26a0 Bu se\u00e7enek \u00fcretim i\u00e7in haz\u0131r de\u011fil. ${fitSumm}</div>`
+      : '';
+
+    // Specs
+    const specsHtml = (wl !== 'red_block' && fit !== 'fail') ? `
+      <div class="option-specs">
+        <div class="spec"><div class="spec-val">${net}L</div><div class="spec-lbl">Net Hacim</div></div>
+        <div class="spec"><div class="spec-val">${tuning} Hz</div><div class="spec-lbl">Tuning</div></div>
+        <div class="spec"><div class="spec-val">${dims}</div><div class="spec-lbl">mm (WxHxD)</div></div>
+      </div>` : `
+      <div class="option-specs">
+        <div class="spec"><div class="spec-val" style="color:var(--red)">—</div><div class="spec-lbl">Net Hacim</div></div>
+        <div class="spec"><div class="spec-val" style="color:var(--red)">—</div><div class="spec-lbl">Tuning</div></div>
+        <div class="spec"><div class="spec-val" style="color:var(--red)">—</div><div class="spec-lbl">Ölç\u00fc</div></div>
+      </div>`;
+
+    // Fit validation block
+    const fitChecks = (card.port_details?.fit_checks?.checks || []);
+    const fitChecksHtml = fitChecks.length ? `
+      <div class="fit-validation-block" id="fit-${id}">
+        <div class="fit-summary-row" id="fit-${id}-summary">
+          <span class="fit-icon">${fitChecks.every(c=>c.passed)?'✅':'❌'}</span>
+          <span class="fit-text">${fitSumm}</span>
+        </div>
+        <div class="fit-checks" id="fit-${id}-checks" style="display:none">
+          ${fitChecks.map(c=>`<div class="fit-check-item ${c.passed?'pass':'fail'}" title="${c.note||''}">
+            <span>${c.passed?'✅':'❌'}</span><span>${c.name}: ${(c.value_mm||0).toFixed(1)}mm</span>
+          </div>`).join('')}
+        </div>
+        <button class="fit-toggle-btn" onclick="toggleFitChecks('fit-${id}-checks',this)">▸ 5 Kontrol Detay\u0131</button>
+      </div>` : '';
+
+    // Delta rengi
+    const deltaColor = delta <= 1 ? 'var(--green)' : delta <= 2 ? 'var(--yellow)' : 'var(--red)';
+
+    const driverName = card.exact_driver_name || 'Bilinmiyor';
+    const tsSrc = card.ts_source || 'Bilinmiyor';
+    const fvs = card.fit_validation_summary || '';
+    const panelCount = (card.panel_list || []).length;
+    
+    // Drawer i\u00e7eri\u011fi
+    const drawerHtml = (wl !== 'red_block' && fit !== 'fail') ? `
+      <div class="expand-drawer" id="drawer-${id}">
+        <div class="displ-grid">
+          <div class="displ-item"><span>Net Hacim</span><span>${net}L</span></div>
+          <div class="displ-item"><span>Tuning</span><span>${tuning}Hz</span></div>
+          <div class="displ-item"><span>Delta</span><span style="color:${deltaColor}">%${delta}</span></div>
+          <div class="displ-item"><span>Malzeme</span><span>${matT}mm MDF</span></div>
+        </div>
+        <div class="displ-grid" style="margin-top:.5rem">
+          <div class="displ-item"><span>D\u0131\u015f Ölç\u00fc</span><span>${dims}mm</span></div>
+          <div class="displ-item"><span>Uyar\u0131 D\u00fczeyi</span><span style="color:${WL_COLOR[wl]||'var(--green)'}">${wl==='green'?'Ye\u015fil \u2014 Üretebilirsin':wl==='yellow'?'Sar\u0131 \u2014 Uyar\u0131 var':'K\u0131rm\u0131z\u0131 \u2014 Engel'}</span></div>
+        </div>
+        
+        <div class="displ-grid" style="margin-top:.10rem; padding-top: 5px; border-top: 1px solid var(--border)">
+          <div class="displ-item"><span>Sürücü Kimliği</span><span title="exact_driver_name">${driverName}</span></div>
+          <div class="displ-item"><span>T/S Kaynağı</span><span title="ts_source">${tsSrc}</span></div>
+          <div class="displ-item"><span>Fiziksel Kontrol</span><span title="fit_validation_summary">${fvs}</span></div>
+          <div class="displ-item"><span>Panel Sayısı</span><span title="panel_list">${panelCount} Adet Panel</span></div>
+        </div>
+        
+        ${fitChecksHtml}
+        <div class="wireframe-block">
+          <div class="wireframe-title">📦 3D Bounding Box — ${dims}mm</div>
+          <svg class="wireframe-svg" id="wf-${id}" width="200" height="140" viewBox="0 0 200 140"></svg>
+        </div>
+      </div>` : '';
+
+    return `
+    <div class="option-card ${WL_CLASS[wl]||''}" onclick="selectOption('${id}', this)" id="card-${id}">
+      <div class="warning-bar"></div>
+      <div class="option-header">
+        <div class="option-letter">${id}</div>
+        <div class="option-strategy">${card.strategy?.replace(/_/g,' ') || ''}</div>
+        <div class="badges">${badgesHtml}</div>
+      </div>
+      <div class="option-body">
+        ${blockedMsg}
+        <div class="option-summary">${summary}</div>
+        ${specsHtml}
+        ${wl !== 'red_block' ? `<button class="expand-btn" onclick="toggleDrawer('drawer-${id}',event)">▸ Detaylar + 3D Önizleme</button>` : ''}
+        ${drawerHtml}
+      </div>
+    </div>`;
+  }).join('');
+
+  // Rendered SVG wireframe'leri ba\u015flat
+  cards.forEach(card => {
+    const id = card.option_id;
+    const wfEl = document.getElementById('wf-' + id);
+    if (wfEl) {
+      const [w,h,d] = card.outer_dims_mm || [400,500,350];
+      drawWireframe(wfEl, w, h, d);
+      wfEl.dataset.rendered = '1';
+    }
+  });
+
+  enforceUniqueBadge();
+}
+
+
+// ── Mode Select
+function selectMode(mode) {
+  state.selectedMode = mode;
+  document.querySelectorAll('.mode-card').forEach(c => c.classList.remove('selected'));
+  document.getElementById('mode-' + mode).classList.add('selected');
+  const notice = document.getElementById('lockNotice');
+  notice.classList.toggle('visible', mode === 'fixed_external');
+  document.getElementById('modeNextBtn').disabled = false;
+}
+
+// ── Tek RECOMMENDED badge zorlaması
+function enforceUniqueBadge() {
+  const allRec = document.querySelectorAll('.badge-Recommended');
+  // Sadece ilk RECOMMENDED kalsın; diğerleri alternatif rozet olsun
+  const altLabels = ['Akustik Öncelikli','Bagaja Uygun','Fits'];
+  let altIdx = 0;
+  allRec.forEach((badge, i) => {
+    if (i === 0) return; // ilkini koru
+    badge.textContent = altLabels[altIdx % altLabels.length];
+    badge.className = 'badge badge-Fits';
+    altIdx++;
+  });
+}
+
+// ── Option Select
+function selectOption(id, card) {
+  state.selectedOption = id;
+  document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+  card.classList.add('selected');
+  const isBlocked = card.classList.contains('warning-red_block');
+  document.getElementById('sealBtn').disabled = isBlocked;
+  if (!isBlocked) showToast(`Seçenek ${id} seçildi — Mühürlemek için → butonuna bas`);
+}
+
+// ── Expand Drawer
+function toggleDrawer(id, e) {
+  e.stopPropagation();
+  const el = document.getElementById(id);
+  el.classList.toggle('open');
+  e.target.textContent = el.classList.contains('open')
+    ? '▾ Kapat' : '▸ Detaylar + 3D Önizleme';
+  // SVG wireframe render (ilk açılışta)
+  if (el.classList.contains('open')) {
+    const suffix = id.replace('drawer-', '');
+    const wfEl = document.getElementById('wf-' + suffix);
+    if (wfEl && !wfEl.dataset.rendered) {
+      drawWireframe(wfEl, ...DEMO_DIMS[suffix] || [400, 500, 350]);
+      wfEl.dataset.rendered = '1';
+    }
+  }
+}
+
+// ── Fit Validation 5-Check Drawer
+function toggleFitChecks(checkId, btn) {
+  const el = document.getElementById(checkId);
+  if (!el) return;
+  const open = el.style.display !== 'none';
+  el.style.display = open ? 'none' : 'grid';
+  btn.textContent = open ? '▸ 5 Kontrol Detayı' : '▾ Gizle';
+}
+
+function renderFitChecks(optionId, fitChecksData) {
+  const el      = document.getElementById('fit-' + optionId + '-checks');
+  const summEl  = document.getElementById('fit-' + optionId + '-summary');
+  if (!el || !fitChecksData || !fitChecksData.length) return;
+  const allPass = fitChecksData.every(c => c.passed);
+  if (summEl) {
+    const failNames = fitChecksData.filter(c => !c.passed).map(c => c.name);
+    summEl.innerHTML = `<span class="fit-icon">${allPass ? '✅' : '❌'}</span>
+      <span class="fit-text">${allPass
+        ? 'Tüm fiziksel kontroller geçti.'
+        : 'Başarısız: ' + failNames.join(', ')}</span>`;
+  }
+  el.innerHTML = fitChecksData.map(c => `
+    <div class="fit-check-item ${c.passed ? 'pass' : 'fail'}" title="${c.note||''}">
+      <span>${c.passed ? '✅' : '❌'}</span>
+      <span>${c.name}: ${c.value_mm.toFixed(1)}mm</span>
+    </div>`).join('');
+}
+
+// Demo ölçü seti
+const DEMO_DIMS = { A: [400, 500, 350], B: [400, 500, 350] };
+
+function drawWireframe(svgEl, w, h, d) {
+  const vw = 200, vh = 140;
+  const mx = Math.max(w, h, d) || 1;
+  const scale = (Math.min(vw, vh) * 0.55) / mx;
+  const W = w * scale, H = h * scale, D = d * scale;
+  const ang = Math.PI / 6;  // 30 deg
+  const ox = D * Math.cos(ang) * 0.5;
+  const oy = D * Math.sin(ang) * 0.5;
+  const bx = vw * 0.18, by = vh - vh * 0.12;
+
+  const pts = [
+    [bx,       by],          // p0 sol-alt
+    [bx + W,   by],          // p1 sag-alt
+    [bx + W,   by - H],      // p2 sag-ust
+    [bx,       by - H],      // p3 sol-ust
+    [bx + ox,      by - oy],       // p4
+    [bx + W + ox,  by - oy],       // p5
+    [bx + W + ox,  by - H - oy],   // p6
+    [bx + ox,      by - H - oy],   // p7
+  ];
+  const p = (i) => pts[i][0].toFixed(1) + ',' + pts[i][1].toFixed(1);
+  const face = (...ix) => ix.map(p).join(' ');
+
+  svgEl.innerHTML = `
+    <polygon class="wf-top"   points="${face(3,7,6,2)}"/>
+    <polygon class="wf-right" points="${face(1,5,6,2)}"/>
+    <polygon class="wf-front" points="${face(0,1,2,3)}"/>
+    <path class="wf-edge" d="M${p(0)} L${p(1)} M${p(1)} L${p(2)} M${p(2)} L${p(3)} M${p(3)} L${p(0)}
+      M${p(1)} L${p(5)} M${p(2)} L${p(6)} M${p(3)} L${p(7)}
+      M${p(5)} L${p(6)} M${p(6)} L${p(7)}"/>
+    <text class="wf-label" x="${((pts[0][0]+pts[1][0])/2).toFixed(0)}" y="${(pts[0][1]+13).toFixed(0)}">W:${w}mm</text>
+    <text class="wf-label" x="${(pts[0][0]-22).toFixed(0)}" y="${((pts[0][1]+pts[3][1])/2).toFixed(0)}">H:${h}mm</text>
+    <text class="wf-label" x="${((pts[1][0]+pts[5][0])/2+2).toFixed(0)}" y="${((pts[1][1]+pts[5][1])/2+4).toFixed(0)}">D:${d}mm</text>
+  `;
+}
+
+// ── CollectedInfo State Machine
+const ci = {
+  vehicle_type:  null,
+  brand:         null,
+  driver_type:   null,
+  diameter_raw:  null,
+  diameter_mm:   null,
+  diameter_inch: null,
+  enclosure_preference: null,
+  constraint_source:    null,
+  goal:          null,
+  // Bagaj ölçüsü (yeni)
+  trunk_width_cm:  null,
+  trunk_height_cm: null,
+  trunk_depth_cm:  null,
+  trunk_notes:     null,
+  fit_status:      null,
+  missing_fields:[],
+  // legacy
+  driver_info:   null,
+  lastResponse: '',
+  turnCount: 0,
+};
+
+const VEHICLE_MAP = {
+  sedan:['sedan','saloon'],hatchback:['hatchback','hb','hb.','hb,'],
+  suv:['suv','4x4','jeep','ev'],panelvan:['transit','transit connect','panelvan','panel','ticari','sprinter','ducato'],
+  pickup:['pickup','kamyonet'],coupe:['coupe','cabrio'],
+};
+const DRIVER_PATTERNS = [/(\d{1,4})\s*(?:rms|w|watt)/i,/(\d{1,2})["\u201d\u2019]\s*(?:inch|in|subwoofer|woofer)/i,/(jbl|focal|alpine|pioneer|hertz|sundown|skar|crescendo|kicker|rockford|infinity|kenwood|sony)\b/i,/(\d{2,3})\s*mm\b/i];
+const GOAL_MAP = {
+  'günlük tok bass': [/tok/i, /g[üu]nl[üu]k/i, /daily/i, /m[üu]zik/i, /\bbas\b/i, /\bbass\b/i],
+  'sql': [/\bsql\b/i, /sound\s*quality/i, /\bsq\b/i],
+  'sert vurma': [/sert/i, /vuru[sş]/i, /bass\s*head/i, /agresif/i, /punch/i],
+  'spor': [/spor/i, /sport/i, /orta/i]
+};
+
+// Bagaj ölçüsü regex: "80x40x50", "80 40 50", "en 80 yükseklik 40 derinlik 50"
+const TRUNK_DIMS_RE = /(\d{2,3})\s*[x×*\s]\s*(\d{2,3})\s*[x×*\s]\s*(\d{2,3})/i;
+const TRUNK_DIMS_LABEL_RE = /(?:en|geni[sş]lik)\s*(\d{2,3}).*?(?:y[üu]kseklik|boy)\s*(\d{2,3}).*?(?:derinlik|uzunluk)\s*(\d{2,3})/i;
+
+function _matchList(text, patterns) {
+  return patterns.some(p => {
+    if (p instanceof RegExp) return p.test(text);
+    return text.toLowerCase().includes(p);  // string fallback
+  });
+}
+function parseUserMessage(text) {
+  const t = text.toLowerCase();
+  let updated = [];
+
+  // Vehicle
+  for (const [v, keys] of Object.entries(VEHICLE_MAP)) {
+    if (_matchList(t, keys)) { if (ci.vehicle_type !== v) { ci.vehicle_type = v; updated.push('araç'); } break; }
+  }
+  // Driver
+  for (const pat of DRIVER_PATTERNS) {
+    const m = text.match(pat);
+    if (m) {
+      const prev = ci.driver_info;
+      ci.driver_info = text.length < 60 ? text : m[0]; // basit: match'i al
+      if (ci.driver_info !== prev) updated.push('sürücü');
+      break;
+    }
+  }
+  // Goal
+  for (const [g, keys] of Object.entries(GOAL_MAP)) {
+    if (_matchList(t, keys)) { if (ci.goal !== g) { ci.goal = g; updated.push('hedef'); } break; }
+  }
+  // Bagaj ölçüsü
+  let trunkM = text.match(TRUNK_DIMS_RE) || text.match(TRUNK_DIMS_LABEL_RE);
+  if (trunkM) {
+    ci.trunk_width_cm  = parseInt(trunkM[1]);
+    ci.trunk_height_cm = parseInt(trunkM[2]);
+    ci.trunk_depth_cm  = parseInt(trunkM[3]);
+    updated.push('bagaj');
+  }
+  // Fiziksel kısıt notları
+  const notePatterns = [/dar\s*a[gğ][ıi]z/i, /stepne/i, /e[gğ]im/i, /[çc][ıi]k[ıi]nt[ıi]/i, /yer\s*yok/i];
+  for (const np of notePatterns) {
+    const nm = text.match(np);
+    if (nm) { ci.trunk_notes = (ci.trunk_notes ? ci.trunk_notes + ', ' : '') + nm[0]; updated.push('bagaj_not'); }
+  }
+  return updated;
+}
+
+function _missingFields() {
+  const m = [];
+  if (!ci.vehicle_type)    m.push('araç tipi');
+  if (!ci.driver_info)     m.push('sürücü bilgisi');
+  if (!ci.goal)            m.push('hedef kullanım');
+  if (!ci.trunk_width_cm)  m.push('bagaj ölçüsü');
+  return m;
+}
+
+function generateUstaResponse(updated, rawText) {
+  const missing = _missingFields();
+  const ready   = missing.length === 0;
+  ci.turnCount++;
+
+  // Başlangıç turu ama hiç veri yok
+  if (!ci.vehicle_type && !ci.driver_info && !ci.goal && !ci.trunk_width_cm) {
+    const starters = [
+      'Tamam, anlat bakalım. Araç sedan mı, SUV mu? Sürücü ne kadarlık?',
+      'Hadi başlayalım reis. Hangi araç, kaç watt sürücü?',
+      'Dinliyorum. Araç tipi ve sürücü bilgisini söyle; gerisini ortaya koyalım.',
+    ];
+    return starters[ci.turnCount % starters.length];
+  }
+
+  let ack = '';
+  if (updated.length) {
+    const parts = [];
+    if (updated.includes('araç'))   parts.push(`Araç tipi tamam → ${ci.vehicle_type}`);
+    if (updated.includes('sürücü')) parts.push(`Sürücü bilgisi alındı`);
+    if (updated.includes('hedef'))  parts.push(`Hedef → "${ci.goal}"`);
+    if (updated.includes('bagaj'))  parts.push(`Bagaj ölçüsü alındı → ${ci.trunk_width_cm}×${ci.trunk_height_cm}×${ci.trunk_depth_cm} cm`);
+    if (updated.includes('bagaj_not')) parts.push(`Fiziksel kısıt: ${ci.trunk_notes}`);
+    ack = parts.join('. ') + '. ';
+  }
+
+  if (ready) {
+    return `${ack}Artık elimizde yeterli veri var. Bagaj ölçülerine göre sığma analizi yapıp mod seçimine geçebiliriz.`;
+  }
+
+  // En fazla 2 soru
+  const questions = [];
+  if (!ci.vehicle_type)   questions.push('Araç sedan mı, hatchback mi, SUV mu?');
+  if (!ci.driver_info)    questions.push('Sürücü markası / RMS / çapı ne?');
+  if (!ci.goal)           questions.push('Günlük tok bas mı istiyorsun, SQL mi, sert vuruş mu?');
+  if (!ci.trunk_width_cm) questions.push('Bagaj ölçüsünü biliyorsan en, yükseklik, derinlik ver (cm). Bilmiyorsan tahmini söyle.');
+
+  const asked = questions.slice(0, 2).join(' ');
+
+  // Aynı yanıtı tekrar etme
+  const candidate = ack + asked;
+  if (candidate === ci.lastResponse) {
+    const alts = ['Biraz daha detay verirsen netleşelim. ' + asked, 'Hâlâ ' + asked.toLowerCase()];
+    ci.lastResponse = alts[0]; return alts[0];
+  }
+  ci.lastResponse = candidate;
+  return candidate;
+}
+
+function updateCollectedInfoBox(panel) {
+  // panel = normalized_panel from API, or build from legacy ci state
+  const p = panel || {};
+
+  const set = (id, val) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    if (val) { el.textContent = val; el.className = 'ci-val'; }
+    else     { el.textContent = '—'; el.className = 'ci-val empty'; }
+  };
+
+  // Merge API panel into ci state
+  if (p.brand)              ci.brand              = p.brand;
+  if (p.driver_type)        ci.driver_type        = p.driver_type;
+  if (p.diameter_raw)       ci.diameter_raw       = p.diameter_raw;
+  if (p.diameter_mm)        ci.diameter_mm        = p.diameter_mm;
+  if (p.diameter_inch)      ci.diameter_inch      = p.diameter_inch;
+  if (p.enclosure_preference) {
+    ci.enclosure_preference = p.enclosure_preference;
+    ci.constraint_source    = p.constraint_source || 'inferred';
+  }
+  if (p.goal)               ci.goal               = p.goal;
+  if (p.vehicle_type)       ci.vehicle_type        = p.vehicle_type;
+  if (p.trunk_width_cm)    ci.trunk_width_cm   = p.trunk_width_cm;
+  if (p.trunk_height_cm)   ci.trunk_height_cm  = p.trunk_height_cm;
+  if (p.trunk_depth_cm)    ci.trunk_depth_cm   = p.trunk_depth_cm;
+  if (p.trunk_notes)       ci.trunk_notes       = p.trunk_notes;
+  if (p.fit_status)        ci.fit_status        = p.fit_status;
+  if (p.missing_fields)    ci.missing_fields    = p.missing_fields;
+
+  // (E) Enclosure label — Türkçe + kullanıcı kilidi
+  const encLabel = { sealed: 'Kapalı Kutu', ported: 'Portlu Kutu', bandpass: 'Bandpass' };
+  let encDisplay = ci.enclosure_preference ? encLabel[ci.enclosure_preference] || ci.enclosure_preference : null;
+  if (encDisplay && ci.constraint_source === 'user_explicit') encDisplay += ' 🔒';
+
+  set('ci-brand',    ci.brand);
+  set('ci-dtype',    ci.driver_type);
+  set('ci-dia-raw',  ci.diameter_raw);
+  set('ci-dia-mm',   ci.diameter_mm ? ci.diameter_mm + ' mm' : null);
+  set('ci-dia-in',   ci.diameter_inch ? ci.diameter_inch + '"' : null);
+  set('ci-enclosure',encDisplay);
+  set('ci-goal',     ci.goal);
+  set('ci-vehicle',  ci.vehicle_type);
+  set('ci-trunk-dims', ci.trunk_width_cm ? `${ci.trunk_width_cm}×${ci.trunk_height_cm}×${ci.trunk_depth_cm} cm` : null);
+  set('ci-trunk-notes', ci.trunk_notes || null);
+
+  // (E) Eksik alanlar — Türkçe etiketler (missing_labels), iç field adı DEĞİL
+  const missingLabels = p.missing_labels || (ci.missing_fields || []).map(f => ({
+    vehicle_type: 'araç tipi', brand_or_model: 'marka / model',
+    diameter: 'sürücü çapı', goal: 'hedef kullanım', trunk_dims: 'bagaj ölçüsü',
+  }[f] || f));
+  const misEl = document.getElementById('ci-missing');
+  if (misEl) misEl.textContent = missingLabels.length ? missingLabels.join(', ') : '—';
+
+  const missing = ci.missing_fields || [];
+  const ready = missing.length === 0 || !missing.some(f => ['vehicle_type','diameter'].includes(f));
+  const statEl = document.getElementById('ci-status');
+  if (statEl) {
+    statEl.textContent = ready ? '✅ Mod seçimine hazır' : '⏳ Veri toplanıyor...';
+    statEl.className = 'ci-status ' + (ready ? 'ready' : 'not-ready');
+  }
+  checkModeReadiness();
+}
+
+
+function checkModeReadiness() {
+  const missing  = ci.missing_fields || [];
+  const required = ['vehicle_type', 'diameter'];
+  const ready    = !required.some(f => missing.includes(f));
+  const btn1 = document.getElementById('modeNextBtnP1');
+  const msg1 = document.getElementById('gateMsgP1');
+  if (btn1) btn1.disabled = !ready;
+  if (msg1) msg1.style.opacity = ready ? '0' : '1';
+  const btn2 = document.getElementById('modeNextBtn');
+  if (btn2) btn2.disabled = !state.selectedMode;
+}
+
+
+// ── Chat History (backend'e önceki tüm mesajlar gider)
+const chatHistory = [];
+
+// ── Chat
+async function sendMessage() {
+  const input = document.getElementById('chatInput');
+  const msg = input.value.trim();
+  if (!msg) return;
+  addMsg(msg, 'user');
+  input.value = '';
+
+  // History'ye ekle
+  chatHistory.push({ role: 'user', content: msg });
+
+  // Yerel parse (hızlı feedback)
+  const updated = parseUserMessage(msg);
+  updateCollectedInfoBox();
+
+  const API_TIMEOUT_MS = 12000;
+  const controller = new AbortController();
+  const tid = setTimeout(() => controller.abort(), API_TIMEOUT_MS);
+
+  try {
+    const res = await fetch(state.API + '/chat/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      signal: controller.signal,
+      body: JSON.stringify({
+        message: msg,
+        context: {
+          vehicle:        ci.vehicle_type,
+          driver_info:    ci.driver_info,
+          goal:           ci.goal,
+          target_net_l:   ci.target_net_l,
+          trunk_width_cm: ci.trunk_width_cm,
+          trunk_height_cm: ci.trunk_height_cm,
+          trunk_depth_cm: ci.trunk_depth_cm,
+        },
+        history: chatHistory.slice(0, -1),  // son mesaj hariç (o zaten message'da)
+      }),
+    });
+    clearTimeout(tid);
+
+    if (res.ok) {
+      const data = await res.json();
+
+      // ── normalized_panel → CI kutusunu güncelle (PROBLEM 2 fix)
+      const panel = data.normalized_panel || (data.extracted_info || {}).normalized_panel || null;
+      updateCollectedInfoBox(panel);
+
+      // ── conflict_flags kontrol
+      const conflicts = data.constraint_conflicts || [];
+      if (conflicts.length) {
+        console.warn('[CONSTRAINT CONFLICT]', conflicts);
+      }
+
+      // ── Action işleme — sadece user_visible_response göster
+      const reply = data.user_visible_response || data.reply || generateUstaResponse(updated, msg);
+      addMsg(reply, 'ai');
+      chatHistory.push({ role: 'assistant', content: reply });
+
+      // ── Tezgahtar kart render — mode=tezgahtar geldiğinde ui_cards'ı göster
+      if (data.mode === 'tezgahtar' && Array.isArray(data.ui_cards) && data.ui_cards.length > 0) {
+        renderTezgahtarCards(data.ui_cards);
+      }
+
+      // ── AI mod göstergesi
+      updateAiModeIndicator(data.ai_mode || 'smart', data.ai_error_class || null);
+
+      if ((data.action === 'design_ready' || data.action === 'design') && data.design_id) {
+        state.currentDesignId = data.design_id;
+        showToast('Tasarım hazır! Mod seçimi için devam edebilirsin.');
+        const btn1 = document.getElementById('modeNextBtnP1');
+        if (btn1) btn1.disabled = false;
+      }
+    } else {
+      // API hata → yerel AI
+      addMsg(generateUstaResponse(updated, msg), 'ai');
+    }
+  } catch (err) {
+    clearTimeout(tid);
+    // Timeout veya network hata → yerel AI
+    addMsg(generateUstaResponse(updated, msg), 'ai');
+  }
+}
+
+function addMsg(text, role) {
+  const c = document.getElementById('chatMessages');
+  const div = document.createElement('div');
+  div.className = 'msg ' + role;
+  if (role === 'ai') {
+    div.innerHTML = '<div class="sender">⚡ Ses Ustası</div>' + text;
+  } else {
+    div.textContent = text;
+  }
+  c.appendChild(div);
+  c.scrollTop = c.scrollHeight;
+}
+
+// ── AI Mod Göstergesi ─────────────────────────────────────────────────────────
+function updateAiModeIndicator(mode, errClass) {
+  const badge = document.getElementById('ai-mode-badge');
+  if (!badge) return;
+  if (mode === 'standard') {
+    badge.textContent = '⚠ Standart Mod';
+    badge.className = 'standard';
+    badge.title = errClass
+      ? { key_invalid:'API anahtarı geçersiz', quota_exceeded:'Kota doldu',
+          timeout:'Zaman aşımı', network:'Ağ hatası', runtime:'AI runtime hatası' }[errClass] || errClass
+      : 'Akıllı mod geçici devre dışı';
+  } else {
+    badge.textContent = '⚡ Akıllı Mod';
+    badge.className = 'smart';
+    badge.title = 'Gemini AI aktif';
+  }
+}
+
+document.getElementById('chatInput').addEventListener('keydown', e => {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+});
+
+// ── Archive
+function openArchive() {
+  document.getElementById('archivePanel').classList.add('open');
+  loadArchive();
+}
+function closeArchive() {
+  document.getElementById('archivePanel').classList.remove('open');
+}
+async function loadArchive(vehicle='') {
+  const list = document.getElementById('archiveList');
+  list.innerHTML = '<div style="color:var(--text3);text-align:center;padding:1rem">Yükleniyor...</div>';
+  try {
+    const url = state.API + '/design/archive/search' + (vehicle ? '?vehicle=' + encodeURIComponent(vehicle) : '');
+    const res = await fetch(url);
+    if (!res.ok) throw new Error();
+    const data = await res.json();
+    renderArchiveItems(data.results || []);
+  } catch {
+    renderDemoArchive();
+  }
+}
+function renderDemoArchive() {
+  const items = [
+    { design_id: 'dd1_egea001', vehicle: 'Fiat Egea', net_volume_l: 45.2, tuning_hz: 34, status: 'produced', created_at: '2026-03-14' },
+    { design_id: 'dd1_transit2', vehicle: 'Ford Transit', net_volume_l: 78.5, tuning_hz: 32, status: 'design_only', created_at: '2026-03-10' },
+  ];
+  renderArchiveItems(items);
+}
+function renderArchiveItems(items) {
+  const list = document.getElementById('archiveList');
+  if (!items.length) {
+    list.innerHTML = '<div style="color:var(--text3);font-size:.85rem;text-align:center;padding:2rem">Sonuç bulunamadı.</div>';
+    return;
+  }
+  const modeLabel = {fixed_external:'🚗 Bagaj Odaklı', fixed_acoustic:'🎵 Akustik Odaklı', compromise:'⚖️ Uzlaşma'};
+  list.innerHTML = items.map(r => `
+    <div class="archive-item">
+      <div class="archive-item-id">${r.design_id || '-'}</div>
+      <div class="archive-item-meta">
+        <span>🚗 ${r.vehicle || '-'}</span>
+        <span>🔊 ${r.driver || r.driver_info || '-'}</span>
+        <span>📦 ${r.net_volume_l ? r.net_volume_l.toFixed(1)+'L' : '-'}</span>
+        <span>🎵 ${r.tuning_hz || '-'}Hz</span>
+        <span style="color:${r.status==='produced'?'var(--green)':'var(--yellow)'}">
+          ${r.status === 'produced' ? '✅ Üretildi' : '⏳ Tasarım'}
+        </span>
+      </div>
+      <div class="archive-item-actions">
+        <button class="btn btn-secondary btn-sm" onclick="openClone('${r.design_id}')">🔁 Clone</button>
+        <button class="btn btn-secondary btn-sm" onclick="loadDesign('${r.design_id}')">📂 Yükle</button>
+      </div>
+    </div>
+  `).join('');
+}
+function searchArchive() {
+  const v = document.getElementById('archiveVehicle').value.trim();
+  loadArchive(v);
+}
+
+// ── Clone
+function openClone(id) {
+  state.cloneSourceId = id;
+  document.getElementById('cloneSourceId').textContent = id;
+  document.getElementById('cloneModal').classList.add('open');
+}
+function closeClone() { document.getElementById('cloneModal').classList.remove('open'); }
+async function submitClone() {
+  const t = parseFloat(document.getElementById('cloneThickness').value) || 18;
+  const v = document.getElementById('cloneVehicle').value.trim();
+  const body = { material_thickness_mm: t };
+  if (v) body.vehicle = v;
+  try {
+    const res = await fetch(state.API + '/design/archive/' + state.cloneSourceId + '/clone', {
+      method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body)
+    });
+    const data = await res.json();
+    showToast('✅ Klonlandı: ' + data.new_design_id);
+    state.currentDesignId = data.new_design_id;
+    closeClone(); closeArchive();
+  } catch {
+    showToast('⚠️ Demo mod: Clone API bağlantısı yok, yerel simüle edildi.');
+    closeClone();
+  }
+}
+
+// ── Load Design
+function loadDesign(id) {
+  state.currentDesignId = id;
+  showToast('📂 ' + id + ' yüklendi');
+  closeArchive();
+}
+
+// ── Compare
+function openCompare() {
+  const selA = document.getElementById('compareA');
+  const selB = document.getElementById('compareB');
+  if (state.cards && state.cards.length > 0) {
+    const optsHTML = state.cards.map(c => `<option value="${c.option_id}">Seçenek ${c.option_id}</option>`).join('');
+    selA.innerHTML = optsHTML;
+    selB.innerHTML = optsHTML;
+    selA.value = state.cards[0].option_id;
+    if (state.cards.length > 1) {
+      selB.value = state.cards[1].option_id;
+    } else {
+      selB.value = state.cards[0].option_id;
+    }
+  }
+  document.getElementById('compareModal').classList.add('open');
+}
+function closeCompare() { document.getElementById('compareModal').classList.remove('open'); }
+async function runCompare() {
+  const aId = document.getElementById('compareA').value;
+  const bId = document.getElementById('compareB').value;
+  document.getElementById('colA').textContent = 'Seçenek ' + aId;
+  document.getElementById('colB').textContent = 'Seçenek ' + bId;
+  
+  if (!state.cards || state.cards.length === 0) {
+    showToast('Karşılaştırılacak güncel veri yok.');
+    return;
+  }
+  
+  const a = state.cards.find(c => c.option_id === aId);
+  const b = state.cards.find(c => c.option_id === bId);
+  
+  if (!a || !b) {
+    showToast('Seçilen seçeneklerin verisi bulunamadı.');
+    return;
+  }
+  
+  const tbody = document.getElementById('compareBody');
+  const getDiffRender = (vA, vB, reversed=false) => {
+    if (vA === vB) return '<td class="diff-equal">Eşit</td>';
+    let better = vA > vB;
+    if (reversed) better = !better;
+    return better ? '<td class="diff-better">A Daha İyi</td>' : '<td class="diff-worse">B Daha İyi</td>';
+  };
+  
+  const vA_net = a.net_l || 0;
+  const vB_net = b.net_l || 0;
+  const netDiff = vA_net - vB_net;
+  
+  const vA_tune = a.tuning_hz || 0;
+  const vB_tune = b.tuning_hz || 0;
+  const tuneDiff = vA_tune - vB_tune;
+  
+  const vA_dims = (a.outer_dims_mm||[0,0,0]).join('x');
+  const vB_dims = (b.outer_dims_mm||[0,0,0]).join('x');
+  const dimsDiff = vA_dims === vB_dims ? '<td class="diff-equal">Eşit</td>' : '<td class="diff-equal">Farklı</td>';
+  
+  const vA_fit = a.fit_status === 'ok' ? '✅ OK' : '❌ Hata';
+  const vB_fit = b.fit_status === 'ok' ? '✅ OK' : '❌ Hata';
+  const fitDiff = vA_fit === vB_fit ? '<td class="diff-equal">Eşit</td>' : (a.fit_status === 'ok' ? '<td class="diff-better">A Sığar</td>' : '<td class="diff-worse">B Sığar</td>');
+
+  const vA_pr = a.production_ready ? '✅ Hazır' : '⚠️ Onay Gerekli';
+  const vB_pr = b.production_ready ? '✅ Hazır' : '⚠️ Onay Gerekli';
+  const prDiffStr = a.production_ready === b.production_ready ? '<td class="diff-equal">Eşit</td>' : (a.production_ready ? '<td class="diff-better">A Daha İyi</td>' : '<td class="diff-worse">B Daha İyi</td>');
+  
+  const vA_mat = (a.material_thickness_mm || 18) + 'mm';
+  const vB_mat = (b.material_thickness_mm || 18) + 'mm';
+  const matDiff = vA_mat === vB_mat ? '<td class="diff-equal">Aynı</td>' : '<td class="diff-equal">Farklı</td>';
+  
+  const WL_LABEL = { green: 'Yeşil', yellow: 'ℹ️ Sarı', red_block: '❌ Kırmızı' };
+  const vA_wl = WL_LABEL[a.warning_level] || 'Yeşil';
+  const vB_wl = WL_LABEL[b.warning_level] || 'Yeşil';
+  const wlDiffMap = { green: 3, yellow: 2, red_block: 1 };
+  const getWlDiff = (wa, wb) => {
+      const sa = wlDiffMap[wa] || 3;
+      const sb = wlDiffMap[wb] || 3;
+      if (sa === sb) return '<td class="diff-equal">Eşit</td>';
+      return sa > sb ? '<td class="diff-better">A Daha Güvenli</td>' : '<td class="diff-worse">B Daha Güvenli</td>';
+  };
+  
+  tbody.innerHTML = `
+    <tr><td>Net Hacim</td><td>${vA_net.toFixed(1)} L</td><td>${vB_net.toFixed(1)} L</td><td class="${netDiff > 0 ? 'diff-better' : (netDiff < 0 ? 'diff-worse' : 'diff-equal')}">${netDiff > 0 ? '+' : ''}${netDiff.toFixed(1)} L</td></tr>
+    <tr><td>Tuning</td><td>${vA_tune.toFixed(0)} Hz</td><td>${vB_tune.toFixed(0)} Hz</td><td class="${tuneDiff < 0 ? 'diff-better' : (tuneDiff > 0 ? 'diff-worse' : 'diff-equal')}">${tuneDiff > 0 ? '+' : ''}${tuneDiff.toFixed(0)} Hz</td></tr>
+    <tr><td>Dış Ölçü (W×H×D)</td><td>${vA_dims}</td><td>${vB_dims}</td>${dimsDiff}</tr>
+    <tr><td>Fit / Sığma</td><td>${vA_fit}</td><td>${vB_fit}</td>${fitDiff}</tr>
+    <tr><td>Üretim Hazır</td><td>${vA_pr}</td><td>${vB_pr}</td>${prDiffStr}</tr>
+    <tr><td>Malzeme Kalınlığı</td><td>${vA_mat}</td><td>${vB_mat}</td>${matDiff}</tr>
+    <tr><td>Uyarı Seviyesi</td><td>${vA_wl}</td><td>${vB_wl}</td>${getWlDiff(a.warning_level, b.warning_level)}</tr>
+  `;
+
+  showToast('Kıyaslama Tamamlandı: ' + aId + ' vs ' + bId);
+}
+
+// ── DXF
+async function downloadDXF() {
+  const designId = state.currentDesignId;
+  const url = state.API + '/design/download/' + designId + '?fmt=dxf';
+  const btn  = document.getElementById('dxfBtn');
+  if (btn) { btn.disabled = true; btn.textContent = '⏳ Hazırlanıyor...'; }
+  showToast('DXF hazırlanıyor...');
+  try {
+    const res = await fetch(url, {
+      headers: { 'X-Api-Key': 'premium-dev' }
+    });
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      showToast('DXF hata: ' + (err.detail || res.status));
+      if (btn) { btn.disabled = false; btn.innerHTML = '⬇ DXF Dosyasını İndir'; }
+      return;
+    }
+    const blob = await res.blob();
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'DD1_' + designId + '.DXF';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(a.href);
+    showToast('✅ DXF indirildi!');
+  } catch (e) {
+    showToast('DXF bağlantı hatası.');
+  } finally {
+    if (btn) { btn.disabled = false; btn.innerHTML = '⬇ DXF Dosyasını İndir'; }
+  }
+}
+
+// ── Seal action
+document.getElementById('sealBtn').addEventListener('click', async () => {
+  const opt = state.selectedOption;
+  if (!opt) return;
+  
+  const btn = document.getElementById('dxfBtn');
+  const reason = document.getElementById('blockedReason');
+  const sealDesignIdEl = document.getElementById('sealDesignId');
+  
+  btn.className = 'dxf-btn disabled';
+  btn.disabled = true;
+  sealDesignIdEl.textContent = 'Üretiliyor... Lütfen bekleyin.';
+  
+  try {
+    const res = await fetch(state.API + '/design/produce', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        design_id: state.currentDesignId,
+        selected_option_id: opt,
+        // TODO: send the chosen option details like material thickness or strategy
+      })
+    });
+    
+    const data = await res.json();
+    
+    if (res.ok && data.success) {
+      sealDesignIdEl.textContent = 'design_id: ' + state.currentDesignId + ' — Seçenek ' + opt;
+      btn.className = 'dxf-btn ready';
+      btn.disabled = false;
+      reason.style.display = 'none';
+      showToast('Üretim dosyaları hazır! İndirebilirsiniz.');
+      
+      const setT = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+      setT('sealSummary',  data.summary || 'Üretim başarıyla tamamlandı.');
+      setT('sealMode',     state.selectedMode || '—');
+      setT('sealStrategy', opt);
+      setT('sealPR',       '✅ Üretime Hazır');
+    } else {
+      sealDesignIdEl.textContent = 'Hata: ' + (data.error_code || 'Bilinmeyen Hata');
+      btn.className = 'dxf-btn blocked';
+      btn.disabled = true;
+      reason.style.display = 'block';
+      reason.textContent = data.detail || (data.errors ? data.errors[0] : 'Üretim başarısız.');
+      showToast('Üretim sırasında hata veya blok.');
+    }
+  } catch (err) {
+    sealDesignIdEl.textContent = 'Bağlantı Hatası';
+    showToast('Sunucuya ulaşılamadı.');
+  }
+});
+
+// ── Toast
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ── TEZGAHTAR KART SİSTEMİ
+// ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * renderTezgahtarCards(uiCards, containerId?)
+ * ui_cards dizisini chat panelinin altındaki #tezgahtar-panel'e render eder.
+ * mode === "tezgahtar" geldiğinde sendMessage() tarafından çağrılır.
+ */
+function renderTezgahtarCards(uiCards, containerId = 'tezgahtar-panel') {
+  let panel = document.getElementById(containerId);
+  if (!panel) {
+    // Paneli dinamik oluştur — step-1-layout'a ekle
+    panel = document.createElement('div');
+    panel.id = containerId;
+    panel.style.cssText = [
+      'flex:0 0 320px','min-width:0','max-width:340px',
+      'display:flex','flex-direction:column','gap:.75rem',
+    ].join(';');
+    const layout = document.querySelector('.step-1-layout');
+    if (layout) layout.appendChild(panel);
+  }
+
+  const CHAR_ICON = {
+    'giriş seviye':  '🟢',
+    'günlük tok':    '🔵',
+    'dengeli':       '⚪',
+    'sert karakter': '🔴',
+    'güçlü':         '🟠',
+    'dışa dönük':    '🟣',
+    'dengeli güçlü': '🔵',
+  };
+
+  const LABEL_CSS = {
+    best_match:      'color:#f59e0b;border-color:rgba(245,158,11,.5)',
+    character_alt:   'color:#3b82f6;border-color:rgba(59,130,246,.5)',
+    budget_alt:      'color:#22c55e;border-color:rgba(34,197,94,.5)',
+    extra_alt:       'color:#94a3b8;border-color:rgba(148,163,184,.3)',
+  };
+  const LABEL_NAME = {
+    best_match:'En uygun', character_alt:'Karakter alt.', budget_alt:'Bütçe alt.', extra_alt:'Ekstra',
+  };
+
+  panel.innerHTML = `
+    <div style="font-size:.72rem;font-weight:700;color:var(--text3);text-transform:uppercase;
+                letter-spacing:.07em;margin-bottom:.2rem;display:flex;align-items:center;gap:.4rem;">
+      🛒 Model Adayları
+      <button onclick="closeTezgahtar()" style="margin-left:auto;background:none;border:none;
+              color:var(--text3);cursor:pointer;font-size:.9rem;">✕</button>
+    </div>
+  ` + uiCards.map((card, i) => {
+    const icon    = CHAR_ICON[card.character_tag] || '⚫';
+    const lbl     = LABEL_NAME[card.card_type] || '';
+    const lblCss  = LABEL_CSS[card.card_type] || LABEL_CSS.extra_alt;
+    const sponsored = card.is_sponsored
+      ? `<span style="background:rgba(245,158,11,.18);color:#f59e0b;border:1px solid rgba(245,158,11,.4);
+           font-size:.62rem;font-weight:700;padding:.15rem .45rem;border-radius:100px;letter-spacing:.04em">
+           ★ Anlaşmalı</span>`
+      : '';
+
+    return `
+    <div class="tz-card" id="tz-card-${i}" data-card='${JSON.stringify(card)}'
+      style="background:var(--surface);border:1.5px solid var(--border);border-radius:12px;
+             overflow:hidden;transition:all .18s;cursor:default;">
+      <!-- Üst etiket şeridi -->
+      <div style="padding:.5rem .75rem;border-bottom:1px solid var(--border);
+                  display:flex;align-items:center;gap:.5rem;">
+        <span style="font-size:.68rem;font-weight:700;padding:.15rem .5rem;border-radius:100px;
+                     border:1px solid;${lblCss}">${lbl}</span>
+        ${sponsored}
+        <span style="margin-left:auto;font-size:.8rem">${icon}</span>
+      </div>
+      <!-- Gövde -->
+      <div style="padding:.75rem">
+        <div style="font-size:1rem;font-weight:800;color:var(--text);margin-bottom:.15rem">
+          ${card.brand} ${card.model}
+        </div>
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.5rem">
+          <span style="background:var(--surface2);border-radius:6px;padding:.2rem .5rem;
+                       font-size:.72rem;color:var(--text2)">${card.diameter_inch}"</span>
+          <span style="background:var(--surface2);border-radius:6px;padding:.2rem .5rem;
+                       font-size:.72rem;color:var(--text2)">${card.rms_w}W RMS</span>
+          <span style="background:var(--surface2);border-radius:6px;padding:.2rem .5rem;
+                       font-size:.72rem;color:var(--text2)">${card.coil || ''} bobin</span>
+        </div>
+        <div style="font-size:.75rem;font-weight:600;color:var(--accent);margin-bottom:.3rem">
+          ${card.character_tag}
+        </div>
+        <div style="font-size:.72rem;color:var(--text3);line-height:1.5;margin-bottom:.6rem">
+          ${card.why_recommend}
+        </div>
+        <!-- 3 Aksiyon -->
+        <div style="display:flex;gap:.4rem;flex-wrap:wrap">
+          <button class="tz-action-btn" onclick="tezgahtarAction('have', ${i})"
+            style="flex:1;padding:.35rem .5rem;font-size:.72rem;font-weight:600;
+                   background:rgba(34,197,94,.12);color:#22c55e;border:1px solid rgba(34,197,94,.3);
+                   border-radius:8px;cursor:pointer;font-family:inherit;white-space:nowrap">
+            Bu bende var
+          </button>
+          <button class="tz-action-btn" onclick="tezgahtarAction('similar', ${i})"
+            style="flex:1;padding:.35rem .5rem;font-size:.72rem;font-weight:600;
+                   background:rgba(59,130,246,.1);color:#93c5fd;border:1px solid rgba(59,130,246,.3);
+                   border-radius:8px;cursor:pointer;font-family:inherit;white-space:nowrap">
+            Buna yakın
+          </button>
+        </div>
+      </div>
+    </div>`;
+  }).join('') + `
+  <button onclick="tezgahtarAction('more')"
+    style="background:var(--surface2);border:1px solid var(--border);color:var(--text3);
+           border-radius:8px;padding:.5rem;font-size:.78rem;cursor:pointer;font-family:inherit;
+           width:100%;transition:all .15s;"
+    onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text3)'">
+    + Daha fazla göster
+  </button>`;
+
+  // state'e kaydet (snapshot test + sonraki aksiyon için)
+  state.tezgahtarCards = uiCards;
+}
+
+// Kart aksiyonları
+function tezgahtarAction(action, cardIndex) {
+  const cards = state.tezgahtarCards || [];
+  const card  = cardIndex !== undefined ? cards[cardIndex] : null;
+
+  let msg = '';
+  if (action === 'have' && card) {
+    msg = `${card.brand} ${card.model} ${card.diameter_inch}" bende var.`;
+  } else if (action === 'similar' && card) {
+    msg = `${card.brand} ${card.model}'e yakın ürünüm var, ${card.diameter_inch}" ${card.rms_w}W civarı.`;
+  } else if (action === 'more') {
+    msg = 'Daha fazla seçenek göster.';
+  }
+
+  if (msg) {
+    document.getElementById('chatInput').value = msg;
+    sendMessage();
+  }
+}
+
+function closeTezgahtar() {
+  const p = document.getElementById('tezgahtar-panel');
+  if (p) p.remove();
+  state.tezgahtarCards = [];
+}
+
+// ── Init
+loadArchive();
+enforceUniqueBadge();
+</script>
+
+<!-- ──────────────────────────────────────────────────────────────────────── -->
+<!-- TEZGAHTAR CSS (global, head'e eklenebilir ama burası da çalışır)       -->
+<!-- ──────────────────────────────────────────────────────────────────────── -->
+<style>
+.tz-card:hover {
+  border-color: rgba(245,158,11,.4) !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,.3);
+}
+.tz-action-btn:hover {
+  filter: brightness(1.15);
+}
+@media(max-width:900px) {
+  #tezgahtar-panel {
+    flex: 1 1 100% !important;
+    max-width: 100% !important;
+  }
+}
+</style>
+</body>
+</html>

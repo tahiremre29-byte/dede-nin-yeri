@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DD1 Acoustic Platform | AI-Powered Sound Engineering</title>
+    <meta name="description" content="DD1 Acoustic Platform ile kabin tasarımı, akustik analiz ve usta tavsiyeleri saniyeler içinde. Yapay zeka destekli ses mühendisliği.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav id="main-nav" class="glass">
+        <div class="logo-container">
+            <div class="gemini-sparkle">
+                <svg width="36" height="36" viewBox="0 0 40 40" fill="none">
+                    <path d="M20 0L24.5 15.5L40 20L24.5 24.5L20 40L15.5 24.5L0 20L15.5 15.5L20 0Z" fill="url(#gg)"/>
+                    <defs>
+                        <linearGradient id="gg" x1="0" y1="0" x2="40" y2="40">
+                            <stop stop-color="#4285F4"/>
+                            <stop offset="0.5" stop-color="#915AFF"/>
+                            <stop offset="1" stop-color="#FF5A91"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            <span class="brand-name">DD1</span>
+        </div>
+        <ul>
+            <li><a href="#how">Nasıl Çalışır</a></li>
+            <li><a href="#features">Özellikler</a></li>
+            <li><a href="#stats">Rakamlar</a></li>
+            <li><a href="#engine">Demo</a></li>
+        </ul>
+        <button class="cta-mini" onclick="document.getElementById('engine').scrollIntoView({behavior:'smooth'})">Hemen Dene →</button>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero">
+        <div class="hero-content">
+            <div class="badge-pill reveal">🔬 Yapay Zeka + Akustik Mühendislik</div>
+            <h1 class="reveal-delay">Ses Mühendisliğinin<br><span class="gradient-text">Yapay Zeka Hali</span></h1>
+            <p class="reveal-delay-2">T/S parametrelerinizi girin, araç tipinizi seçin. DD1 motoru optimum kabin boyutlarını, tuning frekansını ve DXF dosyasını saniyeler içinde üretir.</p>
+            <div class="cta-group reveal-delay-2">
+                <button class="btn-primary" id="hero-cta" onclick="document.getElementById('engine').scrollIntoView({behavior:'smooth'})">
+                    <span>Hesaplamayı Başlat</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+                <button class="btn-secondary" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})">Nasıl Çalışır?</button>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="orb-container">
+                <div class="gemini-orb"><div class="orb-inner"></div></div>
+                <div class="wave-rings">
+                    <div class="ring r1"></div>
+                    <div class="ring r2"></div>
+                    <div class="ring r3"></div>
+                </div>
+            </div>
+            <div class="sparkles">
+                <div class="sparkle s1"></div>
+                <div class="sparkle s2"></div>
+                <div class="sparkle s3"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HOW IT WORKS -->
+    <section id="how" class="how-section">
+        <div class="section-header">
+            <div class="section-badge">Süreç</div>
+            <h2 class="reveal">Üç Adımda Mükemmel Ses</h2>
+            <p>Karmaşık akustik hesapları sizin için biz yapıyoruz.</p>
+        </div>
+        <div class="steps-grid">
+            <div class="step-card glass reveal">
+                <div class="step-num">01</div>
+                <div class="step-icon">📐</div>
+                <h3>Parametre Girin</h3>
+                <p>Woofer çapı, araç tipi ve kullanım amacınızı belirtin. T/S parametreleriniz varsa daha hassas sonuç alırsınız.</p>
+            </div>
+            <div class="step-connector">→</div>
+            <div class="step-card glass reveal">
+                <div class="step-num">02</div>
+                <div class="step-icon">⚙️</div>
+                <h3>Motor Hesaplar</h3>
+                <p>DD1 akustik motoru QB3 alignment, Helmholtz hesapları ve araç kabini kazancını milisaniyeler içinde işler.</p>
+            </div>
+            <div class="step-connector">→</div>
+            <div class="step-card glass reveal">
+                <div class="step-num">03</div>
+                <div class="step-icon">📦</div>
+                <h3>Sonuç Alın</h3>
+                <p>Net hacim, tuning frekansı, panel ölçüleri ve üretime hazır DXF/STL dosyaları anında elinizde.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features" class="features-section">
+        <div class="section-header">
+            <div class="section-badge">Teknoloji</div>
+            <h2 class="reveal">Her Detay Hesaplanmış</h2>
+            <p>DD1 motoru, gelişmiş fizik simülasyonları ile binlerce senaryoyu saniyeler içinde analiz eder.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card glass large">
+                <div class="feature-icon">📊</div>
+                <h3>Hassas T/S Hesaplama</h3>
+                <p>Thiele-Small parametrelerinizle QB3 alignment, optimal kabin hacmi ve port tuning. Grup gecikmesi (Group Delay) ve hava hızı otomatik optimize edilir.</p>
+                <div class="tag-row">
+                    <span class="tag">QB3 Alignment</span>
+                    <span class="tag">Helmholtz</span>
+                    <span class="tag">Port Velocity</span>
+                </div>
+            </div>
+            <div class="feature-card glass">
+                <div class="feature-icon">⚡</div>
+                <h3>Anında DXF/STL</h3>
+                <p>Lazer kesim ve 3D yazıcı için anında üretim dosyaları. Finger joint yapısıyla maksimum dayanıklılık.</p>
+                <div class="tag-row">
+                    <span class="tag">Lazer Kesim</span>
+                    <span class="tag">3D Print</span>
+                </div>
+            </div>
+            <div class="feature-card glass">
+                <div class="feature-icon">🤖</div>
+                <h3>AI Usta Tavsiyesi</h3>
+                <p>Hesap sonrası Gemini AI tabanlı akustik analiz ve öneriler. Aracınıza ve kullanım amacınıza özel yorumlar.</p>
+                <div class="tag-row">
+                    <span class="tag">Gemini AI</span>
+                    <span class="tag">Akustik</span>
+                </div>
+            </div>
+            <div class="feature-card glass">
+                <div class="feature-icon">🗃️</div>
+                <h3>Woofer Veritabanı</h3>
+                <p>20+ popüler woofer için hazır T/S parametreleri. Kendi modelinizi ekleyin veya marka bazlı arayın.</p>
+                <div class="tag-row">
+                    <span class="tag">Hertz</span>
+                    <span class="tag">JL Audio</span>
+                    <span class="tag">Sundown</span>
+                </div>
+            </div>
+            <div class="feature-card glass">
+                <div class="feature-icon">🚗</div>
+                <h3>Araç Optimizasyonu</h3>
+                <p>Sedan, Hatchback, SUV ve Van için ayrı kabin kazancı ve tuning profilleri. Aracınıza özel sonuçlar.</p>
+                <div class="tag-row">
+                    <span class="tag">Sedan</span>
+                    <span class="tag">SUV</span>
+                    <span class="tag">Van</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section id="stats" class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-num" data-target="20">0</div>
+                <div class="stat-plus">+</div>
+                <div class="stat-label">Woofer Modeli</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num" data-target="4">0</div>
+                <div class="stat-plus">+</div>
+                <div class="stat-label">Araç Tipi</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num" data-target="3">0</div>
+                <div class="stat-plus"></div>
+                <div class="stat-label">Kullanım Modu</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num" data-target="2">0</div>
+                <div class="stat-plus"></div>
+                <div class="stat-label">Hesap Modu (T/S + Ampirik)</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CALCULATOR -->
+    <section id="engine" class="calculator-section">
+        <div class="section-header">
+            <div class="section-badge">Canlı Demo</div>
+            <h2 class="reveal">Kabin Hesaplayıcı <span class="badge-v">V2.0</span></h2>
+            <p>Hızlı bir analiz için aşağıdaki formu doldurun.</p>
+        </div>
+
+        <div class="calc-wrapper glass">
+            <div class="calc-container">
+                <div class="calc-form">
+                    <form id="dd1-quick-calc">
+                        <div class="input-grid">
+                            <div class="input-group">
+                                <label for="diameter">Woofer Çapı</label>
+                                <select id="diameter">
+                                    <option value="8">8 inç</option>
+                                    <option value="10">10 inç</option>
+                                    <option value="12" selected>12 inç</option>
+                                    <option value="15">15 inç</option>
+                                    <option value="18">18 inç</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label for="vehicle">Araç Tipi</label>
+                                <select id="vehicle">
+                                    <option value="Sedan">Sedan</option>
+                                    <option value="Hatchback">Hatchback</option>
+                                    <option value="SUV">SUV</option>
+                                    <option value="Van">Van / Panelvan</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label for="purpose">Kullanım Amacı</label>
+                                <select id="purpose">
+                                    <option value="SQL">Günlük / SQL</option>
+                                    <option value="SPL">Yüksek Bas / SPL</option>
+                                    <option value="LowBass">Alt Frekans Focus</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- T/S Opsiyonel -->
+                        <div class="ts-toggle">
+                            <button type="button" id="ts-toggle-btn" class="toggle-btn">
+                                <span>▶</span> T/S Parametreleri (Opsiyonel — Daha Hassas)
+                            </button>
+                            <div id="ts-fields" class="ts-fields hidden">
+                                <div class="ts-grid">
+                                    <div class="input-group">
+                                        <label for="fs">Fs (Hz)</label>
+                                        <input type="number" id="fs" placeholder="Örn: 30" step="0.1" min="10" max="100">
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="qts">Qts</label>
+                                        <input type="number" id="qts" placeholder="Örn: 0.35" step="0.01" min="0.1" max="2">
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="vas">Vas (L)</label>
+                                        <input type="number" id="vas" placeholder="Örn: 60" step="0.1" min="1">
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="rms">RMS Güç (W)</label>
+                                        <input type="number" id="rms" placeholder="Örn: 500" step="50" min="50">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-primary full-width" id="calc-btn">
+                            <span id="calc-btn-text">Hesaplamayı Başlat</span>
+                        </button>
+                    </form>
+                </div>
+
+                <div id="results" class="calc-results hidden">
+                    <div class="result-grid">
+                        <div class="res-item">
+                            <span class="label">Net Hacim</span>
+                            <span id="res-volume" class="value">-- L</span>
+                        </div>
+                        <div class="res-item">
+                            <span class="label">Tuning</span>
+                            <span id="res-tuning" class="value">-- Hz</span>
+                        </div>
+                        <div class="res-item">
+                            <span class="label">Tahmini SPL</span>
+                            <span id="res-spl" class="value">-- dB</span>
+                        </div>
+                    </div>
+                    <div class="result-grid result-grid-sm">
+                        <div class="res-item-sm">
+                            <span class="label-sm">Port Hızı</span>
+                            <span id="res-pv" class="val-sm">--</span>
+                        </div>
+                        <div class="res-item-sm">
+                            <span class="label-sm">F3</span>
+                            <span id="res-f3" class="val-sm">--</span>
+                        </div>
+                        <div class="res-item-sm">
+                            <span class="label-sm">Mod</span>
+                            <span id="res-mode" class="val-sm small-text">--</span>
+                        </div>
+                    </div>
+                    <div class="advice-box">
+                        <div class="advice-header">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#915AFF" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            AI Usta Tavsiyesi
+                        </div>
+                        <p id="res-advice">Hesaplama bekleniyor...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <span class="brand-name">DD1</span>
+                <span class="footer-tagline">Acoustic Platform</span>
+            </div>
+            <p class="footer-copy">© 2026 DD1 Sound Innovations · Gemini AI tarafından güçlendirilmiştir</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

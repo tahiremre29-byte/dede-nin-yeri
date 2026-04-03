@@ -1,0 +1,202 @@
+[
+  {
+    "model": "Hertz HV 300",
+    "brand": "Hertz",
+    "dia_mm": 300,
+    "fs": 31.0,
+    "qts": 0.28,
+    "vas": 74.0,
+    "xmax_mm": 12.5,
+    "power_w": 800
+  },
+  {
+    "model": "Hertz ES 300.5",
+    "brand": "Hertz",
+    "dia_mm": 300,
+    "fs": 28.0,
+    "qts": 0.26,
+    "vas": 88.0,
+    "xmax_mm": 14.0,
+    "power_w": 1000
+  },
+  {
+    "model": "Focal 30A350",
+    "brand": "Focal",
+    "dia_mm": 300,
+    "fs": 27.0,
+    "qts": 0.32,
+    "vas": 82.0,
+    "xmax_mm": 15.0,
+    "power_w": 1000
+  },
+  {
+    "model": "Sundown SA-12 v2",
+    "brand": "Sundown",
+    "dia_mm": 305,
+    "fs": 33.0,
+    "qts": 0.55,
+    "vas": 60.0,
+    "xmax_mm": 24.0,
+    "power_w": 1500
+  },
+  {
+    "model": "Sundown SA-15 v2",
+    "brand": "Sundown",
+    "dia_mm": 380,
+    "fs": 30.0,
+    "qts": 0.56,
+    "vas": 92.0,
+    "xmax_mm": 25.0,
+    "power_w": 2000
+  },
+  {
+    "model": "JL Audio 12W6v3",
+    "brand": "JL Audio",
+    "dia_mm": 305,
+    "fs": 26.5,
+    "qts": 0.36,
+    "vas": 74.6,
+    "xmax_mm": 18.0,
+    "power_w": 600
+  },
+  {
+    "model": "JL Audio 10W6v3",
+    "brand": "JL Audio",
+    "dia_mm": 254,
+    "fs": 31.5,
+    "qts": 0.38,
+    "vas": 38.0,
+    "xmax_mm": 15.0,
+    "power_w": 500
+  },
+  {
+    "model": "Morel Ultimo SC 124",
+    "brand": "Morel",
+    "dia_mm": 305,
+    "fs": 24.0,
+    "qts": 0.3,
+    "vas": 95.0,
+    "xmax_mm": 20.0,
+    "power_w": 1250
+  },
+  {
+    "model": "Alpine SWR-12D4",
+    "brand": "Alpine",
+    "dia_mm": 300,
+    "fs": 32.0,
+    "qts": 0.35,
+    "vas": 58.0,
+    "xmax_mm": 14.0,
+    "power_w": 750
+  },
+  {
+    "model": "Kicker CompVT 12",
+    "brand": "Kicker",
+    "dia_mm": 300,
+    "fs": 37.0,
+    "qts": 0.4,
+    "vas": 48.0,
+    "xmax_mm": 13.0,
+    "power_w": 700
+  },
+  {
+    "model": "Rockford Fosgate P3D4-12",
+    "brand": "Rockford Fosgate",
+    "dia_mm": 305,
+    "fs": 30.5,
+    "qts": 0.33,
+    "vas": 62.0,
+    "xmax_mm": 16.8,
+    "power_w": 800
+  },
+  {
+    "model": "Rockford Fosgate T1D412",
+    "brand": "Rockford Fosgate",
+    "dia_mm": 305,
+    "fs": 28.0,
+    "qts": 0.31,
+    "vas": 70.0,
+    "xmax_mm": 19.0,
+    "power_w": 1000
+  },
+  {
+    "model": "DD Audio VO-W12c",
+    "brand": "DD Audio",
+    "dia_mm": 300,
+    "fs": 33.0,
+    "qts": 0.47,
+    "vas": 55.0,
+    "xmax_mm": 20.0,
+    "power_w": 900
+  },
+  {
+    "model": "Skar Audio EVL-12",
+    "brand": "Skar Audio",
+    "dia_mm": 305,
+    "fs": 34.0,
+    "qts": 0.52,
+    "vas": 50.0,
+    "xmax_mm": 23.0,
+    "power_w": 2500
+  },
+  {
+    "model": "Fi Audio BL 12",
+    "brand": "Fi Audio",
+    "dia_mm": 305,
+    "fs": 32.0,
+    "qts": 0.48,
+    "vas": 65.0,
+    "xmax_mm": 26.0,
+    "power_w": 1500
+  },
+  {
+    "model": "Pioneer TS-W307D4",
+    "brand": "Pioneer",
+    "dia_mm": 300,
+    "fs": 40.0,
+    "qts": 0.45,
+    "vas": 42.0,
+    "xmax_mm": 10.5,
+    "power_w": 400
+  },
+  {
+    "model": "Sony XS-W120ES",
+    "brand": "Sony",
+    "dia_mm": 305,
+    "fs": 35.0,
+    "qts": 0.42,
+    "vas": 44.0,
+    "xmax_mm": 11.0,
+    "power_w": 500
+  },
+  {
+    "model": "Kenwood KFC-XW1200F",
+    "brand": "Kenwood",
+    "dia_mm": 305,
+    "fs": 38.0,
+    "qts": 0.44,
+    "vas": 40.0,
+    "xmax_mm": 10.0,
+    "power_w": 400
+  },
+  {
+    "model": "JBL BassPro 12",
+    "brand": "JBL",
+    "dia_mm": 305,
+    "fs": 42.0,
+    "qts": 0.5,
+    "vas": 35.0,
+    "xmax_mm": 9.0,
+    "power_w": 300
+  },
+  {
+    "model": "Polk Audio db1242DVC",
+    "brand": "Polk Audio",
+    "dia_mm": 305,
+    "fs": 36.0,
+    "qts": 0.38,
+    "vas": 47.0,
+    "xmax_mm": 12.0,
+    "power_w": 500
+  }
+]

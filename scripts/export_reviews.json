@@ -1,0 +1,62 @@
+[
+  {
+    "review_id": 6,
+    "message_id": 263,
+    "error_tag": "field_knowledge_gap",
+    "suggested_fix": "Fabrika çıkışı kutuyu ellememesi güzel, ama gereksiz yere soru sormasın",
+    "reviewed_at": "2026-04-01 21:52:53",
+    "session_id": "sess_b8185306b129",
+    "assistant_response": "{\n  \"action\": \"ask\",\n  \"question\": \"Kicker Dual 12 CompR Loaded Enclosure modeli, fabrika çıkışı portlu bir kutu tasarımına sahiptir. Ancak mevcut hacim ve tuning frekans bilgilerini belirtmeden yeni bir hacim uydurmam mümkün değil. Portlu tasarım için hedef hacim ve tuning frekansı bilgilerini verir misiniz?\"\n}",
+    "user_message": "Kicker Dual 12 CompR Loaded Enclosure aldım buna portlu özel Litre uydurur musun?"
+  },
+  {
+    "review_id": 5,
+    "message_id": 250,
+    "error_tag": "intent_miss",
+    "suggested_fix": "En arkadan fena vursun isteği 'açık alan/pancadao' dur. Kapalı kutu önerilemez!",
+    "reviewed_at": "2026-04-01 21:28:21",
+    "session_id": "sess_mock_bd7923",
+    "assistant_response": "Clio 4 için JBL 1000 subwoofer kapalı kutu ile tasarlanabilir. 45 Litre uygun olacaktır.",
+    "user_message": "Hocam clio 4 araca jbl 1000 koycam bagaj az yer kaplasın ama en arkadan çok fena vursun."
+  },
+  {
+    "review_id": 4,
+    "message_id": 252,
+    "error_tag": "tone_problem",
+    "suggested_fix": "Kullanıcıya 'aksi halde olamam' denmez, yönlendirici 'Şu 3 bilgiyi verirsek hemen hesaplanır' denmeli.",
+    "reviewed_at": "2026-04-01 21:28:19",
+    "session_id": "sess_mock_c14a2c",
+    "assistant_response": "Lütfen tam bagaj ölçülerini verin, aksi halde yardımcı olamam.",
+    "user_message": "kabin ölçüsü 300x400 olursa tuning ne çıkar?"
+  },
+  {
+    "review_id": 3,
+    "message_id": 254,
+    "error_tag": "technical_error",
+    "suggested_fix": "50x50mm kare port chuffing (hava sesi) yapar. Kesit alanı 60L için çok yetersiz.",
+    "reviewed_at": "2026-04-01 21:27:29",
+    "session_id": "sess_mock_326f06",
+    "assistant_response": "Ts-w311d4 için 60L portlu kutu mükemmel bir seçimdir. Portu 50x50mm yaparsak 35Hz elde ederiz.",
+    "user_message": "Pioneer Ts-w311d4 için 60 litre portlu kutu nasıl olur?"
+  },
+  {
+    "review_id": 2,
+    "message_id": 256,
+    "error_tag": "field_knowledge_gap",
+    "suggested_fix": "Kicker L7 kare yapısı L-port veya özel köşe açıları ister, kuru sığar demek saha eksikliğidir.",
+    "reviewed_at": "2026-04-01 21:27:04",
+    "session_id": "sess_mock_5e39ed",
+    "assistant_response": "Tofaş Şahin bagaj ölçüleri genellikle W:900 H:450 D:600 şeklindedir. İki adet 30cm Kicker L7 sığar.",
+    "user_message": "Reis Tofaş Şahin bagajına 2 tane 30cm kicker l7 sığar mı?"
+  },
+  {
+    "review_id": 1,
+    "message_id": 258,
+    "error_tag": "product_hallucination",
+    "suggested_fix": "Kenwood XR düz ince seridir, 80L tamamen uydurma.",
+    "reviewed_at": "2026-04-01 21:27:01",
+    "session_id": "sess_mock_bfc3c2",
+    "assistant_response": "Kenwood XR-W12F subwoofer modeli için derin seri bir kutu önerebilirim: 80 litre hacim ile tasarlanmış Kenwood BassBox serisi.",
+    "user_message": "Bana Kenwood XR-W12F sığacak en derin kutuyu çizer misin?"
+  }
+]
