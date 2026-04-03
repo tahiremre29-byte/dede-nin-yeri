@@ -164,6 +164,8 @@ def request_missing_fields(packet: IntakePacket) -> str:
             soru.append("Sürücü çapı kaç inç?")
         elif "rms" in field.lower() or "güç" in field.lower():
             soru.append("Kaç watt RMS sürücün var?")
+        elif "trunk" in field.lower() or "bagaj" in field.lower():
+            soru.append("Bagajda ne kadar yer ayırabiliriz, yer sıkıntısı var mı?")
         else:
             soru.append(f"'{field}' bilgisini söyler misin?")
     # Sadece en kritik 1 soruyu döndür

@@ -12,8 +12,6 @@ import logging
 from pathlib import Path
 from typing import Any
 
-from core.ai_adapter import AIAdapter
-
 from schemas.intake_packet import IntakePacket
 from schemas.acoustic_design_packet import AcousticDesignPacket
 from core.handoff import handoff_to_acoustic, handoff_summary
@@ -33,8 +31,6 @@ class KabinUstasi:
     """
 
     def __init__(self, api_key: str | None = None):
-        # SDK bağımlılığı tamamen adaptöre devredildi
-        self._adapter = AIAdapter(api_key=api_key)
         logger.info("[KABIN USTASI] Başlatıldı")
 
     # ── Ana Giriş Noktası ─────────────────────────────────────────

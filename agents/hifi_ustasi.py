@@ -16,7 +16,6 @@ from __future__ import annotations
 import logging
 from typing import Optional
 
-from core.ai_adapter import AIAdapter
 from schemas.intake_packet import IntakePacket
 from schemas.acoustic_design_packet import AcousticDesignPacket, DimensionSpec, InternalConstraints, PortSpec
 
@@ -29,8 +28,8 @@ class HifiUstasi:
     """
 
     def __init__(self, api_key: str | None = None):
-        self._adapter = AIAdapter(api_key=api_key)
         logger.info("[HIFI USTASI] Başlatıldı")
+
 
     def design(self, packet: IntakePacket) -> dict:
         """

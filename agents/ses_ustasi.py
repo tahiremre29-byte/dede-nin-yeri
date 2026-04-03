@@ -9,16 +9,16 @@ YETKİ SINIRI:
 
 AI ERİŞİMİ:
 - Doğrudan google-genai kullanmaz.
-- core.ai_adapter.AIAdapter üzerinden konuşur.
 """
 from __future__ import annotations
 import logging
+import re
 from pathlib import Path
-from typing import Optional
+from typing import Any
 
-from core.ai_adapter import AIAdapter
 from schemas.intake_packet import IntakePacket, TSParams, build_intake
-from core.router import classify_intent, route, request_missing_fields
+from core.router import quick_route, route, classify_intent
+from core.router import request_missing_fields
 
 logger = logging.getLogger("dd1.ses_ustasi")
 
@@ -95,17 +95,11 @@ class SesUstasi:
 
     def __init__(self, api_key: str | None = None):
         self._api_key = api_key
-        self._adapter: AIAdapter | None = None
         self._chat_history: list[dict] = []
+        
+        from core.llm_engine import get_engine
+        self._llm = get_engine()
         logger.info("[SES USTASI] Başlatıldı")
-
-    def _get_adapter(self) -> AIAdapter:
-        """Adapter'ı ilk kullanımda başlat (lazy init) — .env yüklendikten sonra."""
-        if self._adapter is None:
-            self._adapter = AIAdapter(api_key=self._api_key)
-        return self._adapter
-
-
     # ── Ana Giriş Noktası ─────────────────────────────────────────
 
     def process(
@@ -248,24 +242,9 @@ class SesUstasi:
             )
 
         try:
-            from google import genai
-            from google.genai import types
-            api_key = os.environ.get("GEMINI_API_KEY", "")
-            model   = os.environ.get("GEMINI_MODEL_NAME", "gemini-2.5-flash")
-            client  = genai.Client(api_key=api_key)
-            resp = client.models.generate_content(
-                model=model,
-                contents=message,
-                config=types.GenerateContentConfig(
-                    system_instruction=system_prompt,
-                    temperature=0.7,
-                    max_output_tokens=512,
-                ),
-            )
-            raw = resp.text or ""
-            return _sanitize_reply(raw) if raw else raw
-        except Exception as exc:
-            logger.error("[SES USTASI] Direkt Gemini hatası: %s", exc)
+            return self._llm.generate(prompt=message, system_prompt=system_prompt, temperature=0.7)
+        except Exception as e:
+            logger.error("[SES USTASI] LLM_Engine çağrısı çöktü: %s", e)
             return missing_q if missing_q else ""
 
 

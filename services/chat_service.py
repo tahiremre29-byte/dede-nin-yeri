@@ -281,7 +281,6 @@ def process_message(
 
     try:
         from agents.ses_ustasi import SesUstasi
-        from core.ai_adapter import AIValidationError
         agent = SesUstasi()
 
         # ── Context normalizasyonu: frontend → ses_ustasi ──────────────────
@@ -454,7 +453,6 @@ def process_message(
         })
 
     except (ValueError, Exception) as exc:
-        from core.ai_adapter import AIValidationError as _AVE
         exc_name = type(exc).__name__
         exc_msg  = str(exc).lower()
 

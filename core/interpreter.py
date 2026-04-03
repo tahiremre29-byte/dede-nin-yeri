@@ -192,9 +192,8 @@ def _extract_size(message: str) -> tuple[str | None, float | None, str | None, i
     # Kural: harf(ler)+rakamlar; rakamların endswith geçerli subwoofer çapı olmalı
     # Güvence: jbl1000w, hertz300 gibi geçersiz boyutları reddeder
     _VALID_IN = {6, 8, 10, 12, 13, 15, 18, 21}
-    _CODE_PAT = r'(?<![0-9])[a-z]{1,5}(\d{1,5})(?![0-9a-z])'
-    m_code = re.search(_CODE_PAT, clean_msg, re.IGNORECASE)
-    if m_code:
+    _CODE_PAT = r'(?<![0-9])[a-z]{1,5}[-\s]?(\d{1,5})(?![0-9a-z])'
+    for m_code in re.finditer(_CODE_PAT, clean_msg, re.IGNORECASE):
         digits = m_code.group(1)
         for _vi in sorted(_VALID_IN, reverse=True):
             s = str(_vi)
