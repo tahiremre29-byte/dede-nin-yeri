@@ -31,9 +31,14 @@ jobs:
         
     - name: 1. Core Physics & Acoustic Tests
       run: |
-        pytest tests/test_dd1_comprehensive.py tests/test_dd1_extended.py -v
-
-    - name: 2. AI Network & Agent Connection Tests
+        pytest tests/test_dd1_comprehensive.py tests/test_dd1_extended.py -v > pytest-report.txt 2>&1 || (cat pytest-report.txt && exit 1)
+        
+    - name: Upload Test Report
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: pytest-failure-report
+        path: pytest-report.txt
       # Eger github'da sifreyi girmisse bu test calisir, girmemisse atlanir
       if: env.GEMINI_API_KEY != '' 
       run: |
