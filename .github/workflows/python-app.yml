@@ -10,6 +10,11 @@ jobs:
   build_and_test:
     runs-on: ubuntu-latest
 
+    # Sizin girdiginiz Gizli Sifreyi test ortaminda kullanima acar
+    env:
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      GEMINI_MODEL_NAME: gemini-2.5-flash
+
     steps:
     - uses: actions/checkout@v3
     
@@ -21,10 +26,15 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pytest
+        pip install pytest httpx
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
         
-    - name: Run Core Tests (Acoustics & Logic)
+    - name: 1. Core Physics & Acoustic Tests
       run: |
-        # Sadece yapisal, matematiki ve akustik hesaplari test et (API keysiz calisan testler)
-        pytest tests/test_dd1_comprehensive.py -v
+        pytest tests/test_dd1_comprehensive.py tests/test_dd1_extended.py -v
+
+    - name: 2. AI Network & Agent Connection Tests
+      # Eger github'da sifreyi girmisse bu test calisir, girmemisse atlanir
+      if: env.GEMINI_API_KEY != '' 
+      run: |
+        pytest tests/smoke/test_config_ai_smoke.py -v
