@@ -39,7 +39,8 @@ jobs:
       with:
         name: pytest-failure-report
         path: pytest-report.txt
-      # Eger github'da sifreyi girmisse bu test calisir, girmemisse atlanir
+
+    - name: 2. AI Network & Agent Connection Tests
       if: env.GEMINI_API_KEY != '' 
       run: |
-        pytest tests/smoke/test_config_ai_smoke.py -v
+        pytest tests/smoke/test_config_ai_smoke.py -v || exit 1
