@@ -1,0 +1,37 @@
+{
+  "orneklem_kaynagi": "JBL Örnek Sistem Kurulum Rehberi (İlk Şablonlar)",
+  "analiz": {
+    "markalar": [
+      "JBL"
+    ],
+    "populer_markalar": [
+      "JBL"
+    ],
+    "fiyatlar": [],
+    "teknik_sorular": [
+      "JBL Stadium/GTO sistem bağlarken amfinin gerçek manada 2 Ohm stabil çalıştığından (ısınmayacağından) emin misiniz?",
+      "JBL subwooferlardan 'sert ve net tok bas' almak isteniyorsa kabin portlu (delikli) ve JBL'in önerdiği büyük litrelerde çakıldı mı?",
+      "JBL metal tizlerinin kulağı yormaması (harsh çalmaması) için crossover üzerinden -3dB seçeneği aktif edildi mi veya teypten tiz kısıldı mı?"
+    ],
+    "kronik_sorunlar": [
+      "JBL hoparlör kullananların standart 4 ohm amfilerle sistemi zorlayıp amfiyi aşırı ısıtması (protect sorunu).",
+      "JBL subwoofer'ı küçük ve kapalı (sealed) kabine koyarak o meşhur sert/vurucu karakterinin yok edilmesi."
+    ],
+    "saha_dili": [
+      "Modern Performans Seti",
+      "Eski Toprak Efsane Set",
+      "Tizi -3dB'den kısmak",
+      "Portlu Geniş Kabin"
+    ],
+    "jargon": [
+      "Stadium 62CF / 962M",
+      "Series III S3-1224",
+      "Club A5055",
+      "660GTi",
+      "T595 Limited (Decade)",
+      "W12GTi MkII",
+      "GTO-755.6 / BP1200.1"
+    ],
+    "ozet": "Ses Ustası'nın 'Hazır Şablonlar' dağarcığına iki muazzam JBL reçetesi eklendi. 1- MODERN ŞABLON: Stadium 62CF (ön), Stadium 962M (arka), S3-1224 (bas), Club A5055 (amfi). 2- EFSANE ŞABLON: 660GTi (ön), T595 Decade (arka), W12GTi MkII (bas), BP1200.1 (amfi). Ayrıca Ajan, kullanıcılara JBL tavsiye ederken 'Altın 3 Kural'ı (2 Ohm stabil amfi, geniş portlu bas kabini ve -3dB tiz zayıflatma) daima hatırlatması gerektiği konusunda talimatlandırıldı."
+  }
+}

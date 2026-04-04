@@ -53,3 +53,7 @@ openapi.txt
 system_inventory.*
 runtime_map.*
 bridge_debug.log
+
+desktop_apps/lazer_agent/dist/
+
+desktop_apps/lazer_agent/build/

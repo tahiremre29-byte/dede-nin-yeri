@@ -1,0 +1,70 @@
+{
+  "meta": {
+    "tarih": "2026-03-22",
+    "ajan": "piyasa_arastirmacisi",
+    "kaynak": "Facebook Grup Analizi — Kullanici Gozlemi",
+    "not": "Browser screenshot uzerinden elde edilen veriler"
+  },
+
+  "facebook_gruplari": {
+    "spl_team_turkey": {
+      "grup_adi": "SPL Team Turkey",
+      "url": "https://www.facebook.com/groups/1336657139829613",
+      "konum": "Türkiye",
+      "kapsam": "SPL yarışmaları, araba ses sistemi",
+      "erisim": "Herkese açık grup",
+      "gozlemlenen_icerik": {
+        "konular": [
+          "SPL yarışması (Ses Basıncı Yarışması)",
+          "Türkiye ses sistemi cezaları",
+          "Cihaz değerlendirmesi — fiyat/performans",
+          "Woofer kurulum görselleri",
+          "Kabin tasarımı ve çizimleri"
+        ],
+        "dikkat_ceken_post": "Hüseyin Atan - 20 Mart: 'Hayırlı bayramlar, cezalardan sonra cihazları mantıklı değerlendirmek lazım' — Türkiye ses cezaları piyasayı etkiledi",
+        "medya_icerik": [
+          "Hoparlör kasası çizimi (elle yapılmış)",
+          "SPL Team Turkey logosu",
+          "Woofer fotoğrafı (makaralı, kırmızı ses sistemi parçası — DD Audio veya benzeri)"
+        ],
+        "piyasa_gostergesi": "Cezalar sonrası çeviren tepkisi: kullanıcılar fiyat/performans değerlendirmesi yapıyor — düşük görünürlük sistemlere yönelim var"
+      }
+    }
+  },
+
+  "piyasa_trendleri_cikartilan": {
+    "ceza_etkisi": {
+      "durum": "2024-2025 Türkiye ses sistemi cezaları — 21.000 TL modifiye cezası",
+      "kullanici_tepkisi": [
+        "Cihazları 'mantıklı değerlendirmek lazım' — fiyat/performans odağı",
+        "SPL topluluğu aktif kalmaya devam ediyor",
+        "Kabin tasarım ilgisi: kullanıcılar kendi kabinlerini çiziyor"
+      ],
+      "piyasa_etkisi": "Yüksek SPL sistemlere yatırım azalabilir — 'düşük profil' sistemlere yönelim"
+    },
+    "aktif_topluluk": {
+      "yarismaci_segment": "SPL yarışmaları Türkiye'de aktif — SPL Team Turkey örgütlü bir topluluk",
+      "diy_egilim": "Kendi kabinini çizen kullanıcılar var — DD1 gibi bir araç bu kesim için değerli",
+      "marka_tercihi": "Görselden: kırmızı woofer kapağı — muhtemelen Rockford Fosgate veya DD Audio"
+    },
+    "hedef_kitle_profili": {
+      "birincil": "SPL yarışmacılar — high SPL, bandpass, çift veya dörtlü woofer",
+      "ikincil": "Günlük kullanıcı — cezadan kaçmak için 'normal görünümlü' ama güçlü sistem",
+      "uc": "DIY kabin yapımcıları — ölçü ve tasarım desteği arayanlar"
+    }
+  },
+
+  "aranacak_diger_gruplar": [
+    "Car Audio Turkey",
+    "Araba Ses Sistemi Türkiye",
+    "Bass Kabin Yapımı Türkiye",
+    "SQL Team Turkey",
+    "Türkiye Car Audio Kurulum"
+  ],
+
+  "dd1_icin_firsatlar": {
+    "spl_segmenti": "SPL kullanıcıları kabin hesabı — özellikle bandpass 4th/6th, çift woofer konfigürasyonu",
+    "diy_segmenti": "Kabin çizen kullanıcılara DXF otomatik üretim sunmak büyük avantaj",
+    "ceza_sonrasi": "Düşük profil ama yüksek performans sistem tasarımı — DD1 bu niş için ideal"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "meta": {
+    "tarih": "2026-04-03",
+    "ajan": "Antigravity_Tarayici",
+    "kaynaklar": [
+      "https://speakerboxlite.com/subwoofer-box-calculator/tab-graphs",
+      "https://subbox.pro/en/subwoofer-box-calculator/"
+    ],
+    "odak": "Rakip Analizi & Kabin Hesaplama Algoritmaları"
+  },
+  "analiz": {
+    "markalar": ["Skar DDX-15", "Rockford Fosgate Power 12", "Avatar SST-15", "Apocalypse DB-SA2715D1"],
+    "saha_dili": ["Ported", "Sealed", "Bandpass", "Slot port", "Round port", "Isobaric", "Net Volume", "Free Air"],
+    "teknik_sorular": [
+      "Portun yüksekliği, genişliği ve uzunluğu arasındaki fark nedir? Hepsini değiştirdiğimde 3D render bozuluyor.",
+      "Kabin net hacminden port hacmi nasıl düşülür?",
+      "Rezonans frekansı (Tuning Freq) ile kutu litresi dengesi nasıl kurulur?"
+    ],
+    "hesap_parametreleri": [
+      "bt: Kutu Tipi",
+      "bw/bh/bv: Genişlik, Yükseklik, Dolgu Hacmi",
+      "mt: Ahşap Kalınlığı",
+      "ss: Hoparlör Inç (8, 10, 12, 15)",
+      "pt/pd/pw: Port Tipi, Port Derinliği, Port Genişliği",
+      "rf: Rezonans/Akor Frekansı (Tuning Freq)"
+    ],
+    "ozet": "Her iki site de piyasadaki en popüler parametrik 3D kabin çizim araçlarından. Subbox.pro basit URL metrikleriyle (bt, bw, bh) çalışarak anlık render verirken; SpeakerBoxLite çok daha derin (4th Order, 6th Order, Push-Pull, Vented) hesaplamalarına ve devre şeması çizimlerine izin veriyor. Ustaların genel sorunu port derinliği hesaplarken programın net hacmi yutmasına kafa yormalarıdır."
+  }
+}

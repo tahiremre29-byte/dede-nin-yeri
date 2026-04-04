@@ -1,0 +1,90 @@
+{
+  "meta": {
+    "tarih": "2026-03-22T02:37",
+    "ajan": "piyasa_arastirmacisi",
+    "kaynak": "Facebook SPL Team Turkey grubu — 2 screenshot",
+    "url": "https://www.facebook.com/groups/1336657139829613"
+  },
+
+  "grup_bilgisi": {
+    "ad": "SPL Team Turkey",
+    "tanim": "GRUBUMUZ SES SİSTEMİ YARDIM VE DAYANIŞMA İÇİN KURULMUŞTUR. SATIŞ YASAKTIR.",
+    "uyelik": "Üyelere Özel — üye listesi ve içerik sadece üyelere görünür",
+    "gorunurluk": "Bu grubu herkes bulabilir",
+    "konum": "Türkiye"
+  },
+
+  "kritik_tartismalar": {
+    "95_db_mevzusu": {
+      "konu": "Türkiye'de araçlar için 95 dB sınırı tartışılıyor",
+      "soru": "Araçlarda 95 dB mevzusu var konuşuluyor. Nasıl karşılanacak? Kaç hoparlör/midrange/amfi/subwoofer bu oranı karşılar?",
+      "etkilesim": "10 beğeni, 16 yorum — yüksek ilgi",
+      "yanit_1": {
+        "yazar": "Kadir Gümüş (En çok katkıda bulunan)",
+        "yorum": "dB ölçümünde hoparlör sayısına bakılmaz. 1 tane ile de alabilirsin — gain kısarsın",
+        "anlam": "SPL sayısı değil, gain ayarıyla uyum sağlanabilir"
+      },
+      "yanit_2": {
+        "yazar": "Muhammet Biber (En çok katkıda bulunan)",
+        "yorum": "Bu 95 dB'yi nerde ve nasıl ölçecekler? Her poliste desibelmmetre olacak mı? Sokaklara nöbet tutacaklar mı? Aracın içinde başka, yanında başka...",
+        "anlam": "Yaptırım enformasyon belirsizliği — topluluk kaygılı ama ciddi bulmıyor"
+      },
+      "piyasa_etkisi": "95 dB kuralı henüz netleşmemiş — topluluk hem tedirgin hem alay ediyor. Gain ayarı çözüm olarak görülüyor."
+    }
+  },
+
+  "duygu_analizi": {
+    "psikoloji": {
+      "kaynak": "Instagram paylaşımı — Hasan Koçak",
+      "icerik": "Camia olarak psikolojimiz iyi değil 🤦",
+      "hashtag_hareketi": [
+        "#hasankoçak",
+        "#modifiye",
+        "#trafikcezaları",
+        "#otomüziksistemleri",
+        "#modifiyesuçdeğilyaşamtarzı"
+      ],
+      "mesaj": "Modifiye bir suç değil, yaşam tarzıdır — cezalara karşı kimlik savunması",
+      "gorunur_kisi": "Yaşlı, deneyimli bir araç tutsunu — 'abiler' kuşağı",
+      "onemi": "Türkiye car audio topluluğu ceza baskısı altında ama kimliğini koruyor"
+    },
+    "topluluk_ruh_hali": {
+      "genel": "Endişeli ama dirençli",
+      "yaklasim": "Kurallara uyum yolu arıyorlar (gain kısma, dB ölçüm belirsizliği)",
+      "kimlik": "Modifiye = yaşam tarzı — vazgeçmeyecekler"
+    }
+  },
+
+  "influencer_tespiti": {
+    "hasan_kocak": {
+      "platform": "Instagram + Facebook",
+      "icerik_tipi": "Car audio modifiye içeriği",
+      "hashtag": "#hasankoçak",
+      "etki": "SPL topluluğunda paylaşılan içerik üreten isim",
+      "kontrol_et": "Instagram: hasankoçak veya benzer kullanici adi"
+    },
+    "kadir_gumbus": {
+      "rol": "En çok katkıda bulunan (grup moderatörü/uzman)",
+      "bilgi": "Teknik bilgisi var — gain ve dB ölçümü hakkında doğru yanıt veriyor"
+    },
+    "muhammet_biber": {
+      "rol": "En çok katkıda bulunan",
+      "yaklasim": "Pratik, yaptırım kuşkucu perspektif"
+    }
+  },
+
+  "urun_yeni": {
+    "Audison": {
+      "kategori": "Hoparlör (İtalyan premium marka)",
+      "bahseden_post": "Kaan Önem — 'iki üründe kullanmış kişiler hangisini tavsiye eder' (Audison ve başka ürün karşılaştırması)",
+      "model_ipucu": "Audison çclk 165f... (kısmi okunabildi)",
+      "segment": "Premium SQ hoparlör — fiyat/performans karşılaştırması"
+    }
+  },
+
+  "dd1_icin_ciktilar": {
+    "gain_ayari_firsati": "95 dB kuralıyla kullanıcılar gain optimizasyonu arıyor — DD1'in DSP-aware kabin tasarımı doğru SPL hesabıyla bu ihtiyacı karşılayabilir",
+    "kimlik_koruyan_sistem": "Topluluğun 'suç değil yaşam tarzı' mesajı — DD1 burada 'akıllı ve yasal sistem' mesajıyla uyum sağlayabilir",
+    "yaptırim_belirsizligi": "95 dB kuralı net değil — DD1 kullanıcılara ölçüm tabanlı tasarım önerisi yapabilir"
+  }
+}

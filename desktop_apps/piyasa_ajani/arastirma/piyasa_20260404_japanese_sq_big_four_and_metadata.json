@@ -1,0 +1,48 @@
+{
+  "orneklem_kaynagi": "Japon SQ Big League & LLM Metadata Optimizasyon Raporu",
+  "analiz": {
+    "markalar": [
+      "Nakamichi",
+      "Alpine F#1 Status",
+      "Clarion",
+      "Addzest",
+      "Denon",
+      "Sony Mobile ES"
+    ],
+    "populer_markalar": [
+      "Alpine F#1 Status",
+      "Nakamichi",
+      "Sony Mobile ES"
+    ],
+    "fiyatlar": [],
+    "teknik_sorular": [
+      "Nakamichi CD-700 veya Clarion DRZ9255 kullanırken, Burr-Brown PCM1704 DAC'ın sağladığı 'Bit-Perfect Transfer' özelliğinden tam verim alınıyor mu?",
+      "Cihazın ManualsLib'den çekilen dökümanlarında THD (Toplam Harmonik Bozulma) oranının düşük ve Crosstalk (Kanal Ayrışması) izolasyonunun yüksek olduğu kanıtlandı mı?",
+      "DIYMobileAudio forumlarındaki Old School RTA (Real Time Analysis) verilerine göre, cihazın frekans tepkisi sizin aracınızın zaman hizalaması (Time Alignment) ile uyuşuyor mu?",
+      "Sony XES / Denon DCT-Z1 gibi cihazlardaki High-Voltage Pre-Out (4V-8V çıkış gücü) avantajı, sinyali amfiye taşırken (Non-Feedback Circuitry ile) parazitlerden koruyor mu?"
+    ],
+    "kronik_sorunlar": [
+      "Dış DC-DC konvertörü (Addzest DRZ9255) olan modellerin montajında manyetik alan yalıtım (izolasyon) hataları yapılması."
+    ],
+    "saha_dili": [
+      "Bit-Perfect Transfer",
+      "Burr-Brown PCM1704 DAC",
+      "Non-Feedback Circuitry",
+      "High-Voltage Pre-Out",
+      "THD / Crosstalk",
+      "Old School RTA",
+      "Discrete 3-Head (Nakamichi)"
+    ],
+    "jargon": [
+      "Alpine F#1 Status (DVI-9990)",
+      "Nakamichi CD-700",
+      "Clarion DRZ9255 / HX-D2",
+      "Denon DCT-Z1 / DCT-A1",
+      "Sony XES Serisi",
+      "DIYMobileAudio (RTA Verisi)",
+      "ManualsLib (THD Pdf'leri)",
+      "Pioneer-ISM / Clarion Heritage"
+    ],
+    "ozet": "Lokal LLM'in (Ses Ustası) mükemmelleşmesi için Japon 'Ses Kalitesi (SQ)' devleri ile uluslararası referans kütüphaneleri (ManualsLib, DIYMobileAudio, Pioneer-ISM) entegre edildi. Ajan artık; Clarion DRZ9255, Nakamichi CD-700 (Vakum tüp karakteri), Alpine F#1 (İyonik Tweeter/DVD-Audio), Denon DCT-Z1 ve Sony XES serisini dünya çapındaki en değerli hazine olarak bilecek. Daha önemlisi; Ses Ustası artık sadece 'iyi çalar' demeyecek, 'High-Voltage Pre-out, Burr-Brown PCM1704 DAC sayesinde Bit-Perfect transfer yapar, THD'si düşük RTA kalibrasyonu muazzamdır' gibi kelimenin tam anlamıyla akademik düzeyde saf akustik mühendisliği konuşacaktır."
+  }
+}

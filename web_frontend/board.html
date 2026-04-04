@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DD1 Ekip Monitörü</title>
+    <!-- Modern, sade arayuz fontu -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            margin: 0; padding: 0;
+            background-color: #0f111a;
+            color: #e4e6eb;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .header {
+            padding: 20px 30px;
+            background-color: #1a1d27;
+            border-bottom: 1px solid #2d3243;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0; font-size: 1.2rem; font-weight: 500; color: #fff;
+        }
+
+        .status-dot {
+            height: 10px; width: 10px;
+            background-color: #00e676;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 8px #00e676;
+        }
+        
+        .status-dot.offline { background-color: #ff5252; box-shadow: 0 0 8px #ff5252; }
+
+        .system-status { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: #a1a5b7; }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 30px;
+            flex: 1;
+            align-items: start;
+        }
+
+        /* Ekip Kutusu */
+        .agent-card {
+            background-color: #1a1d27;
+            border: 1px solid #2d3243;
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            transition: border-color 0.3s ease;
+        }
+
+        .agent-card.active {
+            border-color: #00e676;
+            box-shadow: 0 0 15px rgba(0, 230, 118, 0.1);
+        }
+
+        .agent-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #2d3243;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+
+        .agent-title { font-weight: 600; font-size: 1rem; color: #fff; }
+
+        .agent-state {
+            font-size: 0.8rem; font-weight: 500;
+            padding: 4px 10px; border-radius: 20px;
+        }
+        
+        .state-idle { background-color: rgba(161, 165, 183, 0.1); color: #a1a5b7; }
+        .state-active { background-color: rgba(0, 230, 118, 0.1); color: #00e676; }
+
+        .log-area {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: #a1a5b7;
+            background-color: #13151f;
+            padding: 12px;
+            border-radius: 6px;
+            min-height: 40px;
+            line-height: 1.5;
+            word-wrap: break-word;
+        }
+        
+        .role-desc { font-size: 0.8rem; color: #7e8299; margin-bottom: 15px; }
+
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>DD1 Ekip Monitörü</h1>
+        <div class="system-status">
+            <span id="conText">Ağ İletişimi: Aktif</span>
+            <span class="status-dot" id="conDot"></span>
+        </div>
+    </div>
+
+    <div class="dashboard">
+        
+        <!-- Müşteri Temsilcisi -->
+        <div class="agent-card" id="card-sozcu">
+            <div class="agent-header">
+                <div class="agent-title">SÖZCÜ (Müşteri Temsilcisi)</div>
+                <div class="agent-state state-idle" id="badge-sozcu">Bekliyor</div>
+            </div>
+            <div class="role-desc">Talepleri alır ve parametreleri ayrıştırır.</div>
+            <div class="log-area" id="log-sozcu">Henüz işlem yok.</div>
+        </div>
+
+        <!-- Kabin Ustası -->
+        <div class="agent-card" id="card-kabin">
+            <div class="agent-header">
+                <div class="agent-title">KABİN USTASI</div>
+                <div class="agent-state state-idle" id="badge-kabin">Bekliyor</div>
+            </div>
+            <div class="role-desc">Litre ve Port hesaplamalarını gerçekleştirir.</div>
+            <div class="log-area" id="log-kabin">Henüz işlem yok.</div>
+        </div>
+
+        <!-- Lazer Ajanı -->
+        <div class="agent-card" id="card-lazer">
+            <div class="agent-header">
+                <div class="agent-title">LAZER KESİMCİ</div>
+                <div class="agent-state state-idle" id="badge-lazer">Bekliyor</div>
+            </div>
+            <div class="role-desc">Nihai DXF ölçülerini hesaplar.</div>
+            <div class="log-area" id="log-lazer">Henüz işlem yok.</div>
+        </div>
+
+        <!-- Stok / Diğer -->
+        <div class="agent-card" id="card-tezgahtar">
+            <div class="agent-header">
+                <div class="agent-title">Stok Sorumlusu (Tezgâhtar)</div>
+                <div class="agent-state state-idle" id="badge-tezgahtar">Bekliyor</div>
+            </div>
+            <div class="role-desc">Veritabanı ürün eşleşmeleri yapar.</div>
+            <div class="log-area" id="log-tezgahtar">Henüz işlem yok.</div>
+        </div>
+
+    </div>
+
+    <!-- System Config -->
+    <script src="js/config.js"></script>
+    <script>
+        const API_URL = (window.ENV && window.ENV.API_BASE_URL) ? window.ENV.API_BASE_URL : "";
+        const conDot = document.getElementById("conDot");
+        const conText = document.getElementById("conText");
+        let lastReadCount = 0;
+        
+        // Timeout zamanlayicilarini tutan sozluk
+        const agentTimeouts = {};
+
+        function setAgentStatus(agentId, isWorking, logText) {
+            const cardEl = document.getElementById(`card-${agentId}`);
+            const badgeEl = document.getElementById(`badge-${agentId}`);
+            const logEl = document.getElementById(`log-${agentId}`);
+            
+            if(!cardEl) return;
+
+            if(isWorking) {
+                cardEl.classList.add("active");
+                badgeEl.className = "agent-state state-active";
+                badgeEl.innerText = "Aktif (Veri Geldi)";
+                
+                // Zaman ve detayi ekle
+                const zaman = new Date().toLocaleTimeString('tr-TR');
+                logEl.innerHTML = `<span style="color:#00e676">[${zaman}]</span> ${logText}`;
+
+                // Onceden sayac varsa sifirla
+                clearTimeout(agentTimeouts[agentId]);
+
+                // 15 saniye islemsizlikten sonra bekleme moduna donus
+                agentTimeouts[agentId] = setTimeout(() => {
+                    cardEl.classList.remove("active");
+                    badgeEl.className = "agent-state state-idle";
+                    badgeEl.innerText = "Bekliyor";
+                }, 15000);
+            }
+        }
+
+        async function fetchSystemActivity() {
+            try {
+                const response = await fetch(`${API_URL}/api/monitor/logs`);
+                if(!response.ok) throw new Error("HTTP Err");
+                const payload = await response.json();
+                
+                conDot.classList.remove("offline");
+                conText.innerText = "Sistem İletişimi: Aktif";
+
+                if(payload.status === "ok") {
+                    const logs = payload.data.dd1_bridge || [];
+                    if(logs.length > lastReadCount) {
+                        const newLogs = logs.slice(lastReadCount);
+                        lastReadCount = logs.length;
+                        
+                        newLogs.forEach(line => {
+                            if(line.includes("[TRANSITION]")) {
+                                // "ses_ustasi -> kabin_ustasi packet=IntakePacket" dizesini ayikla
+                                let toAg = null;
+                                let packetStr = "";
+                                
+                                const parts = line.split(" ");
+                                for(let i=0; i<parts.length; i++) {
+                                    if(parts[i] === "->") toAg = parts[i+1];
+                                }
+                                
+                                if(line.includes("packet=")) {
+                                    packetStr = line.split("packet=")[1].split(" ")[0];
+                                }
+                                
+                                // Usta ismini eslestir
+                                let guiId = "sozcu"; // varsayilan
+                                if(toAg === "kabin_ustasi") guiId = "kabin";
+                                else if(toAg === "lazer_ajani") guiId = "lazer";
+                                else if(toAg === "tezgahtar") guiId = "tezgahtar";
+                                
+                                setAgentStatus(guiId, true, `> İşleme alınan veri pakedi: ${packetStr}`);
+                            }
+                        });
+                    }
+                }
+            } catch(e) {
+                conDot.classList.add("offline");
+                conText.innerText = "Sistem İletişimi: Kesildi (Offline)";
+                lastReadCount = 0;
+            }
+        }
+
+        setInterval(fetchSystemActivity, 1000);
+    </script>
+</body>
+</html>

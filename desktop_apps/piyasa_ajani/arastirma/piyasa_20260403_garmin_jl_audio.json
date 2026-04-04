@@ -1,0 +1,26 @@
+{
+  "meta": {
+    "tarih": "2026-04-03",
+    "ajan": "Antigravity_Tarayici",
+    "kaynaklar": [
+      "https://support.garmin.com/en-US/?faq=ri2LKPFa5y1Hqz8BcDvu19"
+    ],
+    "odak": "Dış Kaynak - Garmin & JL Audio DVC (Çift Bobin) Bağlantı Rehberi"
+  },
+  "analiz": {
+    "markalar": ["Garmin Marine", "JL Audio"],
+    "saha_dili": ["DVC (Dual Voice Coil)", "Parallel Wiring", "Series Wiring", "Ohm Load", "Çift Bobin", "Paralel Bağlantı", "Seri Bağlantı"],
+    "teknik_sorular": [
+      "Çift bobin (DVC) subwoofer amfiye nasıl bağlanır?",
+      "Amfinin 1 ohm desteklemesi ne anlama gelir?",
+      "2 ohm DVC hoparlörü 1 ohma nasıl düşürürüm?"
+    ],
+    "hesap_parametreleri": [
+      "2-ohm DVC Seri Bağlantı = 4 Ohm Yük",
+      "2-ohm DVC Paralel Bağlantı = 1 Ohm Yük",
+      "4-ohm DVC Seri Bağlantı = 8 Ohm Yük",
+      "4-ohm DVC Paralel Bağlantı = 2 Ohm Yük"
+    ],
+    "ozet": "Garmin'in satın aldığı efsanevi JL Audio'nun destek departmanından gelen saf bağlantı matematiği. Bu sayfa kullanıcıların en çok hata yaptığı (amfi yakma sebebi) empedans/ohm hesaplamalarını öğretiyor. DVC (Çift Bobin) sistemlerde bobinlerin + ve -'lerini kendi aralarında bağlamak (Paralel) ohm'u yarıya böler ve amfiden maksimum güç çeker. Artıdan eksiye atlamak (Seri) ise ohm'u iki katına çıkararak güvenli ama düşük wattlı çalım sağlar. DD1 Bilgi Motoru artık bu JL Audio standartını ohms kanunu olarak biliyor."
+  }
+}

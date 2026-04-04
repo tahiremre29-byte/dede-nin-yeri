@@ -1,0 +1,48 @@
+{
+  "meta": {
+    "tarih": "2026-03-22T02:43",
+    "kaynak": "Kullanici kendi profili — Tahir Emre Yasar",
+    "not": "Bu DD1 platformunun hedef kullanici profili ve referans proje ornegi"
+  },
+
+  "referans_proje": {
+    "proje_adi": "Doblo A Sütun Projesi",
+    "arac": "Fiat Doblo",
+    "tarih": "16 Şubat, İstanbul",
+    "aciklama": "%50 el işçiliği %50 teknoloji %100 mutluluk",
+    "hashtag": ["#doblo", "#fiatdoblo", "#modifiye", "#lasercut", "#customdesign"],
+    "tasarim_ozellikleri": {
+      "sekil": "Hexagonal (bal peteği) hoparlör pod",
+      "teknik": "Lazer kesim — precision cut",
+      "aydinlatma": "Mor/mavi LED backlight",
+      "konum": "A sütun (A-pillar) hoparlör monte noktası",
+      "malzeme": "MDF veya akrilik lazer kesim"
+    },
+    "dd1_baglantisi": "Bu projenin kabin/pod tasarımı DD1'in DXF çıktısı ile üretilebilir — tam hedef kullanım senaryosu"
+  },
+
+  "kullanici_profili": {
+    "ad": "Tahir Emre Yaşar (DDSOUND)",
+    "konum": "İstanbul",
+    "meslek": "Profesyonel car audio kurulum ustası",
+    "network": {
+      "Efecan_Korkulu": "22 ortak arkadaş",
+      "Emre_Akkoc": "53 ortak arkadaş",
+      "Ali_Yesilova": "1 ortak arkadaş"
+    },
+    "fotograf_galeri": [
+      "Altın renkli hoparlör kurulumu (premium finish)",
+      "SPL yarışma kurulumları",
+      "Profesyonel iç döşeme işleri",
+      "Head unit kurulumları"
+    ],
+    "uzmanlik": ["A-pillar pod", "custom enclosure", "laser cut design", "LED entegrasyonu", "profesyonel kurulum"]
+  },
+
+  "dd1_icin_kritik_cikarim": {
+    "hedef_kitle_ornegi": "DDSOUND gibi ustalar — hem tasarım yapan hem sahaya inen, hem dijital hem el işçiliği",
+    "dd1_deger_onerisi": "Ustanın aklındaki tasarımı DXF'e çevirmek — 'el işçiliginin %50'sini teknolojiye yükle'",
+    "lazer_entegrasyonu": "DD1 DXF çıktısı → lazer kesim → usta montaj — döngü tamamlanıyor",
+    "referans_mesaj": "%50 el işçiliği %50 teknoloji → DD1 ile %30 el işçiliği %70 teknoloji mümkün"
+  }
+}

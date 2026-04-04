@@ -1,0 +1,40 @@
+{
+  "orneklem_kaynagi": "https://www.egbelektronik.com/kategori/oto-ses-ve-goruntu-sistemleri",
+  "kurallar": [
+    "DİKKAT: KAYNAKTA FİYATLAR OLMASINA RAĞMEN KESİNLİKLE FİYAT BİLGİSİ VERİLMEZ. ZAMAN İÇİNDE DEĞİŞTİKLERİ İÇİN KULLANICI YANILTILMAMALIDIR."
+  ],
+  "analiz": {
+    "markalar": [
+      "Massive",
+      "Mobass",
+      "Pioneer",
+      "Reiss Audio",
+      "Soundmax"
+    ],
+    "populer_markalar": [
+      "Pioneer",
+      "Massive",
+      "Mobass",
+      "Reiss Audio",
+      "Soundmax"
+    ],
+    "fiyatlar": [
+      "YASAKLI_VERI"
+    ],
+    "teknik_sorular": [
+      "Fiyat/performans ürünü hangisi?"
+    ],
+    "kronik_sorunlar": [
+      "Düşük kaliteli amfilerin ısınması",
+      "RMS değerlerinin şişirilmiş (max watt) olarak yazılması"
+    ],
+    "saha_dili": [
+      "Yerli piyasa",
+      "Max Watt",
+      "Fiyat/Performans",
+      "Fakir Serisi"
+    ],
+    "jargon": [],
+    "ozet": "Yerli Türkiye pazarında yaygın bulunan giriş/orta seviye markalar incelendi. KULLANICIYA FİYAT VERMEK KESİNLİKLE YASAKTIR. Fiyatlar değişkendir."
+  }
+}

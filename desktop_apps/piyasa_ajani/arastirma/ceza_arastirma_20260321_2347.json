@@ -1,0 +1,40 @@
+{
+  "cezalar": [
+    {
+      "tur": "Ses Sistemi Cezası",
+      "miktar": "993 TL",
+      "kanun_maddesi": "2918 sayılı Karayolları Trafik Kanunu"
+    },
+    {
+      "tur": "Gürültü Kirliliği Cezası",
+      "miktar": "11 bin TL",
+      "kanun_maddesi": "Çevre Kanunu"
+    },
+    {
+      "tur": "Araçlara Sonradan Takılan Ses ve Ekran Sistemleri Cezası",
+      "miktar": "21.000 TL",
+      "kanun_maddesi": "Karayolları Trafik Kanunu"
+    }
+  ],
+  "aciklamalar": [
+    {
+      "yetkili": "Emniyet",
+      "kurum": "İçişleri Bakanlığı",
+      "tarih": "27 Şubat 2026"
+    },
+    {
+      "yetkili": "Çevre ve Şehircilik Bakanlığı",
+      "kurum": "Çevre ve Şehircilik Bakanlığı",
+      "tarih": "2025"
+    }
+  ],
+  "piyasa_etkisi": "Ses sistemi sahipleri ve esnafı arasında endişe ve kaygı yaratmıştır. Bazı araç sahipleri ses sistemlerini değiştirmek veya kaldırmak zorunda kalabilir.",
+  "kullanici_tepkileri": [
+    "Ses sistemi sahipleri, cezaların yüksek olduğunu ve haksızlık olduğunu düşünüyor.",
+    "Esnaf, yeni düzenlemelerin işlerini olumsuz etkileyeceğinden endişe ediyor."
+  ],
+  "yasal_durum": "Yüksek sesle müzik dinlemek veya çevreyi rahatsız edecek şekilde ses sistemi kullanmak yasak. Araçlarda ses sistemi bulundurmak serbest ancak kamu düzenini bozacak şekilde kullanılmasını hedef alan düzenlemeler yapılmıştır.",
+  "ozet": "Türkiye'de ses sistemi cezaları ve gürültü kirliliği cezaları hakkında düzenlemeler yapılmıştır. Cezalar yüksek ve ses sistemi sahipleri ve esnafı arasında endişe yaratmıştır.",
+  "tarih": "20260321_2347",
+  "konu": "turkiye_ses_cezalari"
+}

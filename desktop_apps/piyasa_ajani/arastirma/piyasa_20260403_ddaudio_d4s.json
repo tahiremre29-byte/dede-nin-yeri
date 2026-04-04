@@ -1,0 +1,35 @@
+{
+  "orneklem_kaynagi": "DDaudio.com & Down4SoundShop.com",
+  "analiz": {
+    "markalar": [
+      "Digital Designs (DD Audio)",
+      "Down4Sound"
+    ],
+    "populer_markalar": [
+      "DD Audio",
+      "D4S (Down4Sound)"
+    ],
+    "fiyatlar": [],
+    "teknik_sorular": [
+      "DD Audio markasının kendine has 'DD Box' kabin hesaplama standartlarına uyuluyor mu?",
+      "Ekstrem cihaz için DD Audio'nun sağladığı subwoofer konfigüratörü varyasyonları (Z-Serisi özel motor vb.) göz önünde bulunduruldu mu?",
+      "Down4Sound üzerinden temin edilen ağır SPL cihazlarını besleyecek devasa güç (0 AWG OFC kablo ve lityum/AGM akü) mevcut mu?"
+    ],
+    "kronik_sorunlar": [
+      "DD Audio cihazlarındaki aşırı sert süspansiyon sistemlerinde (stiff spider) yetersiz rodaj (break-in) dönemi sonucu performans alamama veya arızalar."
+    ],
+    "saha_dili": [
+      "Subwoofer Konfigüratörü",
+      "DD Box System",
+      "Custom Motor Setup (Özel Motor)",
+      "Amerikan SPL Pazarı",
+      "D4S"
+    ],
+    "jargon": [
+      "DD Box",
+      "Z-Serisi",
+      "D4S LTO (Lithium Akü)"
+    ],
+    "ozet": "DD Audio (Digital Designs) ve Down4SoundShop detayları sisteme entegre edildi. DD Audio'nun kendine has kabin tasarımı (DD Box), sıkı süspansiyon yapısı ve subwoofer konfigüratör seçenekleri sistemin aklına yazıldı; ayrıca neredeyse tüm devasa Amerikan SPL markalarının buluşma noktası olan Down4Sound platformunun endüstrideki ağırlığı Ajan tarafından öğrenildi."
+  }
+}

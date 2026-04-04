@@ -1,0 +1,54 @@
+{
+  "orneklem_kaynagi": "Ağır Sıklet SPL Uzman Sınıflandırma Raporu",
+  "analiz": {
+    "markalar": [
+      "Sundown Audio",
+      "Digital Designs (DD Audio)",
+      "DC Audio",
+      "Fi Car Audio",
+      "Skar Audio",
+      "Resilient Sounds",
+      "Kicker",
+      "Rockford Fosgate",
+      "Orion",
+      "Memphis Audio",
+      "MTX Audio"
+    ],
+    "populer_markalar": [
+      "Skar Audio",
+      "Sundown Audio",
+      "Kicker",
+      "DD Audio",
+      "Rockford Fosgate"
+    ],
+    "fiyatlar": [],
+    "teknik_sorular": [
+      "DC Audio Level 6 veya Fi Team Serisi gibi 10.000W+ cihazları besleyecek çoklu alternatör (High Output Alternator) altyapısı var mı?",
+      "MTX Jackhammer veya Rockford T3 19 inç gibi devasa ağırlıktaki cihazlar için aracın şasisine destekleyici profiller (welding/bracing) yapıldı mı?"
+    ],
+    "kronik_sorunlar": [
+      "Aşırı güç çeken Salt serisi veya HCCA serisi cihazlarda yetersiz lityum bankaları sebebiyle amfinin protect (koruma) moduna geçmesi.",
+      "Skar Audio gibi popüler/fiyat performans ürünlerinin kapasitesinden fazla zorlanıp DC akımla (kliple) yakılması."
+    ],
+    "saha_dili": [
+      "Safkan SPL Devi",
+      "Klasik Amerikan",
+      "Hand-built in USA",
+      "Kare Subwoofer (Solo-Baric)",
+      "Kırmızı Körüklü (HCCA)"
+    ],
+    "jargon": [
+      "Z-v.6 / Nightshade",
+      "Salt Serisi Amfi",
+      "Level 5 / Level 6",
+      "Team Series / BTL",
+      "ZVX / EVL",
+      "Warhorse Amfi",
+      "Solo-Baric L7",
+      "MOJO",
+      "JackHammer 22\"",
+      "HCCA"
+    ],
+    "ozet": "Endüstrinin en sert Amerikan SPL cihazları iki ana kategoriye ayrılarak sisteme işlendi: 1) SAFKAN SPL DEVLERİ: Sundown, DD, DC Audio (Level 6), Fi (Butik ABD yapımı), Skar ve Resilient Sounds. Bu grup cam esneten profesyonel SPL'cilerin tepe noktasıdır. 2) KLASİKLER: Kicker (L7 kare bas), Rockford (T serisi), Orion (Kırmızı körük HCCA), Memphis (MOJO) ve MTX (Jackhammer). Ajan bu efsanevi modelleri tanıyacak ve devasa amfi/akü altyapısı olmadan bunların beslenemeyeceği yönünde tavsiye verecektir."
+  }
+}

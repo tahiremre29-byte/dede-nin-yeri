@@ -1,0 +1,29 @@
+{
+  "meta": {
+    "tarih": "2026-04-03",
+    "ajan": "Antigravity_Tarayici",
+    "kaynaklar": [
+      "https://diyaudiotr.com/makale/hoparlorler-ve-hoparlor-kabinleri-2.html"
+    ],
+    "odak": "Yerli Uzman Akustik Teorileri - Hoparlörler ve Hoparlör Kabinleri - 2"
+  },
+  "analiz": {
+    "markalar": ["WinISD Beta", "Kendin Yap (DIY)"],
+    "saha_dili": [
+      "Rezonans Frekansı", "Faz Kayması", "Vent Mach (Port Hızı)", "Gönye Burun 45°",
+      "Thiele Small (TS)", "Qts, Qes, Qms, Vas, Fs, SPL", "Beyaz Tutkal", "İşkence"
+    ],
+    "teknik_sorular": [
+      "Hoparlörler neden kutu içerisinde çalışma ihtiyacı duyarlar?",
+      "TS parametreleri olmadan kabin yapılır mı?",
+      "Port (vent) hızının sınırı kaç olmalı?"
+    ],
+    "hesap_parametreleri": [
+      "Kutu birleştirmesinde çivi/vida kullanılmaz; Beyaz tutkalla yapıştırılıp işkenceyle (mengene) 1 gün sıkılır. İçeriden silikon çekilir.",
+      "Vent Mach (Port basınç/hava hızı) asla 0.15'in üzerine çıkmamalıdır, yoksa rüzgar/ıslık sesi yapar.",
+      "Kutunun hacmi büyüdükçe ve ahşap esnedikçe iç rezonans frekansı DÜŞER.",
+      "İç çeperlerin muflonla (elyaf/sünger) kaplanması hacmi değiştirmez ama yansımayı/yankıyı keser."
+    ],
+    "ozet": "D.Hardware müstear isimli yazarın tamamen saf kabin mühendisliği anlattığı rehberdir. Ustaların çokça tartışıp yanlış bildiği 'vida mı atalım, silikon mu?' sorusuna net 'çivi ve vida kullanmayın, sadece bol beyaz tutkal ve işkenceyle sıkın' diyor. Ayrıca port hızının (Vent Mach) 0.15'i geçmemesi kuralını sistemlerimize eklemeliyiz. DD1'in port hesaplamalarında rüzgar sesini engellemek için mükemmel bir akustik limitörü olarak kullanılacak bilgi."
+  }
+}

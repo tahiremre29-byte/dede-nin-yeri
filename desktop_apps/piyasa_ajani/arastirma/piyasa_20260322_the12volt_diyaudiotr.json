@@ -1,0 +1,398 @@
+{
+  "meta": {
+    "tarih": "2026-03-22",
+    "ajan": "piyasa_arastirmacisi",
+    "kaynaklar": [
+      "https://www.the12volt.com/caraudio/subwoofer-wiring-diagrams.asp",
+      "https://www.the12volt.com/caraudio/thiele-small-parameters.asp",
+      "https://diyaudiotr.com/makale/hoparlorler-ve-hoparlor-kabinleri-2",
+      "https://diyaudiotr.com/makaleler/"
+    ],
+    "aciklama": "Araba ses sistemi teknik bilgi ve piyasa verileri — the12volt.com ve diyaudiotr.com'dan derlendi"
+  },
+
+  "wiring_semalari": {
+    "kaynak": "https://www.the12volt.com/caraudio/subwoofer-wiring-diagrams.asp",
+    "aciklama": "Subwoofer bağlantı şemaları — tüm SVC/DVC kombinasyonları",
+    "kategoriler": {
+      "1_ohm_dvc": {
+        "urls": [
+          "https://www.the12volt.com/caraudio/subwoofer-wiring-diagrams.asp?Q=1&I=12",
+          "https://www.the12volt.com/caraudio/subwoofer-wiring-diagrams.asp?Q=2&I=12",
+          "https://www.the12volt.com/caraudio/subwoofer-wiring-diagrams.asp?Q=3&I=12",
+          "https://www.the12volt.com/caraudio/subwoofer-wiring-diagrams.asp?Q=4&I=12"
+        ],
+        "baglantilar": {
+          "1x_DVC1": {
+            "ic_seri": "2 ohm",
+            "ic_paralel": "0.5 ohm"
+          },
+          "2x_DVC1": {
+            "tumu_paralel": "0.25 ohm",
+            "tumu_seri": "4 ohm",
+            "ic_seri_dis_paralel": "1 ohm",
+            "ic_paralel_dis_seri": "1 ohm"
+          },
+          "3x_DVC1": {
+            "ic_seri_dis_seri": "6 ohm",
+            "ic_paralel_dis_paralel": "0.167 ohm"
+          },
+          "4x_DVC1": {
+            "tumu_paralel": "0.125 ohm",
+            "tumu_seri": "8 ohm"
+          }
+        }
+      },
+      "2_ohm_dvc": {
+        "baglantilar": {
+          "1x_DVC2": {
+            "ic_seri": "4 ohm",
+            "ic_paralel": "1 ohm"
+          },
+          "2x_DVC2": {
+            "tumu_paralel": "0.5 ohm",
+            "tumu_seri": "8 ohm",
+            "ic_seri_dis_paralel": "2 ohm",
+            "ic_paralel_dis_seri": "2 ohm"
+          }
+        }
+      },
+      "4_ohm_dvc": {
+        "baglantilar": {
+          "1x_DVC4": {
+            "ic_seri": "8 ohm",
+            "ic_paralel": "2 ohm"
+          },
+          "2x_DVC4": {
+            "tumu_paralel": "1 ohm",
+            "tumu_seri": "16 ohm",
+            "ic_seri_dis_paralel": "4 ohm",
+            "ic_paralel_dis_seri": "4 ohm"
+          },
+          "3x_DVC4": {
+            "ic_seri_dis_seri": "24 ohm",
+            "ic_paralel_dis_paralel": "0.667 ohm"
+          },
+          "4x_DVC4": {
+            "tumu_paralel": "0.5 ohm",
+            "tumu_seri": "32 ohm"
+          }
+        }
+      },
+      "6_ohm_dvc": {
+        "baglantilar": {
+          "1x_DVC6": {
+            "ic_seri": "12 ohm",
+            "ic_paralel": "3 ohm"
+          }
+        }
+      },
+      "4_ohm_svc": {
+        "baglantilar": {
+          "1x_SVC4": "4 ohm",
+          "2x_SVC4_paralel": "2 ohm",
+          "2x_SVC4_seri": "8 ohm",
+          "3x_SVC4_paralel": "1.33 ohm",
+          "3x_SVC4_seri": "12 ohm",
+          "4x_SVC4_paralel": "1 ohm",
+          "4x_SVC4_seri": "16 ohm"
+        }
+      },
+      "8_ohm_svc": {
+        "baglantilar": {
+          "1x_SVC8": "8 ohm",
+          "2x_SVC8_paralel": "4 ohm",
+          "2x_SVC8_seri": "16 ohm",
+          "3x_SVC8_paralel": "2.67 ohm",
+          "3x_SVC8_seri": "24 ohm",
+          "4x_SVC8_paralel": "2 ohm",
+          "4x_SVC8_seri": "32 ohm"
+        }
+      }
+    },
+    "wiring_kurallari": {
+      "seri_formul": "R_toplam = R1 + R2 + R3...",
+      "paralel_formul": "1/R_toplam = 1/R1 + 1/R2 + 1/R3...",
+      "min_amfi_impedans": "2 ohm (cok amfiler icin minimum)",
+      "guvenli_sinir": "1 ohm altina inme — amfi zarar gorur",
+      "tavsiye": "Hedef: ampfi min impedansini gecme, en dusuk gucte %110 ustu gitme"
+    }
+  },
+
+  "thiele_small_parametreleri": {
+    "kaynak": "https://www.the12volt.com/caraudio/thiele-small-parameters.asp",
+    "aciklama": "Hoparlor tasarimi icin temel parametreler",
+    "parametreler": {
+      "Fs": {
+        "ad": "Serbest Rezonans Frekansi",
+        "birim": "Hz",
+        "aciklama": "Hoparloru açik havada (serbest) rezonansa sokan frekans. Dusuk Fs = derin bas potansiyeli.",
+        "tipik_aralik": "20-60 Hz (subwoofer)"
+      },
+      "Qts": {
+        "ad": "Toplam Q Katsayisi",
+        "birim": "boyutsuz",
+        "aciklama": "Hoparloru kabin tipine yonlendirir. Formul: 1/Qts = 1/Qes + 1/Qms",
+        "yorumlama": {
+          "lt_0.35": "Portlu kabin tercih edilmeli",
+          "0.35_0.50": "Portlu veya sealed calisiyor",
+          "gt_0.50": "Sealed kabin tercih edilmeli",
+          "gt_0.70": "Bandpass veya cok buyuk hacim"
+        }
+      },
+      "Qes": {
+        "ad": "Elektriksel Q Katsayisi",
+        "birim": "boyutsuz",
+        "aciklama": "Hopalorun elektriksel sogutma kapasitesi"
+      },
+      "Qms": {
+        "ad": "Mekanik Q Katsayisi",
+        "birim": "boyutsuz",
+        "aciklama": "Hoparlor suresinin mekanik sonemleme kapasitesi"
+      },
+      "Vas": {
+        "ad": "Esit Hava Hacmi",
+        "birim": "litre veya ft3",
+        "aciklama": "Hoparlor suresunun itme kabiliyetini gosteren hava hacmi. Buyuk Vas = buyuk kabin gerektirir.",
+        "tipik_aralik": "20-200L (12 inç subwoofer icin genellikle 40-80L)"
+      },
+      "Xmax": {
+        "ad": "Maksimum Lineer Hareket",
+        "birim": "mm",
+        "aciklama": "Surekin distorsyonsuz hareket edebilecegi maksimum mesafe. Yuksek Xmax = yuksek SPL",
+        "tipik_aralik": "10-30mm (SPL subwoofer)"
+      },
+      "Sd": {
+        "ad": "Etkin Koni Alani",
+        "birim": "cm²",
+        "aciklama": "Koninin hava hareket ettiren efektif alani",
+        "formul": "Sd = pi * (cap_cm/2)²",
+        "ornek": "12 inc = 490 cm²"
+      },
+      "SPL": {
+        "ad": "Ses Basinc Duzeyi",
+        "birim": "dB @ 1W/1m",
+        "aciklama": "1 watt gucle 1 metre uzaklikta uretilen ses basinc seviyesi",
+        "tipik_aralik": "82-92 dB (subwoofer), yuksek SPL sistemler: 92+ dB"
+      },
+      "BL": {
+        "ad": "Kuvvet Faktoru",
+        "birim": "Tesla.metre (T·m)",
+        "aciklama": "Motor kuvvetinin olcusu. Yuksek BL = guclu kontrol, dusuk distorsiyon",
+        "tipik_aralik": "10-30 T·m"
+      },
+      "Re": {
+        "ad": "DC Bogim Direnci",
+        "birim": "ohm",
+        "aciklama": "Sarginin DC direnci. Nominal impedansdan dusuktur.",
+        "ornek": "4 ohm hoparlor genellikle 3.2-3.8 ohm Re"
+      },
+      "Le": {
+        "ad": "Bobin Induktansi",
+        "birim": "mH",
+        "aciklama": "Ses boginun induktansi. Yuksek Le = tiz frekans kaybi"
+      }
+    },
+    "hesap_formulleri": {
+      "Qtc_sealed": "Qtc = Qts × √(1 + Vas/Vb)",
+      "fc_sealed": "fc = Fs × Qtc / Qts",
+      "Vb_optimal": "Vb = Vas / ((Qtc_hedef/Qts)² - 1)",
+      "Fb_ported": "Fb = (343/2π) × √(Av / (Vb × Lv))",
+      "port_hizi": "v = (Sd × Xmax × Fb) / Av  [max 20 m/s]"
+    }
+  },
+
+  "kabin_turleri": {
+    "kaynak": "https://diyaudiotr.com/makale/hoparlorler-ve-hoparlor-kabinleri-2",
+    "aciklama": "Turkce teknik kaynak — DIY Audio Turkiye",
+    "turler": {
+      "sealed": {
+        "turkce_ad": "Kapali Kutu / Acoustic Suspension",
+        "ozellikler": [
+          "Hava sizintisi olmayan tamamen kapali yapi",
+          "Siki, kontrollü bas — dusuk distorsiyon",
+          "Faz farki olusturmaz — lineer cevap",
+          "Kucuk hacimde calisabilir (ported'a gore)",
+          "Ses kaybindan dolayı SPL dusuktur ama kalitesi yuksektir"
+        ],
+        "kullanim": "SQ (ses kalitesi), gunluk kullanim, yerli piyasada 'tok bas'",
+        "Qtc_hedef": "0.70-0.85 arasinda ideal",
+        "ornek_hacimler": {
+          "8_inc": "12-18 L",
+          "10_inc": "18-28 L",
+          "12_inc": "28-42 L",
+          "15_inc": "50-75 L",
+          "18_inc": "80-120 L"
+        },
+        "kesim_frekonasi": "-3dB icin fc = Fs × Qtc / Qts"
+      },
+      "ported": {
+        "turkce_ad": "Portlu Kutu / Vented Box / Bass-Reflex",
+        "ozellikler": [
+          "Port (boru/slot) ek SPL saglar",
+          "Port uzunlugu ve alani tuning frekansini (Fb) belirler",
+          "Sealed'dan daha derin bas elde edilebilir",
+          "Ciddi hesaplama gerektirir — hata durumunda kotu ses",
+          "Port yanlisliginda 50-100Hz'de 8dB fazladan guresultu olabilir"
+        ],
+        "kullanim": "SPL, patlama, guclu bas — yarismalar",
+        "ornek_hacimler": {
+          "8_inc": "20-30 L @ 45 Hz",
+          "10_inc": "28-45 L @ 42 Hz",
+          "12_inc": "40-65 L @ 38 Hz",
+          "15_inc": "70-110 L @ 35 Hz",
+          "18_inc": "120-180 L @ 30 Hz"
+        },
+        "fb_tuning_kurali": "Fb = Fs × 0.7-1.2 arasi",
+        "port_hizi_limiti": "Maksimum 20 m/s — asimak tislama gürültüsü yaratir",
+        "helmholtz_formulu": "Fb = (343/2π) × √(Av[m²] / (Vb[m³] × Lv[m]))"
+      },
+      "bandpass_4th": {
+        "turkce_ad": "4. Derece Bandpass",
+        "ozellikler": [
+          "Otomatik 4. derece bant geciren filtre islevi",
+          "Hoparlor 2 odada: ic (sealed) + dis (portlu)",
+          "Ses yalnizca porttan cikar",
+          "Yuksek SPL, dar bant — yarisma icin ideal",
+          "Ek aktif/pasif filtre gerekmez (ama eklenmesi daha iyi sonuc verir)"
+        ],
+        "kulllanim": "SPL yarismalar, bagaj acma, yuksek hacim",
+        "hacim_orani": "ic(sealed)/toplam = 0.40-0.55",
+        "ornek_12inc": "Toplam 55-75L, ic 25-35L @ 45-55Hz",
+        "karar_noktasi": "ratio < 0.4 = dar bant yuksek SPL, > 0.55 = genis bant"
+      },
+      "bandpass_6th": {
+        "turkce_ad": "6. Derece Bandpass",
+        "ozellikler": [
+          "Her iki oda da portlu",
+          "En genis bant, en yuksek SPL potansiyeli",
+          "Cok karmask yapim"
+        ],
+        "kullanim": "Profi sistemler, sahne"
+      }
+    }
+  },
+
+  "turkiye_piyasasi": {
+    "guvenilir_markalar": {
+      "subwoofer_uretici": [
+        "JL Audio (ABD) — yuksek kalite, referans seviyesi",
+        "Rockford Fosgate (ABD) — dengeli fiyat/performans",
+        "Sundown Audio (ABD) — SPL ve SQL icin popüler",
+        "DD Audio (ABD) — yuksek Xmax, SPL odakli",
+        "American Bass (ABD) — uygun fiyatli secenek",
+        "Memphis Audio (ABD) — ses kalitesi odakli",
+        "Skar Audio (ABD) — uygun fiyatli SPL",
+        "Hertz (Italya) — Avrupa kalitesi",
+        "Pioneer (Japonya) — genis piyasa",
+        "Sony Xplod (Japonya) — genis piyasa ama dusuk kalite"
+      ],
+      "amfi_uretici": [
+        "Rockford Fosgate — guvenilir, uzun omur",
+        "JL Audio — referans kalite",
+        "Soundigital (Brezilya) — guc/fiyat sampiyonu",
+        "Hertz — Avrupa kalitesi",
+        "Mosconi (Italya) — profi seviye",
+        "Skar Audio — uygun fiyatli",
+        "Taramps (Brezilya) — cok guclu SPL amfileri"
+      ],
+      "satici_turkiye": [
+        "Hifilife.com.tr",
+        "Zuhal Muzik",
+        "Yerel oto aksesuar magazalari",
+        "Trendyol / N11 (online, dikkatli ol — sahte urun riski)"
+      ]
+    },
+    "turkiye_ses_cezalari": {
+      "kaynak": "Turkiye Trafik Kanunu 2918 ve Cevre Kanunu",
+      "cezalar": {
+        "ses_sistemi_genel": "993 TL (Trafik Kanunu 2918)",
+        "modifiye_ses_sistemi": "21.000 TL (sonradan takilmis ekran/ses)",
+        "gurultu_kirliligi": "11.000 TL (Cevre Kanunu)"
+      },
+      "not": "2026 guncel — ceza miktarlari yeniden degerlendirilebilir"
+    },
+    "kurulum_kurallari": {
+      "kablo_kesiti": {
+        "1000W_icin": "min 4AWG (21mm²)",
+        "2000W_icin": "min 1/0 AWG (53mm²)",
+        "4000W_icin": "min 4/0 AWG (107mm²)"
+      },
+      "sigorta": {
+        "konum": "Aki kutbundan max 50cm uzakliga",
+        "deger": "Toplam amfi RMS gereksinimini karsilasin"
+      },
+      "topraklama": {
+        "noktasi": "En kisa mesafe, guvde metal noktasi (boya yoktur)",
+        "kablo": "En az power kablo kadar kalin"
+      },
+      "aki_guclendirme": {
+        "1000W_alti": "Orijinal aki yeterli olabilir",
+        "1000_2000W": "Ek kondansator veya ikinci aki",
+        "2000W_ustu": "Lithium veya AGM guclu aki zorunlu"
+      }
+    }
+  },
+
+  "saha_dili_sozlugu": {
+    "turkiye_sokak_dili": {
+      "bagaj_acti": "Disari vuran, fazla ses yapan sistem",
+      "tok_bas": "Kontrollü, siki, darbeli bas karakteri",
+      "patlama": "Yuksek SPL, vurucu bas",
+      "geldigim_belli_olsun": "Yüksek ses seviyesi, dikkat ceken sistem",
+      "iceri_vursun": "Kabin ici ses efekti",
+      "bas_borusu": "Port (ported kabinde)",
+      "kabin": "Speaker enclosure / hoparlor kutusu",
+      "usta": "Deneyimli kurulum teknisyeni",
+      "amfi_acilimi": "Amplifikatoru tam gucle calistirmak",
+      "gain": "Amfi kazanc ayari",
+      "crossover": "Frekans kesici / bolucü",
+      "twit": "Tweeter (yuksek frekans hoparloru)",
+      "mid": "Orta frekans hoparloru",
+      "kopru_baglanti": "Bridged mono — amfi cikisini birlestirme",
+      "flor_carpisi": "Araç zemininde tiz frekansin rezonansa girmesi",
+      "damping": "Ses onleme / titresim sonemleme malzemesi",
+      "pandizot": "Ses yalitim malzemesi (pandizot kaucuk)",
+      "polyester": "Kapali kutu dolgu malzemesi — yuksek sonem",
+      "MDF": "Orta yogunluklu ahsap levha — standart kabin malzemesi"
+    },
+    "teknik_carpikliklar": {
+      "peak_watt_aldatmacasi": "Peak guc genellikle RMS'nin 2-4 katiyla gosterilir — gercek performans RMS'dir",
+      "peak_spl": "Olculecek en yüksek SPL anlık degeri — ortalama SPL degil",
+      "max_ohm_karmasiklik": "DVC woofer'in ic baglanitisi seri mi paralel mi — bunu anlamak onemli"
+    }
+  },
+
+  "diyaudiotr_kaynaklar": {
+    "makale_listesi": [
+      {
+        "baslik": "Hoparlörler ve Hoparlör Kabinleri - 1",
+        "url": "https://diyaudiotr.com/makale/hoparlorler-ve-hoparlor-kabinleri-1.html",
+        "icerik": "Hoparlor tanimi, surucu cesitleri, parametreler"
+      },
+      {
+        "baslik": "Hoparlörler ve Hoparlör Kabinleri - 2",
+        "url": "https://diyaudiotr.com/makale/hoparlorler-ve-hoparlor-kabinleri-2",
+        "icerik": "Kabin turleri (sealed/ported/bandpass), T/S hesaplamalari, WinISD kullanimi",
+        "anahtar_bilgi": "Portlu kabinde port uzunlugu yanlis olunca 50-100Hz'de 8dB fazla gurultu",
+        "kaynak_dili": "Turkce"
+      },
+      {
+        "baslik": "Çok Pinli SMD Komponentleri Lehimleme",
+        "url": "https://diyaudiotr.com/makale/cok-pinli-smd-komponentleri-utuyle-lehimleme-yontemi.html",
+        "icerik": "Elektronik lehim teknigi"
+      }
+    ]
+  },
+
+  "the12volt_kaynaklar": {
+    "wiring_wizard": "https://www.the12volt.com/caraudio/subwoofer-wiring-diagrams.asp",
+    "kabin_hesaplayici": "https://www.the12volt.com/caraudio/boxcalcs.asp",
+    "ts_parametreler": "https://www.the12volt.com/caraudio/thiele-small-parameters.asp",
+    "sealed_kabin": "https://www.the12volt.com/caraudio/acoustic-suspension-sealed-subwoofer-boxes.asp",
+    "portlu_bandpass": "https://www.the12volt.com/caraudio/fourth-order-and-bandpass-subwoofer-boxes.asp",
+    "6th_8th_order": "https://www.the12volt.com/caraudio/sixth-and-eighth-order-subwoofer-boxes.asp",
+    "pasif_crossover": "https://www.the12volt.com/caraudio/passive-crossovers.asp",
+    "not": "Bu site en kapsamli ingilizce car audio teknik kaynaklarindan biridir. Formulleri dogrulanmistir."
+  }
+}

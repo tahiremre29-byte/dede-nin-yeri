@@ -1,0 +1,35 @@
+{
+  "orneklem_kaynagi": "Carrozzeria Heritage (Pioneer Japan - Doğrulanmış Tarihçe)",
+  "analiz": {
+    "markalar": [
+      "Carrozzeria",
+      "Pioneer"
+    ],
+    "populer_markalar": [
+      "Carrozzeria",
+      "Pioneer"
+    ],
+    "fiyatlar": [],
+    "teknik_sorular": [
+      "Orijinal bir JDM Carrozzeria ünite kullanılacaksa, Japonya FM bandı (76-90 MHz) ile Avrupa/Türkiye bandı uyuşmazlığını çözecek FM dönüştürücü modül (band expander) tedarik edildi mi?",
+      "ODR (Optical Digital Reference) serisine uygun, kayıpsız saf ses aktarımı yapacak fiber optik altyapı mevcut mu?"
+    ],
+    "kronik_sorunlar": [
+      "Eski nesil Carrozzeria cihazlarda optik okuyucu zayıflaması. Ayrıca Cyber-Navi gibi haritalı ünitelerin Japonya haritası dışına çıkıldığında (GPS/Yazılım) kullanılamaması."
+    ],
+    "saha_dili": [
+      "1982 Efsanesi",
+      "İtalyan Tasarım Felsefesi (Coachbuilder)",
+      "Cyber-Navi",
+      "JDM (Japon İç Pazarı) Teyp",
+      "Band Expander"
+    ],
+    "jargon": [
+      "Carrozzeria Heritage",
+      "ODR Serisi",
+      "Cyber-Navi",
+      "Raku-Navi"
+    ],
+    "ozet": "Pioneer'in elit klasmanı Carrozzeria dosyasının Global Pioneer sitesinden doğrulaması yapıldı. 1982'de kurulan ve ismini İtalyan özel otomobil tasarımcılarından alan markanın felsefesi sisteme işlendi. Ses Ustası; dünyanın ilk AR (Artırılmış Gerçeklik) cam ekranlı modeli 'Cyber-Navi' ve 'Raku-Navi' gibi JDM özel cihazlarının Japonya'ya has olduğunu ve Türkiye/Avrupa'ya çıkarıldığında FM Band Expander gibi modüllere veya ciddi yazılım adaptasyonuna ihtiyaç duyduğunu mutlak bir gerçek olarak öğrendi."
+  }
+}

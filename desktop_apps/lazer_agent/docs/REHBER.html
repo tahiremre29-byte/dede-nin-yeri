@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DD1 Workshop Tools — Kullanım Rehberi</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+
+    :root {
+      --bg:        #0d0d1a;
+      --bg2:       #12122a;
+      --bg3:       #1a1a3a;
+      --card:      #0f2040;
+      --accent:    #e94560;
+      --accent2:   #ff6b6b;
+      --teal:      #4ecdc4;
+      --text:      #eaeaea;
+      --dim:       #8888aa;
+      --border:    #2a2a5a;
+      --radius:    12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', 'Segoe UI', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: linear-gradient(135deg, #0f0f2e 0%, #1a0a2e 50%, #0a1a2e 100%);
+      border-bottom: 2px solid var(--accent);
+      padding: 48px 0 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(233,69,96,.18) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .logo-badge {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: rgba(233,69,96,.12);
+      border: 1px solid rgba(233,69,96,.4);
+      border-radius: 50px;
+      padding: 8px 22px;
+      margin-bottom: 20px;
+      font-size: 13px; font-weight: 600; color: var(--accent2);
+      letter-spacing: .05em;
+    }
+    header h1 {
+      font-size: clamp(28px, 5vw, 46px);
+      font-weight: 800;
+      letter-spacing: -.02em;
+      background: linear-gradient(90deg, #fff 30%, var(--accent2) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 10px;
+    }
+    header p {
+      color: var(--dim);
+      font-size: 16px;
+      max-width: 500px; margin: 0 auto;
+    }
+
+    /* ── LAYOUT ── */
+    .page { max-width: 950px; margin: 0 auto; padding: 0 24px 80px; }
+
+    /* ── NAV ── */
+    nav.toc {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin: 40px 0 32px;
+    }
+    nav.toc h2 { font-size: 13px; font-weight: 700; color: var(--accent); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 14px; }
+    nav.toc ol { padding-left: 20px; }
+    nav.toc li { margin: 6px 0; }
+    nav.toc a { color: var(--teal); text-decoration: none; font-weight: 500; }
+    nav.toc a:hover { color: #fff; text-decoration: underline; }
+
+    /* ── SECTIONS ── */
+    section { margin-bottom: 56px; }
+    section:target { scroll-margin-top: 24px; }
+
+    h2.section-title {
+      font-size: 22px; font-weight: 800;
+      display: flex; align-items: center; gap: 10px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 12px; margin-bottom: 24px;
+    }
+    h2.section-title .num {
+      background: var(--accent);
+      color: #fff;
+      font-size: 13px; font-weight: 700;
+      border-radius: 50%; width: 28px; height: 28px;
+      display: inline-flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    h3 { font-size: 17px; font-weight: 700; color: var(--teal); margin: 28px 0 10px; }
+
+    p { margin-bottom: 12px; color: #d0d0e8; }
+
+    /* ── IMAGES ── */
+    .screenshot {
+      width: 100%; border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 40px rgba(0,0,0,.5);
+      margin: 20px 0;
+      display: block;
+    }
+    .img-caption {
+      text-align: center; font-size: 12px; color: var(--dim);
+      margin-top: -12px; margin-bottom: 24px;
+    }
+    .img-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0;
+    }
+    @media (max-width: 640px) { .img-row { grid-template-columns: 1fr; } }
+
+    /* ── TABLE ── */
+    table {
+      width: 100%; border-collapse: collapse;
+      margin: 16px 0; border-radius: var(--radius); overflow: hidden;
+    }
+    th {
+      background: var(--card);
+      color: var(--accent);
+      font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+      padding: 10px 14px; text-align: left;
+    }
+    td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: #ccd; font-size: 14px; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(255,255,255,.03); }
+
+    /* ── CODE ── */
+    pre, code {
+      font-family: 'JetBrains Mono', 'Consolas', monospace;
+    }
+    code {
+      background: rgba(233,69,96,.12);
+      color: var(--accent2);
+      padding: 2px 7px; border-radius: 5px;
+      font-size: 13px;
+    }
+    pre {
+      background: #0a0a18;
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      overflow-x: auto;
+      font-size: 13px; line-height: 1.6; color: #c8c8e8;
+      margin: 14px 0;
+    }
+    pre code { background: none; padding: 0; color: inherit; }
+
+    /* ── CARDS ── */
+    .card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin: 16px 0;
+    }
+    .card.accent { border-left: 3px solid var(--accent); }
+    .card.teal   { border-left: 3px solid var(--teal); }
+    .card.warn   { border-left: 3px solid #f5a623; }
+
+    /* ── STEPS ── */
+    .steps { counter-reset: step; }
+    .step {
+      display: flex; gap: 18px; margin-bottom: 24px; align-items: flex-start;
+    }
+    .step-num {
+      counter-increment: step;
+      background: var(--accent);
+      color: #fff; font-weight: 800; font-size: 14px;
+      border-radius: 50%; width: 34px; height: 34px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 2px;
+    }
+    .step-body h4 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .step-body p  { margin: 0; color: var(--dim); }
+
+    /* ── PROGRESS BAR ── */
+    .progress-list { list-style: none; padding: 0; }
+    .progress-list li {
+      display: flex; align-items: center; gap: 12px;
+      padding: 8px 0; border-bottom: 1px solid var(--border);
+      font-size: 14px;
+    }
+    .progress-list li:last-child { border: none; }
+    .pbar { flex: 1; background: var(--border); border-radius: 20px; height: 6px; overflow: hidden; }
+    .pbar-fill { height: 100%; background: var(--accent); border-radius: 20px; }
+    .pct { width: 38px; text-align: right; font-size: 12px; color: var(--dim); }
+
+    /* ── BADGE ── */
+    .badge {
+      display: inline-block;
+      padding: 3px 10px; border-radius: 20px;
+      font-size: 12px; font-weight: 600;
+    }
+    .badge.red  { background: rgba(233,69,96,.2); color: var(--accent2); border: 1px solid rgba(233,69,96,.4); }
+    .badge.teal { background: rgba(78,205,196,.15); color: var(--teal); border: 1px solid rgba(78,205,196,.3); }
+    .badge.gray { background: rgba(136,136,170,.15); color: var(--dim); border: 1px solid rgba(136,136,170,.3); }
+
+    /* ── CALLOUT ── */
+    .callout {
+      border-radius: var(--radius);
+      padding: 14px 18px;
+      margin: 14px 0;
+      font-size: 14px;
+      display: flex; gap: 12px; align-items: flex-start;
+    }
+    .callout.tip  { background: rgba(78,205,196,.08);  border: 1px solid rgba(78,205,196,.3); }
+    .callout.warn { background: rgba(245,166,35,.08);  border: 1px solid rgba(245,166,35,.3); }
+    .callout.info { background: rgba(233,69,96,.08);   border: 1px solid rgba(233,69,96,.3); }
+    .callout-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+    .callout-body { color: #ccd; }
+    .callout-body strong { color: #fff; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 32px 0;
+      color: var(--dim);
+      font-size: 13px;
+    }
+    footer strong { color: var(--accent); }
+
+    /* ── Smooth scroll ── */
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════ HEADER ═══ -->
+<header>
+  <div class="logo-badge">✂ DD1 WORKSHOP TOOLS &nbsp;·&nbsp; v1.0.0</div>
+  <h1>Kullanım Rehberi</h1>
+  <p>Lazer Kesim Atölyesi için Tasarlanmış Masaüstü Aracı</p>
+</header>
+
+<div class="page">
+
+  <!-- İÇİNDEKİLER -->
+  <nav class="toc">
+    <h2>📋 İçindekiler</h2>
+    <ol>
+      <li><a href="#baslat">Programı Başlatma</a></li>
+      <li><a href="#genel">Genel Arayüz</a></li>
+      <li><a href="#ses">🎙 Ses Ustası Sekmesi</a></li>
+      <li><a href="#dxf">✂ DXF / SVG Çizim Aracı</a></li>
+      <li><a href="#pipeline">İşlem Hattı</a></li>
+      <li><a href="#export">Export Seçenekleri</a></li>
+      <li><a href="#exe">EXE Olarak Derleme</a></li>
+      <li><a href="#sss">Sık Sorulan Sorular</a></li>
+      <li><a href="#kutuphaneler">Kütüphane Listesi</a></li>
+    </ol>
+  </nav>
+
+  <!-- ═══ 1. BAŞLATMA ═══ -->
+  <section id="baslat">
+    <h2 class="section-title"><span class="num">1</span> Programı Başlatma</h2>
+
+    <h3>Bağımlılıkları Kur (tek seferlik)</h3>
+    <pre><code>pip install -r requirements.txt</code></pre>
+
+    <h3>Programı Aç</h3>
+    <pre><code>python main_app.py</code></pre>
+
+    <div class="callout tip">
+      <span class="callout-icon">💡</span>
+      <div class="callout-body"><strong>İpucu:</strong> Programı her seferinde komut satırından açmak yerine
+      <code>build.bat</code> ile derleyip tek <code>.exe</code> dosyası oluşturabilirsiniz. Detaylar <a href="#exe" style="color:var(--teal)">bölüm 7'de</a>.</div>
+    </div>
+  </section>
+
+  <!-- ═══ 2. GENEL ARAYÜZ ═══ -->
+  <section id="genel">
+    <h2 class="section-title"><span class="num">2</span> Genel Arayüz</h2>
+
+    <p>Program açıldığında üstte iki sekme görünür:</p>
+
+    <table>
+      <tr><th>Sekme</th><th>Amaç</th></tr>
+      <tr><td>🎙 <strong>Ses Ustası</strong></td><td>AI ajan ile metin tabanlı sohbet</td></tr>
+      <tr><td>✂ <strong>DXF / SVG Çizim Aracı</strong></td><td>Görsel → Lazer vektörü dönüştürme</td></tr>
+    </table>
+
+    <p>Pencerenin altındaki <strong>durum çubuğu</strong> her zaman görünür durumdadır ve program adını ile sürüm bilgisini gösterir.</p>
+  </section>
+
+  <!-- ═══ 3. SES USTASI ═══ -->
+  <section id="ses">
+    <h2 class="section-title"><span class="num">3</span> 🎙 Ses Ustası Sekmesi</h2>
+
+    <img src="img/ses_ustasi.png" class="screenshot" alt="Ses Ustası arayüzü" />
+    <p class="img-caption">Ses Ustası sekmesi — sohbet tabanlı AI ajan arayüzü</p>
+
+    <h3>Bileşenler</h3>
+    <table>
+      <tr><th>Bölüm</th><th>Açıklama</th></tr>
+      <tr><td><strong>Durum göstergesi</strong></td><td><span class="badge teal">● Hazır</span> — bekliyor &nbsp;|&nbsp; <span class="badge gray">● İşleniyor…</span> — yanıt geliyor</td></tr>
+      <tr><td><strong>Sohbet alanı</strong></td><td>Tüm konuşma geçmişi, otomatik scroll ile en alta gider</td></tr>
+      <tr><td><strong>Mesaj kutusu</strong></td><td>Yazın → <kbd>Enter</kbd> veya <strong>Gönder ➤</strong> butonuna tıklayın</td></tr>
+      <tr><td><strong>Temizle</strong></td><td>Sohbet geçmişini sıfırlar</td></tr>
+    </table>
+
+    <h3>Renk Kodları</h3>
+    <table>
+      <tr><th>Renk</th><th>Etiket</th><th>Ne Gösterir?</th></tr>
+      <tr><td><span class="badge red">■</span></td><td>[KULLANICI]</td><td>Sizin mesajlarınız</td></tr>
+      <tr><td><span class="badge teal">■</span></td><td>[AJAN]</td><td>AI ajanın yanıtları</td></tr>
+      <tr><td><span class="badge gray">■</span></td><td>[SİSTEM]</td><td>Durum ve bilgi mesajları</td></tr>
+      <tr><td><span class="badge red" style="background:rgba(255,60,60,.2)">■</span></td><td>[HATA]</td><td>Script hataları</td></tr>
+    </table>
+
+    <h3>AI Scriptini Bağlama</h3>
+    <p><code>ai_module.py</code> dosyasını bir metin editörüyle açın ve şu satırı bulun:</p>
+    <pre><code>AGENT_SCRIPT_PATH = ""   # ← buraya scriptinizin tam yolunu yazın</code></pre>
+    <p>Örnek:</p>
+    <pre><code>AGENT_SCRIPT_PATH = r"C:\AtolYe\agent.py"</code></pre>
+
+    <div class="callout info">
+      <span class="callout-icon">ℹ️</span>
+      <div class="callout-body"><strong>Demo Mod:</strong> Script bağlanmadan önce program mesajları echo eder ve
+      "AI agent henüz bağlanmadı" notunu gösterir. Atölye işleri için DXF/SVG sekmesini kullanabilirsiniz.</div>
+    </div>
+  </section>
+
+  <!-- ═══ 4. DXF/SVG ═══ -->
+  <section id="dxf">
+    <h2 class="section-title"><span class="num">4</span> ✂ DXF / SVG Çizim Aracı</h2>
+
+    <img src="img/dxf_svg.png" class="screenshot" alt="DXF SVG Çizim Aracı arayüzü" />
+    <p class="img-caption">DXF / SVG Çizim Aracı — sol kontrol paneli + sağ vektör ön izleme</p>
+
+    <div class="steps">
+
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h4>📥 Görsel Yükle</h4>
+          <p>Kesik çizgili alana dosyanızı <strong>sürükleyip bırakın</strong> ya da alana <strong>tıklayıp</strong> dosya seçin.</p>
+          <p style="margin-top:8px;font-size:13px;color:var(--dim)">Desteklenen: PNG · JPG · JPEG · BMP · WEBP &nbsp;|&nbsp; Maks: 4096 × 4096 px</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h4>🎚 Threshold Ayarla</h4>
+          <p>Slider ile 0–255 arasında bir değer seçin. Başlangıç önerisi: <strong>128</strong>.</p>
+          <table style="margin-top:10px">
+            <tr><th>Değer</th><th>Etki</th></tr>
+            <tr><td>0 – 80</td><td>Yalnızca çok koyu alanlar — ince detaylar</td></tr>
+            <tr><td>128</td><td>Dengeli — çoğu görsel için ideal</td></tr>
+            <tr><td>200 – 255</td><td>Geniş koyu alanlar — kalın konturlar</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h4>⚡ Lazer Modunu Ayarla</h4>
+          <img src="img/laser_mode.png" class="screenshot" alt="Normal Mod vs Lazer Modu karşılaştırması" style="margin:14px 0 8px" />
+          <p class="img-caption" style="margin-top:0">Sol: Normal Mod &nbsp;→&nbsp; Sağ: Lazer Modu (daha keskin konturlar)</p>
+          <table>
+            <tr><th>Mod</th><th>Ne Yapar?</th><th>Ne Zaman?</th></tr>
+            <tr><td>Normal</td><td>Otsu threshold</td><td>Sade logolar, net renk ayrımı</td></tr>
+            <tr><td>⚡ Lazer Modu</td><td>Adaptif threshold + güçlü Canny</td><td>Karmaşık detaylar, düşük kontrastlı görseller</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h4>▶ Dönüştür</h4>
+          <p>Butona basın. İşlem arka planda çalışır — program askıya girmez.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <h4>🔍 Ön İzleme</h4>
+          <p>Tamamlandığında SVG vektör sağ panelde görünür.</p>
+          <p style="font-size:13px;color:var(--dim)">🖱 Sol tık + sürükle → kaydır &nbsp;|&nbsp; ⌨ Ctrl + Scroll → yaklaştır / uzaklaştır</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ 5. İŞLEM HATTI ═══ -->
+  <section id="pipeline">
+    <h2 class="section-title"><span class="num">5</span> İşlem Hattı</h2>
+
+    <img src="img/pipeline.png" class="screenshot" alt="Vektörleştirme işlem hattı" />
+    <p class="img-caption">5 aşamalı otomatik dönüştürme süreci</p>
+
+    <ul class="progress-list">
+      <li><span style="width:120px;font-size:13px">Görsel Yükleme</span><div class="pbar"><div class="pbar-fill" style="width:5%"></div></div><span class="pct">5%</span></li>
+      <li><span style="width:120px;font-size:13px">Arka Plan Temizleme</span><div class="pbar"><div class="pbar-fill" style="width:20%"></div></div><span class="pct">20%</span></li>
+      <li><span style="width:120px;font-size:13px">Kontrast Artırma</span><div class="pbar"><div class="pbar-fill" style="width:35%"></div></div><span class="pct">35%</span></li>
+      <li><span style="width:120px;font-size:13px">Binary Maske</span><div class="pbar"><div class="pbar-fill" style="width:50%"></div></div><span class="pct">50%</span></li>
+      <li><span style="width:120px;font-size:13px">Kenar Algılama</span><div class="pbar"><div class="pbar-fill" style="width:65%"></div></div><span class="pct">65%</span></li>
+      <li><span style="width:120px;font-size:13px">SVG Üretimi</span><div class="pbar"><div class="pbar-fill" style="width:75%"></div></div><span class="pct">75%</span></li>
+      <li><span style="width:120px;font-size:13px">✅ Tamamlandı</span><div class="pbar"><div class="pbar-fill" style="width:100%"></div></div><span class="pct">100%</span></li>
+    </ul>
+  </section>
+
+  <!-- ═══ 6. EXPORT ═══ -->
+  <section id="export">
+    <h2 class="section-title"><span class="num">6</span> 💾 Export Seçenekleri</h2>
+
+    <table>
+      <tr><th>Buton</th><th>Format</th><th>Uyumlu Programlar</th></tr>
+      <tr>
+        <td>💾 SVG Olarak Kaydet</td>
+        <td>SVG (vektör)</td>
+        <td>Inkscape, Adobe Illustrator, web tarayıcılar</td>
+      </tr>
+      <tr>
+        <td>💾 DXF Olarak Kaydet</td>
+        <td>DXF R2010</td>
+        <td><strong>CorelDRAW</strong>, AutoCAD, lazer kesim yazılımları</td>
+      </tr>
+    </table>
+
+    <div class="callout warn">
+      <span class="callout-icon">⚠️</span>
+      <div class="callout-body"><strong>CorelDRAW'da DXF açarken:</strong>
+      <code>Dosya → İçe Aktar (Import)</code> kullanın. <code>Aç (Open)</code> değil.</div>
+    </div>
+
+    <h3>Vektör Kalite Kuralları</h3>
+    <div class="card teal">
+      <p style="margin:0;font-size:14px;color:#ccd;">
+        ✅ Arka plan tamamen kaldırılmış &nbsp;&nbsp;
+        ✅ Sadece dış kontur ve delikler &nbsp;&nbsp;
+        ✅ Gri ton yok, gradient yok &nbsp;&nbsp;
+        ✅ Kapalı path yapısı &nbsp;&nbsp;
+        ✅ Lazer kesime optimize
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ 7. EXE ═══ -->
+  <section id="exe">
+    <h2 class="section-title"><span class="num">7</span> 🏗️ EXE Olarak Derleme</h2>
+
+    <p>Programı internetsiz herhangi bir Windows bilgisayarda çalışacak tek bir <code>.exe</code> dosyasına dönüştürmek için:</p>
+
+    <pre><code>cd c:\Users\DDSOUND\Desktop\exemiz\dd1_workshop_tools
+.\build.bat</code></pre>
+
+    <p>Derleme tamamlandığında:</p>
+    <pre><code>dd1_workshop_tools\
+└── dist\
+    └── DD1_Workshop_Tools.exe   ← bu dosyayı paylaşın 🎯</code></pre>
+
+    <div class="callout tip">
+      <span class="callout-icon">⏱️</span>
+      <div class="callout-body"><strong>İlk derleme 3–5 dakika sürebilir.</strong> Bu normaldir.
+      Oluşan <code>.exe</code> dosyası Python gerektirmez, herhangi bir Windows 10/11 bilgisayarda çalışır.</div>
+    </div>
+  </section>
+
+  <!-- ═══ 8. SSS ═══ -->
+  <section id="sss">
+    <h2 class="section-title"><span class="num">8</span> ❓ Sık Sorulan Sorular</h2>
+
+    <div class="card accent">
+      <h3 style="margin-top:0;color:var(--accent2)">Görsel yükledim ama hiçbir şey çıkmıyor?</h3>
+      <p style="margin:0;font-size:14px">Threshold değerini düşürün (128'in altına). Görseliniz açık renkliyse <strong>Lazer Modunu</strong> açın ve tekrar dönüştürün.</p>
+    </div>
+
+    <div class="card accent">
+      <h3 style="margin-top:0;color:var(--accent2)">DXF CorelDRAW'da açılmıyor?</h3>
+      <p style="margin:0;font-size:14px"><code>Dosya → Aç</code> değil, <code>Dosya → İçe Aktar (Import)</code> kullanın. Format R2010 DXF seçin.</p>
+    </div>
+
+    <div class="card accent">
+      <h3 style="margin-top:0;color:var(--accent2)">İşlem çok uzun sürüyor?</h3>
+      <p style="margin:0;font-size:14px">4096×4096 üzeri görseller otomatik küçültülür. Çok büyük dosyalar için görseli önceden boyutlandırın.</p>
+    </div>
+
+    <div class="card accent">
+      <h3 style="margin-top:0;color:var(--accent2)">AI sohbet cevap vermiyor?</h3>
+      <p style="margin:0;font-size:14px"><code>ai_module.py</code> içindeki <code>AGENT_SCRIPT_PATH</code> boşsa Demo Mod aktiftir.
+      Gerçek scripti bağlamak için bu değişkeni güncelleyin.</p>
+    </div>
+
+    <div class="card accent">
+      <h3 style="margin-top:0;color:var(--accent2)">ModuleNotFoundError hatası alıyorum?</h3>
+      <pre style="margin:8px 0 0;font-size:12px"><code>pip install -r requirements.txt</code></pre>
+    </div>
+  </section>
+
+  <!-- ═══ 9. KÜTÜPHANELer ═══ -->
+  <section id="kutuphaneler">
+    <h2 class="section-title"><span class="num">9</span> 📦 Kütüphane Listesi</h2>
+
+    <table>
+      <tr><th>Kütüphane</th><th>Amaç</th><th>Sürüm</th></tr>
+      <tr><td><code>PyQt6</code></td><td>Masaüstü arayüz (UI)</td><td>≥ 6.6</td></tr>
+      <tr><td><code>opencv-python-headless</code></td><td>Görsel işleme (threshold, kenar algılama)</td><td>≥ 4.9</td></tr>
+      <tr><td><code>Pillow</code></td><td>Görsel yükleme, format desteği</td><td>≥ 10.0</td></tr>
+      <tr><td><code>vtracer</code></td><td>Bitmap → SVG vektörleştirme</td><td>≥ 0.6</td></tr>
+      <tr><td><code>ezdxf</code></td><td>SVG → DXF dönüştürme</td><td>≥ 1.3</td></tr>
+      <tr><td><code>numpy</code></td><td>Matris / dizi işlemleri</td><td>≥ 1.26</td></tr>
+    </table>
+  </section>
+
+</div><!-- /.page -->
+
+<footer>
+  <strong>DD1 Workshop Tools</strong> &nbsp;·&nbsp; v1.0.0 &nbsp;·&nbsp; Lazer Atölye Araçları
+</footer>
+
+</body>
+</html>

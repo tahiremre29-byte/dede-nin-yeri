@@ -1,0 +1,37 @@
+{
+  "orneklem_kaynagi": "JBL Kapsamlı Analiz Raporu (Uzman Sınıflandırması)",
+  "analiz": {
+    "markalar": [
+      "JBL",
+      "JBL Selenium"
+    ],
+    "populer_markalar": [
+      "JBL"
+    ],
+    "fiyatlar": [],
+    "teknik_sorular": [
+      "JBL GTO serisinin kendine has 2 empedans (Ohm) teknolojisi, seçeceğiniz amfinin stabil ohm limitleriyle uyumlu mu?",
+      "Elinizdeki JBL, giriş seviyesi olan Stage mi yoksa Differential Drive kullanan devasa GTi serisi mi? Amfi RMS gücü bu ayırıma göre devasa farklılık gösterir."
+    ],
+    "kronik_sorunlar": [
+      "Giriş seviyesi (Stage/Club) ürünleri yüksek RMS zannedip güçlü amfilerle bobinlerini yakmak.",
+      "JBL'in metal (titanyum/alüminyum) ağırlıklı tweetter yapısının, 'soft/ipek tiz' sevenlere bazen kulak tırmalayıcı (harsh) gelmesi."
+    ],
+    "saha_dili": [
+      "JBL Decade (Efsane T595 Oval)",
+      "2 Ohm Empedans Teknolojisi",
+      "Sert ve Tok Bas Vurması",
+      "Parlak Çalan Tiz (Metalik)",
+      "Under-rated (Gizli Güçlü) Amfi",
+      "Harman International"
+    ],
+    "jargon": [
+      "Stage / Club / GTO",
+      "GTi Serisi (660GTi / W12GTi / W15GTi)",
+      "Power Serisi (PX Amfiler)",
+      "Differential Drive Teknolojisi",
+      "D250X / ST300 / ST400"
+    ],
+    "ozet": "Oto ses endüstrisinin devi JBL çok katmanlı olarak analiz edildi. Ajan; giriş/orta segmentteki ticari Cihazları (Stage, Club, 2-ohm kolay beslenen GTO), Efsanevi Yarışma ve Koleksiyon Serilerini (Kevlar/Differential Drive donanımlı GTi, gerçek gücünü gizleyen Power PX amfiler, klasik T595 Decade ovaller), Açık Hava (Selenium ST/D) ve OEM Premium (Toyota, Ferrari) alanlarını öğrendi. JBL'in genel ses karakterinin (yumuşak değil) sert/tok bas ve parlak (titanyum) tiz olduğu bilgisi ajana kalıcı bir kural olarak işlendi."
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "orneklem_kaynagi": "Ağır Sıklet SPL Uzman Raporu (DD1 Veritabanı Genişletmesi)",
+  "analiz": {
+    "markalar": [
+      "Incriminator Audio",
+      "Crossfire Audio",
+      "American Bass",
+      "B2 Audio"
+    ],
+    "populer_markalar": [
+      "B2 Audio",
+      "American Bass"
+    ],
+    "fiyatlar": [],
+    "teknik_sorular": [
+      "B2 Audio Rijitliği gibi ekstrem güç isteyen serilerde uygun port hava akış hızı dengelendi mi?",
+      "American Bass VFL veya Incriminator Warden gibi ağır motor cihazlara özel destekleyici (brace) kafesli kabin kullanıldı mı?"
+    ],
+    "kronik_sorunlar": [
+      "American Bass gibi çok sert (stiff) yapılı subwoofer serilerinde düşük frekanslara (Low Bass) inerken yüksek amfi gücü (overpowering) gereksinimi nedeniyle standart voltajlı araçlarda elektriğin çökmesi."
+    ],
+    "saha_dili": [
+      "Warden Serisi",
+      "Death Row",
+      "XT Amfi/Sub",
+      "VFL Serisi",
+      "Rage / Riot Serisi"
+    ],
+    "jargon": [
+      "SPL Combat",
+      "Hardcore SPL",
+      "Danimarka Menşeli Amerikan SPL (B2)"
+    ],
+    "ozet": "Incriminator Audio (Warden/Death Row), Crossfire Audio (XT Serisi), Amerikan Bass (Sert/Dayanıklı VFL Serisi) ve B2 Audio (Danimarka kökenli Amerikan pazarı devi, Rage/Riot serisi) olmak üzere Hardcore SPL sınıfı dev markalar sisteme öğretildi. Ses Ustası bu markalar anıldığında sıradan ticari serilerin ötesinde, tam bir 'yok edici' güç gerektiren yarışma kalibresindeki sistem mantığıyla cevap vermelidir."
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "orneklem_kaynagi": "OldSchoolStereo.com Konsept ve Felsefesi",
+  "analiz": {
+    "markalar": [
+      "Orion",
+      "Rockford Fosgate",
+      "Phoenix Gold",
+      "Precision Power (PPI)",
+      "Soundstream",
+      "Kicker"
+    ],
+    "populer_markalar": [
+      "Phoenix Gold",
+      "Precision Power (PPI)",
+      "Soundstream"
+    ],
+    "fiyatlar": [],
+    "teknik_sorular": [
+      "Sahip olduğunuz Old School amfiniz (Örn: Phoenix Gold veya PPI) yılların yorgunluğunu silmek için hiç re-cap (kondansatör yenileme) işleminden geçti mi?",
+      "Orijinal bir 'cheater amp' (gizli güçlü amfi) kullandığınızı biliyorsunuz, değil mi? Bu amfi kağıt üzerindeki Watt değerinden çok daha fazlasını (Under-rated) basabilir."
+    ],
+    "kronik_sorunlar": [
+      "NOS (New Old Stock - Sıfır ama eski depolama) ürünlerin içindeki elektronik bileşenlerin hiç kullanılmasa da zamana bağlı oksitlenme veya kurumalar yaşaması.",
+      "Yeni nesil Class-D amfilerin aksine eski nesil A/B sınıfı ağır amfilerin aşırı ısınıp çok fazla akım (Voltaj Yorgunluğu) çekmesi."
+    ],
+    "saha_dili": [
+      "Amp Dyno (Amfi Testi)",
+      "Cheater Amp (Gücünü Saklayan Amfi)",
+      "Under-rated (Fazla RMS Çıkaran)",
+      "NOS (Kutusu Açılmamış Eski Seri)",
+      "Big 3 (Elektrik Güçlendirmesi)"
+    ],
+    "jargon": [
+      "OldSchoolStereo",
+      "Re-cap (Yenileme)"
+    ],
+    "ozet": "80'ler ve 90'lar Car Audio Altın Çağının kalbi kabul edilen OldSchoolStereo.com konsepti sisteme okutuldu. Ajan artık eski seri Orion, PPI, Phoenix Gold, Soundstream gibi amfileri duyunca bunların kağıt üstünde yazan değerden çok daha fazla güç veren 'Cheater Amp' veya 'Under-rated' efsaneleri olduğunu biliyor. Aynı zamanda kullanıcıyı NOS kavramı ve eski parçaların re-cap (yenileme) ihtiyaçları konusunda ciddi şekilde uyaracak refleks kazandı."
+  }
+}

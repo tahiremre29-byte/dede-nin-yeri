@@ -1,0 +1,75 @@
+{
+  "meta": {
+    "tarih": "2026-03-22T02:37",
+    "ajan": "piyasa_arastirmacisi",
+    "kaynak": "Facebook — Big Bang Sounds Grubu (screenshot)",
+    "url": "https://www.facebook.com/groups/1572668592895430"
+  },
+
+  "grup_bilgisi": {
+    "ad": "Big Bang Sounds (Grup)",
+    "erisim": "Bu grubu herkes bulabilir — açık grup",
+    "odak": "SQ (ses kalitesi), DSP head unit, genel car audio",
+    "fark": "SPL Team Turkey'den farklı — daha çok SQ ve ürün tavsiyeleri"
+  },
+
+  "gozlemlenen_postlar": [
+    {
+      "yazar": "Eymen Efe Mat",
+      "tarih": "20 Mart 02:08",
+      "konu": "Head unit (teyp) tavsiyesi",
+      "icerik": "ForX XQ 7452DSP modeli almayı düşünüyorum. Amacım uzun yıllar götürecek, SES KALİTESİ ÜZMEYECEK, araçtan araca takabileceğim model. 8 kanalın hepsini kullanacağım.",
+      "karsilastirma": "ForX XQ-710-700 ile neredeyse aynı, sadece +50RMS 100W çıkış farkı var",
+      "etkilesim": "3 beğeni, 13 yorum",
+      "yanit_1": {
+        "yazar": "Yaşar Andaş (Yükselen katkıda bulunan)",
+        "yorum": "Gayet iyi 1 senedir kullanıyorum. RCA çıkışları çok kuvvetli"
+      },
+      "yanit_2": {
+        "yazar": "Burak Nedebil",
+        "yorum": "7450'yi 1.5 senedir aktif olarak 2 araçta kullanıyorum. Kenwood 306 kullanıcısıydım. Ben 7450'yi ayar konusunda daha etkili buluyorum"
+      }
+    }
+  ],
+
+  "urun_veritabani": {
+    "ForX": {
+      "kategori": "Head Unit / DSP Head Unit",
+      "modeller": ["XQ 7452 DSP", "XQ-710", "XQ-700", "7450"],
+      "ozellikler": "8 kanal, DSP, güçlü RCA çıkışı",
+      "kullanici_gorusu": "Uzun ömürlü, araçtan araca geçişe uygun, RCA çıkışları kuvvetli",
+      "rakip_karsilastirma": "Kenwood 306 vs ForX 7450 — ForX ayar açısından üstün",
+      "hedef_kitle": "SQ odaklı, çoklu araç kullananlar"
+    },
+    "Kenwood": {
+      "kategori": "Head Unit",
+      "modeller": ["306"],
+      "kullanici_gorusu": "İyi ama ForX'e göre ayar konusunda daha az etkili"
+    }
+  },
+
+  "saha_dili_yeni": {
+    "teyp": "Head unit (araç teybi / car stereo)",
+    "rca_cikisi": "RCA output — amfi bağlantı jakları",
+    "8_kanal": "8 channel — yüksek kanal sayılı DSP çıkışı",
+    "araçtan_araca": "Portabilite — aynı ürünü birden fazla araçta kullanmak",
+    "ayar": "DSP tuning / equalizer ayarı",
+    "kuvvetli_rca": "Yüksek voltajlı RCA çıkışı — gürültüsüz sinyal aktarımı"
+  },
+
+  "piyasa_gozlem": {
+    "trend": "DSP head unit talebi artıyor — kullanıcılar Kenwood gibi gelenekselden ForX gibi DSP'ye geçiyor",
+    "karar_kriterleri": ["uzun ömür", "ses kalitesi", "araçtan araca geçiş kolaylığı", "DSP ayar imkanı", "RCA kalitesi"],
+    "hedef_kitle": "Ciddi SQ kullanıcıları — çok araç kullananlar, DSP ile ses optimize edenler",
+    "dd1_acisi": "Bu segment kabin değil head unit odaklı — DD1 sistemine henüz gelmediler, ama ilk adım bu kullanıcılarla tanışmak"
+  },
+
+  "medya_gozlem": {
+    "fotograflar": [
+      "ForX markalı head unit görseli (siyah üniteli DSP)",
+      "Woofer yakın çekimi — ses bobini/magnet detayı (hasar görmüş koni)",
+      "Başka bir woofer yakın çekimi"
+    ],
+    "hasar_gozlemi": "Grupta hasar görmüş woofer fotoğrafları var — kullanıcılar hasar teşhisi için paylaşıyor"
+  }
+}

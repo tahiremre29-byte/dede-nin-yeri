@@ -1,0 +1,55 @@
+{
+  "orneklem_kaynagi": "Brezilya Pancadão ve PA Derin Analiz Raporu",
+  "analiz": {
+    "markalar": [
+      "Taramps",
+      "Stetsom",
+      "Soundigital",
+      "Banda Audioparts",
+      "Eros Alto-Falantes",
+      "Triton Alto-Falantes",
+      "Snake Pro",
+      "7Driver",
+      "Hard Power",
+      "Expert Electronics",
+      "JFA Electronics",
+      "Selenium",
+      "JBL Selenium"
+    ],
+    "populer_markalar": [
+      "Taramps",
+      "Soundigital",
+      "Eros Alto-Falantes",
+      "JBL Selenium"
+    ],
+    "fiyatlar": [],
+    "teknik_sorular": [
+      "Taramps HV serisi kullanılıyorsa, çoklu seri bağlı (400V+) akü bankasında gerekli can güvenliği (High Voltage izolasyon) tedbirleri alındı mı?",
+      "Bagaj açık çalmak (Pancadão) amaçlanıyorsa kabin litresi Sub-Bass yerine Kick Bass'e uyumlu PA (Professional Audio) hesabıyla uyarlandı mı?",
+      "Expert DSP (PX-2 vs.) ile dışarıdan şov ortamında kontrol edilirken, tweeter frekans kesme eşikleri doğru atandı mı?"
+    ],
+    "kronik_sorunlar": [
+      "Aşırı verimli Brezilya amfilerinin (Class D / GAN) voltaj dalgalanmalarına karşı ani tepki verip protect (koruma) moduna geçmesi.",
+      "Selenium ST300/400 gibi süper tweeterların amatörce (klipte) kullanıldığında çabuk yakılması."
+    ],
+    "saha_dili": [
+      "Pancadão",
+      "Kompakt Amfi Devleri",
+      "Bagaj Kapalı Çalmaz, Dışarıya Okur",
+      "Kick Bass (Göğüs Vuran Tok Bas)",
+      "High Voltage Bank",
+      "Long-range uzaktan kumanda"
+    ],
+    "jargon": [
+      "Taramps HV / Smart Serisi",
+      "Stetsom Vulcan / EX",
+      "Soundigital GAN Teknolojisi",
+      "Banda Viking",
+      "Eros Hammer / Target Bass",
+      "Triton Shocker",
+      "ST400 / D250X",
+      "PX-2 Bluetooth DSP"
+    ],
+    "ozet": "Brezilya'nın otomobilin içine değil, dışarıya 'okuması' için kurulan saf 'Pancadão / PA' ve şov kültürü veritabanına sabitlendi. Avuç içinden olağanüstü RMS veren amfi devleri (Taramps HV, Soundigital GAN, Stetsom Vulcan, Banda Viking); sadece kilometre öteye tok bas (Kick bas) vurduran hoparlörler (Eros Hammer, Triton, Hard Power) ve sistem kontrolcüleri (Expert DSP, JFA kumanda, Selenium ST serisi) kodlandı. Ajan, bu markaları duyunca standart SQ hesabı yerine 'Açık hava konseri, yüksek voltaj, dev akü parkı' hesapları yapacaktır."
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "orneklem_kaynagi": "Carrozzeria & JDM Odyofil Karanlık Efsaneler Raporu",
+  "analiz": {
+    "markalar": [
+      "Carrozzeria",
+      "Pioneer",
+      "Addzest",
+      "Clarion"
+    ],
+    "populer_markalar": [
+      "Carrozzeria",
+      "Addzest"
+    ],
+    "fiyatlar": [],
+    "teknik_sorular": [
+      "ODR (Optical Digital Reference) efsanesinde sesi analog RCA ile ziyan etmek yerine ışık hızıyla, kayıpsız optik kablo üzerinden taşıyor musunuz?",
+      "Addzest HX-D1 veya Carrozzeria cihazlarındaki 'SHARC DSP' ve '24-bit Burr-Brown DAC'lerin sunduğu o muazzam dinamik aralığın (Dynamic Range) hakkını verecek stüdyo kayıtları (FLAC vb.) dinleniyor mu?",
+      "Reference (RS) serisi Cross-Carbon ve Kevlar bileşenlerden (TS-T1RS, M1RS, W1RS) o 'Transparent & Natural' (Doğal ve Şeffaf) tonu alabilmek için Hi-End amfide Flat ayar yapıldı mı?"
+    ],
+    "kronik_sorunlar": [
+      "MEH-P9000 gibi modellerdeki 'Organic EL (OEL)' ekranların, LCD'lerin aksine devre gürültüsü yapmamak için üretilmiş eşsiz yapısına rağmen yıllara bağlı piksellerinin ölmesi.",
+      "RS-M1 gibi efsanevi düşük 'Wow & Flutter' kasetçalarlarda dahi oksitlenme/yaşlanma sebebiyle lastik revizyon gerekmesi."
+    ],
+    "saha_dili": [
+      "Copper-Plated Chassis (Bakır Kaplama Şasi)",
+      "Organic EL Ekran (Sıfır Devre Gürültüsü)",
+      "Burr-Brown 24-bit DAC",
+      "SHARC DSP",
+      "Transparent & Natural (Flat / Katkısız Ses)",
+      "Işık Hızıyla Ses Taşıma",
+      "Wow & Flutter (Kasetçalar Titreşimi)"
+    ],
+    "jargon": [
+      "RS-D7X / RS-D7RII",
+      "DEX-P01",
+      "DEH-P01",
+      "MEH-P9000 (OEL)",
+      "TS-T1RS / TS-M1RS / TS-W1RS (Cross-Carbon Koni)",
+      "RS-M1 (Düşük Wow&Flutter Kasetçalar)",
+      "Addzest HX-D1"
+    ],
+    "ozet": "Pioneer'ın JDM elit yüzü Carrozzeria'nın en uç mühendislik detayları (Mühendislik sınırları) işlendi. Sistem; RF ve manyetik paraziti emen 'Copper-Plated Chassis' (Bakır Şasi) mucizesini, LCD gürültüsü yapmayan 'Organic EL' ekranları, RCA analog kaybını yok eden 'Sesi Işık Hızıyla Optik Taşıma' (ODR) felsefesini ezberledi. Standart cihazların aksine Carrozzeria'nın bası/tizi yapay şişirmeyip, SHARC DSP / Burr-Brown DAC kullanarak stüdyodaki sesi 'Transparent & Natural' (Katkısız Flat) yansıttığı kuralı eklendi. Ayrıca Kevlar/Cross-Carbon Reference (RS) hoparlör üçlemesi (T1RS, M1RS, W1RS) ve kasetçalar efsanesi RS-M1 arşive alındı."
+  }
+}

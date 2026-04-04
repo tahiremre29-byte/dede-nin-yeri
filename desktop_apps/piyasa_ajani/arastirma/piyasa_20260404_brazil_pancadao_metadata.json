@@ -1,0 +1,46 @@
+{
+  "orneklem_kaynagi": "Japon SQ'nun Tam Zıttı: Brezilya Pancadão & Trio Elétrico Metadata Optimizasyon Raporu",
+  "analiz": {
+    "markalar": [
+      "Taramps",
+      "Stetsom",
+      "Soundigital",
+      "Eros Alto-Falantes",
+      "Triton",
+      "JBL Selenium"
+    ],
+    "populer_markalar": [
+      "Taramps",
+      "Stetsom",
+      "Soundigital",
+      "Eros Alto-Falantes"
+    ],
+    "fiyatlar": [],
+    "teknik_sorular": [
+      "Sistem 'Pancadão' (bagaj kapalı / dışa vuran hızlı 40-80Hz bas) için mi, yoksa 'Trio Elétrico' (bagaj açık konser düzeni) için mi planlanıyor?",
+      "Eğer Stetsom veya Taramps HV (High Voltage) amfi kullanılıyorsa, 12V altyapısı iptal edilip doğrudan 300V-400V DC vermek için onlarca akü seri bağlandı mı?",
+      "Eros veya Triton gibi sürücülerin Thiele/Small parametrelerine bakıldığında, FS (Rezonans Frekansı) ve Hassasiyet (96dB+) değerleri açık hava akustiği için uygun mu?"
+    ],
+    "kronik_sorunlar": [
+      "Japon SQ sisteminin aksine THD (Bozulma) oranı daha yüksek olmasına rağmen (Örn: SPL rekabetinde), verimliliğini (%90+) kullanmamak adına yanlış kablolama ile 400V gücün amfiyi/aracı yakması."
+    ],
+    "saha_dili": [
+      "Pancadão",
+      "Trio Elétrico",
+      "High Voltage Systems (HV)",
+      "Watts per square inch (Güç Yoğunluğu)",
+      "Smart Amplifier Technology",
+      "Thiele/Small Parametreleri",
+      "Fs Rezonansı",
+      "Verimlilik (Efficiency %90+)"
+    ],
+    "jargon": [
+      "Taramps Manuals / HV 160.000",
+      "Soundigital GaN / Technical Specs",
+      "Eros / Triton Technical Data",
+      "Compression Drivers (Huni / Horn)",
+      "Selenium D405"
+    ],
+    "ozet": "Ses Ustası'nın LLM veritabanına, Japon SQ ekolünün tam zıttı olan Brezilya 'Muazzam Güç Yoğunluğu' ekolüne ait metadata ve mühendislik dokümanı linkleri (Taramps/Stetsom Manuals, Soundigital Specs, Eros/Triton Data) yüklendi. Ajan; Japonya'daki 'Burr-Brown DAC ve Saf Ses' mantığından çıkıp Brezilya dendiğinde 'Class D, 400V DC Series Battery Bank, %90+ Verimlilik, Thiele/Small Hassasiyeti (96dB+)' hesaplarını yapacak bir teknik dile kavuşturuldu. Sisteme, bagaj kapalı hızlı vuruşun adı 'Pancadão (40-80Hz)', açık bagajla konser vermenin adı 'Trio Elétrico' olarak öğretildi. Ayrıca empedanstan bağımsız sabit güç veren 'Smart Amplifier' kuralı ile dev mıknatıslı 'Compression Driver (D405 Horn)' felsefesi kalıcı kural olarak sisteme eklendi."
+  }
+}

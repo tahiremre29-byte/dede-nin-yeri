@@ -1,0 +1,35 @@
+{
+  "orneklem_kaynagi": "https://diyaudioprojects.com/Speakers/speakers.htm",
+  "analiz": {
+    "markalar": [
+      "Fostex",
+      "HiVi",
+      "Seas",
+      "Tang Band"
+    ],
+    "populer_markalar": [
+      "Tang Band",
+      "Fostex",
+      "Seas"
+    ],
+    "fiyatlar": [],
+    "teknik_sorular": [
+      "Hangi kabin tipi daha uygun?",
+      "T/S parametreleri nasıl hesaplanır?"
+    ],
+    "kronik_sorunlar": [],
+    "saha_dili": [
+      "DIY",
+      "Custom Kabin",
+      "Sürücü",
+      "Fullrange"
+    ],
+    "jargon": [
+      "Bass Reflex",
+      "Horn",
+      "Open Baffle",
+      "Sealed"
+    ],
+    "ozet": "DIY Audio Projects sitesinden ev yapımı/özel hoparlör sürücü markaları (Dayton, Fostex vb.) ve kabin tasarımları incelendi."
+  }
+}

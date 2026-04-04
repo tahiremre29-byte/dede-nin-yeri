@@ -1,0 +1,35 @@
+{
+  "orneklem_kaynagi": "SundownAudio.com",
+  "analiz": {
+    "markalar": [
+      "Sundown Audio"
+    ],
+    "populer_markalar": [
+      "Sundown Audio"
+    ],
+    "fiyatlar": [],
+    "teknik_sorular": [
+      "Amfiniz bu kadar ağır bir bobini sürebilecek (RMS bazında) güce sahip mi?",
+      "Low Bass (alt frekans) için kabin hacmi (net volume) ve port alanı (port area) yeterli genişlikte mi?"
+    ],
+    "kronik_sorunlar": [
+      "Cihazın aşırı ağır olması sebebiyle standart MDF kabinlerin esnemesi veya vidaların sökülmesi (Double Baffle - Çift Kat Ahşap gereksinimi).",
+      "Yüksek akım ihtiyacına cevap veremeyen standart akülerde yaşanan ciddi voltaj düşüşleri (Voltage Drop)."
+    ],
+    "saha_dili": [
+      "Amerikan SPL Cihazı",
+      "Dev Mıknatıs",
+      "Low Bass (Alt Frekans Canavarı)",
+      "Yüksek Xmax (Aşırı Salınım)",
+      "Double Baffle (Çift Kat Ahşap)"
+    ],
+    "jargon": [
+      "Nightshade",
+      "Zv-Serisi",
+      "X-Serisi",
+      "SA-Serisi",
+      "High Excursion"
+    ],
+    "ozet": "Sundown Audio (ABD) platforma entegre edildi. Devasa motor yapıları, yüksek dayanıklılık, muazzam Xmax (salınım) değerleri ve derin 'Low Bass' performansıyla bilinen Amerikan ağır sıklet SPL ekolünün tepe noktalarından biridir. Ses Ustası artık bu marka sorulduğunda, çift kat (double baffle) sağlamlığında özel kabinler ve devasa elektrik altyapısı önermesi gerektiğini bilecek."
+  }
+}

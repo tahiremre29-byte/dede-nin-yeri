@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DDSOUND GARAGE | AI Tools</title>
+    <!-- Google Fonts: Inter for UI, Outfit for futuristic neon headers -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Outfit:wght@300;400;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Quantum / AI Background Elements -->
+    <div class="quantum-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+        <div class="noise-overlay"></div>
+    </div>
+
+    <!-- App Container -->
+    <div class="app-container">
+        <!-- AI Styled Header -->
+        <header class="app-header">
+            <h1 class="logo">
+                <span class="neon-purple">DD</span> SOUND <span class="neon-cyan">GARAGE</span>
+            </h1>
+            <p class="subtitle">AI & Acoustic Systems Intelligence</p>
+        </header>
+
+        <!-- Main Workspace -->
+        <main class="workspace" style="display: flex; gap: 20px;">
+            <!-- Tool Card: DD1 Quantum Ses Ustası (AI Chat) -->
+            <section class="glass-card chat-card" style="flex: 1;">
+                <div class="tool-header">
+                    <div class="chat-title-group">
+                        <div class="pulse-ring">
+                            <div class="avatar-glow"></div>
+                        </div>
+                        <h2>DD1 Quantum Ses Ustası</h2>
+                    </div>
+                    <div class="ai-badge">
+                        <span class="pulse-dot"></span> Online
+                    </div>
+                </div>
+                <!-- 4 Language Mode Buttons added here -->
+                <div class="language-modes" style="display: flex; gap: 10px; margin-bottom: 10px; padding: 0 10px;">
+                    <button class="mode-btn btn-sade active" data-mode="sade" style="flex:1; padding:5px; border-radius:4px; font-size:12px; cursor:pointer;">Sade</button>
+                    <button class="mode-btn btn-sokak" data-mode="sokak" style="flex:1; padding:5px; border-radius:4px; font-size:12px; cursor:pointer;">Sokak</button>
+                    <button class="mode-btn btn-usta" data-mode="usta" style="flex:1; padding:5px; border-radius:4px; font-size:12px; cursor:pointer;">Usta</button>
+                    <button class="mode-btn btn-muhendis" data-mode="muhendis" style="flex:1; padding:5px; border-radius:4px; font-size:12px; cursor:pointer;">Mühendis</button>
+                </div>
+                <div class="chat-window" id="chatWindow" style="height: 300px;">
+                    <div class="message ai-message">
+                        <span class="msg-text">Bas, kabin veya sistem işi neyse direkt yaz. Modeli ve aracı da eklersen doğru yerden başlayabiliriz.</span>
+                    </div>
+                </div>
+                <div class="chat-input-area">
+                    <input type="text" id="chatInput" placeholder="Ses Ustasına sor..." autocomplete="off">
+                    <button class="btn-send" id="btnSend">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                    </button>
+                </div>
+                <div class="privacy-disclaimer" style="font-size: 10px; color: rgba(255,255,255,0.4); text-align: center; margin-top: 8px; padding-bottom: 5px;">
+                    Yazdığınız sorular ve işlem kayıtları, hizmetin düzgün çalışması, teknik doğrulama ve kalite iyileştirme amaçlarıyla güvenli şekilde işlenebilir.
+                </div>
+            </section>
+
+            <!-- Thin UI Tool Bridge Integration -->
+            <section class="glass-card design-card" style="flex: 1;">
+                <div class="tool-header">
+                    <h2>Akustik Üretim Hattı</h2>
+                </div>
+                <div class="design-form" style="padding: 10px; display: flex; flex-direction: column; gap: 10px;">
+                    <div style="display: flex; gap: 10px;">
+                        <input type="text" id="dfVehicle" placeholder="Araç Türü (Örn: Sedan)" value="Sedan" style="flex: 1; padding: 8px;">
+                        <select id="dfPurpose" style="flex: 1; padding: 8px;">
+                            <option value="home">Ev Modu</option>
+                            <option value="studio">Stüdyo</option>
+                            <option value="car" selected>Araç İçi</option>
+                            <option value="custom">Özel</option>
+                        </select>
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <input type="number" id="dfDiameter" placeholder="Çap (inç)" value="12" style="flex: 1; padding: 8px;">
+                        <input type="number" id="dfPower" placeholder="RMS Gücü (Watt)" value="500" style="flex: 1; padding: 8px;">
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <select id="dfPortType" style="flex: 1; padding: 8px;">
+                            <option value="ported" selected>Portlu (Açık)</option>
+                            <option value="sealed">Kapalı (Sealed)</option>
+                            <option value="bandpass">Bandpass</option>
+                        </select>
+                        <input type="number" id="dfThickness" placeholder="Ahşap Kalınlığı (mm)" value="18" style="flex: 1; padding: 8px;">
+                    </div>
+                    <button id="btnCalculate" style="padding: 10px; font-weight: bold; background: var(--cyan-glow); border: none; cursor:pointer;">1. Akustik Hesapla</button>
+                    
+                    <!-- Result Card (Hidden Initially) -->
+                    <div id="designResultCard" style="display: none; border: 1px solid rgba(0,255,255,0.4); border-radius: 8px; padding: 10px; margin-top: 10px; background: rgba(0,0,0,0.5);">
+                        <h4 style="margin-top:0; color: var(--cyan-glow);">Hesap Sonucu (Mühürlendi)</h4>
+                        <p style="margin: 5px 0; font-size: 14px;"><b>Tasarım ID:</b> <span id="resDesignId"></span></p>
+                        <p style="margin: 5px 0; font-size: 14px;"><b>Litre:</b> <span id="resLiters"></span> L</p>
+                        <p style="margin: 5px 0; font-size: 14px;"><b>Tuning (Frekans):</b> <span id="resTuning"></span> Hz</p>
+                        <p style="margin: 5px 0; font-size: 14px;"><b>Kutu Tipi:</b> <span id="resBoxType"></span></p>
+                        <p style="margin: 5px 0; font-size: 14px; color: #aaa;"><i>Özet: <span id="resSummary"></span></i></p>
+                        
+                        <div style="display: flex; gap: 10px; margin-top: 15px;">
+                            <button id="btnProduce" style="flex: 1; padding: 10px; background: #9900ff; color: white; border: none; cursor:pointer; font-weight: bold;">2. Üretim Dosyasını Hazırla (Produce)</button>
+                        </div>
+                    </div>
+                    
+                    <div id="downloadArea" style="display: none; margin-top: 10px;">
+                        <a id="btnDownload" href="#" target="_blank" style="display: block; text-align: center; padding: 10px; background: #00ff66; color: #000; text-decoration: none; font-weight: bold; border-radius: 4px;">3. DXF Çıktısını İndir</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Auth/Registration Modal (Feature Flag Controlled, Hidden Initially) -->
+    <div id="authOverlay" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 9999; align-items: center; justify-content: center;">
+        <div class="glass-card" style="width: 400px; padding: 30px; display: flex; flex-direction: column; gap: 15px;">
+            <h2 style="margin: 0; color: var(--neon-cyan);">DDSOUND Kayıt</h2>
+            <p style="color: #ccc; font-size: 14px; margin: 0;">Sistemi kullanmaya devam etmek için lütfen üye olun.</p>
+            <input type="text" id="regName" placeholder="Ad Soyad" style="padding: 10px; width: 100%; box-sizing: border-box; background: rgba(0,0,0,0.5); border: 1px solid var(--neon-purple); color: white;">
+            <input type="email" id="regEmail" placeholder="E-Posta" style="padding: 10px; width: 100%; box-sizing: border-box; background: rgba(0,0,0,0.5); border: 1px solid var(--neon-purple); color: white;">
+            
+            <div style="font-size: 12px; color: #aaa; display: flex; align-items: flex-start; gap: 8px;">
+                <input type="checkbox" id="gdprConsent" style="margin-top: 3px;">
+                <label for="gdprConsent">Kullanım Koşullarını ve Açık Rıza Metnini okudum, onaylıyorum.</label>
+            </div>
+            <div style="font-size: 12px; color: #aaa; display: flex; align-items: flex-start; gap: 8px;">
+                <input type="checkbox" id="marketingConsent">
+                <label for="marketingConsent">Kampanya ve sistem duyurularından e-posta/SMS ile haberdar olmak istiyorum.</label>
+            </div>
+
+            <p id="regError" style="color: #ff3366; font-size: 12px; margin: 0; display: none;"></p>
+            <button id="btnRegister" style="padding: 12px; font-weight: bold; background: var(--neon-purple); color: white; border: none; cursor: pointer; border-radius: 4px; box-shadow: 0 0 10px var(--neon-purple);">Kayıt Ol ve Başla</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/config.js?v=2.0"></script>
+    <script src="js/audio_engine.js?v=2.0"></script>
+    <script src="js/decoder.js?v=2.0"></script>
+    <script src="js/session.js?v=2.0"></script>
+    <script src="js/ai_chat.js?v=2.0"></script>
+    <script src="js/calculator.js?v=2.0"></script>
+    <script src="js/products.js?v=2.0"></script>
+    <script src="js/design_bridge.js?v=2.0"></script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+
+============================================================
+[2026-03-09 01:09:06]
+Uygulama basarıyla başlatıldı.
+
+============================================================
+[2026-03-09 02:20:35]
+Uygulama basarıyla başlatıldı.
+
+============================================================
+[2026-03-09 02:34:42]
+Uygulama basarıyla başlatıldı.
+
+============================================================
+[2026-03-09 02:45:40]
+Uygulama basarıyla başlatıldı.
+
+============================================================
+[2026-03-09 21:09:11]
+Uygulama basarıyla başlatıldı.
+
+============================================================
+[2026-03-09 22:22:59]
+Uygulama basarıyla başlatıldı.
+
+============================================================
+[2026-03-10 00:19:59]
+KRITIK HATA:
+Traceback (most recent call last):
+  File "C:\Users\DDSOUND\Desktop\exemiz\dd1_box_agent\main.py", line 52, in main
+    pencere = AnaPencere()
+              ^^^^^^^^^^^^
+  File "C:\Users\DDSOUND\Desktop\exemiz\dd1_box_agent\ui\main_window.py", line 118, in __init__
+    self._ui_yukle()
+  File "C:\Users\DDSOUND\Desktop\exemiz\dd1_box_agent\ui\main_window.py", line 142, in _ui_yukle
+    sol = self._sol_panel()
+          ^^^^^^^^^^^^^^^^^
+  File "C:\Users\DDSOUND\Desktop\exemiz\dd1_box_agent\ui\main_window.py", line 224, in _sol_panel
+    g1.addWidget(self.thickness_spin, 4, 1)
+                 ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AnaPencere' object has no attribute 'thickness_spin'
+
+
+============================================================
+[2026-03-10 00:21:28]
+KRITIK HATA:
+Traceback (most recent call last):
+  File "c:\Users\DDSOUND\Desktop\exemiz\dd1_box_agent\main.py", line 52, in main
+    pencere = AnaPencere()
+              ^^^^^^^^^^^^
+  File "c:\Users\DDSOUND\Desktop\exemiz\dd1_box_agent\ui\main_window.py", line 118, in __init__
+    self._ui_yukle()
+  File "c:\Users\DDSOUND\Desktop\exemiz\dd1_box_agent\ui\main_window.py", line 142, in _ui_yukle
+    sol = self._sol_panel()
+          ^^^^^^^^^^^^^^^^^
+  File "c:\Users\DDSOUND\Desktop\exemiz\dd1_box_agent\ui\main_window.py", line 224, in _sol_panel
+    g1.addWidget(self.thickness_spin, 4, 1)
+                 ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AnaPencere' object has no attribute 'thickness_spin'
+
+
+============================================================
+[2026-03-10 00:21:34]
+KRITIK HATA:
+Traceback (most recent call last):
+  File "c:\Users\DDSOUND\Desktop\exemiz\dd1_box_agent\main.py", line 52, in main
+    pencere = AnaPencere()
+              ^^^^^^^^^^^^
+  File "c:\Users\DDSOUND\Desktop\exemiz\dd1_box_agent\ui\main_window.py", line 118, in __init__
+    self._ui_yukle()
+  File "c:\Users\DDSOUND\Desktop\exemiz\dd1_box_agent\ui\main_window.py", line 142, in _ui_yukle
+    sol = self._sol_panel()
+          ^^^^^^^^^^^^^^^^^
+  File "c:\Users\DDSOUND\Desktop\exemiz\dd1_box_agent\ui\main_window.py", line 224, in _sol_panel
+    g1.addWidget(self.thickness_spin, 4, 1)
+                 ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AnaPencere' object has no attribute 'thickness_spin'
+
+
+============================================================
+[2026-03-10 01:32:19]
+Uygulama basarıyla başlatıldı.

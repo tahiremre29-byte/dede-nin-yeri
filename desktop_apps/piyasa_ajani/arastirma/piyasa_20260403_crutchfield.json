@@ -1,0 +1,25 @@
+{
+  "orneklem_kaynagi": "https://www.crutchfield.com/S-XYiV6xmT9Wn/car/carselector.aspx",
+  "analiz": {
+    "markalar": [],
+    "populer_markalar": [],
+    "fiyatlar": [],
+    "teknik_sorular": [
+      "Benim aracıma hangi teyp/hoparlör uyar?",
+      "Montaj derinliği (mounting depth) kurtarır mı?"
+    ],
+    "kronik_sorunlar": [
+      "Yanlış çap seçimi nedeniyle kapağın kapanmaması",
+      "Teyp çerçevesinin (dash kit) uymaması",
+      "Direksiyon kumandası uyumsuzluğu"
+    ],
+    "saha_dili": [
+      "Araca özel uyum",
+      "Outfit My Car",
+      "Dash kit",
+      "Wiring harness"
+    ],
+    "jargon": [],
+    "ozet": "Crutchfield Araç Uyumluluk (Outfit My Car) platformu konsepti incelendi. Ses Ustası'nın kullanıcılara araç model ve yılına göre montaj derinliği, çerçeve tipi verijinal soket/kablo gereksinimlerini daha dikkatli sorgulaması (fitment rehberliği) gerektiği prensibi entegre edildi."
+  }
+}

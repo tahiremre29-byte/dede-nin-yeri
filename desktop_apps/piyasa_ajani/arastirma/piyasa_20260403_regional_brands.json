@@ -1,0 +1,33 @@
+{
+  "orneklem_kaynagi": "DD1 Sistem Mimarı / Saha Uzmanı Bilgisinden Elde Edildi",
+  "analiz": {
+    "markalar": [
+      "Taramps",
+      "Stetsom",
+      "Deaf Bonce",
+      "Pride Audio"
+    ],
+    "populer_markalar": [
+      "Deaf Bonce",
+      "Pride Audio"
+    ],
+    "fiyatlar": [],
+    "teknik_sorular": [
+      "Brezilya tipi amfilerde yeterli elektrik altyapısı var mı?",
+      "Rus malı SPL cihazını besleyecek yeterli akü kapasitesi sağlandı mı?"
+    ],
+    "kronik_sorunlar": [
+      "Aşırı güçlü SPL cihazlarının yetersiz elektrik altyapısında kullanılması sonucu cihaz veya araç arızaları."
+    ],
+    "saha_dili": [
+      "Pancadão (SADECE BREZİLYA İÇİN)",
+      "Rus Malı SPL",
+      "Brezilya Tipi Amfi",
+      "Aşırı Güçlü SPL Cihazı"
+    ],
+    "jargon": [
+      "Pancadão"
+    ],
+    "ozet": "DİKKAT: 'Pancadão' stili KESİNLİKLE VE YALNIZCA Brezilya markalarına (Taramps, Stetsom) aittir, Rusya ile alakası yoktur. Rus/Doğu Bloğu markaları (Deaf Bonce, Pride Audio) ise Türkiye'de popüler olan devasa, aşırı güçlü SPL cihazlarıdır. Ses Ustası bu iki farklı ekolü birbirine asla karıştırmamalıdır."
+  }
+}
