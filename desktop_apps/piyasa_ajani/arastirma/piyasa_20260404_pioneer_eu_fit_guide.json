@@ -1,0 +1,32 @@
+{
+  "orneklem_kaynagi": "Pioneer Car Fit Guide (Avrupa ve Türkiye Yerel Modelleri Uyum Rehberi)",
+  "analiz": {
+    "markalar": [
+      "Pioneer",
+      "Renault",
+      "Toyota",
+      "Fiat",
+      "Peugeot",
+      "Volkswagen"
+    ],
+    "teknik_sorular": [
+      "Türkiye'de en çok satan (Örn: Megane 4, Clio 5, Corolla E210) araçların kaç cm (13 cm mi 16 cm mi) kapı hoparlörüne sahip olduğu ve orijinal yuvaya Pioneer/vb markaların inme derinliğinin sığıp sığmadığı verisi nereden en güvenilir şekilde alınır?"
+    ],
+    "kronik_sorunlar": [
+      "Özellikle Fransız grubu araçlarda (Clio, Megane) bazı donanımlarda 13 cm, bazılarında 16 cm yuva bulunabilmesi ve ezbere 'hepsi 16 cm' sanılıp alınan hoparlörlerin yuvaya sığmaması."
+    ],
+    "saha_dili": [
+      "Pioneer Car Fit Guide",
+      "Hoparlör Çapı (13cm vs 16cm)",
+      "Marka-Model-Yıl Seçimi"
+    ],
+    "jargon": [
+      "13cm vs 16cm Kapı : Japon ve Avrupa araçlarının kapı içleri bazen beklenmedik şekilde küçük çaplı (13 cm / 5.25 inç) fabrikasyon yuvalara sahip olabilir. Bu durumda 16 cm hoparlör ancak kapı sacı kesilirse uyar.",
+      "Orijinal Derinlik : Kutusundan çıkan şekliyle (kasnak vs eklemeden) kapı içine direk vidalanabilecek hoparlör derinliği ölçüsü."
+    ],
+    "ozet": "PIONEER FIT GUIDE - TÜRKİYE / AVRUPA REFERANSI: Crutchfield ABD pazarının, Hertz Avrupa teyp/soket dönüştürücülerinin şahıyken; Pioneer Fit Guide, doğrudan Türkiye'de sokakta gördüğümüz Clio, Megane, Corolla gibi araçların 'Mekanik Milimetrik Çap' rehberidir. Ses Ustası; eğer müşteri çok popüler bir yerli/Avrupa aracı modelinden (Örn: Megane 4 / E210 Corolla) bahsediyorsa, doğrudan Marka-Model-Yıl üçlemesini baz almalı ve 'Megane'in kapısında bazen donanıma göre 13 cm bazen 16 cm yuva olabilir, ezbere hoparlör almadan önce kapağı söküp çapından emin ol' uyarısını standart bir prosedür olarak uygulamalıdır."
+  },
+  "__dd1_islendi": true,
+  "__dd1_koleksiyon": "arac_koleksiyonu",
+  "__dd1_islendi_at": "2026-04-05T11:29:03.286992"
+}

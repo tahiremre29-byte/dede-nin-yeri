@@ -44,6 +44,7 @@ class ChatResponse(BaseModel):
     ui_cards:                 Optional[list] = None       # model aday kartları
 
 
+@router.post("", response_model=ChatResponse)
 @router.post("/", response_model=ChatResponse)
 def chat(req: ChatRequest) -> ChatResponse:
     """

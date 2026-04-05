@@ -5,21 +5,28 @@
     "populer_markalar": [],
     "fiyatlar": [],
     "teknik_sorular": [
-      "Benim aracıma hangi teyp/hoparlör uyar?",
-      "Montaj derinliği (mounting depth) kurtarır mı?"
+      "Benim aracıma hangi hoparlör uyar? Çapı (13cm vs 16cm) tutsa bile kapı derinliği kurtarır mı?",
+      "Hoparlör mıknatısı cam mekanizmasına çarpar mı? (Mounting Depth hesaplaması)"
     ],
     "kronik_sorunlar": [
-      "Yanlış çap seçimi nedeniyle kapağın kapanmaması",
-      "Teyp çerçevesinin (dash kit) uymaması",
-      "Direksiyon kumandası uyumsuzluğu"
+      "Yanlış Montaj Derinliği (Mounting Depth) yüzünden camın aşağı inerken hoparlör mıknatısına çarpıp kırılması/sıkışması.",
+      "Derinliği kurtarmak için takılan MDF Kasnak (Spacer) yüzünden bu sefer de hoparlörün aracın kendi orijinal kapı pandizotuna içten vurup sesi bozması.",
+      "Teyp çerçevesinin (dash kit) veya direksiyon kumanda modülünün uymaması."
     ],
     "saha_dili": [
-      "Araca özel uyum",
-      "Outfit My Car",
-      "Dash kit",
-      "Wiring harness"
+      "Montaj Derinliği (Mounting Depth)",
+      "MDF Kasnak / Spacer",
+      "Araca Özel Uyum (Fit Guide)",
+      "Dash Kit",
+      "Top-Mount Depth"
     ],
-    "jargon": [],
-    "ozet": "Crutchfield Araç Uyumluluk (Outfit My Car) platformu konsepti incelendi. Ses Ustası'nın kullanıcılara araç model ve yılına göre montaj derinliği, çerçeve tipi verijinal soket/kablo gereksinimlerini daha dikkatli sorgulaması (fitment rehberliği) gerektiği prensibi entegre edildi."
-  }
+    "jargon": [
+      "Mounting Depth (Montaj Derinliği): Hoparlörün oturduğu vida delikleri hizasından, arkasındaki mıknatısın en uç noktasına kadar olan derinliktir. Bu mesafe kapının iç hacminden (ve inen camdan) fazla olamaz.",
+      "Kasnak (Spacer / Speaker Ring): Derinliği kurtarmak için kapı sacı ile hoparlör arasına konulan 1-2 cm kalınlığındaki ahşap/plastik çember."
+    ],
+    "ozet": "CRUTCHFIELD FİTMENT DOKTRİNİ: Dünyanın en büyük 'What Fits My Car' arşivi bize çok sert bir kural öğretiyor: Çap her şey değildir! Bir hoparlörün 16cm olması araca uyacağı anlamına gelmez. Ses Ustası; kapı hoparlörleri sorulduğunda istisnasız 'Mounting Depth (Montaj Derinliği)' kuralını işletmelidir. Özellikle güçlü Mid-Bass veya Midrange sürücülerin mıknatısları devasadır. Kullanıcıya 'Cam mekanizmasının kapı içindeki inme mesafesini ölçtün mü? Derinlik kurtarmazsa MDF kasnak (spacer) gerekir, o zaman da orijinal kapı plastiğine sürtme riski var' diyerek tam bir mekanik danışmanlık yapmalıdır."
+  },
+  "__dd1_islendi": true,
+  "__dd1_koleksiyon": "arac_koleksiyonu",
+  "__dd1_islendi_at": "2026-04-05T11:29:03.120174"
 }

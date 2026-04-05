@@ -136,19 +136,21 @@ def validate_acoustic(packet: AcousticDesignPacket) -> ValidationResult:
             f"({_TUNING_LIMS['min']}–{_TUNING_LIMS['max']}Hz)"
         )
 
-    if packet.port_area_cm2 < 10:
-        r.add_error(f"Port alanı {packet.port_area_cm2:.1f}cm² çok küçük (min 10cm²)")
+    enc_type_str = getattr(packet.enclosure_type, "value", str(packet.enclosure_type))
+    if enc_type_str != "sealed":
+        if packet.port_area_cm2 < 10:
+            r.add_error(f"Port alanı {packet.port_area_cm2:.1f}cm² çok küçük (min 10cm²)")
 
-    if packet.port_length_cm < 1:
-        r.add_error(f"Port boyu {packet.port_length_cm:.1f}cm çok kısa")
+        if packet.port_length_cm < 1:
+            r.add_error(f"Port boyu {packet.port_length_cm:.1f}cm çok kısa")
 
-    if 0 < packet.port_velocity_ms < _PORT_VEL["max"]:
-        if packet.port_velocity_ms > _PORT_VEL["warn"]:
-            r.add_warning(
-                f"Port hızı {packet.port_velocity_ms:.1f}m/s yüksek — türbülans riski"
-            )
-    elif packet.port_velocity_ms >= _PORT_VEL["max"]:
-        r.add_error(f"Port hızı {packet.port_velocity_ms:.1f}m/s kritik sınırı aştı (>{_PORT_VEL['max']}m/s)")
+        if 0 < packet.port_velocity_ms < _PORT_VEL["max"]:
+            if packet.port_velocity_ms > _PORT_VEL["warn"]:
+                r.add_warning(
+                    f"Port hızı {packet.port_velocity_ms:.1f}m/s yüksek — türbülans riski"
+                )
+        elif packet.port_velocity_ms >= _PORT_VEL["max"]:
+            r.add_error(f"Port hızı {packet.port_velocity_ms:.1f}m/s kritik sınırı aştı (>{_PORT_VEL['max']}m/s)")
 
     if not packet.validation_passed:
         r.add_warning("Paket kendi içinde validation_passed=False işaretlemiş")

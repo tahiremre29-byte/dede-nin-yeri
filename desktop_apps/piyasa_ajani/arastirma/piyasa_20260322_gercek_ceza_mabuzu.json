@@ -4,7 +4,6 @@
     "kaynak": "SPL Team Turkey Facebook — gerçek ceza makbuzu screenshot",
     "url": "https://www.facebook.com/groups/1336657139829613"
   },
-
   "gercek_ceza_makbuzu": {
     "belge_turu": "TRAFİK CEZA BİLGİ — Trafik Ceza İhlali (Traffic Rule Violation)",
     "tarih": "01/03/2026",
@@ -12,12 +11,11 @@
     "ihhal_maddesi": "72/2",
     "ceza_puanı": 9,
     "ceza_miktari_tl": 21000,
-    "toplam_ceza": 21000.00,
+    "toplam_ceza": 21000.0,
     "etkilesim": "22 beğeni, 14 yorum — toplulukta büyük yankı",
     "anlam": "2026 yılında gerçek bir uygulama başladı — 21.000 TL ceza doğrulandı",
     "piyasa_etkisi": "BÜYÜK — topluluğun '21K ceza efsane' dediği meseleye gerçek kanıt geldi"
   },
-
   "ceza_analizi": {
     "madde_72_2": {
       "aciklama": "Araçlara sonradan takılan ses sistemi modifikasyonu için uygulanan trafik cezası",
@@ -31,12 +29,10 @@
       "beklenen_etki": "Piyasada ciddi yavaşlama başladı/başlayacak — özellikle açık sistemler"
     }
   },
-
   "medya_paneli_gozlem": {
     "kabin_cizimi": "Elle çizilmiş portlu/ported kabin taslağı — kullanıcılar hala kabin tasarlıyor",
     "woofer_fotograf": "Gümüş/siyah tasarım woofer — MASE marka olabilir (üst logo)"
   },
-
   "yeni_marka_tespiti": {
     "MASE": {
       "kategori": "Subwoofer / Woofer",
@@ -45,11 +41,13 @@
       "kontrol_gerekli": "MASE Audio — Türkiye veya Avrupa menşeili olabilir, doğrulama gerekli"
     }
   },
-
   "dd1_icin_kritik": {
     "mesaj": "21.000 TL ceza artık gerçek — Türkiye car audio piyasası dönüm noktasında",
     "firsat": "DD1 'akıllı ve uyumlu sistem' konumlandırması yapabilir — ceza riski minimum tasarım",
     "tavsiye_modeli": "Kabin hesabı yaparken SPL odaklı değil, 'günlük kullanım + ceza riski sıfır' seçeneği önerilebilir",
     "psikoloji": "Kullanıcılar hala istiyor ama çekiniyor — DD1 güven verebilir: 'doğru hesaplanmış, ölçülü sistem'"
-  }
+  },
+  "__dd1_islendi": true,
+  "__dd1_koleksiyon": "arac_koleksiyonu",
+  "__dd1_islendi_at": "2026-04-05T11:29:03.046595"
 }

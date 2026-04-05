@@ -60,16 +60,26 @@ def calculate_empirical(req: 'DesignRequest') -> dict:
     else:
         fb = fb_min + (fb_max - fb_min) * 0.7
 
-    # 3. Port Alanı (Sd tabanlı)
+    # 3. Port Alanı (Sd tabanlı) & Uzunluğu
     sd_cm2 = EMPIRICAL_SD.get(closest, 490)
     xmax_mm = EMPIRICAL_XMAX.get(closest, 15)
 
-    if req.purpose == "SPL":
-        sp_cm2 = sd_cm2 * 0.35
-    elif req.purpose == "SQL":
-        sp_cm2 = sd_cm2 * 0.25
+    enc_type_str = getattr(req.enclosure_type, "value", str(req.enclosure_type))
+    if enc_type_str == "sealed":
+        sp_cm2 = 0.0
+        lp_cm = 0.0
+        v_port = 0.0
     else:
-        sp_cm2 = sd_cm2 * 0.18
+        if req.purpose == "SPL":
+            sp_cm2 = sd_cm2 * 0.35
+        elif req.purpose == "SQL":
+            sp_cm2 = sd_cm2 * 0.25
+        else:
+            sp_cm2 = sd_cm2 * 0.18
+        
+        lp_cm = (29975 * sp_cm2) / (fb**2 * vb) - 1.463 * math.sqrt(sp_cm2 / math.pi)
+        lp_cm = max(lp_cm, 5.0)
+        v_port = abs(( (sd_cm2/10000.0) * (xmax_mm/1000.0) * (2*math.pi*fb) ) / (sp_cm2/10000.0))
 
     # Karakter Optimizasyonu
     notes = ["T/S parametreleri girilmedi — Ampirik model kullanıldı."]
@@ -80,12 +90,7 @@ def calculate_empirical(req: 'DesignRequest') -> dict:
         fb -= 3.0; vb *= 1.10
         notes.append("Karakter: Yeri Titret (Fb -3Hz, Vb +10%)")
 
-    # 4. Port Uzunluğu (Helmholtz)
-    lp_cm = (29975 * sp_cm2) / (fb**2 * vb) - 1.463 * math.sqrt(sp_cm2 / math.pi)
-    lp_cm = max(lp_cm, 5.0)
-
     # 5. Analizler
-    v_port = abs(( (sd_cm2/10000.0) * (xmax_mm/1000.0) * (2*math.pi*fb) ) / (sp_cm2/10000.0))
     peak_spl = 88.0 + 10 * math.log10(max(req.rms_power, 1)) + 3.0 + CABIN_GAIN.get(req.vehicle, 5)
 
     return {
@@ -119,20 +124,27 @@ def calculate_ts(req: 'DesignRequest') -> dict:
     fb_min, fb_max = VEHICLE_TUNING.get(req.vehicle, (30, 45))
     fb = max(fb_min, min(fb, fb_max))
 
-    # 3. Port Alanı
-    sp_cm2 = req.sd * (0.35 if req.purpose == "SPL" else (0.28 if req.purpose == "SQL" else 0.18))
-
-    # 4. Port Uzunluğu
-    d_equiv = math.sqrt((4 * sp_cm2) / math.pi)
-    lp_cm = (23562.5 * (d_equiv**2)) / (fb**2 * vb) - 0.732 * d_equiv
-    lp_cm = max(lp_cm, 5.0)
-
-    # 5. Analiz
-    v_port = abs(( (req.sd/10000.0) * (req.xmax/1000.0) * (2*math.pi*fb) ) / (sp_cm2/10000.0))
-    # η₀ estimate
-    eta_0 = (4 * math.pi**2 * req.fs**3 * (req.vas/1000.0)) / (345.0**3 * req.qts)
+    # 3. Port Alanı & Uzunluğu
+    enc_type_str = getattr(req.enclosure_type, "value", str(req.enclosure_type))
+    if enc_type_str == "sealed":
+        sp_cm2 = 0.0
+        lp_cm = 0.0
+        v_port = 0.0
+        eta_0 = (4 * math.pi**2 * req.fs**3 * (req.vas/1000.0)) / (345.0**3 * req.qts)
+    else:
+        sp_cm2 = req.sd * (0.35 if req.purpose == "SPL" else (0.28 if req.purpose == "SQL" else 0.18))
+        d_equiv = math.sqrt((4 * sp_cm2) / math.pi)
+        lp_cm = (23562.5 * (d_equiv**2)) / (fb**2 * vb) - 0.732 * d_equiv
+        lp_cm = max(lp_cm, 5.0)
+        v_port = abs(( (req.sd/10000.0) * (req.xmax/1000.0) * (2*math.pi*fb) ) / (sp_cm2/10000.0))
+        eta_0 = (4 * math.pi**2 * req.fs**3 * (req.vas/1000.0)) / (345.0**3 * req.qts)
+    
     spl_1w = 112.2 + 10 * math.log10(max(eta_0, 1e-10))
     peak_spl = spl_1w + 10 * math.log10(max(req.rms_power, 1)) + 3.0 + CABIN_GAIN.get(req.vehicle, 5)
+
+    notes_obj = ["T/S parametreli mühendislik hesabı uygulandı."]
+    if fb > req.fs * 1.05:
+        notes_obj.append(f"Tuning (Fb) {fb:.1f}Hz, Fs'den ({req.fs:.1f}Hz) yukarıda tutularak alt frekanslarda tokluk ve agresif vuruş gücü artırıldı.")
 
     return {
         "mode": "MODE1_TS",
@@ -142,7 +154,7 @@ def calculate_ts(req: 'DesignRequest') -> dict:
         "lp_cm": round(lp_cm, 1),
         "v_port": round(v_port, 1),
         "peak_spl": round(peak_spl, 1),
-        "notes": ["T/S parametreli mühendislik hesabı uygulandı."],
+        "notes": notes_obj,
         "f3": round(fb * 0.75, 1),
         "gd": round(1000.0/(2*math.pi*fb)*2, 1),
         "xmax": round(req.xmax * 0.85, 1)
@@ -186,9 +198,30 @@ def calculate_panels(vb_l: float, sp_cm2: float, lp_cm: float, diameter_inch: in
         {"name": "Üst Panel", "qty": 1, "w": round(ow_mm), "h": round(id_mm), "note": ""},
         {"name": "Alt Panel", "qty": 1, "w": round(ow_mm), "h": round(id_mm), "note": ""},
         {"name": "Sol Yan", "qty": 1, "w": round(ih_mm), "h": round(id_mm), "note": ""},
-        {"name": "Sağ Yan", "qty": 1, "w": round(ih_mm), "h": round(id_mm), "note": "Port girişi"},
-        {"name": "İç Port Paneli", "qty": 1, "w": round(slot_w_mm), "h": round(id_mm), "note": "Port L-bölme"}
+        {"name": "Sağ Yan", "qty": 1, "w": round(ih_mm), "h": round(id_mm), "note": "Port girişi"}
     ]
+
+    lp_mm = lp_cm * 10
+    
+    # 1. Parça (Ön yüzeyden arkaya doğru uzanan board)
+    # Arkada dönüş payı bırakılmalı (slot_w_mm kadar)
+    max_l1 = id_mm - slot_w_mm
+    
+    # Efektif akustik uzunluk = Ön panel kalınlığı (thickness_mm) + içteki tahtanın uzunluğu
+    if lp_mm <= max_l1 + thickness_mm:
+        # Düz port (Bükülmeye gerek yok)
+        l1_wood = max(10, lp_mm - thickness_mm)
+        panels.append({"name": "Port Paneli 1", "qty": 1, "w": round(l1_wood), "h": round(ih_mm), "note": "Düz Port Duvarı"})
+    else:
+        # L-Port (Dirsekli)
+        l1_wood = max_l1
+        l_remain = lp_mm - (max_l1 + thickness_mm)
+        # 2. Parça arka duvara paralel uzanır
+        # Etkin dönüş yolu genellikle köşe boyunca genişler, pratik l2_wood:
+        l2_wood = l_remain
+        
+        panels.append({"name": "Port Paneli 1 (Ana)", "qty": 1, "w": round(l1_wood), "h": round(ih_mm), "note": "Önden arkaya uzanan duvar"})
+        panels.append({"name": "Port Paneli 2 (Dönüş)", "qty": 1, "w": round(l2_wood), "h": round(ih_mm), "note": "Arka duvara paralel L dönüşü"})
 
     return {
         "inner": {"w": round(iw_mm), "h": round(ih_mm), "d": round(id_mm)},
@@ -240,10 +273,18 @@ def design_enclosure(req: 'DesignRequest') -> dict:
     _val_passed = (
         5.0 <= _vol <= 600.0
         and 15.0 <= _tuning <= 120.0
-        and _port_a >= 10.0
-        and _port_l >= 1.0
-        and _port_vel < 25.0
     )
+    enc_type_str = getattr(req.enclosure_type, "value", str(req.enclosure_type))
+    if enc_type_str != "sealed":
+        _val_passed = _val_passed and (
+            _port_a >= 10.0
+            and _port_l >= 1.0
+            and _port_vel < 25.0
+        )
+
+    # port_gap hesapla
+    ih_mm = panels["inner"]["h"]
+    slot_w_mm = (res["sp_cm2"] / (ih_mm/10.0)) * 10
 
     return {
         "design_id": design_id,
@@ -257,6 +298,7 @@ def design_enclosure(req: 'DesignRequest') -> dict:
             "type": req.enclosure_type.value,
             "dia_mm": None,
             "length_mm": res["lp_cm"] * 10,
+            "gap_mm": round(slot_w_mm),
             "count": 1
         },
         "net_volume_l": res["vb_l"],

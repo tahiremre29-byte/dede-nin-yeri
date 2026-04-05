@@ -64,7 +64,7 @@ _CAR_SIGNALS = [
 # -- Enclosure Preferences --
 _SEALED_PATTERNS = [
     r'\bkap[aâ]l[ıi]\b', r'\bsealed\b', r'\bseale[d]?\b',
-    r'\bclosed\b', r'\binfra[- ]bass\b', r'\bkapalı kutu\b', r'\bkabin kapal',
+    r'\bclosed\b', r'\binfra[- ]bass\b', r'\bkapalı kutu\b', r'\bkabin kapal\b', r'\bmühürlü\b',
 ]
 _PORTED_PATTERNS = [
     r'\bportlu\b', r'\bported\b', r'\breflex\b',
@@ -103,10 +103,10 @@ from core.router import _MODEL_PATTERNS
 
 # -- Araç Tipleri --
 _VEHICLE_MAP = {
-    'sedan':    ['sedan', 'saloon', 'egea', 'megane', 'corolla', 'civic', 'passat', 'focus'],
-    'hatchback':['hatchback', 'hb', 'clio', 'polo', 'golf', 'fiesta', 'i20', 'corsa', 'leon', 'astra'],
-    'suv':      ['suv', '4x4', 'jeep', 'qashqai', 'tucson', 'sportage', 'duster', '3008', 'tiguan', 'kodiaq'],
-    'panelvan': ['transit', 'panelvan', 'panel', 'sprinter', 'doblo', 'fiorino', 'caddy', 'kangoo', 'partner', 'berlingo', 'combo', 'hafif ticari', 'ticari', 'transporter', 'vito', 'caravelle', 'custom', 'courier', 'rifter'],
+    'sedan':    ['sedan', 'saloon', 'egea', 'megane', 'corolla', 'civic', 'passat', 'focus', 'jetta', 'symbol'],
+    'hatchback':['hatchback', 'hb', 'clio', 'polo', 'golf', 'fiesta', 'i20', 'corsa', 'leon', 'astra', 'ibiza'],
+    'suv':      ['suv', '4x4', 'jeep', 'jip', 'qashqai', 'tucson', 'sportage', 'duster', '3008', 'tiguan', 'kodiaq'],
+    'panelvan': ['transit', 'panelvan', 'panel', 'sprinter', 'doblo', 'fiorino', 'caddy', 'kangoo', 'kango', 'partner', 'berlingo', 'combo', 'hafif ticari', 'ticari', 'transporter', 'vito', 'caravelle', 'custom', 'courier', 'rifter'],
     'pickup':   ['pickup', 'kamyonet', 'hilux', 'ranger', 'l200', 'amarok', 'navara', 'd-max'],
 }
 
@@ -203,6 +203,12 @@ def _extract_size(message: str) -> tuple[str | None, float | None, str | None, i
                     _mm = round(_vi * 25.4)
                     return f"{_vi} inch", float(_vi), 'inch', _vi, _mm
 
+    # Son fallback: Gördüğümüz metin içinde bariz bir "12", "15" varsa inç kabul et
+    for _vi in sorted(_VALID_IN, reverse=True):
+        if re.search(rf'\b{_vi}\b', clean_msg):
+            _mm = round(_vi * 25.4)
+            return f"{_vi} inch", float(_vi), 'inch', _vi, _mm
+
     return None, None, None, None, None
 
 def _extract_brand_model_type(message: str, msg_lower: str) -> tuple[str | None, str | None, str | None]:
@@ -278,7 +284,11 @@ def _extract_brand_model_type(message: str, msg_lower: str) -> tuple[str | None,
             model_status = "missing"
             woofer_model = None
         elif re.fullmatch(r'\d{3,4}w?', suffix):
-            model_status = "partial"
+            # DD Audio modelleri sadece sayıdan ibaret olabilir (ör. 815, 715)
+            if brand and brand.lower() in ["dd", "dd audio", "dd.audio"]:
+                model_status = "exact"
+            else:
+                model_status = "partial"
         else:
             model_status = "exact"
     elif brand:
@@ -440,7 +450,7 @@ def _get_missing_fields(domain: str, ext: dict) -> list[str]:
         if not ext.get('target_hz'): missing.append('target_hz')
     else: # car_audio
         if not ext.get('vehicle_type'): missing.append('vehicle_type')
-        if not (ext.get('trunk_width_cm') is not None): missing.append('trunk_dims')
+        # KULLANICI İPTALİ: Bagaj ölçüsü artık zorunlu değil (standart kutular sığar)
         
     return missing
 
@@ -483,14 +493,16 @@ def _next_questions(missing: list[str], domain: str) -> list[str]:
             'target_hz': 'Hedef tuning frekansı? (Hz olarak)',
         }
     else:  # car_audio
-        PRIORITY = ['partial_model', 'brand_or_model', 'diameter', 'vehicle_type', 'goal', 'trunk_dims']
+        # Gereksiz zaman kaybını önlemek için bagaj (trunk_dims) önceliğini arkaya atıyoruz.
+        PRIORITY = ['woofer_model veya T/S parametreleri (fs, qts, vas)', 'partial_model', 'brand_or_model', 'diameter', 'vehicle_type', 'goal']
         Q_TEXT = {
-            'partial_model': 'Markayı anladım reis. Ama parametrelerini (Fs, Qts) veritabanından çekebilmem için cihazın tam modelini de yazar mısın? (Örn: GT12)',
-            'brand_or_model': 'Reis, akustik hesaba girmek için marka ve modelini söylemen lazım ki parametrelerini çekeyim.',
-            'diameter': 'Sürücü çapı ne kadar olacak reis? (30cm, 38cm vs.)',
-            'vehicle_type': 'Cihaz tamam. Arabanın kasasını da söyleyelim, rezonans frekansını (tuning) ona göre hizalayalım (Sedan, HB, SUV vs).',
-            'goal': 'Müzikteki amacın ne? (Temiz dengeli bas mı yoksa yeri göğü inletmek mi?)',
-            'trunk_dims': 'Son olarak bagajda ayırdığın yerin en, boy, derinliği var mı yoksa limitsiz salla gitsin mi?',
+            'woofer_model veya T/S parametreleri (fs, qts, vas)': 'Tasarım hesabına geçebilmem için cihazın tam model kodunu (Örn: TX612) veya T/S parametrelerini (Fs, Qts, Vas) belirtir misiniz?',
+            'partial_model': 'Cihazın markasını kaydettim ancak parametrelerini sistemden çekebilmem için tam model koduna (Örn: GT12) ihtiyacım var.',
+            'brand_or_model': 'Tasarım hesabını başlatabilmem için kullanacağınız cihazın marka ve modelini belirtmelisiniz.',
+            'diameter': 'Cihazınızın çapı (Örn: 30cm, 12 inç) nedir?',
+            'vehicle_type': 'Araç kasa tipini (Sedan, HB vs.) ve sistemden akustik beklentinizi (derin bas, sert vuruş vs.) belirtir misiniz?',
+            'goal': 'Sistemden beklentiniz ağırlıklı olarak temiz bir müzik dinlemek mi yoksa yüksek basınç (SPL) elde etmek mi?',
+            'trunk_dims': 'Bagajda ayırdığınız alanın ölçüleri belli mi?',
         }
     questions = [Q_TEXT[f] for f in PRIORITY if f in missing]
     return questions[:1]
@@ -521,19 +533,19 @@ def _calculate_fit(tw: int | None, th: int | None, td: int | None, diameter_mm: 
     if len(fitting) >= 2:
         fit_status = 'fits_easy'
         fit_desc = 'İki yön de uygun' if len(fitting) == 2 else 'Her yönde sığıyor'
-        usta_comment = f'Reis bu ölçüye {diameter_inch}" rahat oturur. {fit_desc}.'
+        usta_comment = f'Bu ölçülere {diameter_inch}" cihaz rahatlıkla yerleşebilir. {fit_desc}.'
     elif len(fitting) == 1:
         fit_status = 'fits_tight'
         fit_dir = fitting[0]
-        usta_comment = f'Sıkı ama {fit_dir} yönünde sığıyor. Port yerleşimi için derinliği iyi kullanmak lazım.'
+        usta_comment = f'Alan sınırlı ancak {fit_dir} yönünde fizibil. Port yerleşimi için derinliği optimize etmemiz gerekecek.'
     else:
         fit_status = 'no_fit'
-        usta_comment = f'Bu bagaj bu işi sıkıyor. Ya kutu tipini değiştiririz ({diameter_inch}" için kapalı kutu düşünebiliriz) ya da hedefi revize ederiz.'
+        usta_comment = f'Bu bagaj ölçüleri tasarım için yetersiz kalıyor. Ya kutu tipini revize edeceğiz ({diameter_inch}" için kapalı kutu düşünebiliriz) ya da akustik hedefi değiştireceğiz.'
 
     if notes:
         usta_comment += f" Not: {notes}."
     if 'dar ağız' in (notes or ''):
-        usta_comment += " Bagaj ağzı dar, kutu sığsa bile montajda uğraştırır."
+        usta_comment += " Bagaj ağzı dar, kutu darsa bile montaj sırasında zorluk çıkarabilir."
         
     return fit_status, usta_comment
 
@@ -576,7 +588,7 @@ def parse_message(message: str, context: dict | None = None) -> dict:
         enc_norm, enc_src = 'ported', 'inferred'
 
     size_raw, size_val, size_unit, size_in, size_mm = _extract_size(message)
-    diameter_inch = size_in if size_in else 12
+    diameter_inch = size_in
 
     brand, driver_type, woofer_model, model_status = _extract_brand_model_type(message, msg_lower)
     

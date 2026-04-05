@@ -25,12 +25,12 @@ def _build_user_reply(ext: dict, intent: str, conf: float) -> str:
     KURAL: enclosure_preference_normalized ZORUNLU olarak uygulanır — override edilemez.
     """
     panel    = ext.get("normalized_panel", {})
-    dia      = panel.get("diameter_inch") or ext["diameter_inch"]
-    model    = ext["woofer_model"]
+    dia      = panel.get("diameter_inch") or ext.get("diameter_inch")
+    model    = ext.get("woofer_model")
     hz       = ext.get("target_hz")
     bass     = ext.get("bass_char", "")
     brand    = panel.get("brand")
-    size_raw = panel.get("diameter_raw") or f'{dia}"'
+    size_raw = panel.get("diameter_raw") or (f'{dia}"' if dia else None)
     enc_pref = panel.get("enclosure_preference", "ported")  # default ported
     enc_src  = panel.get("constraint_source", "inferred")
 
@@ -302,7 +302,7 @@ def process_message(
         if _np and not normalized_ctx.get("normalized_panel"):
             normalized_ctx["normalized_panel"] = _np
 
-        agent_result = agent.process(message, context=normalized_ctx)
+        agent_result = agent.process(message, context=normalized_ctx, history=history)
 
         intake = agent_result.get("intake")
         if intake and getattr(intake, "usage_domain", "car_audio") in ("outdoor", "pro_audio", "home_audio"):
@@ -403,6 +403,8 @@ def process_message(
                         "port_length_cm": acoustic.port_length_cm,
                         "enclosure_type": acoustic.enclosure_type,
                         "dimensions":     acoustic.dimensions.model_dump(),
+                        "port":           acoustic.port.model_dump() if acoustic.port else None,
+                        "panel_list":     acoustic.panel_list,
                         "packet_hash":    acoustic.packet_hash,
                         "advice":         design_result.get("advice", ""),
                         "warnings":       design_result.get("warnings", []),

@@ -29,6 +29,7 @@ class PortSpec(BaseModel):
     dia_mm:            Optional[float] = None
     width_mm:          Optional[float] = None    # Slot port genışlık
     height_mm:         Optional[float] = None    # Slot port yükseklik
+    gap_mm:            Optional[float] = None    # L-Port hava boşluğu
     length_mm:         float = 0.0
     count:             int   = 1
     area_cm2:          float = 0.0

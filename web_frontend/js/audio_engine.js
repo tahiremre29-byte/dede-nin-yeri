@@ -74,7 +74,18 @@ document.addEventListener("DOMContentLoaded", () => {
             osc.start();
             osc.stop(audioCtx.currentTime + 0.04);
         },
-        click: playClickConfirm
+        click: playClickConfirm,
+        
+        // Barış Manço - Dönence (MP3 Player)
+        playDonenceSignature: () => {
+            const signatureAudio = new Audio("audio/donence.mp3");
+            signatureAudio.volume = 0.6;
+            
+            // Hata çıkarsa (dosya yoksa UI üstünde belli etmesin, log atsın)
+            signatureAudio.play().catch(e => {
+                console.log("[DD1_Audio] İmza sesi çalınamadı. 'audio/donence.mp3' dosyasını klasöre eklediğinizden emin olun.", e);
+            });
+        }
     };
 
     // Bütün butonlara ve belirlenen (.hover-sfx) inputlara efekt ekle

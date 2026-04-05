@@ -8,10 +8,19 @@
     "odak": "Yerli Uzman Akustik Teorileri - Hoparlörler ve Hoparlör Kabinleri - 2"
   },
   "analiz": {
-    "markalar": ["WinISD Beta", "Kendin Yap (DIY)"],
+    "markalar": [
+      "WinISD Beta",
+      "Kendin Yap (DIY)"
+    ],
     "saha_dili": [
-      "Rezonans Frekansı", "Faz Kayması", "Vent Mach (Port Hızı)", "Gönye Burun 45°",
-      "Thiele Small (TS)", "Qts, Qes, Qms, Vas, Fs, SPL", "Beyaz Tutkal", "İşkence"
+      "Rezonans Frekansı",
+      "Faz Kayması",
+      "Vent Mach (Port Hızı)",
+      "Gönye Burun 45°",
+      "Thiele Small (TS)",
+      "Qts, Qes, Qms, Vas, Fs, SPL",
+      "Beyaz Tutkal",
+      "İşkence"
     ],
     "teknik_sorular": [
       "Hoparlörler neden kutu içerisinde çalışma ihtiyacı duyarlar?",
@@ -25,5 +34,8 @@
       "İç çeperlerin muflonla (elyaf/sünger) kaplanması hacmi değiştirmez ama yansımayı/yankıyı keser."
     ],
     "ozet": "D.Hardware müstear isimli yazarın tamamen saf kabin mühendisliği anlattığı rehberdir. Ustaların çokça tartışıp yanlış bildiği 'vida mı atalım, silikon mu?' sorusuna net 'çivi ve vida kullanmayın, sadece bol beyaz tutkal ve işkenceyle sıkın' diyor. Ayrıca port hızının (Vent Mach) 0.15'i geçmemesi kuralını sistemlerimize eklemeliyiz. DD1'in port hesaplamalarında rüzgar sesini engellemek için mükemmel bir akustik limitörü olarak kullanılacak bilgi."
-  }
+  },
+  "__dd1_islendi": true,
+  "__dd1_koleksiyon": "montaj_koleksiyonu",
+  "__dd1_islendi_at": "2026-04-05T11:29:03.128727"
 }

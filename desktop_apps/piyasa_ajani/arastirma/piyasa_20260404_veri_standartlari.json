@@ -1,0 +1,39 @@
+{
+  "orneklem_kaynagi": "DD1 Sistem Kuralları: Terminal Kasa Yapısı ve Çakışma Yönetimi (Car.info / UltimateSpecs / Auto-Data)",
+  "analiz": {
+    "markalar": [
+      "UltimateSpecs",
+      "Car.info",
+      "Auto-Data.net"
+    ],
+    "teknik_sorular": [
+      "Farklı web sitelerinden (Car.info vs Auto-Data) gelen veriler çakıştığında hangi kaynak önceliklidir?",
+      "Aracın kasa yapısı sisteme girilirken 'Sedan' mı yoksa 'Saloon' mu kullanılacak, terminoloji çöplüğünü nasıl engelleriz?"
+    ],
+    "kronik_sorunlar": [
+      "Veri havuzunda standardize edilmemiş araç tiplerinin (örn. kimisine Station Wagon, kimisine Estate yazılması) Ses Ustası'nın 'Cabin Gain' hesabını karıştırması ve veritabanını çöplüğe çevirmesi."
+    ],
+    "saha_dili": [
+      "Sedan (Saloon)",
+      "Hatchback (3/5 door)",
+      "Station Wagon (Estate/Avant/Touring)",
+      "Coupe",
+      "Cabrio/Convertible",
+      "SUV / Crossover",
+      "MPV (Multi Purpose Vehicle)"
+    ],
+    "jargon": [
+      "Sedan (Saloon) : 4 kapılı, bagajı ayrı bölme",
+      "Hatchback (3/5 door) : Arka camla birlikte açılan bagaj kapağı",
+      "Station Wagon (Estate/Avant/Touring) : Uzatılmış tavan yapısı",
+      "Coupe : Genellikle 2 kapılı, sportif hatlı",
+      "Cabrio/Convertible : Açılabilir tavan",
+      "SUV / Crossover : Yüksek yapılı, arazi veya şehir içi yüksek sürüş",
+      "MPV (Multi Purpose Vehicle) : Geniş aile araçları (Minivan tarzı)"
+    ],
+    "ozet": "VERİ KOORDİNASYON TAAHHÜDÜ: Auto-Data, Car.info veya UltimateSpecs... Nereden gelirse gelsin araç bilgileri DD1 veritabanına girerken rastgele olarak alınmayacaktır. Sistemdeki tüm gövde/kasa tipleri tek bir standart kalıba (Sedan, Hatchback, SW, Coupe, Cabrio, SUV, MPV) çevrilecektir. Birden fazla kaynaktan gelen litre veya ölçü bilgisinde çakışma olursa (Örn. biri 400L diğeri 380L diyorsa), Usta her zaman muhafazakar/kesin olan alt limiti dikkate alarak çakışmayı bertaraf eder. Kütüphanenin çöplüğe dönmesine izin verilmeyecektir."
+  },
+  "__dd1_islendi": true,
+  "__dd1_koleksiyon": "montaj_koleksiyonu",
+  "__dd1_islendi_at": "2026-04-05T11:29:03.328607"
+}

@@ -1,0 +1,35 @@
+{
+  "orneklem_kaynagi": "Otomobil.com.tr - Teknik Veriler ve Türkiye Motor Seçenekleri",
+  "analiz": {
+    "markalar": [
+      "Renault",
+      "Dacia",
+      "Nissan",
+      "Fiat",
+      "Peugeot",
+      "Volkswagen"
+    ],
+    "teknik_sorular": [
+      "Müşterinin aracındaki motor hacmi (Örn: 1.0 TCe veya 1.3 DIG-T) ses sistemi kurulumundaki kritik elektrik (Alternatör ve Akü) altyapısını nasıl etkiler?"
+    ],
+    "kronik_sorunlar": [
+      "Küçük hacimli (Örn: 1.0 Litre 3 silindirli) motorlara sahip araçlarda standart olarak gelen ufak amperli (Örn: 70A-90A) alternatörlerin, 2000W RMS ve üzeri devasa SPL ses sistemlerini besleyememesi ve voltaj dalgalanmalarına (akü çökmesine) yol açması."
+    ],
+    "saha_dili": [
+      "1.0 TCe",
+      "1.3 DIG-T",
+      "1.5 dCi",
+      "E-Tech Hibrit",
+      "Motor Hacmi / Silindir",
+      "Alternatör Şarj Kapasitesi (Amper)"
+    ],
+    "jargon": [
+      "1.0 Motorlar (Düşük Kapasiteli Alternatör) : Genelde 3 silindirli kompakt araçlar. Ağır bas amfileri için ekstra akü (Big 3 Upgrade) şarttır.",
+      "Hibrit/EV Motorlar (Örn E-Tech) : Bagaj veya arka koltuk altında batarya taşırlar. Elektrik tesisatı çekilirken yüksek voltaj hatlarına ekstra dikkat edilmelidir."
+    ],
+    "ozet": "MOTOR HACMİ VE TESİSAT İLİŞKİSİ: Otomobil.com.tr veritabanından süzülen Türkiye'ye özgü motor seçenekleri (1.0 TCe, 1.3 DIG-T vb.), aracın bagaj hacminden ziyade 'KILCAL DAMARLARINI (Elektrik Sistemini)' belirler. Türkiye gibi yüksek vergilerden dolayı düşük hacimli (1.0L - 1.2L) motorların çok sattığı bir pazarda, Ses Ustası devasa bir amfi/subwoofer sistemi (Örn: 3000 RMS SPL) kurgularken ilk iş motoru sormalıdır. Çünkü 1.0 motorlu bir aracın şarj dinamosu bu yükü kaldıramaz; muhakkak kapasitör, ekstra yaşam aküsü veya 'Big 3 Çapraz Kablolama' upgrade'i gerekecektir."
+  },
+  "__dd1_islendi": true,
+  "__dd1_koleksiyon": "arac_koleksiyonu",
+  "__dd1_islendi_at": "2026-04-05T11:29:03.276474"
+}

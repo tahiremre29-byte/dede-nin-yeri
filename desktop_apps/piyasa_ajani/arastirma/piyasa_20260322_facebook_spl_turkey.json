@@ -5,7 +5,6 @@
     "kaynak": "Facebook Grup Analizi — Kullanici Gozlemi",
     "not": "Browser screenshot uzerinden elde edilen veriler"
   },
-
   "facebook_gruplari": {
     "spl_team_turkey": {
       "grup_adi": "SPL Team Turkey",
@@ -31,7 +30,6 @@
       }
     }
   },
-
   "piyasa_trendleri_cikartilan": {
     "ceza_etkisi": {
       "durum": "2024-2025 Türkiye ses sistemi cezaları — 21.000 TL modifiye cezası",
@@ -53,7 +51,6 @@
       "uc": "DIY kabin yapımcıları — ölçü ve tasarım desteği arayanlar"
     }
   },
-
   "aranacak_diger_gruplar": [
     "Car Audio Turkey",
     "Araba Ses Sistemi Türkiye",
@@ -61,10 +58,12 @@
     "SQL Team Turkey",
     "Türkiye Car Audio Kurulum"
   ],
-
   "dd1_icin_firsatlar": {
     "spl_segmenti": "SPL kullanıcıları kabin hesabı — özellikle bandpass 4th/6th, çift woofer konfigürasyonu",
     "diy_segmenti": "Kabin çizen kullanıcılara DXF otomatik üretim sunmak büyük avantaj",
     "ceza_sonrasi": "Düşük profil ama yüksek performans sistem tasarımı — DD1 bu niş için ideal"
-  }
+  },
+  "__dd1_islendi": true,
+  "__dd1_koleksiyon": "arac_koleksiyonu",
+  "__dd1_islendi_at": "2026-04-05T11:29:03.043045"
 }

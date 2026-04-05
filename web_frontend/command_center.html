@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DD1 Quantum Command Center</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #050508;
+            --primary-glow: #00ffcc;
+            --secondary-glow: #7000ff;
+            --danger-glow: #ff0055;
+            --glass-bg: rgba(20, 20, 30, 0.4);
+            --glass-border: rgba(0, 255, 204, 0.15);
+            --text-main: #e0e0ff;
+            --text-muted: #8a8a9f;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            min-height: 100vh;
+            overflow: auto;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* Ambient Background */
+        .ambient-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 15% 50%, rgba(112, 0, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(0, 255, 204, 0.15) 0%, transparent 50%);
+            filter: blur(60px);
+            animation: breathe 8s infinite alternate;
+        }
+
+        @keyframes breathe {
+            0% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(1.1); opacity: 1; }
+        }
+
+        .scanlines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0, 255, 204, 0.03) 3px,
+                rgba(0, 255, 204, 0.03) 3px
+            );
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        /* Header */
+        header {
+            padding: 2rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--glass-border);
+            background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, transparent 100%);
+            z-index: 2;
+        }
+
+        .logo {
+            font-weight: 900;
+            font-size: 2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+            background: linear-gradient(90deg, #fff, var(--primary-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo::after {
+            content: "퀀텀";
+            position: absolute;
+            top: -10px;
+            right: -25px;
+            font-size: 0.8rem;
+            color: var(--secondary-glow);
+            -webkit-text-fill-color: var(--secondary-glow);
+        }
+
+        /* Main Content */
+        main {
+            padding: 1.5rem 4rem 1rem 4rem;
+            flex: 1;
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 2rem;
+            z-index: 2;
+            height: calc(100vh - 100px);
+        }
+
+        /* Sidebar - Agent Overview */
+        .agent-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .glass-panel:hover {
+            border-color: rgba(0, 255, 204, 0.4);
+            box-shadow: 0 0 20px rgba(0, 255, 204, 0.1);
+        }
+
+        .glass-panel::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+            transform: skewX(-20deg);
+            animation: shine 6s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            20% { left: 200%; }
+            100% { left: 200%; }
+        }
+
+        .panel-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary-glow);
+            box-shadow: 0 0 10px var(--primary-glow);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+            100% { opacity: 0.5; transform: scale(1); }
+        }
+
+        /* Agent Cards */
+        .agent-card {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .agent-card:hover {
+            background: rgba(0, 255, 204, 0.05);
+            border-color: var(--primary-glow);
+        }
+
+        .agent-info h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        
+        .agent-info p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+            margin-top: 5px;
+        }
+
+        .agent-status.active { color: var(--primary-glow); }
+        .agent-status.idle { color: var(--text-muted); }
+        .agent-status.busy { color: var(--secondary-glow); }
+
+        /* Terminal Window */
+        .terminal-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .terminal-header {
+            background: #0a0a0f;
+            padding: 10px 20px;
+            border-bottom: 1px solid var(--glass-border);
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .circle { width: 12px; height: 12px; border-radius: 50%; }
+        .c-red { background: #ff5f56; }
+        .c-yel { background: #ffbd2e; }
+        .c-grn { background: #27c93f; }
+
+        .terminal-body {
+            background: rgba(5, 5, 10, 0.8);
+            flex: 1;
+            padding: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.95rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.5);
+        }
+
+        .log-line {
+            display: flex;
+            gap: 15px;
+            opacity: 0;
+            animation: fadeIn 0.3s forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .time { color: var(--text-muted); }
+        .usr { color: var(--primary-glow); }
+        .sys { color: var(--secondary-glow); text-shadow: 0 0 5px var(--secondary-glow); }
+        .err { color: var(--danger-glow); text-shadow: 0 0 5px var(--danger-glow); }
+
+        .content { color: #fff; line-height: 1.5; }
+
+        /* Typewriter effect */
+        .typewriter {
+            overflow: hidden;
+            border-right: .15em solid var(--primary-glow);
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .15em;
+            animation: typing 1.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+
+        @keyframes typing { from { width: 0 } to { width: 100% } }
+        @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: var(--primary-glow); } }
+
+        /* Power Core */
+        .power-core-wrapper {
+            margin-top: auto;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .core-text {
+            font-family: 'JetBrains Mono';
+            font-size: 0.8rem;
+            color: var(--primary-glow);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .power-bar-bg {
+            width: 100%;
+            height: 4px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .power-bar-fill {
+            height: 100%;
+            width: 0%;
+            background: var(--primary-glow);
+            box-shadow: 0 0 10px var(--primary-glow);
+            transition: width 2s cubic-bezier(0.1, 0.8, 0.2, 1);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="ambient-bg"></div>
+    <div class="scanlines"></div>
+
+    <header>
+        <div class="logo">DDSOUND QUANTUM</div>
+        <div class="date-time" style="font-family:'JetBrains Mono'; color:var(--text-muted);">
+            <span id="clock" style="color:var(--primary-glow)"></span> // SYSTEM: ONLINE
+        </div>
+    </header>
+
+    <main>
+        <aside class="agent-sidebar">
+            <div class="glass-panel" style="flex:1">
+                <div class="panel-title">
+                    <div class="status-dot"></div>
+                    Ajan Ekosistemi
+                </div>
+                
+                <div class="agent-card">
+                    <div class="agent-info">
+                        <h3>Antigravity Core</h3>
+                        <p>> Otonom Başlatma</p>
+                    </div>
+                    <div class="agent-status active" style="font-family:'JetBrains Mono';font-size:0.8rem;">[ONLINE]</div>
+                </div>
+
+                <div class="agent-card" style="opacity:0.7">
+                    <div class="agent-info">
+                        <h3>Ses Ustası</h3>
+                        <p>> Kabin & Akustik</p>
+                    </div>
+                    <div class="agent-status busy" style="font-family:'JetBrains Mono';font-size:0.8rem;">[STANDBY]</div>
+                </div>
+
+                <div class="agent-card" style="opacity:0.7">
+                    <div class="agent-info">
+                        <h3>Tezgahtar</h3>
+                        <p>> Müşteri Verisi</p>
+                    </div>
+                    <div class="agent-status idle" style="font-family:'JetBrains Mono';font-size:0.8rem;">[SLEEP]</div>
+                </div>
+            </div>
+
+            <div class="glass-panel">
+                <div class="power-core-wrapper">
+                    <div class="core-text">Motordaki Güç Asfalta Dökülüyor</div>
+                    <div class="power-bar-bg">
+                        <div class="power-bar-fill" id="powerBar"></div>
+                    </div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); font-family:'JetBrains Mono'" id="powerText">SYNCING %0</div>
+                </div>
+            </div>
+        </aside>
+
+        <section class="glass-panel terminal-container" style="padding:0">
+            <div class="terminal-header">
+                <div class="circle c-red"></div>
+                <div class="circle c-yel"></div>
+                <div class="circle c-grn"></div>
+                <span style="margin-left: 15px; color: #8a8a9f; font-family:'JetBrains Mono'; font-size: 0.8rem;">antigravity@quantum-core ~ bash</span>
+            </div>
+            <div class="terminal-body" id="termBody">
+                <div class="log-line">
+                    <span class="time">[00:00.000]</span>
+                    <span class="sys">SYSTEM_BOOT</span>
+                    <span class="content">Initializing 12-Layer Otonom Architecture...</span>
+                </div>
+            </div>
+            <div class="terminal-input-wrapper" style="padding: 15px 20px; background: rgba(0,10,15,0.7); border-top: 1px solid var(--glass-border); display:flex; align-items:center;">
+                <span style="color:var(--primary-glow); margin-right:10px; font-weight:bold;">>_</span>
+                <input type="text" id="cmdInput" placeholder="Sisteme emir ver veya Ses Ustasına yaz..." style="width:100%; background:transparent; border:none; color:white; outline:none; font-family:'JetBrains Mono'; font-size:1rem;">
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Clock functionality
+        setInterval(() => {
+            const now = new Date();
+            document.getElementById('clock').innerText = now.toISOString().split('T')[1].slice(0,8);
+        }, 1000);
+
+        // Terminal animation sequence
+        const terminalBody = document.getElementById('termBody');
+        const powerBar = document.getElementById('powerBar');
+        const powerText = document.getElementById('powerText');
+        
+        const logs = [
+            { t: 800, act: "SYS", type: "sys", text: "Loading bash, file, and sub-agent tools into memory core..." },
+            { t: 1500, act: "USR", type: "usr", text: "Command Received: 'Beni masaya döndürmen için bana bir şeyler vermelisin'" },
+            { t: 2200, act: "ACT", type: "sys", text: "Analyzing request... Translating input into physical reality." },
+            { t: 3000, act: "RUN", type: "usr", text: "Execution: Bypassing idle state. Writing direct HTML/CSS to Desktop." },
+            { t: 3800, act: "SUCCESS", type: "sys", text: "File 'DD1_Command_Center.html' created successfully at C:\\Users\\DDSOUND\\Desktop\\exemiz" },
+            { t: 4500, act: "CORE", type: "sys", text: "Applying Quantum Glassmorphism Aesthetics. Injecting Visual Excellence Protocol." },
+            { t: 5500, act: "LINK", type: "sys", text: "Connecting to DD1 Ajan Ekosistemi (Ses Ustası, Sözcü, Tezgahtar)..." },
+            { t: 6500, act: "READY", type: "sys", text: "<span class='typewriter' style='color:#00ffcc;'>OTOPİLOT DEVREDE. PATRON MASAYA BEKLENİYOR...</span>" }
+        ];
+
+        let delay = 0;
+        logs.forEach(log => {
+            setTimeout(() => {
+                const ms = new Date().getMilliseconds().toString().padStart(3, '0');
+                const sec = new Date().getSeconds().toString().padStart(2, '0');
+                const html = `
+                    <div class="log-line">
+                        <span class="time">[00:${sec}.${ms}]</span>
+                        <span class="${log.type}">${log.act}</span>
+                        <span class="content">${log.text}</span>
+                    </div>
+                `;
+                terminalBody.insertAdjacentHTML('beforeend', html);
+                terminalBody.scrollTop = terminalBody.scrollHeight;
+                
+                // Update Power Bar
+                const percent = Math.min(100, Math.round(((delay + log.t) / 7000) * 100));
+                powerBar.style.width = percent + "%";
+                powerText.innerText = "SYNCING %" + percent;
+                
+                if(percent >= 100) {
+                    powerText.innerText = "MAX POWER REACHED. STATUS: FULL AUTONOMY";
+                    powerText.style.color = "#00ffcc";
+                    powerBar.style.boxShadow = "0 0 30px #00ffcc";
+                }
+            }, log.t);
+            delay = log.t;
+        });
+
+        // Backend Live Logs Fetcher
+        let lastPrintedLog = "";
+        setTimeout(() => {
+            setInterval(async () => {
+                try {
+                    const res = await fetch('/api/monitor/logs');
+                    const json = await res.json();
+                    if(json.status === 'ok' && json.data.dd1_bridge) {
+                        const logs = json.data.dd1_bridge;
+                        if(logs.length > 0) {
+                            const lastLog = logs[logs.length-1];
+                            if(lastLog !== lastPrintedLog) {
+                                lastPrintedLog = lastLog;
+                                const sec = new Date().getSeconds().toString().padStart(2, '0');
+                                const html = `
+                                    <div class="log-line" style="opacity:0.8">
+                                        <span class="time">[LIVE:${sec}]</span>
+                                        <span class="sys">DD1_CORE</span>
+                                        <span class="content" style="color:#00ffcc">${lastLog.replace(/</g, "&lt;")}</span>
+                                    </div>
+                                `;
+                                terminalBody.insertAdjacentHTML('beforeend', html);
+                                terminalBody.scrollTop = terminalBody.scrollHeight;
+                            }
+                        }
+                    }
+                } catch(e) {}
+            }, 3000);
+        }, 8000);
+
+        // Command Input Listener
+        document.getElementById('cmdInput').addEventListener('keypress', async function(e) {
+            if(e.key === 'Enter' && this.value.trim() !== '') {
+                const cmd = this.value;
+                this.value = '';
+                
+                const sec = new Date().getSeconds().toString().padStart(2, '0');
+                const html = `
+                    <div class="log-line">
+                        <span class="time">[CMD:${sec}]</span>
+                        <span class="usr">SEN</span>
+                        <span class="content">${cmd.replace(/</g, "&lt;")}</span>
+                    </div>
+                `;
+                terminalBody.insertAdjacentHTML('beforeend', html);
+                terminalBody.scrollTop = terminalBody.scrollHeight;
+                
+                // DD1 Backend Chat endpointine gönder
+                try {
+                    const waitId = 'wait_' + Date.now();
+                    terminalBody.insertAdjacentHTML('beforeend', `<div class="log-line" id="${waitId}"><span class="sys">DD1</span><span class="content" style="color:var(--secondary-glow)"> İşleniyor...</span></div>`);
+                    terminalBody.scrollTop = terminalBody.scrollHeight;
+                    
+                    const res = await fetch('/chat', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ message: cmd, session_id: "quantum_auto" })
+                    });
+                    const reply = await res.json();
+                    document.getElementById(waitId).remove();
+                    
+                    const replyHtml = `
+                        <div class="log-line" style="margin-bottom:10px">
+                            <span class="time">[RES:${sec}]</span>
+                            <span class="sys" style="color:#ffbd2e">USTA</span>
+                            <span class="content" style="color:#fff; font-weight:500;">${reply.reply || reply.message || "İşlem tamamlandı."}</span>
+                        </div>
+                    `;
+                    terminalBody.insertAdjacentHTML('beforeend', replyHtml);
+                    terminalBody.scrollTop = terminalBody.scrollHeight;
+                } catch(err) {
+                    console.log(err);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

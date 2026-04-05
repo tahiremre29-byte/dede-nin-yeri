@@ -1,0 +1,35 @@
+{
+  "orneklem_kaynagi": "ODMD (Otomotiv Distribütörleri ve Mobilite Derneği) - Türkiye Pazarı Güncel Kasa Analizi",
+  "analiz": {
+    "markalar": [
+      "Fiat",
+      "Renault",
+      "Ford",
+      "Volkswagen",
+      "Toyota",
+      "Peugeot",
+      "Chery"
+    ],
+    "teknik_sorular": [
+      "Kullanıcıya özel portlu devasa kabin tasarlamadan önce aracının bir SUV (örneğin popüler C-SUV) veya B-Hatchback olma ihtimalini (Pazar gerçeklerini) göz önünde bulundurup bagaj derinliği teyidi aldın mı?"
+    ],
+    "kronik_sorunlar": [
+      "Kullanıcıların büyük çoğunluğunun B-Hatchback veya kompakt C-SUV (örneğin B-SUV) kullanması, ancak devasa Amerikan SPL tarzı sistem hayali kurarak bagajı tamamen kitlemeleri."
+    ],
+    "saha_dili": [
+      "C-Segmenti",
+      "B-Segmenti",
+      "SUV Dominasyonu",
+      "Kompakt Sedan"
+    ],
+    "jargon": [
+      "B-Hatchback (Dar Bagaj)",
+      "C-SUV (Yüksek Bagaj, Akustik Kazanım Farklı)",
+      "C-Sedan (Türkiye Klasik Aile Arabası)"
+    ],
+    "ozet": "ODMD Türkiye Otomotiv Pazarı verilerinden ayıklanan gerçekler: Türkiye pazarında satışların çok büyük bir kısmı (%80+) A, B ve C segmentlerine aittir. Kasa tiplerine (Body Style) bakıldığında, eskiden hakim olan 'Sedan' yapısı tahtını 'SUV / Crossover' yapılarına bırakmıştır. Hatchback (H/B) ise şehir içi pratikliğinden dolayı hala güçlü bir paya sahiptir. Ses Ustası; sistem tasarlarken Türkiye ortalamasının (C-SUV, B-Hatchback ve C-Sedan) bagaj hacmi skalasında (300L - 500L arası) olduğunu bilmeli, buna göre '100 Litre net kabin' önerileri yaparken müşteriyi iki kez uyarmalıdır."
+  },
+  "__dd1_islendi": true,
+  "__dd1_koleksiyon": "arac_koleksiyonu",
+  "__dd1_islendi_at": "2026-04-05T11:29:03.266479"
+}

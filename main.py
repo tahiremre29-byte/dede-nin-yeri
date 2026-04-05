@@ -90,9 +90,8 @@ def get_features():
 
 # Dijital Atölye — Statik Dosyalar (DDSound Web)
 # Mount işlemi tüm API endpointlerinden sonra yapılmalı ki onları ezmesin.
-_STATIC = Path(__file__).parent.parent / "ddsound_web"
-if _STATIC.exists():
-    app.mount("/", StaticFiles(directory=str(_STATIC), html=True), name="web_root")
+_STATIC = Path(__file__).resolve().parent / "web_frontend"
+app.mount("/", StaticFiles(directory=str(_STATIC), html=True), name="web_root")
 
 
 if __name__ == "__main__":

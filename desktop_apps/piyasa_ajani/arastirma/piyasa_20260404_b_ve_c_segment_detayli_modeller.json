@@ -1,0 +1,186 @@
+[
+  {
+    "marka": "Renault",
+    "model": "Clio",
+    "nesil": "Clio 5 (Makyajlı)",
+    "kasa_tipi": "Hatchback",
+    "segment": "B",
+    "turkiye_statusu": "Yerli Üretim"
+  },
+  {
+    "marka": "Hyundai",
+    "model": "i20",
+    "nesil": "BC3 (Makyajlı)",
+    "kasa_tipi": "Hatchback",
+    "segment": "B",
+    "turkiye_statusu": "Yerli Üretim"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Polo",
+    "nesil": "AW (6. Nesil)",
+    "kasa_tipi": "Hatchback",
+    "segment": "B",
+    "turkiye_statusu": "İthal"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "208",
+    "nesil": "P21 (Makyajlı)",
+    "kasa_tipi": "Hatchback",
+    "segment": "B",
+    "turkiye_statusu": "İthal"
+  },
+  {
+    "marka": "Opel",
+    "model": "Corsa",
+    "nesil": "Corsa F",
+    "kasa_tipi": "Hatchback",
+    "segment": "B",
+    "turkiye_statusu": "İthal"
+  },
+  {
+    "marka": "Dacia",
+    "model": "Sandero",
+    "nesil": "Stepway 3",
+    "kasa_tipi": ["B-SUV", "Hatchback"],
+    "segment": "B",
+    "turkiye_statusu": "İthal"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "2008",
+    "nesil": "P24",
+    "kasa_tipi": "B-SUV",
+    "segment": "B",
+    "turkiye_statusu": "İthal (Çok Satan)"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "T-Roc",
+    "nesil": "A1",
+    "kasa_tipi": "B-SUV",
+    "segment": "B",
+    "turkiye_statusu": "İthal"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "T-Cross",
+    "nesil": "C1",
+    "kasa_tipi": "B-SUV",
+    "segment": "B",
+    "turkiye_statusu": "İthal"
+  },
+  {
+    "marka": "Hyundai",
+    "model": "Bayon",
+    "nesil": "BC3",
+    "kasa_tipi": "B-SUV",
+    "segment": "B",
+    "turkiye_statusu": "Yerli Üretim"
+  },
+  {
+    "marka": "Toyota",
+    "model": "Yaris (Yaris Cross)",
+    "nesil": "XP210",
+    "kasa_tipi": ["Hatchback", "B-SUV"],
+    "segment": "B",
+    "turkiye_statusu": "İthal / Hibrit"
+  },
+  {
+    "marka": "Fiat",
+    "model": "Egea",
+    "nesil": "356 Serisi",
+    "kasa_tipi": ["Sedan", "Cross", "Hatchback", "Station Wagon"],
+    "segment": "C",
+    "turkiye_statusu": "Yerli Üretim (Lider)"
+  },
+  {
+    "marka": "Toyota",
+    "model": "Corolla",
+    "nesil": "E210 (12. Nesil)",
+    "kasa_tipi": "Sedan",
+    "segment": "C",
+    "turkiye_statusu": "Yerli Üretim / Hibrit"
+  },
+  {
+    "marka": "Renault",
+    "model": "Megane",
+    "nesil": "Megane 4",
+    "kasa_tipi": "Sedan",
+    "segment": "C",
+    "turkiye_statusu": "Yerli Üretim"
+  },
+  {
+    "marka": "Honda",
+    "model": "Civic",
+    "nesil": "FE (11. Nesil)",
+    "kasa_tipi": "Sedan",
+    "segment": "C",
+    "turkiye_statusu": "İthal"
+  },
+  {
+    "marka": "Volkswagen",
+    "model": "Golf",
+    "nesil": "Golf 8 (8.5)",
+    "kasa_tipi": "Hatchback",
+    "segment": "C",
+    "turkiye_statusu": "İthal (Kült Model)"
+  },
+  {
+    "marka": "Skoda",
+    "model": "Octavia",
+    "nesil": "NX (4. Nesil)",
+    "kasa_tipi": ["Liftback", "Station Wagon"],
+    "segment": "C",
+    "turkiye_statusu": "İthal"
+  },
+  {
+    "marka": "Chery",
+    "model": "Tiggo 7 Pro",
+    "nesil": "T1E",
+    "kasa_tipi": "C-SUV",
+    "segment": "C",
+    "turkiye_statusu": "İthal (Yeni Dev)"
+  },
+  {
+    "marka": "Togg",
+    "model": "T10X",
+    "nesil": "T10X",
+    "kasa_tipi": "C-SUV",
+    "segment": "C",
+    "turkiye_statusu": "Yerli / Elektrikli"
+  },
+  {
+    "marka": "Dacia",
+    "model": "Duster",
+    "nesil": "3. Nesil (Yeni)",
+    "kasa_tipi": "C-SUV",
+    "segment": "C",
+    "turkiye_statusu": "İthal (Hibrit Geldi)"
+  },
+  {
+    "marka": "Peugeot",
+    "model": "3008",
+    "nesil": "P64 (Yeni 3008)",
+    "kasa_tipi": "C-SUV",
+    "segment": "C",
+    "turkiye_statusu": "İthal"
+  },
+  {
+    "marka": "Hyundai",
+    "model": "Tucson",
+    "nesil": "NX4",
+    "kasa_tipi": "C-SUV",
+    "segment": "C",
+    "turkiye_statusu": "İthal"
+  },
+  {
+    "marka": "Kia",
+    "model": "Sportage",
+    "nesil": "NQ5",
+    "kasa_tipi": "C-SUV",
+    "segment": "C",
+    "turkiye_statusu": "İthal"
+  }
+]

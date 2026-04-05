@@ -1,0 +1,278 @@
+:root {
+  /* Colors */
+  --blue-neon: #00e1ff;
+  --blue-dark: rgba(0, 162, 255, 0.4);
+  --red-neon: #ff3333;
+  --red-dark: rgba(255, 20, 20, 0.4);
+  --bg-color: #0d0d0d;
+  --text-primary: #f2f2f2;
+  --text-secondary: #aaaaaa;
+
+  /* Layout/Animation Sizes */
+  --left-width: 50%;
+  --right-width: 50%;
+  --hover-width: 75%;
+  --other-width: 25%;
+  --speed: 0.8s;
+  
+  /* Fonts */
+  --font-main: 'Inter', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  overflow: hidden; /* For full screen split */
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Header & Logo */
+.main-header {
+  position: fixed;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  pointer-events: none;
+}
+
+.logo {
+  font-size: 2.5rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px 30px;
+  border-radius: 50px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.text-glow {
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255,255,255,0.5);
+}
+.text-white { color: #fff; }
+
+/* Split Container */
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+/* Base Split Structure */
+.split {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  transition: all var(--speed) cubic-bezier(0.19, 1, 0.22, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.split.left {
+  left: 0;
+  background: url('../assets/images/sound.png') center/cover no-repeat;
+}
+
+.split.right {
+  right: 0;
+  background: url('../assets/images/garage.png') center/cover no-repeat;
+}
+
+/* Hover States driven by JavaScript */
+.hover-left .left { width: var(--hover-width); z-index: 2; }
+.hover-left .right { width: var(--other-width); z-index: 1; }
+.hover-right .right { width: var(--hover-width); z-index: 2; }
+.hover-right .left { width: var(--other-width); z-index: 1; }
+
+.split.left::before {
+  content: "";
+  position: absolute;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.65);
+  transition: all var(--speed) ease;
+}
+
+.split.right::before {
+  content: "";
+  position: absolute;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.65);
+  transition: all var(--speed) ease;
+}
+
+.hover-left .left::before { background-color: rgba(0,0,0,0.3); }
+.hover-right .right::before { background-color: rgba(0,0,0,0.3); }
+
+/* The Color Overlays for aesthetic depth */
+.bg-overlay {
+  position: absolute;
+  width: 100%; height: 100%;
+  mix-blend-mode: overlay;
+  opacity: 0.6;
+}
+.color-blue { background: linear-gradient(135deg, var(--blue-dark), transparent); }
+.color-red { background: linear-gradient(135deg, var(--red-dark), transparent); }
+
+
+/* Content Container */
+.content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 40px;
+  width: 100%;
+  max-width: 600px;
+  opacity: 0.8;
+  transform: translateY(20px);
+  transition: all var(--speed) ease;
+}
+
+/* Content Active State (When hovered) */
+.hover-left .left .content,
+.hover-right .right .content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.content h1 {
+  font-size: 4rem;
+  font-weight: 900;
+  margin-bottom: 10px;
+  letter-spacing: -1px;
+}
+
+.highlight-blue { color: var(--blue-neon); text-shadow: 0 0 20px rgba(0, 225, 255, 0.4); }
+.highlight-red { color: var(--red-neon); text-shadow: 0 0 20px rgba(255, 51, 51, 0.4); }
+
+.subtitle {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  margin-bottom: 30px;
+  font-weight: 300;
+}
+
+.features {
+  list-style: none;
+  margin-bottom: 40px;
+  text-align: left;
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all var(--speed) ease;
+  transition-delay: 0.2s; /* Delay showing features */
+}
+
+/* Reveal features only when active */
+.hover-left .left .features,
+.hover-right .right .features {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.features li {
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+  position: relative;
+  padding-left: 25px;
+  font-weight: 400;
+}
+
+.features li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: white;
+}
+.left .features li::before { color: var(--blue-neon); }
+.right .features li::before { color: var(--red-neon); }
+
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 15px 40px;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: white;
+  background: transparent;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all var(--speed) ease;
+  transition-delay: 0.3s;
+}
+
+.hover-left .left .btn,
+.hover-right .right .btn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.btn-blue { border: 1px solid var(--blue-neon); box-shadow: 0 0 15px rgba(0, 225, 255, 0.2); }
+.btn-red { border: 1px solid var(--red-neon); box-shadow: 0 0 15px rgba(255, 51, 51, 0.2); }
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+.btn-blue:hover {
+  background: var(--blue-neon);
+  color: #000;
+  box-shadow: 0 0 30px rgba(0, 225, 255, 0.6);
+}
+
+.btn-red:hover {
+  background: var(--red-neon);
+  color: #000;
+  box-shadow: 0 0 30px rgba(255, 51, 51, 0.6);
+}
+
+
+/* Gradients at the bottom for smooth bleed effect */
+.bottom-gradient {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 30%;
+  z-index: 5;
+  pointer-events: none;
+}
+.blue-grad { background: linear-gradient(to top, rgba(0,225,255,0.1), transparent); }
+.red-grad { background: linear-gradient(to top, rgba(255,51,51,0.1), transparent); }
+
+/* Responsive adjustments */
+@media(max-width: 800px) {
+  .split { width: 100%; height: 50%; left: 0; right: auto; transition: height var(--speed) cubic-bezier(0.19, 1, 0.22, 1); }
+  .split.left { top: 0; }
+  .split.right { bottom: 0; right: auto; }
+  
+  .hover-left .left { height: var(--hover-width); width: 100%; }
+  .hover-left .right { height: var(--other-width); width: 100%; }
+  .hover-right .right { height: var(--hover-width); width: 100%; }
+  .hover-right .left { height: var(--other-width); width: 100%; }
+  
+  .content h1 { font-size: 2.5rem; }
+  .main-header { top: 15px; }
+  .logo { font-size: 1.5rem; padding: 5px 20px; }
+}

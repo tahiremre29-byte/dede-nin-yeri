@@ -1,0 +1,39 @@
+{
+  "brand": "Arabam.com",
+  "model": "Türkiye 2. El / Satılık İlan Pazarı",
+  "orneklem_kaynagi": "arabam.com platform navigasyon ve kategori ağacı incelemesi",
+  "analiz": {
+    "markalar": [
+      "Renault",
+      "Fiat",
+      "Volkswagen",
+      "Ford",
+      "Toyota",
+      "Hyundai",
+      "Peugeot",
+      "Honda"
+    ],
+    "teknik_sorular": [
+      "Türkiye'de ikinci el (kullanılmış) otomobil alan ve ses sistemi taktıracak müşterinin 'Kasa Tipi' dili nasıldır? Arabam.com kategorizasyonu nasıl?"
+    ],
+    "kronik_sorunlar": [
+      "2. El piyasasında Station Wagon araçların 'Estate' veya 'Touring' kelimelerinden ziyade doğrudan 'Station Wagon' kısacası (SW / Vagon) olarak anılması. Eğer sistem bunu eşleştiremezse Ses Ustası hatalı kabin önerir."
+    ],
+    "saha_dili": [
+      "Trink Sat / Oto Ekspertiz",
+      "Sedan Araba",
+      "Hatchback Araba",
+      "Station Wagon Araba",
+      "Suv / Pick-up",
+      "Minivan & Panelvan"
+    ],
+    "jargon": [
+      "Sahibinden (Temiz / El değmemiş - Kullanıcı genelde orijinal teybi/pandizotu bozmak istemez)",
+      "Garaj / Tuning (Önceden oynanmış araçlar, modifiye/ses sistemine fiziken zemin hazırdır)"
+    ],
+    "ozet": "Arabam.com Türkiye'deki 2. el pazarının (dolayısıyla ses sistemi takılacak potansiyel araçların) kalbidir. Sistemin kategori ağacına bakıldığında kurguladığımız 'Sedan', 'Hatchback', 'Station Wagon' ve 'SUV' kasa tipi sınıflamalarının pazar standardıyla %100 örtüştüğü görülmektedir. İlanların ezici çoğunluğu Sedan, SUV ve Hatchback eksenindedir. Ses Ustası; arabam.com pazarından çıkıp gelen 'Sahibinden' bir araca tesisat önerirken orijinal kapı döşemelerini veya bagaj havuzunu kesip biçmeden (Gizli / Orijinal yuvalara oturan) çözümleri ilk etapta önermelidir ki aracın 2. el satış değeri düşmesin."
+  },
+  "__dd1_islendi": true,
+  "__dd1_koleksiyon": "arac_koleksiyonu",
+  "__dd1_islendi_at": "2026-04-05T11:29:03.229612"
+}

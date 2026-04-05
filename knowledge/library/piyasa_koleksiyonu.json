@@ -1,0 +1,53 @@
+{
+  "collection": "piyasa_koleksiyonu",
+  "version": 2,
+  "entries": [
+    {
+      "library_type": "piyasa",
+      "kaynak": "ceza_arastirma_20260321_2347.json",
+      "markalar": [],
+      "ozet": "",
+      "saha_dili": [],
+      "kronik_sorunlar": [],
+      "tags": [],
+      "__source": "ceza_arastirma_20260321_2347.json"
+    },
+    {
+      "library_type": "piyasa",
+      "kaynak": "piyasa_20260321_2334.json",
+      "markalar": [],
+      "ozet": "",
+      "saha_dili": [],
+      "kronik_sorunlar": [],
+      "tags": [],
+      "__source": "piyasa_20260321_2334.json"
+    },
+    {
+      "library_type": "piyasa",
+      "kaynak": "piyasa_20260322_referans_kullanici_ddsound.json",
+      "markalar": [],
+      "ozet": "",
+      "saha_dili": [],
+      "kronik_sorunlar": [],
+      "tags": [],
+      "__source": "piyasa_20260322_referans_kullanici_ddsound.json"
+    },
+    {
+      "library_type": "piyasa",
+      "kaynak": "saha_dili.json",
+      "markalar": [],
+      "ozet": "",
+      "saha_dili": [],
+      "kronik_sorunlar": [],
+      "tags": [],
+      "__source": "saha_dili.json"
+    }
+  ],
+  "source_hashes": {
+    "ceza_arastirma_20260321_2347.json": "83228a5ccd3f35205130b1ab318531da",
+    "piyasa_20260321_2334.json": "9d9b2ec3d22558bfa911f22c0e1fbe84",
+    "piyasa_20260322_referans_kullanici_ddsound.json": "51e37734937332554758b8455273a871",
+    "saha_dili.json": "df10c93cb1c1bb733fce064e4377eb3c"
+  },
+  "updated_at": "2026-04-05T18:39:14.316763"
+}

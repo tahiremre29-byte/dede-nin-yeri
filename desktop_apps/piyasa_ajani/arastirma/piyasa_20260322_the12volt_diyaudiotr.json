@@ -10,7 +10,6 @@
     ],
     "aciklama": "Araba ses sistemi teknik bilgi ve piyasa verileri — the12volt.com ve diyaudiotr.com'dan derlendi"
   },
-
   "wiring_semalari": {
     "kaynak": "https://www.the12volt.com/caraudio/subwoofer-wiring-diagrams.asp",
     "aciklama": "Subwoofer bağlantı şemaları — tüm SVC/DVC kombinasyonları",
@@ -118,7 +117,6 @@
       "tavsiye": "Hedef: ampfi min impedansini gecme, en dusuk gucte %110 ustu gitme"
     }
   },
-
   "thiele_small_parametreleri": {
     "kaynak": "https://www.the12volt.com/caraudio/thiele-small-parameters.asp",
     "aciklama": "Hoparlor tasarimi icin temel parametreler",
@@ -201,7 +199,6 @@
       "port_hizi": "v = (Sd × Xmax × Fb) / Av  [max 20 m/s]"
     }
   },
-
   "kabin_turleri": {
     "kaynak": "https://diyaudiotr.com/makale/hoparlorler-ve-hoparlor-kabinleri-2",
     "aciklama": "Turkce teknik kaynak — DIY Audio Turkiye",
@@ -272,7 +269,6 @@
       }
     }
   },
-
   "turkiye_piyasasi": {
     "guvenilir_markalar": {
       "subwoofer_uretici": [
@@ -333,7 +329,6 @@
       }
     }
   },
-
   "saha_dili_sozlugu": {
     "turkiye_sokak_dili": {
       "bagaj_acti": "Disari vuran, fazla ses yapan sistem",
@@ -362,7 +357,6 @@
       "max_ohm_karmasiklik": "DVC woofer'in ic baglanitisi seri mi paralel mi — bunu anlamak onemli"
     }
   },
-
   "diyaudiotr_kaynaklar": {
     "makale_listesi": [
       {
@@ -384,7 +378,6 @@
       }
     ]
   },
-
   "the12volt_kaynaklar": {
     "wiring_wizard": "https://www.the12volt.com/caraudio/subwoofer-wiring-diagrams.asp",
     "kabin_hesaplayici": "https://www.the12volt.com/caraudio/boxcalcs.asp",
@@ -394,5 +387,8 @@
     "6th_8th_order": "https://www.the12volt.com/caraudio/sixth-and-eighth-order-subwoofer-boxes.asp",
     "pasif_crossover": "https://www.the12volt.com/caraudio/passive-crossovers.asp",
     "not": "Bu site en kapsamli ingilizce car audio teknik kaynaklarindan biridir. Formulleri dogrulanmistir."
-  }
+  },
+  "__dd1_islendi": true,
+  "__dd1_koleksiyon": "montaj_koleksiyonu",
+  "__dd1_islendi_at": "2026-04-05T11:29:03.085797"
 }

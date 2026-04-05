@@ -1,0 +1,29 @@
+{
+  "orneklem_kaynagi": "Renault ve Fiat Türkiye Resmi Katalogları (Yerli Üretim Güncel Kasa Kodları)",
+  "analiz": {
+    "markalar": [
+      "Renault",
+      "Fiat"
+    ],
+    "teknik_sorular": [
+      "Türkiye'de fabrikası olan global markaların (Fiat Egea, Renault Megane E-Tech vb.) en güncel 'Yerel Seri' veya Makyaj kasa kodlarına hangi kaynaktan ulaşılmalı?"
+    ],
+    "kronik_sorunlar": [
+      "Oto sanayide eski alışkanlıklarla (Örn: Megane 2, Albea) tasarlanan ezbere kabinlerin, araç fabrikalarının çıkardığı en güncel seri Cross veya Elektrikli (E-Tech) kasaların yalıtım/rezonans mimarisine çarparak seste rezalete ('boğuk bas') sebep olması."
+    ],
+    "saha_dili": [
+      "Makyajlı Kasa (Facelift)",
+      "Yerli Üretim",
+      "Cross / Stepway",
+      "E-Tech"
+    ],
+    "jargon": [
+      "Cross / Stepway : Yerden yükseltilmiş modeller (Örn Egea Cross). Genellikle standart sedana göre bagaj yapısı/yüksekliği değişebilir.",
+      "E-Tech (Renault) : Yeni nesil elektrikli/hibrit serisi. Kasa kodları tamamen farklıdır ve yalıtımları kalındır."
+    ],
+    "ozet": "YERLİ AKTÜEL KASA REFERANSI: Egea (Fiat) ve Clio/Megane (Renault) Türkiye'de ota yola hükmeden yerli üretim devleridir. Resmi katalogları, E-Tech ve Cross dönüşümlerinin en güncel kasa kodlarını belirler. Ses Ustası; eğer müşteri Egea'nın 'Cross' versiyonu veya Renault 'E-Tech' donanımı ile geldiğini belirtirse, bunun artık standart eski tip bir Sedan/Hatchback olmadığını, alt yapılarının, akü konumlarının veya yalıtım süngerlerinin güncellendiğini dikkate alır. Gerekirse 'Bagaj hacminde veya zemininde Cross/E-Tech olmasından dolayı çıkıntı/fark var mı?' diyerek milimetrik teyit ister."
+  },
+  "__dd1_islendi": true,
+  "__dd1_koleksiyon": "arac_koleksiyonu",
+  "__dd1_islendi_at": "2026-04-05T11:29:03.313028"
+}

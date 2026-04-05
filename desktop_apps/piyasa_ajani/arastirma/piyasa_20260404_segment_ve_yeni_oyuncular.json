@@ -1,0 +1,54 @@
+{
+  "orneklem_kaynagi": "DD1 Sistem Kuralları: Türkiye Pazarı Güncel Segmentasyon ve Yeni Oyuncular V1",
+  "analiz": {
+    "markalar": [
+      "Fiat",
+      "Toyota",
+      "Renault",
+      "Volkswagen",
+      "Dacia",
+      "Peugeot",
+      "Skoda",
+      "Mercedes",
+      "BMW",
+      "Audi",
+      "Chery",
+      "MG",
+      "BYD",
+      "Skywell",
+      "Leapmotor",
+      "TOGG"
+    ],
+    "populer_markalar": [
+      "Chery",
+      "TOGG",
+      "MG",
+      "BYD"
+    ],
+    "teknik_sorular": [
+      "Elektrikli (EV) veya Yeni Nesil Çinli bir SUV (Örn: Togg T10X, Chery Tiggo 8 Pro) geldiğinde ses sistemi tasarlarken kablolama ve yüksek zemin (batarya paketi) dolayısıyla bagaj alanında farklı kısıtlamalar olabileceğini biliyor muyum?"
+    ],
+    "kronik_sorunlar": [
+      "A veya B Segment standart bir Hatchback araca (Örn: Hyundai i10, Clio) 120 Litrelik devasa kabin tasarlayıp bagaj kapağının kapanmamasına sebep olmak."
+    ],
+    "saha_dili": [
+      "A Segmenti (Minik)",
+      "B Segmenti (Küçük)",
+      "C Segmenti (Orta)",
+      "D Segmenti (Üst Orta)",
+      "E/F Segmenti (Lüks)",
+      "Çinli Markalar",
+      "Milli Gurur TOGG"
+    ],
+    "jargon": [
+      "A Segmenti (Minik) - Örn: i10, Picanto. Bagaj hacmi sıfıra yakındır. Gizli veya Slim bas zaruridir.",
+      "B Segmenti (Küçük) - Örn: Clio, Polo, Sandero. Bagaj kısıtlıdır, aeroport ve kompakt kabinler önerilir.",
+      "C Segmenti (Orta) - Örn: Egea, Corolla, Megane, Tiggo 7 Pro, T10X. Türkiye'nin standart gövdesi. Akustik olarak dengeli, bas kabini konulabilir.",
+      "D/E/F Segmenti - Örn: Passat, Superb, Premium Almanlar (BMW/Mercedes/Audi). Derin sedandır, bagaj geniştir ancak yalıtım çok kalın olduğu için bası kabine zor geçirir (Kabin kazancı düşüktür)."
+    ],
+    "ozet": "TÜRKİYE SEGMENT GERÇEKLERİ VE ÇİNLİ İSTİLASI: Türkiye'deki satışların büyük kısmını B ve C segmentleri oluşturur. D ve üstü lüks ve kurumsal (filo) sayılır. Ayrıca pazara giren Chery (Omoda 5, Tiggo 7/8 Pro), MG, BYD, Skywell gibi Çinli devler ve yerli T10X (TOGG), SUV pazarını %50'nin üzerine çıkarmıştır. Ses Ustası, kendisine bir 'Chery Tiggo' veya 'Togg T10X' sorulduğunda bunların yeni nesil C-SUV'ler (veya EV) olduğunu doğrudan tanımalı ve batarya/zemin/yalıtım yapılarını hesaba katarak modern ve alan dostu ses sistemi mimarileri önermelidir."
+  },
+  "__dd1_islendi": true,
+  "__dd1_koleksiyon": "arac_koleksiyonu",
+  "__dd1_islendi_at": "2026-04-05T11:29:03.315026"
+}

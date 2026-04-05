@@ -8,8 +8,17 @@
     "odak": "Dış Kaynak Matematiksel Analizi - OmniCalculator Speaker Box"
   },
   "analiz": {
-    "markalar": ["Genel / Kendin Yap (DIY)"],
-    "saha_dili": ["Internal Volume", "Board Thickness", "Speaker Driver Displacement", "Port Volume", "Miter Angle", "Butt Joint"],
+    "markalar": [
+      "Genel / Kendin Yap (DIY)"
+    ],
+    "saha_dili": [
+      "Internal Volume",
+      "Board Thickness",
+      "Speaker Driver Displacement",
+      "Port Volume",
+      "Miter Angle",
+      "Butt Joint"
+    ],
     "teknik_sorular": [
       "Kabin yapmak için net iç litre mi önemli dış litre mi?",
       "Hoparlörün kendi hacmi (Driver Displacement) iç litreden düşülmeli mi?"
@@ -20,5 +29,8 @@
       "Ahşap birleştirmede Gönye (Miter) veya Düz (Butt) birleştirme tekniklerinin hesaplayıcıları."
     ],
     "ozet": "OmniCalculator tamamen matematiğe odaklanan bir platform. Özellikle yeni başlayan amatörlerin en çok hata yaptığı konu olan 'Kabin hacmi hesaplarken ahşap et kalınlığını (Board Thickness) hesaba katmayı unutma' problemini direkt formüle dökmüşler. Ayrıca Subwoofer'ın sepetinin (Driver Displacement) ve liman borusunun (Port Volume) içeride ne kadar yer kapladığını kesinlikle iç hacminden eksiltiyorlar. Bu tam olarak DD1 usta vizyonuyla örtüşen kusursuz bir matematik yaklaşımıdır."
-  }
+  },
+  "__dd1_islendi": true,
+  "__dd1_koleksiyon": "montaj_koleksiyonu",
+  "__dd1_islendi_at": "2026-04-05T11:29:03.156210"
 }

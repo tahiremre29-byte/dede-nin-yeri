@@ -1,0 +1,1591 @@
+{
+  "collection": "arac_koleksiyonu",
+  "version": 2,
+  "entries": [
+    {
+      "library_type": "arac",
+      "marka": "Renault",
+      "model": "Clio",
+      "nesil": "Clio 5 (Makyajlı)",
+      "kasa_tipi": [
+        "Hatchback"
+      ],
+      "segment": "B",
+      "turkiye_statusu": "Yerli Üretim",
+      "kapi_hop_on_cm": 16.5,
+      "kapi_hop_arka_cm": 13.0,
+      "kapi_sekli": "",
+      "kapi_montaj_notu": "",
+      "kapi_harness_gerek": null,
+      "bagaj_min_litre": null,
+      "bagaj_max_litre": null,
+      "bagaj_notu": "",
+      "alternator_a": null,
+      "aku_ah": null,
+      "motor_hacmi_cc": "",
+      "big3_gerek": null,
+      "cabin_gain_hz": null,
+      "akustik_notu": "",
+      "usta_uyari": "Özellikle Avrupa (EU) üretimi araçlarda hoparlör yuvalarının standart yuvarlak (DIN) olmaması, üçgen veya asimetrik (Örn: VW perçinli hoparlörler) yuvalar yüzünden standart hoparlörlerin yuvaya oturmaması. | Orijinal hoparlör kablolarının kesilip biçilmesi nedeniyle aracın elektrik sisteminin hata vermesi veya garanti dışı kalması.",
+      "kaynaklar": [
+        "piyasa_20260404_b_ve_c_segment_detayli_modeller.json",
+        "piyasa_20260404_hertz_eu_fit_guide.json",
+        "piyasa_20260404_pioneer_eu_fit_guide.json",
+        "piyasa_20260404_populer_arac_kapi_olculeri.json",
+        "piyasa_20260404_resmi_turkiye_katalog_gercekleri.json",
+        "piyasa_20260404_segment_ve_yeni_oyuncular.json"
+      ],
+      "tags": [
+        "b",
+        "clio",
+        "hatchback",
+        "makyajlı",
+        "renault"
+      ],
+      "__library_type": "arac_direct",
+      "__source": "piyasa_20260404_b_ve_c_segment_detayli_modeller.json"
+    },
+    {
+      "library_type": "arac",
+      "marka": "Hyundai",
+      "model": "i20",
+      "nesil": "BC3 (Makyajlı)",
+      "kasa_tipi": [
+        "Hatchback"
+      ],
+      "segment": "B",
+      "turkiye_statusu": "Yerli Üretim",
+      "kapi_hop_on_cm": 16.5,
+      "kapi_hop_arka_cm": 16.5,
+      "kapi_sekli": "",
+      "kapi_montaj_notu": "",
+      "kapi_harness_gerek": null,
+      "bagaj_min_litre": null,
+      "bagaj_max_litre": null,
+      "bagaj_notu": "",
+      "alternator_a": null,
+      "aku_ah": null,
+      "motor_hacmi_cc": "",
+      "big3_gerek": null,
+      "cabin_gain_hz": null,
+      "akustik_notu": "",
+      "usta_uyari": "Toyota Corolla'nın (E210 vs) ön kapılarındaki oval yapıyı bilmeden yuvarlak 16cm mid-range sipariş edip, oval/yuvarlak ara kasnağı bulamayınca montajın yarım kalması.",
+      "kaynaklar": [
+        "piyasa_20260404_b_ve_c_segment_detayli_modeller.json",
+        "piyasa_20260404_populer_arac_kapi_olculeri.json",
+        "piyasa_20260404_segment_ve_yeni_oyuncular.json"
+      ],
+      "tags": [
+        "b",
+        "bc3",
+        "hatchback",
+        "hyundai",
+        "i20",
+        "makyajlı"
+      ],
+      "__library_type": "arac_direct",
+      "__source": "piyasa_20260404_b_ve_c_segment_detayli_modeller.json"
+    },
+    {
+      "library_type": "arac",
+      "marka": "Volkswagen",
+      "model": "Polo",
+      "nesil": "AW (6. Nesil)",
+      "kasa_tipi": [
+        "Hatchback"
+      ],
+      "segment": "B",
+      "turkiye_statusu": "İthal",
+      "kapi_hop_on_cm": null,
+      "kapi_hop_arka_cm": null,
+      "kapi_sekli": "",
+      "kapi_montaj_notu": "",
+      "kapi_harness_gerek": null,
+      "bagaj_min_litre": null,
+      "bagaj_max_litre": null,
+      "bagaj_notu": "",
+      "alternator_a": null,
+      "aku_ah": null,
+      "motor_hacmi_cc": "",
+      "big3_gerek": true,
+      "cabin_gain_hz": null,
+      "akustik_notu": "",
+      "usta_uyari": "Hatchback ve Station Wagon araçlarda subwoofer bas dalgalarının kabin içinde daha çabuk tepe yapması (Cabin Gain) sebebiyle, Sedanlara göre çok daha farklı frekans tepkisi alınması. | Kullanıcıların ufak bagajlı A veya B segment bir araca (Örn: Peugeot 208, VW Polo) 2 adet 38cm (15 inç) subwoofer sığdırma hayali, Auto-Data bagaj hacmi (Litre) duvarına toslaması.",
+      "kaynaklar": [
+        "piyasa_20260404_b_ve_c_segment_detayli_modeller.json",
+        "piyasa_20260404_auto_data_net_specs.json",
+        "piyasa_20260404_hertz_eu_fit_guide.json",
+        "piyasa_20260404_segment_ve_yeni_oyuncular.json"
+      ],
+      "tags": [
+        "6.",
+        "aw",
+        "b",
+        "hatchback",
+        "nesil",
+        "polo",
+        "volkswagen"
+      ],
+      "__library_type": "arac_direct",
+      "__source": "piyasa_20260404_b_ve_c_segment_detayli_modeller.json"
+    },
+    {
+      "library_type": "arac",
+      "marka": "Peugeot",
+      "model": "208",
+      "nesil": "P21 (Makyajlı)",
+      "kasa_tipi": [
+        "Hatchback"
+      ],
+      "segment": "B",
+      "turkiye_statusu": "İthal",
+      "kapi_hop_on_cm": 16.0,
+      "kapi_hop_arka_cm": null,
+      "kapi_sekli": "",
+      "kapi_montaj_notu": "",
+      "kapi_harness_gerek": null,
+      "bagaj_min_litre": null,
+      "bagaj_max_litre": null,
+      "bagaj_notu": "",
+      "alternator_a": null,
+      "aku_ah": null,
+      "motor_hacmi_cc": "",
+      "big3_gerek": true,
+      "cabin_gain_hz": null,
+      "akustik_notu": "",
+      "usta_uyari": "Hatchback ve Station Wagon araçlarda subwoofer bas dalgalarının kabin içinde daha çabuk tepe yapması (Cabin Gain) sebebiyle, Sedanlara göre çok daha farklı frekans tepkisi alınması. | Kullanıcıların ufak bagajlı A veya B segment bir araca (Örn: Peugeot 208, VW Polo) 2 adet 38cm (15 inç) subwoofer sığdırma hayali, Auto-Data bagaj hacmi (Litre) duvarına toslaması.",
+      "kaynaklar": [
+        "piyasa_20260404_b_ve_c_segment_detayli_modeller.json",
+        "piyasa_20260404_auto_data_net_specs.json",
+        "piyasa_20260404_hertz_eu_fit_guide.json"
+      ],
+      "tags": [
+        "208",
+        "b",
+        "hatchback",
+        "makyajlı",
+        "p21",
+        "peugeot"
+      ],
+      "__library_type": "arac_direct",
+      "__source": "piyasa_20260404_b_ve_c_segment_detayli_modeller.json"
+    },
+    {
+      "library_type": "arac",
+      "marka": "Opel",
+      "model": "Corsa",
+      "nesil": "Corsa F",
+      "kasa_tipi": [
+        "Hatchback"
+      ],
+      "segment": "B",
+      "turkiye_statusu": "İthal",
+      "kapi_hop_on_cm": null,
+      "kapi_hop_arka_cm": null,
+      "kapi_sekli": "",
+      "kapi_montaj_notu": "",
+      "kapi_harness_gerek": null,
+      "bagaj_min_litre": null,
+      "bagaj_max_litre": null,
+      "bagaj_notu": "",
+      "alternator_a": null,
+      "aku_ah": null,
+      "motor_hacmi_cc": "",
+      "big3_gerek": null,
+      "cabin_gain_hz": null,
+      "akustik_notu": "",
+      "usta_uyari": "",
+      "kaynaklar": [
+        "piyasa_20260404_b_ve_c_segment_detayli_modeller.json"
+      ],
+      "tags": [
+        "b",
+        "corsa",
+        "hatchback",
+        "opel"
+      ],
+      "__library_type": "arac_direct",
+      "__source": "piyasa_20260404_b_ve_c_segment_detayli_modeller.json"
+    },
+    {
+      "library_type": "arac",
+      "marka": "Dacia",
+      "model": "Sandero",
+      "nesil": "Stepway 3",
+      "kasa_tipi": [
+        "B-SUV",
+        "Hatchback"
+      ],
+      "segment": "B",
+      "turkiye_statusu": "İthal",
+      "kapi_hop_on_cm": null,
+      "kapi_hop_arka_cm": null,
+      "kapi_sekli": "",
+      "kapi_montaj_notu": "",
+      "kapi_harness_gerek": null,
+      "bagaj_min_litre": null,
+      "bagaj_max_litre": null,
+      "bagaj_notu": "",
+      "alternator_a": null,
+      "aku_ah": null,
+      "motor_hacmi_cc": "",
+      "big3_gerek": null,
+      "cabin_gain_hz": null,
+      "akustik_notu": "",
+      "usta_uyari": "A veya B Segment standart bir Hatchback araca (Örn: Hyundai i10, Clio) 120 Litrelik devasa kabin tasarlayıp bagaj kapağının kapanmamasına sebep olmak.",
+      "kaynaklar": [
+        "piyasa_20260404_b_ve_c_segment_detayli_modeller.json",
+        "piyasa_20260404_segment_ve_yeni_oyuncular.json"
+      ],
+      "tags": [
+        "b",
+        "b-suv",
+        "dacia",
+        "hatchback",
+        "sandero",
+        "stepway"
+      ],
+      "__library_type": "arac_direct",
+      "__source": "piyasa_20260404_b_ve_c_segment_detayli_modeller.json"
+    },
+    {
+      "library_type": "arac",
+      "marka": "Peugeot",
+      "model": "2008",
+      "nesil": "P24",
+      "kasa_tipi": [
+        "B-SUV"
+      ],
+      "segment": "B",
+      "turkiye_statusu": "İthal (Çok Satan)",
+      "kapi_hop_on_cm": 16.0,
+      "kapi_hop_arka_cm": null,
+      "kapi_sekli": "",
+      "kapi_montaj_notu": "",
+      "kapi_harness_gerek": null,
+      "bagaj_min_litre": null,
+      "bagaj_max_litre": null,
+      "bagaj_notu": "",
+      "alternator_a": null,
+      "aku_ah": null,
+      "motor_hacmi_cc": "",
+      "big3_gerek": true,
+      "cabin_gain_hz": null,
+      "akustik_notu": "",
+      "usta_uyari": "Hatchback ve Station Wagon araçlarda subwoofer bas dalgalarının kabin içinde daha çabuk tepe yapması (Cabin Gain) sebebiyle, Sedanlara göre çok daha farklı frekans tepkisi alınması. | Kullanıcıların ufak bagajlı A veya B segment bir araca (Örn: Peugeot 208, VW Polo) 2 adet 38cm (15 inç) subwoofer sığdırma hayali, Auto-Data bagaj hacmi (Litre) duvarına toslaması.",
+      "kaynaklar": [
+        "piyasa_20260404_b_ve_c_segment_detayli_modeller.json",
+        "piyasa_20260404_auto_data_net_specs.json",
+        "piyasa_20260404_hertz_eu_fit_guide.json"
+      ],
+      "tags": [
+        "2008",
+        "b",
+        "b-suv",
+        "p24",
+        "peugeot"
+      ],
+      "__library_type": "arac_direct",
+      "__source": "piyasa_20260404_b_ve_c_segment_detayli_modeller.json"
+    },
+    {
+      "library_type": "arac",
+      "marka": "Volkswagen",
+      "model": "T-Roc",
+      "nesil": "A1",
+      "kasa_tipi": [
+        "B-SUV"
+      ],
+      "segment": "B",
+      "turkiye_statusu": "İthal",
+      "kapi_hop_on_cm": null,
+      "kapi_hop_arka_cm": null,
+      "kapi_sekli": "",
+      "kapi_montaj_notu": "",
+      "kapi_harness_gerek": null,
+      "bagaj_min_litre": null,
+      "bagaj_max_litre": null,
+      "bagaj_notu": "",
+      "alternator_a": null,
+      "aku_ah": null,
+      "motor_hacmi_cc": "",
+      "big3_gerek": null,
+      "cabin_gain_hz": null,
+      "akustik_notu": "",
+      "usta_uyari": "Özellikle Avrupa (EU) üretimi araçlarda hoparlör yuvalarının standart yuvarlak (DIN) olmaması, üçgen veya asimetrik (Örn: VW perçinli hoparlörler) yuvalar yüzünden standart hoparlörlerin yuvaya oturmaması. | Orijinal hoparlör kablolarının kesilip biçilmesi nedeniyle aracın elektrik sisteminin hata vermesi veya garanti dışı kalması.",
+      "kaynaklar": [
+        "piyasa_20260404_b_ve_c_segment_detayli_modeller.json",
+        "piyasa_20260404_hertz_eu_fit_guide.json"
+      ],
+      "tags": [
+        "a1",
+        "b",
+        "b-suv",
+        "t-roc",
+        "volkswagen"
+      ],
+      "__library_type": "arac_direct",
+      "__source": "piyasa_20260404_b_ve_c_segment_detayli_modeller.json"
+    },
+    {
+      "library_type": "arac",
+      "marka": "Volkswagen",
+      "model": "T-Cross",
+      "nesil": "C1",
+      "kasa_tipi": [
+        "B-SUV"
+      ],
+      "segment": "B",
+      "turkiye_statusu": "İthal",
+      "kapi_hop_on_cm": null,
+      "kapi_hop_arka_cm": null,
+      "kapi_sekli": "",
+      "kapi_montaj_notu": "",
+      "kapi_harness_gerek": null,
+      "bagaj_min_litre": null,
+      "bagaj_max_litre": null,
+      "bagaj_notu": "",
+      "alternator_a": null,
+      "aku_ah": null,
+      "motor_hacmi_cc": "",
+      "big3_gerek": null,
+      "cabin_gain_hz": null,
+      "akustik_notu": "",
+      "usta_uyari": "Özellikle Avrupa (EU) üretimi araçlarda hoparlör yuvalarının standart yuvarlak (DIN) olmaması, üçgen veya asimetrik (Örn: VW perçinli hoparlörler) yuvalar yüzünden standart hoparlörlerin yuvaya oturmaması. | Orijinal hoparlör kablolarının kesilip biçilmesi nedeniyle aracın elektrik sisteminin hata vermesi veya garanti dışı kalması.",
+      "kaynaklar": [
+        "piyasa_20260404_b_ve_c_segment_detayli_modeller.json",
+        "piyasa_20260404_hertz_eu_fit_guide.json"
+      ],
+      "tags": [
+        "b",
+        "b-suv",
+        "c1",
+        "t-cross",
+        "volkswagen"
+      ],
+      "__library_type": "arac_direct",
+      "__source": "piyasa_20260404_b_ve_c_segment_detayli_modeller.json"
+    },
+    {
+      "library_type": "arac",
+      "marka": "Hyundai",
+      "model": "Bayon",
+      "nesil": "BC3",
+      "kasa_tipi": [
+        "B-SUV"
+      ],
+      "segment": "B",
+      "turkiye_statusu": "Yerli Üretim",
+      "kapi_hop_on_cm": 16.5,
+      "kapi_hop_arka_cm": 16.5,
+      "kapi_sekli": "",
+      "kapi_montaj_notu": "",
+      "kapi_harness_gerek": null,
+      "bagaj_min_litre": null,
+      "bagaj_max_litre": null,
+      "bagaj_notu": "",
+      "alternator_a": null,
+      "aku_ah": null,
+      "motor_hacmi_cc": "",
+      "big3_gerek": null,
+      "cabin_gain_hz": null,
+      "akustik_notu": "",
+      "usta_uyari": "Toyota Corolla'nın (E210 vs) ön kapılarındaki oval yapıyı bilmeden yuvarlak 16cm mid-range sipariş edip, oval/yuvarlak ara kasnağı bulamayınca montajın yarım kalması.",
+      "kaynaklar": [
+        "piyasa_20260404_b_ve_c_segment_detayli_modeller.json",
+        "piyasa_20260404_populer_arac_kapi_olculeri.json",
+        "piyasa_20260404_segment_ve_yeni_oyuncular.json"
+      ],
+      "tags": [
+        "b",
+        "b-suv",
+        "bayon",
+        "bc3",
+        "hyundai"
+      ],
+      "__library_type": "arac_direct",
+      "__source": "piyasa_20260404_b_ve_c_segment_detayli_modeller.json"
+    },
+    {
+      "library_type": "arac",
+      "marka": "Toyota",
+      "model": "Yaris (Yaris Cross)",
+      "nesil": "XP210",
+      "kasa_tipi": [
+        "Hatchback",
+        "B-SUV"
+      ],
+      "segment": "B",
+      "turkiye_statusu": "İthal / Hibrit",
+      "kapi_hop_on_cm": 16.5,
+      "kapi_hop_arka_cm": 16.5,
+      "kapi_sekli": "",
+      "kapi_montaj_notu": "",
+      "kapi_harness_gerek": null,
+      "bagaj_min_litre": null,
+      "bagaj_max_litre": null,
+      "bagaj_notu": "",
+      "alternator_a": null,
+      "aku_ah": null,
+      "motor_hacmi_cc": "",
+      "big3_gerek": null,
+      "cabin_gain_hz": null,
+      "akustik_notu": "",
+      "usta_uyari": "Toyota Corolla'nın (E210 vs) ön kapılarındaki oval yapıyı bilmeden yuvarlak 16cm mid-range sipariş edip, oval/yuvarlak ara kasnağı bulamayınca montajın yarım kalması.",
+      "kaynaklar": [
+        "piyasa_20260404_b_ve_c_segment_detayli_modeller.json",
+        "piyasa_20260404_populer_arac_kapi_olculeri.json"
+      ],
+      "tags": [
+        "b",
+        "b-suv",
+        "hatchback",
+        "toyota",
+        "xp210",
+        "yaris (yaris cross)"
+      ],
+      "__library_type": "arac_direct",
+      "__source": "piyasa_20260404_b_ve_c_segment_detayli_modeller.json"
+    },
+    {
+      "library_type": "arac",
+      "marka": "Fiat",
+      "model": "Egea",
+      "nesil": "356 Serisi",
+      "kasa_tipi": [
+        "Sedan",
+        "Cross",
+        "Hatchback",
+        "Station Wagon"
+      ],
+      "segment": "C",
+      "turkiye_statusu": "Yerli Üretim (Lider)",
+      "kapi_hop_on_cm": 16.0,
+      "kapi_hop_arka_cm": 16.5,
+      "kapi_sekli": "",
+      "kapi_montaj_notu": "",
+      "kapi_harness_gerek": null,
+      "bagaj_min_litre": null,
+      "bagaj_max_litre": null,
+      "bagaj_notu": "",
+      "alternator_a": null,
+      "aku_ah": null,
+      "motor_hacmi_cc": "",
+      "big3_gerek": null,
+      "cabin_gain_hz": null,
+      "akustik_notu": "",
+      "usta_uyari": "Özellikle Avrupa (EU) üretimi araçlarda hoparlör yuvalarının standart yuvarlak (DIN) olmaması, üçgen veya asimetrik (Örn: VW perçinli hoparlörler) yuvalar yüzünden standart hoparlörlerin yuvaya oturmaması. | Orijinal hoparlör kablolarının kesilip biçilmesi nedeniyle aracın elektrik sisteminin hata vermesi veya garanti dışı kalması.",
+      "kaynaklar": [
+        "piyasa_20260404_b_ve_c_segment_detayli_modeller.json",
+        "piyasa_20260404_hertz_eu_fit_guide.json",
+        "piyasa_20260404_populer_arac_kapi_olculeri.json",
+        "piyasa_20260404_resmi_turkiye_katalog_gercekleri.json",
+        "piyasa_20260404_segment_ve_yeni_oyuncular.json"
+      ],
+      "tags": [
+        "356",
+        "c",
+        "cross",
+        "egea",
+        "fiat",
+        "hatchback",
+        "sedan",
+        "serisi",
+        "station wagon"
+      ],
+      "__library_type": "arac_direct",
+      "__source": "piyasa_20260404_b_ve_c_segment_detayli_modeller.json"
+    },
+    {
+      "library_type": "arac",
+      "marka": "Toyota",
+      "model": "Corolla",
+      "nesil": "E210 (12. Nesil)",
+      "kasa_tipi": [
+        "Sedan"
+      ],
+      "segment": "C",
+      "turkiye_statusu": "Yerli Üretim / Hibrit",
+      "kapi_hop_on_cm": 16.5,
+      "kapi_hop_arka_cm": 16.5,
+      "kapi_sekli": "",
+      "kapi_montaj_notu": "",
+      "kapi_harness_gerek": null,
+      "bagaj_min_litre": null,
+      "bagaj_max_litre": null,
+      "bagaj_notu": "",
+      "alternator_a": null,
+      "aku_ah": null,
+      "motor_hacmi_cc": "",
+      "big3_gerek": null,
+      "cabin_gain_hz": null,
+      "akustik_notu": "",
+      "usta_uyari": "Özellikle Fransız grubu araçlarda (Clio, Megane) bazı donanımlarda 13 cm, bazılarında 16 cm yuva bulunabilmesi ve ezbere 'hepsi 16 cm' sanılıp alınan hoparlörlerin yuvaya sığmaması.",
+      "kaynaklar": [
+        "piyasa_20260404_b_ve_c_segment_detayli_modeller.json",
+        "piyasa_20260404_pioneer_eu_fit_guide.json",
+        "piyasa_20260404_populer_arac_kapi_olculeri.json",
+        "piyasa_20260404_segment_ve_yeni_oyuncular.json"
+      ],
+      "tags": [
+        "12.",
+        "c",
+        "corolla",
+        "e210",
+        "nesil",
+        "sedan",
+        "toyota"
+      ],
+      "__library_type": "arac_direct",
+      "__source": "piyasa_20260404_b_ve_c_segment_detayli_modeller.json"
+    },
+    {
+      "library_type": "arac",
+      "marka": "Renault",
+      "model": "Megane",
+      "nesil": "Megane 4",
+      "kasa_tipi": [
+        "Sedan"
+      ],
+      "segment": "C",
+      "turkiye_statusu": "Yerli Üretim",
+      "kapi_hop_on_cm": 16.5,
+      "kapi_hop_arka_cm": 13.0,
+      "kapi_sekli": "",
+      "kapi_montaj_notu": "",
+      "kapi_harness_gerek": null,
+      "bagaj_min_litre": null,
+      "bagaj_max_litre": null,
+      "bagaj_notu": "",
+      "alternator_a": null,
+      "aku_ah": null,
+      "motor_hacmi_cc": "",
+      "big3_gerek": null,
+      "cabin_gain_hz": null,
+      "akustik_notu": "",
+      "usta_uyari": "Özellikle Avrupa (EU) üretimi araçlarda hoparlör yuvalarının standart yuvarlak (DIN) olmaması, üçgen veya asimetrik (Örn: VW perçinli hoparlörler) yuvalar yüzünden standart hoparlörlerin yuvaya oturmaması. | Orijinal hoparlör kablolarının kesilip biçilmesi nedeniyle aracın elektrik sisteminin hata vermesi veya garanti dışı kalması.",
+      "kaynaklar": [
+        "piyasa_20260404_b_ve_c_segment_detayli_modeller.json",
+        "piyasa_20260404_hertz_eu_fit_guide.json",
+        "piyasa_20260404_pioneer_eu_fit_guide.json",
+        "piyasa_20260404_populer_arac_kapi_olculeri.json",
+        "piyasa_20260404_resmi_turkiye_katalog_gercekleri.json",
+        "piyasa_20260404_segment_ve_yeni_oyuncular.json"
+      ],
+      "tags": [
+        "c",
+        "megane",
+        "renault",
+        "sedan"
+      ],
+      "__library_type": "arac_direct",
+      "__source": "piyasa_20260404_b_ve_c_segment_detayli_modeller.json"
+    },
+    {
+      "library_type": "arac",
+      "marka": "Honda",
+      "model": "Civic",
+      "nesil": "FE (11. Nesil)",
+      "kasa_tipi": [
+        "Sedan"
+      ],
+      "segment": "C",
+      "turkiye_statusu": "İthal",
+      "kapi_hop_on_cm": null,
+      "kapi_hop_arka_cm": null,
+      "kapi_sekli": "",
+      "kapi_montaj_notu": "",
+      "kapi_harness_gerek": null,
+      "bagaj_min_litre": null,
+      "bagaj_max_litre": null,
+      "bagaj_notu": "",
+      "alternator_a": null,
+      "aku_ah": null,
+      "motor_hacmi_cc": "",
+      "big3_gerek": null,
+      "cabin_gain_hz": null,
+      "akustik_notu": "",
+      "usta_uyari": "",
+      "kaynaklar": [
+        "piyasa_20260404_b_ve_c_segment_detayli_modeller.json"
+      ],
+      "tags": [
+        "11.",
+        "c",
+        "civic",
+        "fe",
+        "honda",
+        "nesil",
+        "sedan"
+      ],
+      "__library_type": "arac_direct",
+      "__source": "piyasa_20260404_b_ve_c_segment_detayli_modeller.json"
+    },
+    {
+      "library_type": "arac",
+      "marka": "Volkswagen",
+      "model": "Golf",
+      "nesil": "Golf 8 (8.5)",
+      "kasa_tipi": [
+        "Hatchback"
+      ],
+      "segment": "C",
+      "turkiye_statusu": "İthal (Kült Model)",
+      "kapi_hop_on_cm": 16.5,
+      "kapi_hop_arka_cm": null,
+      "kapi_sekli": "",
+      "kapi_montaj_notu": "",
+      "kapi_harness_gerek": null,
+      "bagaj_min_litre": null,
+      "bagaj_max_litre": null,
+      "bagaj_notu": "",
+      "alternator_a": null,
+      "aku_ah": null,
+      "motor_hacmi_cc": "",
+      "big3_gerek": null,
+      "cabin_gain_hz": null,
+      "akustik_notu": "",
+      "usta_uyari": "Özellikle Avrupa (EU) üretimi araçlarda hoparlör yuvalarının standart yuvarlak (DIN) olmaması, üçgen veya asimetrik (Örn: VW perçinli hoparlörler) yuvalar yüzünden standart hoparlörlerin yuvaya oturmaması. | Orijinal hoparlör kablolarının kesilip biçilmesi nedeniyle aracın elektrik sisteminin hata vermesi veya garanti dışı kalması.",
+      "kaynaklar": [
+        "piyasa_20260404_b_ve_c_segment_detayli_modeller.json",
+        "piyasa_20260404_hertz_eu_fit_guide.json",
+        "piyasa_20260404_populer_arac_kapi_olculeri.json"
+      ],
+      "tags": [
+        "8.5",
+        "c",
+        "golf",
+        "hatchback",
+        "volkswagen"
+      ],
+      "__library_type": "arac_direct",
+      "__source": "piyasa_20260404_b_ve_c_segment_detayli_modeller.json"
+    },
+    {
+      "library_type": "arac",
+      "marka": "Skoda",
+      "model": "Octavia",
+      "nesil": "NX (4. Nesil)",
+      "kasa_tipi": [
+        "Liftback",
+        "Station Wagon"
+      ],
+      "segment": "C",
+      "turkiye_statusu": "İthal",
+      "kapi_hop_on_cm": null,
+      "kapi_hop_arka_cm": null,
+      "kapi_sekli": "",
+      "kapi_montaj_notu": "",
+      "kapi_harness_gerek": null,
+      "bagaj_min_litre": null,
+      "bagaj_max_litre": null,
+      "bagaj_notu": "",
+      "alternator_a": null,
+      "aku_ah": null,
+      "motor_hacmi_cc": "",
+      "big3_gerek": null,
+      "cabin_gain_hz": null,
+      "akustik_notu": "",
+      "usta_uyari": "",
+      "kaynaklar": [
+        "piyasa_20260404_b_ve_c_segment_detayli_modeller.json"
+      ],
+      "tags": [
+        "4.",
+        "c",
+        "liftback",
+        "nesil",
+        "nx",
+        "octavia",
+        "skoda",
+        "station wagon"
+      ],
+      "__library_type": "arac_direct",
+      "__source": "piyasa_20260404_b_ve_c_segment_detayli_modeller.json"
+    },
+    {
+      "library_type": "arac",
+      "marka": "Chery",
+      "model": "Tiggo 7 Pro",
+      "nesil": "T1E",
+      "kasa_tipi": [
+        "C-SUV"
+      ],
+      "segment": "C",
+      "turkiye_statusu": "İthal (Yeni Dev)",
+      "kapi_hop_on_cm": null,
+      "kapi_hop_arka_cm": null,
+      "kapi_sekli": "",
+      "kapi_montaj_notu": "",
+      "kapi_harness_gerek": null,
+      "bagaj_min_litre": null,
+      "bagaj_max_litre": null,
+      "bagaj_notu": "",
+      "alternator_a": null,
+      "aku_ah": null,
+      "motor_hacmi_cc": "",
+      "big3_gerek": null,
+      "cabin_gain_hz": null,
+      "akustik_notu": "",
+      "usta_uyari": "A veya B Segment standart bir Hatchback araca (Örn: Hyundai i10, Clio) 120 Litrelik devasa kabin tasarlayıp bagaj kapağının kapanmamasına sebep olmak.",
+      "kaynaklar": [
+        "piyasa_20260404_b_ve_c_segment_detayli_modeller.json",
+        "piyasa_20260404_segment_ve_yeni_oyuncular.json"
+      ],
+      "tags": [
+        "c",
+        "c-suv",
+        "chery",
+        "t1e",
+        "tiggo 7 pro"
+      ],
+      "__library_type": "arac_direct",
+      "__source": "piyasa_20260404_b_ve_c_segment_detayli_modeller.json"
+    },
+    {
+      "library_type": "arac",
+      "marka": "Togg",
+      "model": "T10X",
+      "nesil": "T10X",
+      "kasa_tipi": [
+        "C-SUV"
+      ],
+      "segment": "C",
+      "turkiye_statusu": "Yerli / Elektrikli",
+      "kapi_hop_on_cm": null,
+      "kapi_hop_arka_cm": null,
+      "kapi_sekli": "",
+      "kapi_montaj_notu": "",
+      "kapi_harness_gerek": null,
+      "bagaj_min_litre": null,
+      "bagaj_max_litre": null,
+      "bagaj_notu": "",
+      "alternator_a": null,
+      "aku_ah": null,
+      "motor_hacmi_cc": "",
+      "big3_gerek": null,
+      "cabin_gain_hz": null,
+      "akustik_notu": "",
+      "usta_uyari": "A veya B Segment standart bir Hatchback araca (Örn: Hyundai i10, Clio) 120 Litrelik devasa kabin tasarlayıp bagaj kapağının kapanmamasına sebep olmak.",
+      "kaynaklar": [
+        "piyasa_20260404_b_ve_c_segment_detayli_modeller.json",
+        "piyasa_20260404_segment_ve_yeni_oyuncular.json"
+      ],
+      "tags": [
+        "c",
+        "c-suv",
+        "t10x",
+        "togg"
+      ],
+      "__library_type": "arac_direct",
+      "__source": "piyasa_20260404_b_ve_c_segment_detayli_modeller.json"
+    },
+    {
+      "library_type": "arac",
+      "marka": "Dacia",
+      "model": "Duster",
+      "nesil": "3. Nesil (Yeni)",
+      "kasa_tipi": [
+        "C-SUV"
+      ],
+      "segment": "C",
+      "turkiye_statusu": "İthal (Hibrit Geldi)",
+      "kapi_hop_on_cm": null,
+      "kapi_hop_arka_cm": null,
+      "kapi_sekli": "",
+      "kapi_montaj_notu": "",
+      "kapi_harness_gerek": null,
+      "bagaj_min_litre": null,
+      "bagaj_max_litre": null,
+      "bagaj_notu": "",
+      "alternator_a": null,
+      "aku_ah": null,
+      "motor_hacmi_cc": "",
+      "big3_gerek": null,
+      "cabin_gain_hz": null,
+      "akustik_notu": "",
+      "usta_uyari": "",
+      "kaynaklar": [
+        "piyasa_20260404_b_ve_c_segment_detayli_modeller.json"
+      ],
+      "tags": [
+        "3.",
+        "c",
+        "c-suv",
+        "dacia",
+        "duster",
+        "nesil",
+        "yeni"
+      ],
+      "__library_type": "arac_direct",
+      "__source": "piyasa_20260404_b_ve_c_segment_detayli_modeller.json"
+    },
+    {
+      "library_type": "arac",
+      "marka": "Peugeot",
+      "model": "3008",
+      "nesil": "P64 (Yeni 3008)",
+      "kasa_tipi": [
+        "C-SUV"
+      ],
+      "segment": "C",
+      "turkiye_statusu": "İthal",
+      "kapi_hop_on_cm": 16.0,
+      "kapi_hop_arka_cm": null,
+      "kapi_sekli": "",
+      "kapi_montaj_notu": "",
+      "kapi_harness_gerek": null,
+      "bagaj_min_litre": null,
+      "bagaj_max_litre": null,
+      "bagaj_notu": "",
+      "alternator_a": null,
+      "aku_ah": null,
+      "motor_hacmi_cc": "",
+      "big3_gerek": true,
+      "cabin_gain_hz": null,
+      "akustik_notu": "",
+      "usta_uyari": "Hatchback ve Station Wagon araçlarda subwoofer bas dalgalarının kabin içinde daha çabuk tepe yapması (Cabin Gain) sebebiyle, Sedanlara göre çok daha farklı frekans tepkisi alınması. | Kullanıcıların ufak bagajlı A veya B segment bir araca (Örn: Peugeot 208, VW Polo) 2 adet 38cm (15 inç) subwoofer sığdırma hayali, Auto-Data bagaj hacmi (Litre) duvarına toslaması.",
+      "kaynaklar": [
+        "piyasa_20260404_b_ve_c_segment_detayli_modeller.json",
+        "piyasa_20260404_auto_data_net_specs.json",
+        "piyasa_20260404_hertz_eu_fit_guide.json"
+      ],
+      "tags": [
+        "3008",
+        "c",
+        "c-suv",
+        "p64",
+        "peugeot",
+        "yeni"
+      ],
+      "__library_type": "arac_direct",
+      "__source": "piyasa_20260404_b_ve_c_segment_detayli_modeller.json"
+    },
+    {
+      "library_type": "arac",
+      "marka": "Hyundai",
+      "model": "Tucson",
+      "nesil": "NX4",
+      "kasa_tipi": [
+        "C-SUV"
+      ],
+      "segment": "C",
+      "turkiye_statusu": "İthal",
+      "kapi_hop_on_cm": 16.5,
+      "kapi_hop_arka_cm": 16.5,
+      "kapi_sekli": "",
+      "kapi_montaj_notu": "",
+      "kapi_harness_gerek": null,
+      "bagaj_min_litre": null,
+      "bagaj_max_litre": null,
+      "bagaj_notu": "",
+      "alternator_a": null,
+      "aku_ah": null,
+      "motor_hacmi_cc": "",
+      "big3_gerek": null,
+      "cabin_gain_hz": null,
+      "akustik_notu": "",
+      "usta_uyari": "Toyota Corolla'nın (E210 vs) ön kapılarındaki oval yapıyı bilmeden yuvarlak 16cm mid-range sipariş edip, oval/yuvarlak ara kasnağı bulamayınca montajın yarım kalması.",
+      "kaynaklar": [
+        "piyasa_20260404_b_ve_c_segment_detayli_modeller.json",
+        "piyasa_20260404_populer_arac_kapi_olculeri.json",
+        "piyasa_20260404_segment_ve_yeni_oyuncular.json"
+      ],
+      "tags": [
+        "c",
+        "c-suv",
+        "hyundai",
+        "nx4",
+        "tucson"
+      ],
+      "__library_type": "arac_direct",
+      "__source": "piyasa_20260404_b_ve_c_segment_detayli_modeller.json"
+    },
+    {
+      "library_type": "arac",
+      "marka": "Kia",
+      "model": "Sportage",
+      "nesil": "NQ5",
+      "kasa_tipi": [
+        "C-SUV"
+      ],
+      "segment": "C",
+      "turkiye_statusu": "İthal",
+      "kapi_hop_on_cm": null,
+      "kapi_hop_arka_cm": null,
+      "kapi_sekli": "",
+      "kapi_montaj_notu": "",
+      "kapi_harness_gerek": null,
+      "bagaj_min_litre": null,
+      "bagaj_max_litre": null,
+      "bagaj_notu": "",
+      "alternator_a": null,
+      "aku_ah": null,
+      "motor_hacmi_cc": "",
+      "big3_gerek": null,
+      "cabin_gain_hz": null,
+      "akustik_notu": "",
+      "usta_uyari": "",
+      "kaynaklar": [
+        "piyasa_20260404_b_ve_c_segment_detayli_modeller.json"
+      ],
+      "tags": [
+        "c",
+        "c-suv",
+        "kia",
+        "nq5",
+        "sportage"
+      ],
+      "__library_type": "arac_direct",
+      "__source": "piyasa_20260404_b_ve_c_segment_detayli_modeller.json"
+    },
+    {
+      "library_type": "arac",
+      "kaynak": "piyasa_20260322_facebook_spl_turkey.json",
+      "ozet": "",
+      "saha_dili": [],
+      "jargon": [],
+      "kronik_sorunlar": [],
+      "teknik_sorular": [],
+      "tags": [],
+      "__library_type": "arac_context",
+      "__source": "piyasa_20260322_facebook_spl_turkey.json"
+    },
+    {
+      "library_type": "arac",
+      "kaynak": "piyasa_20260322_gercek_ceza_mabuzu.json",
+      "ozet": "",
+      "saha_dili": [],
+      "jargon": [],
+      "kronik_sorunlar": [],
+      "teknik_sorular": [],
+      "tags": [],
+      "__library_type": "arac_context",
+      "__source": "piyasa_20260322_gercek_ceza_mabuzu.json"
+    },
+    {
+      "library_type": "arac",
+      "kaynak": "piyasa_20260322_spl_turkey_ekran2.json",
+      "ozet": "",
+      "saha_dili": [],
+      "jargon": [],
+      "kronik_sorunlar": [],
+      "teknik_sorular": [],
+      "tags": [],
+      "__library_type": "arac_context",
+      "__source": "piyasa_20260322_spl_turkey_ekran2.json"
+    },
+    {
+      "library_type": "arac",
+      "kaynak": "piyasa_20260322_spl_turkey_ekran3_4.json",
+      "ozet": "",
+      "saha_dili": [],
+      "jargon": [],
+      "kronik_sorunlar": [],
+      "teknik_sorular": [],
+      "tags": [],
+      "__library_type": "arac_context",
+      "__source": "piyasa_20260322_spl_turkey_ekran3_4.json"
+    },
+    {
+      "library_type": "arac",
+      "kaynak": "https://www.crutchfield.com/S-XYiV6xmT9Wn/car/carselector.aspx",
+      "ozet": "CRUTCHFIELD FİTMENT DOKTRİNİ: Dünyanın en büyük 'What Fits My Car' arşivi bize çok sert bir kural öğretiyor: Çap her şey değildir! Bir hoparlörün 16cm olması araca uyacağı anlamına gelmez. Ses Ustası; kapı hoparlörleri sorulduğunda istisnasız 'Mounting Depth (Montaj Derinliği)' kuralını işletmelidir. Özellikle güçlü Mid-Bass veya Midrange sürücülerin mıknatısları devasadır. Kullanıcıya 'Cam mekanizmasının kapı içindeki inme mesafesini ölçtün mü? Derinlik kurtarmazsa MDF kasnak (spacer) gerekir, o zaman da orijinal kapı plastiğine sürtme riski var' diyerek tam bir mekanik danışmanlık yapmalıdır.",
+      "saha_dili": [
+        "Montaj Derinliği (Mounting Depth)",
+        "MDF Kasnak / Spacer",
+        "Araca Özel Uyum (Fit Guide)",
+        "Dash Kit",
+        "Top-Mount Depth"
+      ],
+      "jargon": [
+        "Mounting Depth (Montaj Derinliği): Hoparlörün oturduğu vida delikleri hizasından, arkasındaki mıknatısın en uç noktasına kadar olan derinliktir. Bu mesafe kapının iç hacminden (ve inen camdan) fazla olamaz.",
+        "Kasnak (Spacer / Speaker Ring): Derinliği kurtarmak için kapı sacı ile hoparlör arasına konulan 1-2 cm kalınlığındaki ahşap/plastik çember."
+      ],
+      "kronik_sorunlar": [
+        "Yanlış Montaj Derinliği (Mounting Depth) yüzünden camın aşağı inerken hoparlör mıknatısına çarpıp kırılması/sıkışması.",
+        "Derinliği kurtarmak için takılan MDF Kasnak (Spacer) yüzünden bu sefer de hoparlörün aracın kendi orijinal kapı pandizotuna içten vurup sesi bozması.",
+        "Teyp çerçevesinin (dash kit) veya direksiyon kumanda modülünün uymaması."
+      ],
+      "teknik_sorular": [
+        "Benim aracıma hangi hoparlör uyar? Çapı (13cm vs 16cm) tutsa bile kapı derinliği kurtarır mı?",
+        "Hoparlör mıknatısı cam mekanizmasına çarpar mı? (Mounting Depth hesaplaması)"
+      ],
+      "tags": [
+        "16cm",
+        "ahşapplastik",
+        "anlamına",
+        "araca",
+        "arasına",
+        "arkasındaki",
+        "arşivi",
+        "bir",
+        "bize",
+        "büyük",
+        "camdan",
+        "car",
+        "crutchfield",
+        "dash",
+        "delikleri",
+        "depth",
+        "derinliktir",
+        "derinliği",
+        "değildir",
+        "doktrini",
+        "dünyanın",
+        "fazla",
+        "fit",
+        "fitment",
+        "fits",
+        "gelmez",
+        "guide",
+        "hacminden",
+        "her",
+        "hizasından"
+      ],
+      "__library_type": "arac_context",
+      "__source": "piyasa_20260403_crutchfield.json"
+    },
+    {
+      "library_type": "arac",
+      "kaynak": "arabam.com platform navigasyon ve kategori ağacı incelemesi",
+      "ozet": "Arabam.com Türkiye'deki 2. el pazarının (dolayısıyla ses sistemi takılacak potansiyel araçların) kalbidir. Sistemin kategori ağacına bakıldığında kurguladığımız 'Sedan', 'Hatchback', 'Station Wagon' ve 'SUV' kasa tipi sınıflamalarının pazar standardıyla %100 örtüştüğü görülmektedir. İlanların ezici çoğunluğu Sedan, SUV ve Hatchback eksenindedir. Ses Ustası; arabam.com pazarından çıkıp gelen 'Sahibinden' bir araca tesisat önerirken orijinal kapı döşemelerini veya bagaj havuzunu kesip biçmeden (Gizli / Orijinal yuvalara oturan) çözümleri ilk etapta önermelidir ki aracın 2. el satış değeri düşmesin.",
+      "saha_dili": [
+        "Trink Sat / Oto Ekspertiz",
+        "Sedan Araba",
+        "Hatchback Araba",
+        "Station Wagon Araba",
+        "Suv / Pick-up",
+        "Minivan & Panelvan"
+      ],
+      "jargon": [
+        "Sahibinden (Temiz / El değmemiş - Kullanıcı genelde orijinal teybi/pandizotu bozmak istemez)",
+        "Garaj / Tuning (Önceden oynanmış araçlar, modifiye/ses sistemine fiziken zemin hazırdır)"
+      ],
+      "kronik_sorunlar": [
+        "2. El piyasasında Station Wagon araçların 'Estate' veya 'Touring' kelimelerinden ziyade doğrudan 'Station Wagon' kısacası (SW / Vagon) olarak anılması. Eğer sistem bunu eşleştiremezse Ses Ustası hatalı kabin önerir."
+      ],
+      "teknik_sorular": [
+        "Türkiye'de ikinci el (kullanılmış) otomobil alan ve ses sistemi taktıracak müşterinin 'Kasa Tipi' dili nasıldır? Arabam.com kategorizasyonu nasıl?"
+      ],
+      "tags": [
+        "araba",
+        "arabamcom",
+        "araçlar",
+        "araçların",
+        "ağacına",
+        "bakıldığında",
+        "bozmak",
+        "değmemiş",
+        "dolayısıyla",
+        "ekspertiz",
+        "fiat",
+        "fiziken",
+        "ford",
+        "garaj",
+        "genelde",
+        "hatchback",
+        "hazırdır",
+        "honda",
+        "hyundai",
+        "istemez",
+        "kalbidir",
+        "kategori",
+        "kullanıcı",
+        "kurguladığımız",
+        "minivan",
+        "modifiyeses",
+        "orijinal",
+        "oto",
+        "oynanmış",
+        "panelvan"
+      ],
+      "__library_type": "arac_context",
+      "__source": "piyasa_20260404_arabam_com_ikinci_el_gercekleri.json"
+    },
+    {
+      "library_type": "arac",
+      "kaynak": "Auto-Data.net: Araç Teknik Verilerinin Ses Sistemlerine Adaptasyonu",
+      "ozet": "DD1 Ses Ustası; kullanıcının marka/model belirttiği senaryolarda, sistemi kurmadan önce arabanın teknik limitlerini (Auto-Data.net gibi platformlardaki veriler) bilerek veya sorarak hareket eden bir zekaya kavuşturuldu. Sistemin; aracın bagaj hacmi (Litre) limitini aşmayacak kabinler önermesi, Hatchback/Sedan gövde tipine göre akustik kazancı (Cabin Gain) hesaba katması ve en önemlisi 1000W RMS üzeri projelerde OEM alternatör değerlerinin yetmeyeceğini bilerek voltaj/akü (Big 3 Upgrade) uyarısı yapması kuralı eklendi. Usta, devasa hayalleri olan ama küçük arabası olanlara profesyonel bir teknik fırça ile (bagaj litresi darbesiyle) gerçeği hatırlatacaktır.",
+      "saha_dili": [
+        "Bagaj Litresi (L)",
+        "Cabin Gain (Kabin İçi Akustik Kazanç / Rezonans)",
+        "OEM Alternatör Kapasitesi (Amper)",
+        "Akü Fabrika Verisi (Ah / CCA)",
+        "Dingil Mesafesi (Akustik Uzunluk)",
+        "Big 3 Upgrade Gerekli",
+        "Koltuk İptali (Duvar / Wall Build)"
+      ],
+      "jargon": [
+        "Hatchback Cabin Gain",
+        "Sedan Trunk Baffle",
+        "Auto-Data.net Specs",
+        "Bagaj İptali",
+        "Big 3 (Big Three)",
+        "Alternatör Yetmezliği",
+        "Kapasitör Tıraşı"
+      ],
+      "kronik_sorunlar": [
+        "Hatchback ve Station Wagon araçlarda subwoofer bas dalgalarının kabin içinde daha çabuk tepe yapması (Cabin Gain) sebebiyle, Sedanlara göre çok daha farklı frekans tepkisi alınması.",
+        "Kullanıcıların ufak bagajlı A veya B segment bir araca (Örn: Peugeot 208, VW Polo) 2 adet 38cm (15 inç) subwoofer sığdırma hayali, Auto-Data bagaj hacmi (Litre) duvarına toslaması.",
+        "Standart OEM Alternatörlerin (genelde 70A - 90A) 1000W RMS üzeri sistemlerde yetersiz kalarak voltaj düşümüne ve amfi koruma (protect) moduna girmesi."
+      ],
+      "teknik_sorular": [
+        "Bagaj hacmi (Litre) verisini Auto-Data.net üzerinden kontrol edip, tasarlanacak Portlu/Sealed kabinin aracın günlük kullanım alanını tamamen yok edip etmeyeceğini hesapladınız mı?",
+        "Aracın segmentine göre (Hatchback vs Sedan) oluşan 'Cabin Gain' (Kabin Kazancı / Rezonans Frekansı) etkisini göz önünde bulundurarak Subwoofer tuning (Hz) değerini optimize ettiniz mi?",
+        "Kurulacak olan devasa RMS gücü (Örn: 2000W RMS ve üzeri) için aracın fabrika çıkışı Alternatör Amper değerini ve Akü kapasitesini (Ah) veri tabanından teyit ettiniz mi, yoksa doğrudan 'Big 3 Upgrade' şart koşularak mı ilerlenecek?"
+      ],
+      "tags": [
+        "akustik",
+        "akü",
+        "alternatör",
+        "amper",
+        "arabanın",
+        "autodatanet",
+        "baffle",
+        "bagaj",
+        "belirttiği",
+        "big",
+        "bilerek",
+        "bir",
+        "build",
+        "cabin",
+        "cca",
+        "dd1",
+        "dingil",
+        "duvar",
+        "eden",
+        "fabrika",
+        "gain",
+        "gerekli",
+        "gibi",
+        "hareket",
+        "hatchback",
+        "iptali",
+        "içi",
+        "kabin",
+        "kapasitesi",
+        "kapasitör"
+      ],
+      "__library_type": "arac_context",
+      "__source": "piyasa_20260404_auto_data_net_specs.json"
+    },
+    {
+      "library_type": "arac",
+      "kaynak": "Hertz Audio - Fit Guide (Avrupa Menşeli Araç Entegrasyon Rehberi)",
+      "ozet": "HERTZ AUDIO EU-FIT STRATEJİSİ: Crutchfield nasıl Amerika pazarının derinlik ustasıysa, Hertz Audio Fit Guide da Avrupa (Peugeot, VW, Fiat, Renault) pazarının soket ve yuva ustasıdır. Ses Ustası; eğer müşteri bir Avrupa aracıyla gelirse, standart 'Kasnak al tak' yaklaşımının dışına çıkmalıdır. Volkswagen grubunda orijinal hoparlörlerin perçinli olması, Peugeot grubunda özel şekilli yuvalar bulunması gerçeğini bilmelidir. Kurulum aşamasında doğrudan 'Araca özel orijinal soket dönüştürücün ve VW/Peugeot uyumlu kapı adaptör kasnağın hazır mı? Kabloları kesmeni istemem, garantiyi bozarsın.' şeklindeki Avrupai OEM (orijinalliği koruyan) montaj bilincini kullanmalıdır.",
+      "saha_dili": [
+        "Soket Dönüştürücü (Harness)",
+        "Avrupa Araç Spesifik",
+        "OEM Entegrasyon",
+        "Perçinli Hoparlör",
+        "Tak-Çalıştır (Plug & Play)"
+      ],
+      "jargon": [
+        "OEM Soket (Speaker Harness): Orijinal kabloyu kesmeden tak/çalıştır montaj yapmayı sağlayan ara kablo ucu.",
+        "Asimetrik Yuva / Adaptör: Fiat, VW ve Peugeot gibi araçların kapılarında standart 16cm dış çerçeve olmaz. Araya o markaya özel plastik adaptör (kasnak) alınmak zorundadır.",
+        "Sıfır Tahribat (Zero-Cut): Garantisi devam eden Avrupa araçlarında kablo kesmeden tesisat kurma kuralı."
+      ],
+      "kronik_sorunlar": [
+        "Özellikle Avrupa (EU) üretimi araçlarda hoparlör yuvalarının standart yuvarlak (DIN) olmaması, üçgen veya asimetrik (Örn: VW perçinli hoparlörler) yuvalar yüzünden standart hoparlörlerin yuvaya oturmaması.",
+        "Orijinal hoparlör kablolarının kesilip biçilmesi nedeniyle aracın elektrik sisteminin hata vermesi veya garanti dışı kalması."
+      ],
+      "teknik_sorular": [
+        "Aracın (Örn: Peugeot 3008 veya VW Golf) hoparlörlerini değiştirirken orijinal soketleri kesmek zorunda mıyız, yoksa araca özel 'Soket Dönüştürücü (Speaker Harness)' kullanılmalı mı?"
+      ],
+      "tags": [
+        "16cm",
+        "adaptör",
+        "alınmak",
+        "amerika",
+        "ara",
+        "araya",
+        "araç",
+        "araçların",
+        "araçlarında",
+        "asimetrik",
+        "audio",
+        "avrupa",
+        "citroen",
+        "crutchfield",
+        "derinlik",
+        "devam",
+        "dönüştürücü",
+        "dış",
+        "eden",
+        "entegrasyon",
+        "eufit",
+        "eğer",
+        "fiat",
+        "fit",
+        "garantisi",
+        "gibi",
+        "guide",
+        "harness",
+        "hertz",
+        "hoparlör"
+      ],
+      "__library_type": "arac_context",
+      "__source": "piyasa_20260404_hertz_eu_fit_guide.json"
+    },
+    {
+      "library_type": "arac",
+      "kaynak": "ODMD (Otomotiv Distribütörleri ve Mobilite Derneği) - Türkiye Pazarı Güncel Kasa Analizi",
+      "ozet": "ODMD Türkiye Otomotiv Pazarı verilerinden ayıklanan gerçekler: Türkiye pazarında satışların çok büyük bir kısmı (%80+) A, B ve C segmentlerine aittir. Kasa tiplerine (Body Style) bakıldığında, eskiden hakim olan 'Sedan' yapısı tahtını 'SUV / Crossover' yapılarına bırakmıştır. Hatchback (H/B) ise şehir içi pratikliğinden dolayı hala güçlü bir paya sahiptir. Ses Ustası; sistem tasarlarken Türkiye ortalamasının (C-SUV, B-Hatchback ve C-Sedan) bagaj hacmi skalasında (300L - 500L arası) olduğunu bilmeli, buna göre '100 Litre net kabin' önerileri yaparken müşteriyi iki kez uyarmalıdır.",
+      "saha_dili": [
+        "C-Segmenti",
+        "B-Segmenti",
+        "SUV Dominasyonu",
+        "Kompakt Sedan"
+      ],
+      "jargon": [
+        "B-Hatchback (Dar Bagaj)",
+        "C-SUV (Yüksek Bagaj, Akustik Kazanım Farklı)",
+        "C-Sedan (Türkiye Klasik Aile Arabası)"
+      ],
+      "kronik_sorunlar": [
+        "Kullanıcıların büyük çoğunluğunun B-Hatchback veya kompakt C-SUV (örneğin B-SUV) kullanması, ancak devasa Amerikan SPL tarzı sistem hayali kurarak bagajı tamamen kitlemeleri."
+      ],
+      "teknik_sorular": [
+        "Kullanıcıya özel portlu devasa kabin tasarlamadan önce aracının bir SUV (örneğin popüler C-SUV) veya B-Hatchback olma ihtimalini (Pazar gerçeklerini) göz önünde bulundurup bagaj derinliği teyidi aldın mı?"
+      ],
+      "tags": [
+        "aile",
+        "aittir",
+        "akustik",
+        "arabası",
+        "ayıklanan",
+        "bagaj",
+        "bakıldığında",
+        "bhatchback",
+        "bir",
+        "body",
+        "bsegmenti",
+        "büyük",
+        "chery",
+        "csedan",
+        "csegmenti",
+        "csuv",
+        "dar",
+        "dominasyonu",
+        "eskiden",
+        "farklı",
+        "fiat",
+        "ford",
+        "gerçekler",
+        "kasa",
+        "kazanım",
+        "klasik",
+        "kompakt",
+        "kısmı",
+        "odmd",
+        "otomotiv"
+      ],
+      "__library_type": "arac_context",
+      "__source": "piyasa_20260404_odmd_turkiye_kasa_analizi.json"
+    },
+    {
+      "library_type": "arac",
+      "kaynak": "Otomobil.com.tr - Teknik Veriler ve Türkiye Motor Seçenekleri",
+      "ozet": "MOTOR HACMİ VE TESİSAT İLİŞKİSİ: Otomobil.com.tr veritabanından süzülen Türkiye'ye özgü motor seçenekleri (1.0 TCe, 1.3 DIG-T vb.), aracın bagaj hacminden ziyade 'KILCAL DAMARLARINI (Elektrik Sistemini)' belirler. Türkiye gibi yüksek vergilerden dolayı düşük hacimli (1.0L - 1.2L) motorların çok sattığı bir pazarda, Ses Ustası devasa bir amfi/subwoofer sistemi (Örn: 3000 RMS SPL) kurgularken ilk iş motoru sormalıdır. Çünkü 1.0 motorlu bir aracın şarj dinamosu bu yükü kaldıramaz; muhakkak kapasitör, ekstra yaşam aküsü veya 'Big 3 Çapraz Kablolama' upgrade'i gerekecektir.",
+      "saha_dili": [
+        "1.0 TCe",
+        "1.3 DIG-T",
+        "1.5 dCi",
+        "E-Tech Hibrit",
+        "Motor Hacmi / Silindir",
+        "Alternatör Şarj Kapasitesi (Amper)"
+      ],
+      "jargon": [
+        "1.0 Motorlar (Düşük Kapasiteli Alternatör) : Genelde 3 silindirli kompakt araçlar. Ağır bas amfileri için ekstra akü (Big 3 Upgrade) şarttır.",
+        "Hibrit/EV Motorlar (Örn E-Tech) : Bagaj veya arka koltuk altında batarya taşırlar. Elektrik tesisatı çekilirken yüksek voltaj hatlarına ekstra dikkat edilmelidir."
+      ],
+      "kronik_sorunlar": [
+        "Küçük hacimli (Örn: 1.0 Litre 3 silindirli) motorlara sahip araçlarda standart olarak gelen ufak amperli (Örn: 70A-90A) alternatörlerin, 2000W RMS ve üzeri devasa SPL ses sistemlerini besleyememesi ve voltaj dalgalanmalarına (akü çökmesine) yol açması."
+      ],
+      "teknik_sorular": [
+        "Müşterinin aracındaki motor hacmi (Örn: 1.0 TCe veya 1.3 DIG-T) ses sistemi kurulumundaki kritik elektrik (Alternatör ve Akü) altyapısını nasıl etkiler?"
+      ],
+      "tags": [
+        "akü",
+        "alternatör",
+        "altında",
+        "amfileri",
+        "amper",
+        "aracın",
+        "araçlar",
+        "arka",
+        "ağır",
+        "bagaj",
+        "bas",
+        "batarya",
+        "big",
+        "dacia",
+        "damarlarini",
+        "dci",
+        "digt",
+        "dikkat",
+        "düşük",
+        "edilmelidir",
+        "ekstra",
+        "elektrik",
+        "etech",
+        "fiat",
+        "genelde",
+        "hacmi",
+        "hacminden",
+        "hatlarına",
+        "hibrit",
+        "hibritev"
+      ],
+      "__library_type": "arac_context",
+      "__source": "piyasa_20260404_otomobil_com_tr_motor_analizi.json"
+    },
+    {
+      "library_type": "arac",
+      "kaynak": "Pioneer Car Fit Guide (Avrupa ve Türkiye Yerel Modelleri Uyum Rehberi)",
+      "ozet": "PIONEER FIT GUIDE - TÜRKİYE / AVRUPA REFERANSI: Crutchfield ABD pazarının, Hertz Avrupa teyp/soket dönüştürücülerinin şahıyken; Pioneer Fit Guide, doğrudan Türkiye'de sokakta gördüğümüz Clio, Megane, Corolla gibi araçların 'Mekanik Milimetrik Çap' rehberidir. Ses Ustası; eğer müşteri çok popüler bir yerli/Avrupa aracı modelinden (Örn: Megane 4 / E210 Corolla) bahsediyorsa, doğrudan Marka-Model-Yıl üçlemesini baz almalı ve 'Megane'in kapısında bazen donanıma göre 13 cm bazen 16 cm yuva olabilir, ezbere hoparlör almadan önce kapağı söküp çapından emin ol' uyarısını standart bir prosedür olarak uygulamalıdır.",
+      "saha_dili": [
+        "Pioneer Car Fit Guide",
+        "Hoparlör Çapı (13cm vs 16cm)",
+        "Marka-Model-Yıl Seçimi"
+      ],
+      "jargon": [
+        "13cm vs 16cm Kapı : Japon ve Avrupa araçlarının kapı içleri bazen beklenmedik şekilde küçük çaplı (13 cm / 5.25 inç) fabrikasyon yuvalara sahip olabilir. Bu durumda 16 cm hoparlör ancak kapı sacı kesilirse uyar.",
+        "Orijinal Derinlik : Kutusundan çıkan şekliyle (kasnak vs eklemeden) kapı içine direk vidalanabilecek hoparlör derinliği ölçüsü."
+      ],
+      "kronik_sorunlar": [
+        "Özellikle Fransız grubu araçlarda (Clio, Megane) bazı donanımlarda 13 cm, bazılarında 16 cm yuva bulunabilmesi ve ezbere 'hepsi 16 cm' sanılıp alınan hoparlörlerin yuvaya sığmaması."
+      ],
+      "teknik_sorular": [
+        "Türkiye'de en çok satan (Örn: Megane 4, Clio 5, Corolla E210) araçların kaç cm (13 cm mi 16 cm mi) kapı hoparlörüne sahip olduğu ve orijinal yuvaya Pioneer/vb markaların inme derinliğinin sığıp sığmadığı verisi nereden en güvenilir şekilde alınır?"
+      ],
+      "tags": [
+        "13cm",
+        "16cm",
+        "525",
+        "abd",
+        "ancak",
+        "araçlarının",
+        "avrupa",
+        "bazen",
+        "beklenmedik",
+        "car",
+        "clio",
+        "crutchfield",
+        "derinlik",
+        "derinliği",
+        "direk",
+        "doğrudan",
+        "durumda",
+        "dönüştürücülerinin",
+        "eklemeden",
+        "fabrikasyon",
+        "fiat",
+        "fit",
+        "guide",
+        "gördüğümüz",
+        "hertz",
+        "hoparlör",
+        "inç",
+        "içine",
+        "içleri",
+        "japon"
+      ],
+      "__library_type": "arac_context",
+      "__source": "piyasa_20260404_pioneer_eu_fit_guide.json"
+    },
+    {
+      "library_type": "arac",
+      "kaynak": "Müşteri ve Tesisatçı Gerçekleri: Türkiye'nin En Çok Satan B ve C Segment Araç Kapı Ölçüleri",
+      "ozet": "OTOMATİK KAPI ÖLÇÜ DENETİMİ: Türkiye'de sokağa inildiğinde ustaların her gün karşılaştığı arabaların (Egea, Golf, Megane, Corolla, i20) gerçek kapı çapları ve mekanik tuzakları sisteme işlenmiştir. Ses Ustası; eğer müşteri Egea getiriyorsa doğrudan '16.5 cm kasnakların hazır mı?', Corolla Varsa 'Ön kapı oval 6x9, dönüştürücü adaptör olmadan 16 cm hoparlörü yuvaya oturtamazsın', VW Golf ise 'Perçinleri çürütüp yeni kasnak sıkman gerekecek, dikkat et' şeklinde nokta atışı oto-elektrikçi tecrübesi sergileyecektir.",
+      "saha_dili": [
+        "Ön Kapı 16cm (6.5 inç)",
+        "Arka Kapı 13cm (5.25 inç)",
+        "Oval Yuva (6x9 inç)",
+        "Perçinli Kasnak",
+        "Sığ Kapı Dibi"
+      ],
+      "jargon": [
+        "Renault Clio 4/5 ve Megane 4: Ön kapı 16.5cm, arka kapı ise donanıma göre 13cm veya 16.5cm çıkabilir.",
+        "Fiat Egea: Ön 16.5cm, arka 16.5cm. Ancak kapı sacı mesafesi için montajda kesinlikle ekstra 'plastik kasnak (spacer)' atılması gerekir.",
+        "Toyota Corolla (E210 vb.): Önler genellikle 6x9 inç oval ovaldir (Veya adaptörle 16.5 cm). Arkalar 16.5 cm.",
+        "VW Golf / Seat Leon: Ön ve arka 16.5 cm! Ancak fabrikasyon donanımda perçinli dev plastik kasnakla gelir. Matkapla perçin çürütülmesi şart.",
+        "Hyundai i20: Önler 16.5 cm, arkalar 13/16.5cm. En büyük riski kapı sacı derinliğinin (Mounting depth) oldukça SIĞ (dar) olmasıdır."
+      ],
+      "kronik_sorunlar": [
+        "Toyota Corolla'nın (E210 vs) ön kapılarındaki oval yapıyı bilmeden yuvarlak 16cm mid-range sipariş edip, oval/yuvarlak ara kasnağı bulamayınca montajın yarım kalması."
+      ],
+      "teknik_sorular": [
+        "Araç sökülmeden (körü körüne) o aracın fabrikasyon direk kapı hoparlör çaplarını ve kasnak/perçin istisnalarını nasıl bilebilirim?"
+      ],
+      "tags": [
+        "13165cm",
+        "13cm",
+        "165",
+        "165cm",
+        "16cm",
+        "525",
+        "6x9",
+        "adaptörle",
+        "ancak",
+        "arabaların",
+        "arka",
+        "arkalar",
+        "atılması",
+        "büyük",
+        "clio",
+        "corolla",
+        "dar",
+        "denetimi",
+        "depth",
+        "derinliğinin",
+        "dev",
+        "dibi",
+        "donanıma",
+        "donanımda",
+        "e210",
+        "egea",
+        "ekstra",
+        "fabrikasyon",
+        "fiat",
+        "gelir"
+      ],
+      "__library_type": "arac_context",
+      "__source": "piyasa_20260404_populer_arac_kapi_olculeri.json"
+    },
+    {
+      "library_type": "arac",
+      "kaynak": "Renault ve Fiat Türkiye Resmi Katalogları (Yerli Üretim Güncel Kasa Kodları)",
+      "ozet": "YERLİ AKTÜEL KASA REFERANSI: Egea (Fiat) ve Clio/Megane (Renault) Türkiye'de ota yola hükmeden yerli üretim devleridir. Resmi katalogları, E-Tech ve Cross dönüşümlerinin en güncel kasa kodlarını belirler. Ses Ustası; eğer müşteri Egea'nın 'Cross' versiyonu veya Renault 'E-Tech' donanımı ile geldiğini belirtirse, bunun artık standart eski tip bir Sedan/Hatchback olmadığını, alt yapılarının, akü konumlarının veya yalıtım süngerlerinin güncellendiğini dikkate alır. Gerekirse 'Bagaj hacminde veya zemininde Cross/E-Tech olmasından dolayı çıkıntı/fark var mı?' diyerek milimetrik teyit ister.",
+      "saha_dili": [
+        "Makyajlı Kasa (Facelift)",
+        "Yerli Üretim",
+        "Cross / Stepway",
+        "E-Tech"
+      ],
+      "jargon": [
+        "Cross / Stepway : Yerden yükseltilmiş modeller (Örn Egea Cross). Genellikle standart sedana göre bagaj yapısı/yüksekliği değişebilir.",
+        "E-Tech (Renault) : Yeni nesil elektrikli/hibrit serisi. Kasa kodları tamamen farklıdır ve yalıtımları kalındır."
+      ],
+      "kronik_sorunlar": [
+        "Oto sanayide eski alışkanlıklarla (Örn: Megane 2, Albea) tasarlanan ezbere kabinlerin, araç fabrikalarının çıkardığı en güncel seri Cross veya Elektrikli (E-Tech) kasaların yalıtım/rezonans mimarisine çarparak seste rezalete ('boğuk bas') sebep olması."
+      ],
+      "teknik_sorular": [
+        "Türkiye'de fabrikası olan global markaların (Fiat Egea, Renault Megane E-Tech vb.) en güncel 'Yerel Seri' veya Makyaj kasa kodlarına hangi kaynaktan ulaşılmalı?"
+      ],
+      "tags": [
+        "aktüel",
+        "bagaj",
+        "belir",
+        "cliomegane",
+        "cross",
+        "devleridir",
+        "değişebilir",
+        "dönüşümlerinin",
+        "egea",
+        "elektriklihibrit",
+        "etech",
+        "facelift",
+        "farklıdır",
+        "fiat",
+        "genellikle",
+        "göre",
+        "güncel",
+        "hükmeden",
+        "kalındır",
+        "kasa",
+        "katalogları",
+        "kodları",
+        "kodlarını",
+        "makyajlı",
+        "modeller",
+        "nesil",
+        "ota",
+        "referansi",
+        "renault",
+        "resmi"
+      ],
+      "__library_type": "arac_context",
+      "__source": "piyasa_20260404_resmi_turkiye_katalog_gercekleri.json"
+    },
+    {
+      "library_type": "arac",
+      "kaynak": "DD1 Sistem Kuralları: Türkiye Pazarı Güncel Segmentasyon ve Yeni Oyuncular V1",
+      "ozet": "TÜRKİYE SEGMENT GERÇEKLERİ VE ÇİNLİ İSTİLASI: Türkiye'deki satışların büyük kısmını B ve C segmentleri oluşturur. D ve üstü lüks ve kurumsal (filo) sayılır. Ayrıca pazara giren Chery (Omoda 5, Tiggo 7/8 Pro), MG, BYD, Skywell gibi Çinli devler ve yerli T10X (TOGG), SUV pazarını %50'nin üzerine çıkarmıştır. Ses Ustası, kendisine bir 'Chery Tiggo' veya 'Togg T10X' sorulduğunda bunların yeni nesil C-SUV'ler (veya EV) olduğunu doğrudan tanımalı ve batarya/zemin/yalıtım yapılarını hesaba katarak modern ve alan dostu ses sistemi mimarileri önermelidir.",
+      "saha_dili": [
+        "A Segmenti (Minik)",
+        "B Segmenti (Küçük)",
+        "C Segmenti (Orta)",
+        "D Segmenti (Üst Orta)",
+        "E/F Segmenti (Lüks)",
+        "Çinli Markalar",
+        "Milli Gurur TOGG"
+      ],
+      "jargon": [
+        "A Segmenti (Minik) - Örn: i10, Picanto. Bagaj hacmi sıfıra yakındır. Gizli veya Slim bas zaruridir.",
+        "B Segmenti (Küçük) - Örn: Clio, Polo, Sandero. Bagaj kısıtlıdır, aeroport ve kompakt kabinler önerilir.",
+        "C Segmenti (Orta) - Örn: Egea, Corolla, Megane, Tiggo 7 Pro, T10X. Türkiye'nin standart gövdesi. Akustik olarak dengeli, bas kabini konulabilir.",
+        "D/E/F Segmenti - Örn: Passat, Superb, Premium Almanlar (BMW/Mercedes/Audi). Derin sedandır, bagaj geniştir ancak yalıtım çok kalın olduğu için bası kabine zor geçirir (Kabin kazancı düşüktür)."
+      ],
+      "kronik_sorunlar": [
+        "A veya B Segment standart bir Hatchback araca (Örn: Hyundai i10, Clio) 120 Litrelik devasa kabin tasarlayıp bagaj kapağının kapanmamasına sebep olmak."
+      ],
+      "teknik_sorular": [
+        "Elektrikli (EV) veya Yeni Nesil Çinli bir SUV (Örn: Togg T10X, Chery Tiggo 8 Pro) geldiğinde ses sistemi tasarlarken kablolama ve yüksek zemin (batarya paketi) dolayısıyla bagaj alanında farklı kısıtlamalar olabileceğini biliyor muyum?"
+      ],
+      "tags": [
+        "aeroport",
+        "akustik",
+        "almanlar",
+        "ancak",
+        "audi",
+        "ayrıca",
+        "bagaj",
+        "bas",
+        "bası",
+        "bmw",
+        "bmwmercedesaudi",
+        "byd",
+        "büyük",
+        "chery",
+        "clio",
+        "corolla",
+        "dacia",
+        "def",
+        "dengeli",
+        "derin",
+        "düşüktür",
+        "egea",
+        "fiat",
+        "filo",
+        "geniştir",
+        "gerçekleri",
+        "geçirir",
+        "giren",
+        "gizli",
+        "gurur"
+      ],
+      "__library_type": "arac_context",
+      "__source": "piyasa_20260404_segment_ve_yeni_oyuncular.json"
+    }
+  ],
+  "source_hashes": {
+    "piyasa_20260322_facebook_spl_turkey.json": "eab99dca4f5d7991760b2eba0bc1b3bd",
+    "piyasa_20260322_gercek_ceza_mabuzu.json": "70744f6fc62ccef40ce0d4b49a0b73d4",
+    "piyasa_20260322_spl_turkey_ekran2.json": "3179beb441c170cf012078ba3d821e2d",
+    "piyasa_20260322_spl_turkey_ekran3_4.json": "badfde73a4da8bf89834d8f23583597a",
+    "piyasa_20260403_crutchfield.json": "52e41212d297b648fa446f4637a65e4e",
+    "piyasa_20260404_arabam_com_ikinci_el_gercekleri.json": "b61797a4491a40f5a9fd9dc0050241ce",
+    "piyasa_20260404_auto_data_net_specs.json": "c782f7e8b4ef36fa07aa70baf8d7210a",
+    "piyasa_20260404_b_ve_c_segment_detayli_modeller.json": "6a25c7cf64a481852c62a731e9cb1a38",
+    "piyasa_20260404_hertz_eu_fit_guide.json": "ded106ffdd070e0f9fb32fec0690b8a0",
+    "piyasa_20260404_odmd_turkiye_kasa_analizi.json": "5ba68389eaa4bca543cbd3ff8873ff86",
+    "piyasa_20260404_otomobil_com_tr_motor_analizi.json": "7c9d9133289735beb5fa178068a7b893",
+    "piyasa_20260404_pioneer_eu_fit_guide.json": "ae14313759b60b9f7241aee60b225b79",
+    "piyasa_20260404_populer_arac_kapi_olculeri.json": "41505425050ee93c082ba90c08fe6171",
+    "piyasa_20260404_resmi_turkiye_katalog_gercekleri.json": "cd392ba95d601d442284eac8591a718d",
+    "piyasa_20260404_segment_ve_yeni_oyuncular.json": "eef979404be4254de3e8052c321f87ab"
+  },
+  "updated_at": "2026-04-05T18:39:14.311185"
+}

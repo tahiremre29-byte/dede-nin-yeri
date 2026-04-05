@@ -1,0 +1,42 @@
+{
+  "orneklem_kaynagi": "Auto-Data.net: Araç Teknik Verilerinin Ses Sistemlerine Adaptasyonu",
+  "analiz": {
+    "markalar": [
+      "Auto-Data.net"
+    ],
+    "populer_markalar": [],
+    "fiyatlar": [],
+    "teknik_sorular": [
+      "Bagaj hacmi (Litre) verisini Auto-Data.net üzerinden kontrol edip, tasarlanacak Portlu/Sealed kabinin aracın günlük kullanım alanını tamamen yok edip etmeyeceğini hesapladınız mı?",
+      "Aracın segmentine göre (Hatchback vs Sedan) oluşan 'Cabin Gain' (Kabin Kazancı / Rezonans Frekansı) etkisini göz önünde bulundurarak Subwoofer tuning (Hz) değerini optimize ettiniz mi?",
+      "Kurulacak olan devasa RMS gücü (Örn: 2000W RMS ve üzeri) için aracın fabrika çıkışı Alternatör Amper değerini ve Akü kapasitesini (Ah) veri tabanından teyit ettiniz mi, yoksa doğrudan 'Big 3 Upgrade' şart koşularak mı ilerlenecek?"
+    ],
+    "kronik_sorunlar": [
+      "Hatchback ve Station Wagon araçlarda subwoofer bas dalgalarının kabin içinde daha çabuk tepe yapması (Cabin Gain) sebebiyle, Sedanlara göre çok daha farklı frekans tepkisi alınması.",
+      "Kullanıcıların ufak bagajlı A veya B segment bir araca (Örn: Peugeot 208, VW Polo) 2 adet 38cm (15 inç) subwoofer sığdırma hayali, Auto-Data bagaj hacmi (Litre) duvarına toslaması.",
+      "Standart OEM Alternatörlerin (genelde 70A - 90A) 1000W RMS üzeri sistemlerde yetersiz kalarak voltaj düşümüne ve amfi koruma (protect) moduna girmesi."
+    ],
+    "saha_dili": [
+      "Bagaj Litresi (L)",
+      "Cabin Gain (Kabin İçi Akustik Kazanç / Rezonans)",
+      "OEM Alternatör Kapasitesi (Amper)",
+      "Akü Fabrika Verisi (Ah / CCA)",
+      "Dingil Mesafesi (Akustik Uzunluk)",
+      "Big 3 Upgrade Gerekli",
+      "Koltuk İptali (Duvar / Wall Build)"
+    ],
+    "jargon": [
+      "Hatchback Cabin Gain",
+      "Sedan Trunk Baffle",
+      "Auto-Data.net Specs",
+      "Bagaj İptali",
+      "Big 3 (Big Three)",
+      "Alternatör Yetmezliği",
+      "Kapasitör Tıraşı"
+    ],
+    "ozet": "DD1 Ses Ustası; kullanıcının marka/model belirttiği senaryolarda, sistemi kurmadan önce arabanın teknik limitlerini (Auto-Data.net gibi platformlardaki veriler) bilerek veya sorarak hareket eden bir zekaya kavuşturuldu. Sistemin; aracın bagaj hacmi (Litre) limitini aşmayacak kabinler önermesi, Hatchback/Sedan gövde tipine göre akustik kazancı (Cabin Gain) hesaba katması ve en önemlisi 1000W RMS üzeri projelerde OEM alternatör değerlerinin yetmeyeceğini bilerek voltaj/akü (Big 3 Upgrade) uyarısı yapması kuralı eklendi. Usta, devasa hayalleri olan ama küçük arabası olanlara profesyonel bir teknik fırça ile (bagaj litresi darbesiyle) gerçeği hatırlatacaktır."
+  },
+  "__dd1_islendi": true,
+  "__dd1_koleksiyon": "arac_koleksiyonu",
+  "__dd1_islendi_at": "2026-04-05T11:29:03.231611"
+}

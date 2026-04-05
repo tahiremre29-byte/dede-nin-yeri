@@ -69,10 +69,10 @@ _MODEL_PATTERNS = [
     # Marka + model (sayılar dahil, virgül/noktalı virgül/inç/hz vb. öncesinde dur)
     re.compile(
         r'\b(jbl|hertz|sundown|focal|alpine|kenwood|pioneer|sony|kicker|'
-        r'rockford|morel|skar|dd.audio|beyma|eminence|rcf|fane|'
-        r'peavey|qsc|polk|jl.audio)'
+        r'rockford|morel|skar|dd\.audio|dd|beyma|eminence|rcf|fane|'
+        r'peavey|qsc|polk|jl\.audio|for.?x|mobass|cadence)'
         r'[\s\-]+([\w][\w\s\-\.]{1,40}?)'
-        r'(?=\s*(?:[,;]|açık|araç|inç|inch|hz|hertz|\d+\s*[wW]\b|$))',
+        r'(?=\s*(?:[,;]|açık|araç|inç|inch|hz|hertz|litre|\d+\s*[wW]\b|$))',
         re.IGNORECASE,
     ),
 ]
@@ -95,8 +95,8 @@ def classify_intent(message: str) -> tuple[IntentType, float]:
     if _FEEDBACK_KEYWORDS.search(message):
         return "feedback_gonder", 0.90
         
-    # Tavsiye veya uyumluluk sorusuysa kabin tasarımını ez ve tavsiyeye gönder
-    if re.search(r"fark\s*eder\s*mi|şart\s*mı|uyar\s*mı|hangisi\s*mantıklı|olur\s*mu|uyumlu\s*mu|mantıklı\s*mı", message, re.IGNORECASE):
+    # Tavsiye veya genel soru (nasıl, uyar mı, olur mu, kaç cm) => genel_tavsiye
+    if re.search(r"fark\s*eder\s*mi|şart\s*mı|uyar\s*mı|hangisi|olur\s*mu|uyumlu|mantıklı|nasıl|kaç\s*cm|kullanılır\s*mı|kullanılırmı|bağlarsam|sonuç|ne\s*olur", message, re.IGNORECASE):
         return "genel_tavsiye", 0.85
         
     if _ACOUSTIC_KEYWORDS.search(message):

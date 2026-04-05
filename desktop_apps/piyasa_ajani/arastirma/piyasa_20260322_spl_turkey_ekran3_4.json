@@ -4,7 +4,6 @@
     "kaynak": "SPL Team Turkey Facebook grubu — screenshot 3 ve 4",
     "url": "https://www.facebook.com/groups/1336657139829613"
   },
-
   "yeni_urunler": {
     "FORX_XDC_200A": {
       "marka": "FOR-X",
@@ -30,14 +29,12 @@
       "kullanici_davranisi": "Arıza fotoğrafı paylaşarak topluluktan yardım isteme — yaygın pratik"
     }
   },
-
   "piyasa_bulgulari": {
     "lto_pil_trendi": "SPL yarışmacılar LTO pil kullanmaya başladı — Türkiye'de de yayılıyor",
     "voltaj_optimizasyonu": "Yüksek güç sistemlerde voltaj stabilitesi kritik — XDC-200A buna çözüm",
     "topluluk_yardim": "Kullanıcılar arıza teşhisi için Facebook'a başvuruyor — DD1 bu boşluğu doldurabilir",
     "pioneer_yayginligi": "Pioneer GM serisi hala çok yaygın — giriş-orta segment amfi"
   },
-
   "saha_dili_ek": {
     "voltajiniz_bol_olsun": "SPL topluluğu selamlaşması — voltaj = güç = SPL",
     "lto_pil": "Lithium Titanate Oxide akü — SPL rekabetinin üst segmenti",
@@ -45,10 +42,12 @@
     "voltaj_dusmesi": "Sistem altında voltajın 14V'nin altına düşmesi — amfi koruması devreye girer",
     "koruma_devreye_girdi": "Amfi thermal veya voltaj koruması aktif oldu — ses kesilebilir"
   },
-
   "dd1_icin": {
     "ariza_teshis": "DD1 bot — kullanıcıların amfi/bağlantı arızalarını teşhis etmesine yardım",
     "voltaj_hesabi": "Sistem toplam güç hesabında voltaj düşüşü ve akü kapasitesi önemli — DD1 bu hesabı yapabilir",
     "lto_tavsiye": "Üst segment kullanıcıya LTO tavsiyesi verebilmeli"
-  }
+  },
+  "__dd1_islendi": true,
+  "__dd1_koleksiyon": "arac_koleksiyonu",
+  "__dd1_islendi_at": "2026-04-05T11:29:03.070779"
 }

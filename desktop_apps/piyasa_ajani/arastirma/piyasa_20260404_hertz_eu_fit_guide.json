@@ -1,0 +1,37 @@
+{
+  "orneklem_kaynagi": "Hertz Audio - Fit Guide (Avrupa Menşeli Araç Entegrasyon Rehberi)",
+  "analiz": {
+    "markalar": [
+      "Peugeot",
+      "Fiat",
+      "Volkswagen",
+      "Renault",
+      "Citroen",
+      "Opel",
+      "Hertz Audio"
+    ],
+    "teknik_sorular": [
+      "Aracın (Örn: Peugeot 3008 veya VW Golf) hoparlörlerini değiştirirken orijinal soketleri kesmek zorunda mıyız, yoksa araca özel 'Soket Dönüştürücü (Speaker Harness)' kullanılmalı mı?"
+    ],
+    "kronik_sorunlar": [
+      "Özellikle Avrupa (EU) üretimi araçlarda hoparlör yuvalarının standart yuvarlak (DIN) olmaması, üçgen veya asimetrik (Örn: VW perçinli hoparlörler) yuvalar yüzünden standart hoparlörlerin yuvaya oturmaması.",
+      "Orijinal hoparlör kablolarının kesilip biçilmesi nedeniyle aracın elektrik sisteminin hata vermesi veya garanti dışı kalması."
+    ],
+    "saha_dili": [
+      "Soket Dönüştürücü (Harness)",
+      "Avrupa Araç Spesifik",
+      "OEM Entegrasyon",
+      "Perçinli Hoparlör",
+      "Tak-Çalıştır (Plug & Play)"
+    ],
+    "jargon": [
+      "OEM Soket (Speaker Harness): Orijinal kabloyu kesmeden tak/çalıştır montaj yapmayı sağlayan ara kablo ucu.",
+      "Asimetrik Yuva / Adaptör: Fiat, VW ve Peugeot gibi araçların kapılarında standart 16cm dış çerçeve olmaz. Araya o markaya özel plastik adaptör (kasnak) alınmak zorundadır.",
+      "Sıfır Tahribat (Zero-Cut): Garantisi devam eden Avrupa araçlarında kablo kesmeden tesisat kurma kuralı."
+    ],
+    "ozet": "HERTZ AUDIO EU-FIT STRATEJİSİ: Crutchfield nasıl Amerika pazarının derinlik ustasıysa, Hertz Audio Fit Guide da Avrupa (Peugeot, VW, Fiat, Renault) pazarının soket ve yuva ustasıdır. Ses Ustası; eğer müşteri bir Avrupa aracıyla gelirse, standart 'Kasnak al tak' yaklaşımının dışına çıkmalıdır. Volkswagen grubunda orijinal hoparlörlerin perçinli olması, Peugeot grubunda özel şekilli yuvalar bulunması gerçeğini bilmelidir. Kurulum aşamasında doğrudan 'Araca özel orijinal soket dönüştürücün ve VW/Peugeot uyumlu kapı adaptör kasnağın hazır mı? Kabloları kesmeni istemem, garantiyi bozarsın.' şeklindeki Avrupai OEM (orijinalliği koruyan) montaj bilincini kullanmalıdır."
+  },
+  "__dd1_islendi": true,
+  "__dd1_koleksiyon": "arac_koleksiyonu",
+  "__dd1_islendi_at": "2026-04-05T11:29:03.261113"
+}

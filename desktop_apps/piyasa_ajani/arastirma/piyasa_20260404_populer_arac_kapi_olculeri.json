@@ -1,0 +1,36 @@
+{
+  "orneklem_kaynagi": "Müşteri ve Tesisatçı Gerçekleri: Türkiye'nin En Çok Satan B ve C Segment Araç Kapı Ölçüleri",
+  "analiz": {
+    "markalar": [
+      "Renault",
+      "Fiat",
+      "Toyota",
+      "Volkswagen",
+      "Hyundai"
+    ],
+    "teknik_sorular": [
+      "Araç sökülmeden (körü körüne) o aracın fabrikasyon direk kapı hoparlör çaplarını ve kasnak/perçin istisnalarını nasıl bilebilirim?"
+    ],
+    "kronik_sorunlar": [
+      "Toyota Corolla'nın (E210 vs) ön kapılarındaki oval yapıyı bilmeden yuvarlak 16cm mid-range sipariş edip, oval/yuvarlak ara kasnağı bulamayınca montajın yarım kalması."
+    ],
+    "saha_dili": [
+      "Ön Kapı 16cm (6.5 inç)",
+      "Arka Kapı 13cm (5.25 inç)",
+      "Oval Yuva (6x9 inç)",
+      "Perçinli Kasnak",
+      "Sığ Kapı Dibi"
+    ],
+    "jargon": [
+      "Renault Clio 4/5 ve Megane 4: Ön kapı 16.5cm, arka kapı ise donanıma göre 13cm veya 16.5cm çıkabilir.",
+      "Fiat Egea: Ön 16.5cm, arka 16.5cm. Ancak kapı sacı mesafesi için montajda kesinlikle ekstra 'plastik kasnak (spacer)' atılması gerekir.",
+      "Toyota Corolla (E210 vb.): Önler genellikle 6x9 inç oval ovaldir (Veya adaptörle 16.5 cm). Arkalar 16.5 cm.",
+      "VW Golf / Seat Leon: Ön ve arka 16.5 cm! Ancak fabrikasyon donanımda perçinli dev plastik kasnakla gelir. Matkapla perçin çürütülmesi şart.",
+      "Hyundai i20: Önler 16.5 cm, arkalar 13/16.5cm. En büyük riski kapı sacı derinliğinin (Mounting depth) oldukça SIĞ (dar) olmasıdır."
+    ],
+    "ozet": "OTOMATİK KAPI ÖLÇÜ DENETİMİ: Türkiye'de sokağa inildiğinde ustaların her gün karşılaştığı arabaların (Egea, Golf, Megane, Corolla, i20) gerçek kapı çapları ve mekanik tuzakları sisteme işlenmiştir. Ses Ustası; eğer müşteri Egea getiriyorsa doğrudan '16.5 cm kasnakların hazır mı?', Corolla Varsa 'Ön kapı oval 6x9, dönüştürücü adaptör olmadan 16 cm hoparlörü yuvaya oturtamazsın', VW Golf ise 'Perçinleri çürütüp yeni kasnak sıkman gerekecek, dikkat et' şeklinde nokta atışı oto-elektrikçi tecrübesi sergileyecektir."
+  },
+  "__dd1_islendi": true,
+  "__dd1_koleksiyon": "arac_koleksiyonu",
+  "__dd1_islendi_at": "2026-04-05T11:29:03.310034"
+}

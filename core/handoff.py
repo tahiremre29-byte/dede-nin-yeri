@@ -49,6 +49,7 @@ def handoff_to_acoustic(
         type=port.get("type", "aero"),
         dia_mm=port.get("dia_mm"),
         length_mm=float(port.get("length_mm", 200)),
+        gap_mm=port.get("gap_mm"),
         count=int(port.get("count", 1)),
         area_cm2=float(engine_result.get("port_area_cm2", 78.5)),
     )

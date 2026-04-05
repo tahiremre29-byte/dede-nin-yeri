@@ -8,8 +8,16 @@
     "odak": "Yerli Forum & Hi-Fi Üretim İstihbaratı - DIY Audio Türkiye"
   },
   "analiz": {
-    "markalar": ["Kendin Yap (DIY)", "Hi-Fi Sistemler"],
-    "saha_dili": ["Crossover", "Lateral Mosfet", "Ton Kontrol", "Analog Ses Devreleri"],
+    "markalar": [
+      "Kendin Yap (DIY)",
+      "Hi-Fi Sistemler"
+    ],
+    "saha_dili": [
+      "Crossover",
+      "Lateral Mosfet",
+      "Ton Kontrol",
+      "Analog Ses Devreleri"
+    ],
     "teknik_sorular": [
       "Yalvarırım Crossover Yardım - Ses kesim frekansları nasıl ayarlanır?",
       "Mosfet amplifikatörlerde sükunet akım ayarı nasıl yapılır?",
@@ -21,5 +29,8 @@
       "Amfi test frekansları (2kHz / 1kHz) ile arıza tespit standartları"
     ],
     "ozet": "DIY Audio Türkiye'nin makale bölümü tamamen teorik ve pratik ev imalathanesi zekası taşıyor. Buradaki donanımlı Türk ustalar sadece hazır kutu çizmekle ilgilenmiyor; kendi Crossover (frekans kesici) devrelerini sarıp, Mosfet amfilerin sükunet (bias) akımlarını milimetrik ayarlamaya uğraşıyorlar. Buradaki Türk akustik zekası, Ses Ustası'na saf elektronik tamir ve Crossover ayar mantığı (1kHz - 2kHz test sinyalleri vs) hediye etti."
-  }
+  },
+  "__dd1_islendi": true,
+  "__dd1_koleksiyon": "montaj_koleksiyonu",
+  "__dd1_islendi_at": "2026-04-05T11:29:03.126767"
 }

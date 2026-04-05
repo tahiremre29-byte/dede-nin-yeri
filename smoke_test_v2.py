@@ -2,7 +2,7 @@ import requests
 import json
 
 def test_api():
-    url = "http://localhost:8000/design/enclosure"
+    url = "http://localhost:9000/design/enclosure"
     payload = {
         "diameter_inch": 12,
         "rms_power": 600,

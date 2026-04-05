@@ -33,10 +33,10 @@ class LLMEngine:
         self.client = genai.Client(api_key=self.api_key)
         self.model_name = "gemini-2.5-flash"  # En hızlı ve kararlı model
 
-    def generate(self, prompt: str, system_prompt: Optional[str] = None, temperature: float = 0.5) -> str:
+    def generate(self, prompt: str, system_prompt: Optional[str] = None, temperature: float = 0.5, history: Optional[list] = None) -> str:
         """
         Metin üretimi yapar. Hata durumunda logger'a yazar ve boş string döner.
-        Böylece sistemi asla çökertmez.
+        Böylece sistemi asla çökertmez. history argümanı ile çoklu-diyalog kapasitesi sağlar.
         """
         try:
             config = types.GenerateContentConfig(
@@ -45,9 +45,31 @@ class LLMEngine:
             if system_prompt:
                 config.system_instruction = system_prompt
 
+            contents = []
+            role_blocks = [] # [ [role, text], ... ]
+            if history:
+                for h in history:
+                    r = h.get("role", "user")
+                    role_mapped = "model" if r in ("ai", "model", "assistant") else "user"
+                    msg = str(h.get("content") or h.get("message") or h.get("text") or "").strip()
+                    if msg:
+                        if role_blocks and role_blocks[-1][0] == role_mapped:
+                            role_blocks[-1][1] += "\n" + msg
+                        else:
+                            role_blocks.append([role_mapped, msg])
+            
+            # Guncel soruyu da history listesine dahil ediyoruz
+            if role_blocks and role_blocks[-1][0] == "user":
+                role_blocks[-1][1] += "\n" + prompt
+            else:
+                role_blocks.append(["user", prompt])
+                
+            for r, m in role_blocks:
+                contents.append(types.Content(role=r, parts=[types.Part.from_text(text=m)]))
+
             response = self.client.models.generate_content(
                 model=self.model_name,
-                contents=prompt,
+                contents=contents, # history list or plain prompt inside a Content object
                 config=config,
             )
             return response.text or ""

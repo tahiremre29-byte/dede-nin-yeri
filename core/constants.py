@@ -9,9 +9,9 @@ MAX_PORT_VELOCITY = 17.0 # m/s (port gürültüsü eşiği)
 # ─── Ampirik Kabin Hacmi Tablosu (litre) ─── {inch: {amaç: (min, max)}}
 EMPIRICAL_VB = {
     8:  {"SPL": (18, 25), "SQL": (22, 30), "Günlük Bass": (25, 35)},
-    10: {"SPL": (30, 45), "SQL": (40, 55), "Günlük Bass": (45, 60)},
-    12: {"SPL": (55, 75), "SQL": (65, 85), "Günlük Bass": (60, 80)},
-    15: {"SPL": (90, 120), "SQL": (110, 140), "Günlük Bass": (100, 130)},
+    10: {"SPL": (30, 45), "SQL": (35, 50), "Günlük Bass": (40, 55)},
+    12: {"SPL": (45, 60), "SQL": (50, 65), "Günlük Bass": (45, 55)},
+    15: {"SPL": (80, 100), "SQL": (90, 115), "Günlük Bass": (85, 110)},
     18: {"SPL": (150, 200), "SQL": (180, 250), "Günlük Bass": (170, 220)},
 }
 

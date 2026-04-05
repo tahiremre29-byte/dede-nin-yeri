@@ -8,8 +8,18 @@
     "odak": "Rakip/Premium Marka Analizi - Rockford Fosgate Box Advisor"
   },
   "analiz": {
-    "markalar": ["Rockford Fosgate", "Fosgate Power", "Fosgate Punch"],
-    "saha_dili": ["3/4\" MDF", "Medium Density Fiberboard", "Box Advisor", "Wiring Wizard", "Amp Wire Calculator"],
+    "markalar": [
+      "Rockford Fosgate",
+      "Fosgate Power",
+      "Fosgate Punch"
+    ],
+    "saha_dili": [
+      "3/4\" MDF",
+      "Medium Density Fiberboard",
+      "Box Advisor",
+      "Wiring Wizard",
+      "Amp Wire Calculator"
+    ],
     "teknik_sorular": [
       "Kutu yapımında hangi malzeme kullanılmalı?",
       "Amfi kablolama hesaplamaları nasıl yapılır?"
@@ -22,5 +32,8 @@
       "Varsayılan Malzeme Standartı: Her zaman 3/4 inç (19mm) MDF kullanımı şart koşuluyor."
     ],
     "ozet": "Rockford Fosgate'in kurumsal bilgi havuzu, kullanıcılara akustik parametreleri doğrudan sormak yerine 'Modelini seç, sana 19mm MDF kalıbında en iyi şablonu (Box Advisor) vereyim' mantığıyla ilerliyor. Rakiplerin aksine kendi Wiring Wizard'ları (Ohm şeması) ve Amfi Kablo (AWG) hesaplayıcılarını tek sayfada birleştirip bir 'Ses Asistanı' ekosistemi yaratmışlar. Bizim DD1 Ses Ustası tam da bu görevi konuşarak yapmaktadır."
-  }
+  },
+  "__dd1_islendi": true,
+  "__dd1_koleksiyon": "marka_koleksiyonu",
+  "__dd1_islendi_at": "2026-04-05T11:29:03.169206"
 }

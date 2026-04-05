@@ -5,7 +5,6 @@
     "kaynak": "Facebook SPL Team Turkey grubu — 2 screenshot",
     "url": "https://www.facebook.com/groups/1336657139829613"
   },
-
   "grup_bilgisi": {
     "ad": "SPL Team Turkey",
     "tanim": "GRUBUMUZ SES SİSTEMİ YARDIM VE DAYANIŞMA İÇİN KURULMUŞTUR. SATIŞ YASAKTIR.",
@@ -13,7 +12,6 @@
     "gorunurluk": "Bu grubu herkes bulabilir",
     "konum": "Türkiye"
   },
-
   "kritik_tartismalar": {
     "95_db_mevzusu": {
       "konu": "Türkiye'de araçlar için 95 dB sınırı tartışılıyor",
@@ -32,7 +30,6 @@
       "piyasa_etkisi": "95 dB kuralı henüz netleşmemiş — topluluk hem tedirgin hem alay ediyor. Gain ayarı çözüm olarak görülüyor."
     }
   },
-
   "duygu_analizi": {
     "psikoloji": {
       "kaynak": "Instagram paylaşımı — Hasan Koçak",
@@ -54,7 +51,6 @@
       "kimlik": "Modifiye = yaşam tarzı — vazgeçmeyecekler"
     }
   },
-
   "influencer_tespiti": {
     "hasan_kocak": {
       "platform": "Instagram + Facebook",
@@ -72,7 +68,6 @@
       "yaklasim": "Pratik, yaptırım kuşkucu perspektif"
     }
   },
-
   "urun_yeni": {
     "Audison": {
       "kategori": "Hoparlör (İtalyan premium marka)",
@@ -81,10 +76,12 @@
       "segment": "Premium SQ hoparlör — fiyat/performans karşılaştırması"
     }
   },
-
   "dd1_icin_ciktilar": {
     "gain_ayari_firsati": "95 dB kuralıyla kullanıcılar gain optimizasyonu arıyor — DD1'in DSP-aware kabin tasarımı doğru SPL hesabıyla bu ihtiyacı karşılayabilir",
     "kimlik_koruyan_sistem": "Topluluğun 'suç değil yaşam tarzı' mesajı — DD1 burada 'akıllı ve yasal sistem' mesajıyla uyum sağlayabilir",
     "yaptırim_belirsizligi": "95 dB kuralı net değil — DD1 kullanıcılara ölçüm tabanlı tasarım önerisi yapabilir"
-  }
+  },
+  "__dd1_islendi": true,
+  "__dd1_koleksiyon": "arac_koleksiyonu",
+  "__dd1_islendi_at": "2026-04-05T11:29:03.064782"
 }

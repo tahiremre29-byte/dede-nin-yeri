@@ -106,6 +106,7 @@ class SesUstasi:
         self,
         message: str,
         context: dict | None = None,
+        history: list | None = None,
     ) -> dict:
         """
         Kullanıcı mesajını işler.
@@ -145,7 +146,7 @@ class SesUstasi:
 
         # Genel tavsiye veya bilgi sorularında direkt cevap ver
         if intent in ("genel_tavsiye", "woofer_sorgu"):
-            reply = self._ask_gemini(message, ctx=ctx)
+            reply = self._ask_gemini(message, ctx=ctx, history=history)
             return {
                 "reply": reply,
                 "intake": None,
@@ -157,11 +158,25 @@ class SesUstasi:
 
         # Akustik veya üretim niyetinde paket oluştur
         intake = self._build_intake_from_message(message, intent, confidence, ctx)
-        missing_q = ""
-        _np_ctx = ctx.get("normalized_panel", {})
         
-        if _np_ctx.get("next_questions"):
-            missing_q = " ".join(_np_ctx["next_questions"])
+        # Eğer geçmiş konuşmalar sayesinde eksik veri kalmadıysa, artık genel sohbet yerine tasarıma geçmesi gerekir.
+        normalized_panel = ctx.get("normalized_panel", {})
+        missing_f = normalized_panel.get("missing_fields", ["fallback"])
+        has_diameter = normalized_panel.get("diameter_inch", 0) > 0
+        
+        is_ready = False
+        if len(missing_f) == 0 and has_diameter:
+            # Kabin hesabı için her şey hazır!
+            intake.user_intent = "kabin_tasarim"
+            is_ready = True
+            
+        missing_q = ""
+        if not is_ready and intake.user_intent in ("kabin_tasarim", "uretim_dosyasi"):
+            nq = ctx.get("normalized_panel", {}).get("next_questions", [])
+            if nq:
+                missing_q = " ".join(nq)
+            else:
+                missing_q = "Lütfen kullanmak istediğiniz tam cihaz modelini veya T/S parametrelerini belirtiniz."
 
         # ── YENİ: TS Parametre Lookup Akışı (ARTIK HER ZAMAN ÇALIŞIR) ──
         ts_fetched = False
@@ -173,10 +188,26 @@ class SesUstasi:
             model_str = intake.woofer_model
             lookup_prompt = (
                 f"{brand_str} {model_str} subwoofer (car audio) için fabrika T/S parametrelerinden "
-                f"Fs, Qts ve Vas değerlerini kesin olarak biliyor musun? Biliyorsan SADECE JSON formatında dön: "
-                f"{{\"fs\": 30.0, \"qts\": 0.45, \"vas\": 55.0}}. Emin değilsen veya bulamazsan "
-                f"SADECE 'BİLİNMİYOR' kelimesini dön. Başka hiçbir açıklama yazma."
+                f"Fs, Qts, Vas ve cihazın RMS Güç (Watt) değerini kesin olarak biliyor musun? Eğitildiğin verilerde net fabrikatör verisi varsa "
+                f"SADECE JSON formatında dön: {{\"fs\": 34.0, \"qts\": 0.45, \"vas\": 55.0, \"rms\": 2000, \"xmax\": 18.0}}. BİLMİYORSAN VEYA EMİN DEĞİLSEN "
+                f"SADECE 'BİLİNMİYOR' dön. Asla yaklaşık (approximate) tahmin yürütme."
             )
+            
+            # YENİ: URL kontrolü — Kullanıcı link atmışsa linkin içeriğini tara ve LLM'e bilgi olarak ver!
+            url_match = re.search(r'(https?://[^\s]+)', message + " " + ctx.get("raw_message", ""))
+            if url_match:
+                url = url_match.group(1)
+                try:
+                    import requests
+                    from bs4 import BeautifulSoup
+                    resp = requests.get(url, timeout=4, headers={"User-Agent": "Mozilla/5.0"})
+                    if resp.status_code == 200:
+                        soup = BeautifulSoup(resp.text, 'html.parser')
+                        page_text = " ".join(soup.stripped_strings)[:3000] # İlk 3000 karakter yeterli
+                        lookup_prompt += f"\n\nKULLANICININ VERDİĞİ LİNK İÇERİĞİ ({url}):\n{page_text}\n(Eğer bu verilerin içinde Fs, Qts, Vas, RMS varsa mutlaka buradan al!)"
+                except Exception as e:
+                    logger.warning(f"URL okunamadı: {url} - {e}")
+
             try:
                 ts_resp = self._llm.generate(prompt=lookup_prompt, temperature=0.1)
                 import json, re
@@ -188,7 +219,6 @@ class SesUstasi:
                     
                     def safe_float(v):
                         try:
-                            # clean non-numeric chars except dot
                             v_clean = re.sub(r'[^\d.]', '', str(v))
                             return float(v_clean) if v_clean else 0.0
                         except:
@@ -197,58 +227,64 @@ class SesUstasi:
                     fs = safe_float(ts_data.get("fs", 0))
                     qts = safe_float(ts_data.get("qts", 0))
                     vas = safe_float(ts_data.get("vas", 0))
+                    rms = safe_float(ts_data.get("rms", 0))
+                    xmax = safe_float(ts_data.get("xmax", 12.0))
                     
                     if fs > 0 and qts > 0 and vas > 0:
                         from schemas.intake_packet import TSParams
-                        intake.ts_params = TSParams(fs=fs, qts=qts, vas=vas, xmax=12.0, re=4.0)
+                        intake.ts_params = TSParams(fs=fs, qts=qts, vas=vas, xmax=xmax if xmax > 0 else 12.0, re=4.0)
+                        if rms >= 50:
+                            intake.rms_power = rms
+
                         ts_fetched = True
                         ts_technical_info = f"Cihazın fabrika verisi: Fs: {fs}Hz. (Yani çok alt frekans isteniyorsa cihaz limiti {fs}Hz etrafındadır, bu durumu kullanıcıya belli ederek gerçeği söyle)."
-                        ts_message = f"Reis cihazın ({brand_str} {model_str}) parametrelerini veritabanından çektim (Fs: {fs}Hz, Qts: {qts:.2f}, Vas: {vas}L). Hemen üretim hattına, hesap kitabına paslıyorum işi."
-                    else:
-                        ts_fail_msg = "Ayrıca Reis cihazın parametrelerini (Fs, Qts, Vas) veritabanında bulamadım (özel seri olabilir). Sana zahmet kataloğundan Fs, Qts ve Vas değerlerini yazar mısın?"
-                        missing_q = missing_q + " " + ts_fail_msg if missing_q else ts_fail_msg
-                else:
-                    ts_fail_msg = "Ayrıca Reis cihazın parametrelerini (Fs, Qts, Vas) veritabanında bulamadım (özel seri olabilir). Sana zahmet kataloğundan Fs, Qts ve Vas değerlerini yazar mısın?"
-                    missing_q = missing_q + " " + ts_fail_msg if missing_q else ts_fail_msg
+                        ts_message = f"Cihazın ({brand_str} {model_str}) parametrelerini veritabanından çektim (Fs: {fs}Hz, Qts: {qts:.2f}, Vas: {vas}L). Müşteriye hemen hesaba geçtiğini belirt."
             except Exception as e:
                 logger.error("[SES USTASI] TS Lookup Hatası: %s", e)
-                ts_fail_msg = "Ayrıca Reis cihazın parametrelerini (Fs, Qts, Vas) veritabanında bulamadım (özel seri olabilir). Sana zahmet kataloğundan Fs, Qts ve Vas değerlerini yazar mısın?"
-                missing_q = missing_q + " " + ts_fail_msg if missing_q else ts_fail_msg
 
-        print(f"DEBUG SES_USTASI: finalized missing_q: {missing_q}")
-        if missing_q:
-            # Eksik bilgi var — AI uzerinden doğal forma sok
-            # Teknik bilgiyi context'e ekleyelim
+        print(f"DEBUG SES_USTASI: finalized missing_q: {missing_q}, is_ready: {is_ready}, intent: {intent}")
+        # LLM'i çağıracağımız durumlar:
+        # 1. Eksik bilgi varsa (soru sormak için)
+        # 2. Asıl niyet tavsiye/bilgi ise (ör. sunroof sorusu)
+        # 3. Her şey hazır GELDİĞİNDE de (müşteriye 'hesaba geçiyoruz' demek için)
+        
+        target_agent = route(intake) if is_ready else None
+
+        if missing_q or intent in ("genel_tavsiye", "woofer_sorgu") or is_ready:
             if ts_fetched:
                 ctx["ts_technical_info"] = ts_technical_info
                 
-            intro = self._ask_gemini(message, ctx=ctx, missing_q=missing_q)
-            # Guard
+            if is_ready and not missing_q:
+                # Tasarıma geçiş bildirimi
+                missing_q = "Bilgiler tamamlandı. Kullanıcının son cümlesine saygılı bir onay ver, ardından hemen kabin tasarımına geçiyoruz de. Uzatma."
+                
+            intro = self._ask_gemini(message, ctx=ctx, missing_q=missing_q, history=history)
+            
             if not intro or str(intro).strip().startswith("None"):
-                intro = missing_q
+                intro = missing_q if missing_q else "Müşterinin sorunuyla ilgileniliyor."
             else:
-                intro = _sanitize_reply(intro)
+                intro = intro.strip()
+                
             return {
                 "reply": intro,
                 "intake": intake,
-                "route_to": None,
-                "needs_more_info": True,
-                "questions": missing_q,
+                "route_to": target_agent,
+                "needs_more_info": not is_ready,
+                "questions": missing_q if not is_ready else "",
             }
 
-        agent = route(intake)
-        reply_str = ts_message if ts_fetched else f"Talebinizi {agent.replace('_', ' ').title()}'na iletiyorum."
+        # LLM çalışmazsa default fallback (artık pek buraya düşmez)
         return {
-            "reply": reply_str,
+            "reply": "Sistemi hesaplıyorum, lütfen bekleyin.",
             "intake": intake,
-            "route_to": agent,
+            "route_to": target_agent,
             "needs_more_info": False,
             "questions": "",
         }
 
     # ── Yardımcı: Adapter Üzerinden AI Çağrısı ────────────────────
 
-    def _ask_gemini(self, message: str, ctx: dict | None = None, missing_q: str = "") -> str:
+    def _ask_gemini(self, message: str, ctx: dict | None = None, missing_q: str = "", history: list | None = None) -> str:
         """Direkt google-genai API çağrısı — adapter zinciri yok."""
         import os
         ctx = ctx or {}
@@ -273,17 +309,65 @@ class SesUstasi:
         if ctx.get("ts_technical_info"):
             system_prompt += (
                 f"\n\nTEKNİK UYARI: {ctx['ts_technical_info']}\n"
-                "Kullanıcıya bu bilgiyi sezdirerek (Örn: 'Reis senin cihazın frekansı şu, yani anca buraya kadar ineriz' şeklinde) gerçekçi bir yaklaşım sergile."
+                "Kullanıcıya bu bilgiyi sezdirerek (Örn: 'Cihazın fabrika rezonansı şu, yani anca buraya kadar inebiliriz' şeklinde) gerçekçi bir yaklaşım sergile."
             )
+
+        if ctx.get("vehicle") or ctx.get("vehicle_type"):
+            v_type = ctx.get("vehicle") or ctx.get("vehicle_type")
+            try:
+                from core.constants import CABIN_GAIN_PROFILES
+                f3_base = CABIN_GAIN_PROFILES.get(v_type, (50, 0))[0]
+            except Exception:
+                f3_base = 50
+            
+            system_prompt += (
+                f"\n\nARAÇ AKUSTİK BİLGİSİ (FIZIK DETAYI):\nKullanıcının aracı: {v_type}. Ortalama kabin rezonans frekansı: ~{f3_base}Hz. "
+                "Eğer kullanıcı alt frekans / bas performansı gibi yorumlar yaparsa, bu aracın fiziksel yapısını (örneğin kabin hacmi, tavan-taban mesafesi, bagaj yalıtımı vb.) bir akustik mühendisi gibi değerlendir. "
+                "Kullanıcının mantığı doğruysa bilimsel olarak onayla, yanlışsa doğrusunu açıkla (Örn: 'Doblo gibi Van kasalarda tavan-taban arasındaki paralellik içerideki rezonans frekansını ~50Hz civarına çeker'). "
+                "Sadece kısaca 1-2 cümlelik profesyonel fiziksel analiz yap."
+            )
+            
+        # ── BİLGİ KÜTÜPHANESİ ENTEGRASYONU ────────────────────────────
+        # Sadece konuya ilgili koleksiyondan temiz, sınırlı veri getir.
+        # keyword yoksa veya eşleşme bulunamazsa sistem promptuna HİÇBİR ŞEY eklenmez.
+        try:
+            from core.knowledge_engine import query_library
+
+            # Arama için keyword havuzu — None değerleri içeride temizlenir
+            lib_keywords = [
+                ctx.get("brand"),
+                ctx.get("woofer_model"),
+                ctx.get("vehicle") or ctx.get("vehicle_type"),
+                # Mesajdan ilk birkaç anlamlı kelime (araç/marka adı gibi)
+                *message.split()[:4],
+            ]
+
+            # Konuya göre koleksiyon seçimi (otomatik; açıkça belirtmek gerekmez)
+            lib_context = query_library(
+                keywords=lib_keywords,
+                collections=None,   # _auto_select_collections devreye girer
+                max_chars=1200,
+                top_n=5,
+            )
+
+            if lib_context:
+                system_prompt += (
+                    "\n\n[DD1 KÜTÜPHANE BİLGİSİ — YALNIZCA KONUYLA İLGİLİ]:\n"
+                    + lib_context
+                    + "\n\nYukarıdaki kütüphane bilgisini yalnızca müşterinin konusuyla"
+                    " doğrudan ilgiliyse kullan. Alakasız detayları tekrar etme."
+                )
+        except Exception as e:
+            logger.error("[SES USTASI] Kütüphane sorgusu başarısız: %s", e)
             
         if missing_q:
             system_prompt += (
-                f"\n\nSİSTEM MESAJI: Tasarımı tamamlamak için şu bilgi eksik: '{missing_q.strip()}'. "
-                "Bu eksiği kullanıcıya doğal, usta ağzıyla ve doğrudan sor. Yukarıdaki teknik uyarıyı (varsa) soruyla harmanla. 'Dinliyorum' vb. robotik girişler yapma. Tek soru sor."
+                f"\n\nSİSTEM UYARISI: Tasarımı tamamlamak için şu bilgi eksik: '{missing_q.strip()}'. "
+                "Bu eksiği müşteriye sıradan bir anketör gibi ('Hedefiniz SPL midir?') diye sorma! Dükkanındaki müşteriye nasıl soracaksan öyle ustaca ve samimi bir insan diliyle sor. Robotik davranırsan müşteri kızar."
             )
 
         try:
-            return self._llm.generate(prompt=message, system_prompt=system_prompt, temperature=0.7)
+            return self._llm.generate(prompt=message, system_prompt=system_prompt, temperature=0.7, history=history)
         except Exception as e:
             logger.error("[SES USTASI] LLM_Engine çağrısı çöktü: %s", e)
             return missing_q if missing_q else ""
@@ -301,16 +385,20 @@ class SesUstasi:
         """
         Gelen mesaja göre IntakePacket oluşturur (yeni interpreter kullanarak).
         """
-        from core.interpreter import parse_message
-        
         ctx = context or {}
         
-        # interpreter'i çağır 
-        # (Gerçekte chat_service zaten çağırıyor ama SesUstasi hala mesajla çalışıyor)
-        ext = parse_message(message, ctx)
+        # chat_service.py zaten combined history ile parse_message çağırdı ve bize verdi.
+        # Eğer context dolu geldiyse, tekrar regex koşturup geçmişi kaybetme!
+        if ctx.get("normalized_panel"):
+            ext = ctx
+        else:
+            from core.interpreter import parse_message
+            ext = parse_message(message, ctx)
+            
         pan = ext.get("normalized_panel", {})
 
-        diam_inch = pan.get("diameter_inch") or int(ctx.get("diameter_inch", 12))
+        _ctx_diam = ctx.get("diameter_inch")
+        diam_inch = pan.get("diameter_inch") or (_ctx_diam if _ctx_diam else 12)
         woofer_model = pan.get("woofer_model") or ctx.get("woofer_model") or ""
         target_freq_hz = ext.get("target_hz") or ctx.get("target_freq_hz")
         usage_domain = pan.get("domain", "car_audio")
@@ -339,6 +427,11 @@ class SesUstasi:
                 xmax=ctx.get("xmax"),
             )
 
+        enclosure_type = pan.get("enclosure_preference") or ctx.get("enclosure_preference") or "aero"
+        # Eğer belirtilmediyse "aero" kabul et (Tahmini Portlu ise yine aero vs. yapılabilir)
+        if "Belirtilmedi" in enclosure_type:
+            enclosure_type = "aero"
+
         return build_intake(
             raw_message=message,
             intent=intent,
@@ -352,5 +445,6 @@ class SesUstasi:
             usage_domain=usage_domain,
             bass_char=bass_char,
             target_freq_hz=target_freq_hz,
+            enclosure_type=enclosure_type,
         )
 

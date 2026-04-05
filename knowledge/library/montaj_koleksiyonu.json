@@ -1,0 +1,251 @@
+{
+  "collection": "montaj_koleksiyonu",
+  "version": 2,
+  "entries": [
+    {
+      "library_type": "montaj",
+      "kaynak": "Big Bang Sounds Facebook grubu — screenshot",
+      "ozet": "Kondansatör/crossover gibi temel konular bile sorulup öğreniliyor — bilgi açığı büyük",
+      "saha_dili": [],
+      "kronik_sorunlar": [],
+      "tags": [
+        "amfi",
+        "crossover",
+        "forx",
+        "kondansator",
+        "montaj",
+        "tweeter"
+      ],
+      "__source": "piyasa_20260322_bigbang_kondansator.json"
+    },
+    {
+      "library_type": "montaj",
+      "kaynak": "Facebook — Big Bang Sounds Grubu (screenshot)",
+      "ozet": "",
+      "saha_dili": [],
+      "kronik_sorunlar": [],
+      "tags": [
+        "amfi",
+        "forx",
+        "kabin",
+        "montaj",
+        "port",
+        "voltaj"
+      ],
+      "__source": "piyasa_20260322_facebook_bigbang.json"
+    },
+    {
+      "library_type": "montaj",
+      "kaynak": "piyasa_20260322_the12volt_diyaudiotr.json",
+      "ozet": "",
+      "saha_dili": [],
+      "kronik_sorunlar": [],
+      "tags": [
+        "amfi",
+        "crossover",
+        "diyaudio",
+        "kabin",
+        "kablo",
+        "kondansator",
+        "montaj",
+        "port",
+        "tweeter"
+      ],
+      "__source": "piyasa_20260322_the12volt_diyaudiotr.json"
+    },
+    {
+      "library_type": "montaj",
+      "kaynak": "https://diyaudioprojects.com/Speakers/speakers.htm",
+      "ozet": "DIY Audio Projects sitesinden ev yapımı/özel hoparlör sürücü markaları (Dayton, Fostex vb.) ve kabin tasarımları incelendi.",
+      "saha_dili": [
+        "Horn",
+        "Sürücü",
+        "Bass Reflex",
+        "Custom Kabin",
+        "DIY",
+        "Open Baffle",
+        "Fullrange",
+        "Sealed"
+      ],
+      "kronik_sorunlar": [
+        "Hangi kabin tipi daha uygun?",
+        "T/S parametreleri nasıl hesaplanır?"
+      ],
+      "tags": [
+        "diyaudio",
+        "kabin",
+        "montaj"
+      ],
+      "__source": "piyasa_20260403_diyaudioprojects.json"
+    },
+    {
+      "library_type": "montaj",
+      "kaynak": "piyasa_20260403_diyaudiotr.json",
+      "ozet": "DIY Audio Türkiye'nin makale bölümü tamamen teorik ve pratik ev imalathanesi zekası taşıyor. Buradaki donanımlı Türk ustalar sadece hazır kutu çizmekle ilgilenmiyor; kendi Crossover (frekans kesici) devrelerini sarıp, Mosfet amfilerin sükunet (bias) akımlarını milimetrik ayarlamaya uğraşıyorlar. Buradaki Türk akustik zekası, Ses Ustası'na saf elektronik tamir ve Crossover ayar mantığı (1kHz - 2kHz test sinyalleri vs) hediye etti.",
+      "saha_dili": [
+        "Crossover",
+        "Analog Ses Devreleri",
+        "Lateral Mosfet",
+        "Ton Kontrol"
+      ],
+      "kronik_sorunlar": [
+        "Yalvarırım Crossover Yardım - Ses kesim frekansları nasıl ayarlanır?",
+        "Mosfet amplifikatörlerde sükunet akım ayarı nasıl yapılır?",
+        "3 bant ton kontrol devre revizyonu nasıl işliyor?"
+      ],
+      "tags": [
+        "amfi",
+        "crossover",
+        "diyaudio",
+        "kabin",
+        "montaj"
+      ],
+      "__source": "piyasa_20260403_diyaudiotr.json"
+    },
+    {
+      "library_type": "montaj",
+      "kaynak": "piyasa_20260403_diyaudiotr_kabin_ve_ts.json",
+      "ozet": "D.Hardware müstear isimli yazarın tamamen saf kabin mühendisliği anlattığı rehberdir. Ustaların çokça tartışıp yanlış bildiği 'vida mı atalım, silikon mu?' sorusuna net 'çivi ve vida kullanmayın, sadece bol beyaz tutkal ve işkenceyle sıkın' diyor. Ayrıca port hızının (Vent Mach) 0.15'i geçmemesi kuralını sistemlerimize eklemeliyiz. DD1'in port hesaplamalarında rüzgar sesini engellemek için mükemmel bir akustik limitörü olarak kullanılacak bilgi.",
+      "saha_dili": [
+        "Beyaz Tutkal",
+        "Vent Mach (Port Hızı)",
+        "Qts, Qes, Qms, Vas, Fs, SPL",
+        "Gönye Burun 45°",
+        "Faz Kayması",
+        "İşkence",
+        "Thiele Small (TS)",
+        "Rezonans Frekansı"
+      ],
+      "kronik_sorunlar": [
+        "Hoparlörler neden kutu içerisinde çalışma ihtiyacı duyarlar?",
+        "TS parametreleri olmadan kabin yapılır mı?",
+        "Port (vent) hızının sınırı kaç olmalı?"
+      ],
+      "tags": [
+        "diyaudio",
+        "kabin",
+        "montaj",
+        "port"
+      ],
+      "__source": "piyasa_20260403_diyaudiotr_kabin_ve_ts.json"
+    },
+    {
+      "library_type": "montaj",
+      "kaynak": "piyasa_20260403_kabin_sistemleri.json",
+      "ozet": "Her iki site de piyasadaki en popüler parametrik 3D kabin çizim araçlarından. Subbox.pro basit URL metrikleriyle (bt, bw, bh) çalışarak anlık render verirken; SpeakerBoxLite çok daha derin (4th Order, 6th Order, Push-Pull, Vented) hesaplamalarına ve devre şeması çizimlerine izin veriyor. Ustaların genel sorunu port derinliği hesaplarken programın net hacmi yutmasına kafa yormalarıdır.",
+      "saha_dili": [
+        "Isobaric",
+        "Free Air",
+        "Ported",
+        "Net Volume",
+        "Round port",
+        "Slot port",
+        "Bandpass",
+        "Sealed"
+      ],
+      "kronik_sorunlar": [
+        "Portun yüksekliği, genişliği ve uzunluğu arasındaki fark nedir? Hepsini değiştirdiğimde 3D render bozuluyor.",
+        "Kabin net hacminden port hacmi nasıl düşülür?",
+        "Rezonans frekansı (Tuning Freq) ile kutu litresi dengesi nasıl kurulur?"
+      ],
+      "tags": [
+        "kabin",
+        "montaj",
+        "port"
+      ],
+      "__source": "piyasa_20260403_kabin_sistemleri.json"
+    },
+    {
+      "library_type": "montaj",
+      "kaynak": "piyasa_20260403_omnicalculator.json",
+      "ozet": "OmniCalculator tamamen matematiğe odaklanan bir platform. Özellikle yeni başlayan amatörlerin en çok hata yaptığı konu olan 'Kabin hacmi hesaplarken ahşap et kalınlığını (Board Thickness) hesaba katmayı unutma' problemini direkt formüle dökmüşler. Ayrıca Subwoofer'ın sepetinin (Driver Displacement) ve liman borusunun (Port Volume) içeride ne kadar yer kapladığını kesinlikle iç hacminden eksiltiyorlar. Bu tam olarak DD1 usta vizyonuyla örtüşen kusursuz bir matematik yaklaşımıdır.",
+      "saha_dili": [
+        "Butt Joint",
+        "Speaker Driver Displacement",
+        "Miter Angle",
+        "Board Thickness",
+        "Internal Volume",
+        "Port Volume"
+      ],
+      "kronik_sorunlar": [
+        "Kabin yapmak için net iç litre mi önemli dış litre mi?",
+        "Hoparlörün kendi hacmi (Driver Displacement) iç litreden düşülmeli mi?"
+      ],
+      "tags": [
+        "kabin",
+        "montaj",
+        "port"
+      ],
+      "__source": "piyasa_20260403_omnicalculator.json"
+    },
+    {
+      "library_type": "montaj",
+      "kaynak": "Epey - Otomobil Karşılaştırma (Donanım Seviyeleri: Elite, Shine, Style, Joy vb.)",
+      "ozet": "DONANIM SEVİYESİ VE TEYP ENTEGRASYONU: Epey.com üzerinden filtrelenen donanım paketleri (Style, Elite, Shine, Joy vb.) aracın mekaniğinden çok Multimedia (Teyp) altyapısını belirler. Ses Ustası; bir müşteri aracının 'Dolu Paket' olduğunu belirttiğinde, standart kablo kes/biç işlemlerini anında durdurmalı ve 'Aracında fabrikasyon (Bose/Focal gibi) bir amfi sistemi var mı?' sorusunu yöneltmelidir. Dolu paketlerin OEM (Orijinal Teyp) entegrasyonu pahalı ve uzmanlık gerektiren dijital ara birimler veya DSP modülleri gerektirir.",
+      "saha_dili": [
+        "Boş Paket (Ana donanım): Direkt hoparlör çıkışı vardır. Yeni amfiyi High-Level girişinden veya basit dönüştürücülerle (LOC) çok rahat bağlarsın.",
+        "Boş Paket (Joy, Style, Impression, Jump)",
+        "Dolu Paket (Premium donanım): Üst paketlerde fabrika çıkışlı gizli amfi/DSP olabilir. Ses sinyali radyodan fiber optik veya özel dijital yolla gelebilir. Mecburen gelişmiş DSP veya aktif dekoder modülü eklenmek zorundadır.",
+        "Head-Unit (Ana Ünite)",
+        "Premium Tesisatlı Trim",
+        "Dolu Paket (Icon, R-Line, Elite, Shine, GT-Line)",
+        "Line-Out Converter / Dekoder"
+      ],
+      "kronik_sorunlar": [
+        "Dolu paket araçlarda (Elite, Shine, Icon) standart olarak gelen fabrikasyon amfi veya Premium Ses Sistemi (Örn: Bose, Focal, Harman Kardon) varken standart bir amfiyi araya (High-Level) bağlamaya çalışıp aracın orijinal beynini/dsp'sini veya sigortalarını yakmak.",
+        "Müşterinin aracının 'Boş Paket' (Örn: Renault Joy, VW Impression) mi yoksa 'Dolu Paket' (Örn: Renault Icon, VW R-Line, Hyundai Elite) mi olduğu, sisteme bağlanacak Amfi/DSP veya dönüştürücü (LOC) seçimini nasıl değiştirir?"
+      ],
+      "tags": [
+        "amfi",
+        "kablo",
+        "montaj"
+      ],
+      "__source": "piyasa_20260404_epey_donanim_ve_alc_entegrasyonu.json"
+    },
+    {
+      "library_type": "montaj",
+      "kaynak": "DD1 Sistem Kuralları: Terminal Kasa Yapısı ve Çakışma Yönetimi (Car.info / UltimateSpecs / Auto-Data)",
+      "ozet": "VERİ KOORDİNASYON TAAHHÜDÜ: Auto-Data, Car.info veya UltimateSpecs... Nereden gelirse gelsin araç bilgileri DD1 veritabanına girerken rastgele olarak alınmayacaktır. Sistemdeki tüm gövde/kasa tipleri tek bir standart kalıba (Sedan, Hatchback, SW, Coupe, Cabrio, SUV, MPV) çevrilecektir. Birden fazla kaynaktan gelen litre veya ölçü bilgisinde çakışma olursa (Örn. biri 400L diğeri 380L diyorsa), Usta her zaman muhafazakar/kesin olan alt limiti dikkate alarak çakışmayı bertaraf eder. Kütüphanenin çöplüğe dönmesine izin verilmeyecektir.",
+      "saha_dili": [
+        "Coupe",
+        "Sedan (Saloon)",
+        "SUV / Crossover",
+        "Hatchback (3/5 door) : Arka camla birlikte açılan bagaj kapağı",
+        "MPV (Multi Purpose Vehicle) : Geniş aile araçları (Minivan tarzı)",
+        "Cabrio/Convertible : Açılabilir tavan",
+        "Hatchback (3/5 door)",
+        "Station Wagon (Estate/Avant/Touring) : Uzatılmış tavan yapısı",
+        "MPV (Multi Purpose Vehicle)",
+        "Sedan (Saloon) : 4 kapılı, bagajı ayrı bölme",
+        "SUV / Crossover : Yüksek yapılı, arazi veya şehir içi yüksek sürüş",
+        "Station Wagon (Estate/Avant/Touring)",
+        "Cabrio/Convertible",
+        "Coupe : Genellikle 2 kapılı, sportif hatlı"
+      ],
+      "kronik_sorunlar": [
+        "Veri havuzunda standardize edilmemiş araç tiplerinin (örn. kimisine Station Wagon, kimisine Estate yazılması) Ses Ustası'nın 'Cabin Gain' hesabını karıştırması ve veritabanını çöplüğe çevirmesi.",
+        "Farklı web sitelerinden (Car.info vs Auto-Data) gelen veriler çakıştığında hangi kaynak önceliklidir?",
+        "Aracın kasa yapısı sisteme girilirken 'Sedan' mı yoksa 'Saloon' mu kullanılacak, terminoloji çöplüğünü nasıl engelleriz?"
+      ],
+      "tags": [
+        "crossover",
+        "montaj",
+        "port"
+      ],
+      "__source": "piyasa_20260404_veri_standartlari.json"
+    }
+  ],
+  "source_hashes": {
+    "piyasa_20260322_bigbang_kondansator.json": "7fcc56d047be43e11fc7a6012e9b0dce",
+    "piyasa_20260322_facebook_bigbang.json": "699eca8430a470ffa11ed27fb7f71b95",
+    "piyasa_20260322_the12volt_diyaudiotr.json": "a3acc2117da1422f75c162ebd745df89",
+    "piyasa_20260403_diyaudioprojects.json": "fcb78c958098548b4bb0f828de138dac",
+    "piyasa_20260403_diyaudiotr.json": "86bbcbeca62eb9c7d2b286cbf87eb9b6",
+    "piyasa_20260403_diyaudiotr_kabin_ve_ts.json": "6d88a9d3ec5a6af3ffdc33d776b4937e",
+    "piyasa_20260403_kabin_sistemleri.json": "2c933e64948393f05e7c4434aee32e94",
+    "piyasa_20260403_omnicalculator.json": "8ff6ca23209149998931489d05b6079a",
+    "piyasa_20260404_epey_donanim_ve_alc_entegrasyonu.json": "9405f28908257acd2395b153938d29ff",
+    "piyasa_20260404_veri_standartlari.json": "b7bb5b6e3ee710b2922d325905cb32e5"
+  },
+  "updated_at": "2026-04-05T18:39:14.316763"
+}

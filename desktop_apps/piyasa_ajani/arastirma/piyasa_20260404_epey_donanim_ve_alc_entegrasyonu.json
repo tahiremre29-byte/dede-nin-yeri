@@ -1,0 +1,35 @@
+{
+  "orneklem_kaynagi": "Epey - Otomobil Karşılaştırma (Donanım Seviyeleri: Elite, Shine, Style, Joy vb.)",
+  "analiz": {
+    "markalar": [
+      "Renault",
+      "Peugeot",
+      "Hyundai",
+      "Fiat",
+      "Volkswagen",
+      "Skoda",
+      "Kia"
+    ],
+    "teknik_sorular": [
+      "Müşterinin aracının 'Boş Paket' (Örn: Renault Joy, VW Impression) mi yoksa 'Dolu Paket' (Örn: Renault Icon, VW R-Line, Hyundai Elite) mi olduğu, sisteme bağlanacak Amfi/DSP veya dönüştürücü (LOC) seçimini nasıl değiştirir?"
+    ],
+    "kronik_sorunlar": [
+      "Dolu paket araçlarda (Elite, Shine, Icon) standart olarak gelen fabrikasyon amfi veya Premium Ses Sistemi (Örn: Bose, Focal, Harman Kardon) varken standart bir amfiyi araya (High-Level) bağlamaya çalışıp aracın orijinal beynini/dsp'sini veya sigortalarını yakmak."
+    ],
+    "saha_dili": [
+      "Boş Paket (Joy, Style, Impression, Jump)",
+      "Dolu Paket (Icon, R-Line, Elite, Shine, GT-Line)",
+      "Premium Tesisatlı Trim",
+      "Head-Unit (Ana Ünite)",
+      "Line-Out Converter / Dekoder"
+    ],
+    "jargon": [
+      "Boş Paket (Ana donanım): Direkt hoparlör çıkışı vardır. Yeni amfiyi High-Level girişinden veya basit dönüştürücülerle (LOC) çok rahat bağlarsın.",
+      "Dolu Paket (Premium donanım): Üst paketlerde fabrika çıkışlı gizli amfi/DSP olabilir. Ses sinyali radyodan fiber optik veya özel dijital yolla gelebilir. Mecburen gelişmiş DSP veya aktif dekoder modülü eklenmek zorundadır."
+    ],
+    "ozet": "DONANIM SEVİYESİ VE TEYP ENTEGRASYONU: Epey.com üzerinden filtrelenen donanım paketleri (Style, Elite, Shine, Joy vb.) aracın mekaniğinden çok Multimedia (Teyp) altyapısını belirler. Ses Ustası; bir müşteri aracının 'Dolu Paket' olduğunu belirttiğinde, standart kablo kes/biç işlemlerini anında durdurmalı ve 'Aracında fabrikasyon (Bose/Focal gibi) bir amfi sistemi var mı?' sorusunu yöneltmelidir. Dolu paketlerin OEM (Orijinal Teyp) entegrasyonu pahalı ve uzmanlık gerektiren dijital ara birimler veya DSP modülleri gerektirir."
+  },
+  "__dd1_islendi": true,
+  "__dd1_koleksiyon": "montaj_koleksiyonu",
+  "__dd1_islendi_at": "2026-04-05T11:29:03.260110"
+}

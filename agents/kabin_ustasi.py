@@ -115,6 +115,8 @@ class KabinUstasi:
                 "re": ts.re,
                 "sd": ts.sd,
             })
+            if ts.power_w and ts.power_w > 0:
+                params["rms_power"] = ts.power_w
 
         if intake.woofer_model:
             params["woofer_model"] = intake.woofer_model

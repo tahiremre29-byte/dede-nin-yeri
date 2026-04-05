@@ -4,7 +4,6 @@
     "kaynak": "Big Bang Sounds Facebook grubu — screenshot",
     "url": "https://www.facebook.com/groups/1572668592895430"
   },
-
   "grup_profili": {
     "ad": "Big Bang Sounds (Grup)",
     "tanim": "Big Bang Sounds Sayfasına ait bir Gruptur. Montajcı esnaf Ustalarımız ve Hobici arkadaşlarımızın Ses Sistemlerine ait fotoğraf ve video paylaşım grubudur.",
@@ -12,7 +11,6 @@
     "gorunurluk": "Bu grubu herkes bulabilir",
     "karsilastirma_spl": "SPL Team Turkey'den farklı olarak TAMAMEN AÇIK grup — daha geniş erişim"
   },
-
   "icerik_analizi": {
     "kondansator_icerigi": {
       "baslik": "Kondansatör ne işe yarar",
@@ -20,13 +18,27 @@
       "tarih": "3 Mart",
       "tur": "Eğitim videosu (reels/reel)",
       "icerik": "Crossover filtre kondansatörü karşılaştırması — ses testli",
-      "kapasitor_degerleri": ["2.2uf", "3.3uf", "4.7uf", "6.8uf", "8.2uf", "10uf", "22uf", "47uf", "68uf"],
+      "kapasitor_degerleri": [
+        "2.2uf",
+        "3.3uf",
+        "4.7uf",
+        "6.8uf",
+        "8.2uf",
+        "10uf",
+        "22uf",
+        "47uf",
+        "68uf"
+      ],
       "anlami": "Yüksek geçiren filtre (high-pass) kesim frekansı kondansatör değerine bağlı — kullanıcılar bunu öğreniyor",
-      "hashtag": ["#khimpaupas", "#sounds", "#soundsystem", "#setup"],
+      "hashtag": [
+        "#khimpaupas",
+        "#sounds",
+        "#soundsystem",
+        "#setup"
+      ],
       "platform": "Reel — sosyal medyada eğitim içeriği yayiyor"
     }
   },
-
   "teknik_not_kondansator": {
     "crossover_hpf": "Yüksek geçiren filtre: f_kesim = 1 / (2π × R × C)",
     "ornek_4ohm_speaker": {
@@ -36,7 +48,6 @@
     },
     "kullanim": "Tweeter koruması için high-pass — woofer/mid ayrımı için"
   },
-
   "influencer_takip": {
     "Khim_Paupas": {
       "platform": "Facebook + Instagram reels",
@@ -45,23 +56,23 @@
       "dil": "İngilizce hashtag, Türkçe toplulukta paylaşılmış — uluslararası içerik"
     }
   },
-
   "medya_panel_yeni": {
     "buyuk_guc_kaynagi": "Üst sol — büyük güç kaynağı/kondansatör ünitesi (labelı net değil)",
     "forx_amfi": "FOR-X markalı amfi fotoğrafı — FOR-X bu grupta da aktif görünüyor",
     "woofer_yakin": "Woofer ses bobini yakın çekim — hasar değerlendirmesi"
   },
-
   "piyasa_bulgulari": {
     "egitim_acigi": "Kondansatör/crossover gibi temel konular bile sorulup öğreniliyor — bilgi açığı büyük",
     "profiler_hobiciler": "İki segment aynı grupta — kurulum ustaları + hobici meraklılar",
     "for_x_heryerde": "FOR-X marka SPL Team Turkey ve Big Bang Sounds'ta da görülüyor — Türkiye'de yaygın",
     "reel_egitim": "Ses sistemi eğitimi sosyal medya reels ile yayılıyor — DD1 bu formatı değerlendirmeli"
   },
-
   "dd1_icin": {
     "egitim_modulu": "DD1 bota 'kondansatör ne yapar, kaç değer seçeyim, tweeter için hangi kesim?' sorusu gelebilir",
     "crossover_hesap": "Basit HPF değer hesabı eklenebilir: f = 1/(2π×R×C)",
     "montajci_segment": "Montajcı ustalar DD1'i iş aracı olarak kullanabilir — hızlı hesap"
-  }
+  },
+  "__dd1_islendi": true,
+  "__dd1_koleksiyon": "montaj_koleksiyonu",
+  "__dd1_islendi_at": "2026-04-05T11:29:03.026444"
 }

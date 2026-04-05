@@ -91,7 +91,7 @@ body {
    APP LAYOUT & HEADER
 ------------------------------ */
 .app-container {
-  max-width: 1000px;
+  max-width: 95%; /* 1000px'den esnek tam ekrana çıkarıldı */
   margin: 0 auto;
   padding: 40px 20px;
   display: flex;
@@ -649,3 +649,31 @@ body {
   background: var(--prod-color, var(--cyan-glow)) !important;
   color: #000 !important;
 }
+
+
+/* Added anim effects */
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 5px var(--cyan-glow); }
+  50% { box-shadow: 0 0 20px var(--cyan-glow); }
+  100% { box-shadow: 0 0 5px var(--cyan-glow); }
+}
+
+@keyframes scanline {
+  0% { top: 0%; opacity: 0; }
+  10% { opacity: 0.5; }
+  90% { opacity: 0.5; }
+  100% { top: 100%; opacity: 0; }
+}
+
+/* Scrollbar styling for chat window */
+.chat-window::-webkit-scrollbar {
+  width: 6px;
+}
+.chat-window::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+.chat-window::-webkit-scrollbar-thumb {
+  background: var(--purple-glow);
+  border-radius: 3px;
+}
+
