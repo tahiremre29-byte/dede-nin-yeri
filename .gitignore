@@ -57,3 +57,7 @@ bridge_debug.log
 desktop_apps/lazer_agent/dist/
 
 desktop_apps/lazer_agent/build/
+
+# Eski arsiv — icinde API anahtari var
+legacy_and_archives/arsiv/sesli_kopru_v3.py
+legacy_and_archives/arsiv/sosyal_medya_ajani/config.py
