@@ -109,7 +109,11 @@ def calculate_empirical(req: 'DesignRequest') -> dict:
 
 def calculate_ts(req: 'DesignRequest') -> dict:
     """Mode 1 — T/S parametreli mühendislik hesabı"""
-    from .constants import VEHICLE_TUNING, CABIN_GAIN
+    from .constants import VEHICLE_TUNING, CABIN_GAIN, EMPIRICAL_SD, EMPIRICAL_XMAX
+
+    closest = min(EMPIRICAL_SD.keys(), key=lambda k: abs(k - req.diameter_inch))
+    sd_cm2 = req.sd or EMPIRICAL_SD.get(closest, 490)
+    xmax_mm = req.xmax or EMPIRICAL_XMAX.get(closest, 15)
     
     # 1. Hacim (QB3 alignment)
     alpha = 15.0 * (req.qts ** 2.87)
@@ -132,11 +136,11 @@ def calculate_ts(req: 'DesignRequest') -> dict:
         v_port = 0.0
         eta_0 = (4 * math.pi**2 * req.fs**3 * (req.vas/1000.0)) / (345.0**3 * req.qts)
     else:
-        sp_cm2 = req.sd * (0.35 if req.purpose == "SPL" else (0.28 if req.purpose == "SQL" else 0.18))
+        sp_cm2 = sd_cm2 * (0.35 if req.purpose == "SPL" else (0.28 if req.purpose == "SQL" else 0.18))
         d_equiv = math.sqrt((4 * sp_cm2) / math.pi)
         lp_cm = (23562.5 * (d_equiv**2)) / (fb**2 * vb) - 0.732 * d_equiv
         lp_cm = max(lp_cm, 5.0)
-        v_port = abs(( (req.sd/10000.0) * (req.xmax/1000.0) * (2*math.pi*fb) ) / (sp_cm2/10000.0))
+        v_port = abs(( (sd_cm2/10000.0) * (xmax_mm/1000.0) * (2*math.pi*fb) ) / (sp_cm2/10000.0))
         eta_0 = (4 * math.pi**2 * req.fs**3 * (req.vas/1000.0)) / (345.0**3 * req.qts)
     
     spl_1w = 112.2 + 10 * math.log10(max(eta_0, 1e-10))
@@ -157,7 +161,7 @@ def calculate_ts(req: 'DesignRequest') -> dict:
         "notes": notes_obj,
         "f3": round(fb * 0.75, 1),
         "gd": round(1000.0/(2*math.pi*fb)*2, 1),
-        "xmax": round(req.xmax * 0.85, 1)
+        "xmax": round(xmax_mm * 0.85, 1)
     }
 
 def calculate_panels(vb_l: float, sp_cm2: float, lp_cm: float, diameter_inch: int, thickness_mm: float) -> dict:
@@ -301,6 +305,9 @@ def design_enclosure(req: 'DesignRequest') -> dict:
             "gap_mm": round(slot_w_mm),
             "count": 1
         },
+        "port_area_cm2": res["sp_cm2"],
+        "port_length_cm": res["lp_cm"],
+        "woofer_hole_mm": panels["sub_cutout"],
         "net_volume_l": res["vb_l"],
         "tuning_hz": res["fb_hz"],
         "f3_hz": res["f3"],
@@ -314,5 +321,3 @@ def design_enclosure(req: 'DesignRequest') -> dict:
         "notes": res["notes"],
         "panel_list": panels["panels"]
     }
-
-

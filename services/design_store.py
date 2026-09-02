@@ -30,9 +30,10 @@ from schemas.acoustic_design_packet import AcousticDesignPacket
 logger = logging.getLogger("dd1.design_store")
 
 SCHEMA_VERSION = "1.0"
-_BASE          = Path(__file__).parent.parent / "knowledge"
-_ARCHIVE       = _BASE / "design_archive.json"
-_EXPORTS_DIR   = Path(__file__).parent.parent / "exports"
+_PROJECT_BASE  = Path(__file__).parent.parent
+_BASE          = Path(os.environ.get("DD1_DATA_DIR", str(_PROJECT_BASE / "knowledge")))
+_ARCHIVE       = Path(os.environ.get("DD1_ARCHIVE_FILE", str(_BASE / "design_archive.json")))
+_EXPORTS_DIR   = Path(os.environ.get("DD1_EXPORTS_DIR", str(_PROJECT_BASE / "exports")))
 
 _LOCK: Lock = Lock()
 _CACHE: dict[str, dict] = {}   # design_id → arşiv kaydı (RAM)

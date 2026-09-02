@@ -2,6 +2,7 @@
 DD1 Platform — FastAPI Ana Uygulama
 """
 import sys
+import os
 from pathlib import Path
 
 # Proje kökünü path'e ekle
@@ -10,7 +11,6 @@ sys.path.insert(0, str(Path(__file__).parent))
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import HTMLResponse
 
 
 # .env dosyasını yükle — python-dotenv varsa onu kullan, yoksa elle oku
@@ -40,35 +40,67 @@ def _load_env():
 
 _load_env()
 
-from routers import design, woofers, chat, feedback, tool_bridge, knowledge, session, monitor
+_PUBLIC_BETA_MODE = os.environ.get("DD1_PUBLIC_BETA_MODE", "false").strip().lower() in {
+    "1", "true", "yes", "on",
+}
 
-from fastapi.middleware.cors import CORSMiddleware
+from routers import public_beta
+if not _PUBLIC_BETA_MODE:
+    from routers import design, woofers, chat, feedback, tool_bridge, knowledge, session, monitor
 
 app = FastAPI(
     title="DD1 Platform API",
     description="Quantum Ses Sistemleri Yönetim Platformu",
     version="1.0.0",
-    docs_url="/docs",
-    redoc_url="/redoc",
+    docs_url=None if _PUBLIC_BETA_MODE else "/docs",
+    redoc_url=None if _PUBLIC_BETA_MODE else "/redoc",
+    openapi_url=None if _PUBLIC_BETA_MODE else "/openapi.json",
 )
 
-# Tum erisimlere izin veren CORS (Masaustunden HTML acmak icin sart)
+# Public beta ayni origin'den calisir. Ayri bir on yuz kullanilacaksa izinli
+# origin'ler DD1_ALLOWED_ORIGINS ile virgulle ayrilarak tanimlanir.
+_allowed_origins = [
+    item.strip()
+    for item in os.environ.get(
+        "DD1_ALLOWED_ORIGINS",
+        "http://127.0.0.1:9000,http://localhost:9000",
+    ).split(",")
+    if item.strip()
+]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_origins=_allowed_origins,
+    allow_methods=["GET", "POST"] if _PUBLIC_BETA_MODE else ["*"],
+    allow_headers=["Content-Type", "X-API-Key", "X-Admin-Key"],
 )
 
-# Routerları bağla
-app.include_router(session.router)
-app.include_router(design.router)
-app.include_router(woofers.router)
-app.include_router(chat.router)
-app.include_router(feedback.router)
-app.include_router(tool_bridge.router)
-app.include_router(knowledge.router)
-app.include_router(monitor.router)
+if _PUBLIC_BETA_MODE:
+    @app.middleware("http")
+    async def public_security_headers(request, call_next):
+        response = await call_next(request)
+        response.headers["Content-Security-Policy"] = (
+            "default-src 'self'; style-src 'self'; script-src 'self'; "
+            "img-src 'self' data:; connect-src 'self'; base-uri 'none'; "
+            "form-action 'self'; frame-ancestors 'none'"
+        )
+        response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
+        response.headers["X-Content-Type-Options"] = "nosniff"
+        response.headers["X-Frame-Options"] = "DENY"
+        response.headers["Permissions-Policy"] = "camera=(), microphone=(), geolocation=()"
+        return response
+
+# Halka acik site her modda dar API'yi kullanir. Yonetim ve eski istemci
+# endpoint'leri yalniz public-beta modu kapaliyken yuklenir.
+app.include_router(public_beta.router)
+if not _PUBLIC_BETA_MODE:
+    app.include_router(session.router)
+    app.include_router(design.router)
+    app.include_router(woofers.router)
+    app.include_router(chat.router)
+    app.include_router(feedback.router)
+    app.include_router(tool_bridge.router)
+    app.include_router(knowledge.router)
+    app.include_router(monitor.router)
 
 # Statik Dosyalar (En Sona Taşındı)
 
@@ -77,20 +109,21 @@ app.include_router(monitor.router)
 def health():
     return {"status": "ok"}
 
-@app.get("/api/config/features", tags=["Config"])
-def get_features():
-    from core.config import cfg
-    return {
-        "auth_anonymous_mode": cfg.auth_anonymous_mode,
-        "auth_registration_required": cfg.auth_registration_required,
-        "auth_consent_screens": cfg.auth_consent_screens,
-        "history_tracking_enabled": cfg.history_tracking_enabled
-    }
+if not _PUBLIC_BETA_MODE:
+    @app.get("/api/config/features", tags=["Config"])
+    def get_features():
+        from core.config import cfg
+        return {
+            "auth_anonymous_mode": cfg.auth_anonymous_mode,
+            "auth_registration_required": cfg.auth_registration_required,
+            "auth_consent_screens": cfg.auth_consent_screens,
+            "history_tracking_enabled": cfg.history_tracking_enabled
+        }
 
 
-# Dijital Atölye — Statik Dosyalar (DDSound Web)
+# DD1 Halka Açık Beta — gerçek hesap motoruyla aynı origin'de servis edilir.
 # Mount işlemi tüm API endpointlerinden sonra yapılmalı ki onları ezmesin.
-_STATIC = Path(__file__).resolve().parent / "web_frontend"
+_STATIC = Path(__file__).resolve().parent / "public_beta"
 app.mount("/", StaticFiles(directory=str(_STATIC), html=True), name="web_root")
 
 

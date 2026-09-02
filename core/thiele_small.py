@@ -2,18 +2,41 @@
 DD1 Platform — Thiele-Small Woofer Veritabanı
 """
 import json
+import os
 from pathlib import Path
 from typing import Optional
 
-_DB_PATH = Path(__file__).parent.parent / "data" / "woofers.json"
+_ROOT = Path(__file__).parent.parent
+_DB_CANDIDATES = (
+    Path(os.environ["DD1_WOOFER_DB"]) if os.environ.get("DD1_WOOFER_DB") else None,
+    _ROOT / "data" / "woofers.json",
+    _ROOT / "knowledge" / "woofers.json",
+)
 _woofers: list[dict] = []
 
 
 def _load():
     global _woofers
-    if not _woofers:
-        with open(_DB_PATH, encoding="utf-8") as f:
-            _woofers = json.load(f)
+    if _woofers:
+        return
+
+    db_path = next((p for p in _DB_CANDIDATES if p and p.exists()), None)
+    if db_path is None:
+        searched = ", ".join(str(p) for p in _DB_CANDIDATES if p)
+        raise FileNotFoundError(f"Woofer veritabani bulunamadi. Aranan yollar: {searched}")
+
+    with open(db_path, encoding="utf-8") as f:
+        loaded = json.load(f)
+
+    if not isinstance(loaded, list):
+        raise ValueError(f"Woofer veritabani liste olmali: {db_path}")
+    _woofers = loaded
+
+
+def list_all() -> list[dict]:
+    """Katalogdaki tüm doğrulanmış T/S kayıtlarının kopyasını döndürür."""
+    _load()
+    return [dict(item) for item in _woofers]
 
 
 def search(query: str, limit: int = 10) -> list[dict]:

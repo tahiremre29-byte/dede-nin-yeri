@@ -246,9 +246,12 @@ class ConflictResolver:
         port: Optional[PortGeometry],
         outer_w: float, outer_h: float, outer_d: float,
         tuning_hz: float,
+        material_thickness_mm: float = 18.0,
     ) -> ConflictReport:
         """COMPROMISE modu: 3 seçenek üretir."""
-        options = self._compromise_options(vol, port, outer_w, outer_h, outer_d, tuning_hz)
+        options = self._compromise_options(
+            vol, port, outer_w, outer_h, outer_d, tuning_hz, material_thickness_mm
+        )
         rec = options[0] if options else None
 
         summary = (
@@ -574,6 +577,7 @@ class ConflictResolver:
         port: Optional[PortGeometry],
         w: float, h: float, d: float,
         tuning_hz: float,
+        material_thickness_mm: float = 18.0,
     ) -> list:
         t_l = vol.target_net_l
         ops = []
@@ -591,6 +595,7 @@ class ConflictResolver:
             outer_dimensions_mm=[w, h, d],
             fit_status="fits",
             manufacturability_status="ok",
+            material_thickness_mm=material_thickness_mm,
             acoustic_delta_pct=round((t_l - smaller_net) / t_l * 100, 2),
             space_delta_mm=0.0,
             recommended=True,
@@ -611,6 +616,7 @@ class ConflictResolver:
             outer_dimensions_mm=[round(w * 1.05, 1), h, d],
             fit_status="marginal",
             manufacturability_status="ok",
+            material_thickness_mm=material_thickness_mm,
             acoustic_delta_pct=0.0,
             space_delta_mm=round(w * 0.05, 1),
             recommended=False,
@@ -631,6 +637,7 @@ class ConflictResolver:
             outer_dimensions_mm=[w, round(h * 0.92, 1), round(d * 1.08, 1)],
             fit_status="fits",
             manufacturability_status="ok",
+            material_thickness_mm=material_thickness_mm,
             acoustic_delta_pct=6.0,
             space_delta_mm=0.0,
             recommended=False,

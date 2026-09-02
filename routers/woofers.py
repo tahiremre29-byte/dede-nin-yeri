@@ -1,19 +1,21 @@
 """
 DD1 Platform — Woofer Arama Router
+GET  /woofers/public?q=...  — Yalnız onaylı beta ürünleri
 GET  /woofers/search?q=hertz
 GET  /woofers/{model}
 POST /woofers/add     — Manuel woofer ekle
 POST /woofers/fetch   — URL'den öğren
 """
-from fastapi import APIRouter, HTTPException, Query
+from fastapi import APIRouter, HTTPException, Query, Header
 from pydantic import BaseModel
 from typing import Optional
 from core.schemas import SearchResponse, WooferRecord
 import core.thiele_small as ts_db
 from core.learning_engine import add_woofer_manual, fetch_and_learn
+from core.security import require_admin_key
+from core.public_catalog import approved_model_names, public_product_records
 
 router = APIRouter(prefix="/woofers", tags=["Woofer DB"])
-
 
 # ── Request Modelleri ────────────────────────────────────────────────────────
 
@@ -34,6 +36,18 @@ class WooferFetchRequest(BaseModel):
 
 # ── Mevcut Endpointler ───────────────────────────────────────────────────────
 
+@router.get("/public")
+def public_woofers(q: Optional[str] = Query(None, min_length=1)):
+    """Yalnızca anlaşması doğrulanıp izin listesine eklenen beta ürünlerini döndürür."""
+    approved = approved_model_names()
+    results = public_product_records(q)
+
+    return {
+        "configured": bool(approved),
+        "count": len(results),
+        "results": results,
+    }
+
 @router.get("/search", response_model=SearchResponse)
 def search_woofers(q: str = Query(..., min_length=2, description="Marka veya model adı")):
     results = ts_db.search(q)
@@ -53,8 +67,9 @@ def get_woofer(model: str):
 # ── Yeni: Learning Engine Endpointleri ──────────────────────────────────────
 
 @router.post("/add")
-def add_woofer(req: WooferAddRequest):
+def add_woofer(req: WooferAddRequest, x_admin_key: str | None = Header(None)):
     """Manuel woofer parametresi ekle — woofers.json'a kalıcı kaydeder."""
+    require_admin_key(x_admin_key)
     result = add_woofer_manual(req.model_dump())
     if not result["success"]:
         raise HTTPException(400, detail=result["error"])
@@ -62,13 +77,13 @@ def add_woofer(req: WooferAddRequest):
 
 
 @router.post("/fetch")
-def fetch_woofers(req: WooferFetchRequest):
+def fetch_woofers(req: WooferFetchRequest, x_admin_key: str | None = Header(None)):
     """
     Harici bir URL'den JSON formatında woofer listesi çek ve veritabanını güncelle.
     Duplicate kayıtlar otomatik atlanır.
     """
+    require_admin_key(x_admin_key)
     result = fetch_and_learn(req.source_url, req.key_map)
     if not result.get("success"):
         raise HTTPException(502, detail=result.get("error", "Bilinmeyen hata"))
     return result
-

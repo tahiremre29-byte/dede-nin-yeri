@@ -103,6 +103,8 @@ class KabinUstasi:
             "purpose": intake.purpose,
             "enclosure_type": intake.enclosure_type,
             "bass_char": getattr(intake, "bass_char", "SQL"),
+            "material_thickness_mm": intake.material_thickness_mm,
+            "kerf_mm": intake.kerf_mm,
         }
 
         if intake.has_ts_params and intake.ts_params and intake.ts_params.is_complete:
@@ -115,8 +117,9 @@ class KabinUstasi:
                 "re": ts.re,
                 "sd": ts.sd,
             })
-            if ts.power_w and ts.power_w > 0:
-                params["rms_power"] = ts.power_w
+            ts_power = getattr(ts, "power_w", None)
+            if ts_power and ts_power > 0:
+                params["rms_power"] = ts_power
 
         if intake.woofer_model:
             params["woofer_model"] = intake.woofer_model
@@ -161,4 +164,3 @@ class KabinUstasi:
                 "Gercek SPL montaj ve sinyal zincirine gore degisir."
             )
         return "\n".join(f"- {l}" if not l.startswith("[") else l for l in lines)
-

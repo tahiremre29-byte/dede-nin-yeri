@@ -57,7 +57,7 @@ def handoff_to_acoustic(
     constraints = InternalConstraints(
         min_net_volume_l=float(engine_result.get("net_volume_l", 35)) * 0.90,
         max_net_volume_l=float(engine_result.get("net_volume_l", 35)) * 1.10,
-        baffle_thickness_mm=float(intake.ts_params.re if intake.ts_params and intake.ts_params.re else 18),
+        baffle_thickness_mm=float(intake.material_thickness_mm),
         woofer_hole_mm=float(engine_result.get("woofer_hole_mm", 282)),
     )
 
@@ -69,6 +69,8 @@ def handoff_to_acoustic(
         vehicle=intake.vehicle,
         purpose=intake.purpose,
         rms_power=intake.rms_power,
+        material_thickness_mm=intake.material_thickness_mm,
+        kerf_mm=intake.kerf_mm,
         # ── KİLİTLİ ALANLAR ────────────────────────────────────
         net_volume_l=float(engine_result["net_volume_l"]),
         tuning_hz=float(engine_result["tuning_hz"]),

@@ -11,8 +11,8 @@ GERIYE UYUMLULUK:
   GET  /design/store/stats      → arşiv istatistikleri
 """
 
-import os
 import logging
+import os
 from fastapi import APIRouter, HTTPException, Header
 from fastapi.responses import FileResponse, JSONResponse
 from pydantic import BaseModel
@@ -21,6 +21,8 @@ from pathlib import Path
 
 from services.design_service import design_from_params, run_full_pipeline
 import services.design_store as _store
+from core.security import has_premium_key
+from core.public_catalog import approved_record
 
 logger = logging.getLogger("dd1.routers.design")
 
@@ -31,7 +33,7 @@ _OUTPUT  = Path(__file__).parent.parent / "output"
 
 
 def _is_premium(x_api_key: str | None) -> bool:
-    return x_api_key == os.environ.get("DD1_PREMIUM_KEY", "premium-dev")
+    return has_premium_key(x_api_key)
 
 
 # ── İstek Modelleri ───────────────────────────────────────────────────────────
@@ -47,9 +49,14 @@ class EnclosureRequest(BaseModel):
     qts:            Optional[float] = None
     vas:            Optional[float] = None
     xmax:           Optional[float] = None
+    sd:             Optional[float] = None
+    re:             Optional[float] = None
     enclosure_type: str   = "aero"
     usage_domain:   str   = "car_audio"   # car_audio | outdoor | pro_audio | home_audio
     bass_char:      str   = "SQL"          # SQL | SPL | patlamalı | tok | günlük
+    material_thickness_mm: float = 10.0
+    kerf_mm:               float = 0.15
+    catalog_only:          bool = False
 
 
 class ProduceRequest(BaseModel):
@@ -97,6 +104,8 @@ def _to_legacy_format(acoustic, success: bool, warnings: list,
         # ── Yeni alanlar (güvenlik + izleme) ──────────────────────
         "packet_hash":       acoustic.packet_hash,
         "enclosure_type":    acoustic.enclosure_type,
+        "material_thickness_mm": acoustic.material_thickness_mm,
+        "kerf_mm":               acoustic.kerf_mm,
     }
 
 
@@ -109,19 +118,51 @@ def create_enclosure(req: EnclosureRequest,
     Eski istemcilerle uyumlu tasarım endpoint'i.
     İçi boşaltıldı → design_service.design_from_params() üzerinden KabinUstası.
     """
+    diameter_inch = req.diameter_inch
+    rms_power = req.rms_power
+    fs, qts, vas, xmax, sd, re = req.fs, req.qts, req.vas, req.xmax, req.sd, req.re
+    material_thickness_mm = req.material_thickness_mm
+    kerf_mm = req.kerf_mm
+    resolution_method = "manual" if fs and qts and vas else "unknown"
+    driver_confidence = 0.95 if resolution_method == "manual" else 0.0
+
+    if req.catalog_only:
+        catalog_record = approved_record(req.woofer_model)
+        if catalog_record is None:
+            raise HTTPException(400, detail="Bu urun halka acik beta katalogunda onayli degil.")
+        diameter_inch = max(5, round(float(catalog_record["dia_mm"]) / 25.4))
+        rms_power = float(catalog_record.get("power_w") or rms_power)
+        fs = float(catalog_record["fs"])
+        qts = float(catalog_record["qts"])
+        vas = float(catalog_record["vas"])
+        xmax = float(catalog_record.get("xmax_mm") or xmax or 0) or None
+        sd = float(catalog_record.get("sd") or sd or 0) or None
+        re = float(catalog_record.get("re") or re or 0) or None
+        # Halka acik ekranda uretim standardi istemci tarafindan degistirilemez.
+        material_thickness_mm = float(os.environ.get("DD1_PUBLIC_MATERIAL_MM", "10"))
+        kerf_mm = float(os.environ.get("DD1_PUBLIC_KERF_MM", "0.15"))
+        resolution_method = "exact"
+        driver_confidence = 1.0
+
     result = design_from_params(
-        diameter_inch=req.diameter_inch,
-        rms_power=req.rms_power,
+        diameter_inch=diameter_inch,
+        rms_power=rms_power,
         vehicle=req.vehicle,
         purpose=req.purpose,
         woofer_model=req.woofer_model,
-        fs=req.fs,
-        qts=req.qts,
-        vas=req.vas,
-        xmax=req.xmax,
+        fs=fs,
+        qts=qts,
+        vas=vas,
+        xmax=xmax,
+        sd=sd,
+        re=re,
         enclosure_type=req.enclosure_type,
         usage_domain=req.usage_domain,
         bass_char=req.bass_char,
+        material_thickness_mm=material_thickness_mm,
+        kerf_mm=kerf_mm,
+        resolution_method=resolution_method,
+        driver_confidence=driver_confidence,
     )
 
     if not result["success"]:

@@ -1,7 +1,31 @@
 import json
 import logging
+import math
 from pathlib import Path
-from rank_bm25 import BM25Okapi
+
+try:
+    from rank_bm25 import BM25Okapi
+except ImportError:
+    class BM25Okapi:  # Hafif, bağımlılıksız fallback
+        def __init__(self, corpus):
+            self.corpus = corpus
+            self.doc_freq = {}
+            for doc in corpus:
+                for token in set(doc):
+                    self.doc_freq[token] = self.doc_freq.get(token, 0) + 1
+
+        def get_scores(self, query_tokens):
+            total = max(len(self.corpus), 1)
+            scores = []
+            for doc in self.corpus:
+                score = 0.0
+                for token in query_tokens:
+                    count = doc.count(token)
+                    if count:
+                        idf = math.log(1 + total / (1 + self.doc_freq.get(token, 0)))
+                        score += count * idf
+                scores.append(score)
+            return scores
 
 logger = logging.getLogger("dd1.bm25_service")
 
@@ -45,8 +69,8 @@ class BM25SearchService:
                 with open(catalog_path, "r", encoding="utf-8") as f:
                     catalog = json.load(f)
                     # catalog could be a dict of brands or list
-                    if isinstance(catalog, dict) and "subwoofers" in catalog:
-                        catalog = catalog["subwoofers"]
+                    if isinstance(catalog, dict):
+                        catalog = catalog.get("subwoofers", catalog.get("catalog", []))
                     
                     for sub in catalog:
                         text = f"{sub.get('brand', '')} {sub.get('model', '')} {sub.get('rms_w', '')}W fs {sub.get('fs_hz', '')}"

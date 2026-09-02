@@ -82,6 +82,10 @@ class IntakePacket(BaseModel):
         description="SQL | SPL | patlamalı | tok | günlük | flat"
     )
 
+    # DD üretim standardı
+    material_thickness_mm: float = Field(10.0, ge=6.0, le=40.0)
+    kerf_mm:               float = Field(0.15, ge=0.0, le=1.0)
+
     def mark_complete(self) -> bool:
         """Paketin Kabin Ustası'na gönderilebilir olup olmadığı."""
         return (
@@ -112,6 +116,8 @@ def build_intake(
     bass_char: str = "SQL",
     target_freq_hz: float | None = None,
     enclosure_type: str = "aero",
+    material_thickness_mm: float = 10.0,
+    kerf_mm: float = 0.15,
 ) -> IntakePacket:
     """IntakePacket factory — Ses Ustası bu fonksiyonu çağırır."""
     missing: list[str] = []
@@ -146,4 +152,6 @@ def build_intake(
         bass_char=bass_char,
         target_freq_hz=target_freq_hz,
         enclosure_type=enclosure_type,
+        material_thickness_mm=material_thickness_mm,
+        kerf_mm=kerf_mm,
     )

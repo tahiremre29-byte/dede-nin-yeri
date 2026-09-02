@@ -6,15 +6,18 @@ learning_engine.py — DD1 Platform Öğrenme Motoru
 """
 
 import json
+import os
 import urllib.request
 import urllib.error
 from datetime import datetime
 from pathlib import Path
+from threading import Lock
 from typing import Optional
 
 BASE       = Path(__file__).parent.parent          # dd1_platform/
-WOOFERS    = BASE / "data" / "woofers.json"
-FEEDBACK   = BASE / "data" / "feedback_log.json"
+WOOFERS    = Path(os.environ.get("DD1_WOOFER_WRITE_FILE", str(BASE / "data" / "woofers.json")))
+FEEDBACK   = Path(os.environ.get("DD1_FEEDBACK_FILE", str(BASE / "data" / "feedback_log.json")))
+_FEEDBACK_LOCK = Lock()
 
 # Woofer kaydında olması gereken alanlar ve tipleri
 REQUIRED_FIELDS = {
@@ -48,7 +51,9 @@ def _load_feedback() -> list:
 
 def _save_feedback(data: list) -> None:
     FEEDBACK.parent.mkdir(parents=True, exist_ok=True)
-    FEEDBACK.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    temp = FEEDBACK.with_suffix(FEEDBACK.suffix + ".tmp")
+    temp.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    os.replace(temp, FEEDBACK)
 
 def _validate_woofer(params: dict) -> tuple[bool, str]:
     """Zorunlu alanları ve tiplerini kontrol eder."""
@@ -211,22 +216,24 @@ def save_feedback(
     if not (1 <= rating <= 5):
         return {"success": False, "error": "rating 1-5 arasında olmalı"}
 
-    feedback = _load_feedback()
+    with _FEEDBACK_LOCK:
+        feedback = _load_feedback()
 
-    entry = {
-        "id":           f"fb_{len(feedback)+1:04d}",
-        "design_id":    design_id,
-        "rating":       rating,
-        "comment":      comment.strip(),
-        "woofer_model": woofer_model.strip(),
-        "diameter_inch": diameter_inch,
-        "vehicle":      vehicle,
-        "purpose":      purpose,
-        "timestamp":    datetime.now().isoformat(timespec="seconds"),
-    }
+        entry = {
+            "id":           f"fb_{len(feedback)+1:04d}",
+            "kind":         "product_request" if design_id == "catalog_request" else "design_feedback",
+            "design_id":    design_id,
+            "rating":       rating,
+            "comment":      comment.strip(),
+            "woofer_model": woofer_model.strip(),
+            "diameter_inch": diameter_inch,
+            "vehicle":      vehicle,
+            "purpose":      purpose,
+            "timestamp":    datetime.now().isoformat(timespec="seconds"),
+        }
 
-    feedback.append(entry)
-    _save_feedback(feedback)
+        feedback.append(entry)
+        _save_feedback(feedback)
 
     return {
         "success": True,
@@ -240,16 +247,19 @@ def get_feedback_report() -> dict:
     Kayıtlı geri bildirimlerin istatistik özetini döner.
     En çok beğenilen woofer modelleri ve araç tipleri listelenir.
     """
-    feedback = _load_feedback()
+    with _FEEDBACK_LOCK:
+        feedback = _load_feedback()
     if not feedback:
         return {"total": 0, "avg_rating": None, "top_woofers": [], "top_vehicles": []}
 
-    total   = len(feedback)
-    avg     = round(sum(f["rating"] for f in feedback) / total, 2)
+    product_requests = [f for f in feedback if f.get("kind") == "product_request"]
+    rated_feedback = [f for f in feedback if f.get("kind") != "product_request"]
+    total = len(rated_feedback)
+    avg = round(sum(f["rating"] for f in rated_feedback) / total, 2) if total else None
 
     # Woofer bazlı ortalama puan
     woofer_scores: dict = {}
-    for f in feedback:
+    for f in rated_feedback:
         m = f.get("woofer_model") or "Bilinmiyor"
         woofer_scores.setdefault(m, []).append(f["rating"])
 
@@ -261,7 +271,7 @@ def get_feedback_report() -> dict:
 
     # Araç bazlı ortalama puan
     vehicle_scores: dict = {}
-    for f in feedback:
+    for f in rated_feedback:
         v = f.get("vehicle") or "Bilinmiyor"
         vehicle_scores.setdefault(v, []).append(f["rating"])
 
@@ -272,7 +282,7 @@ def get_feedback_report() -> dict:
     )[:5]
 
     # Puan dağılımı
-    distribution = {str(i): sum(1 for f in feedback if f["rating"] == i) for i in range(1, 6)}
+    distribution = {str(i): sum(1 for f in rated_feedback if f["rating"] == i) for i in range(1, 6)}
 
     return {
         "total":        total,
@@ -280,5 +290,6 @@ def get_feedback_report() -> dict:
         "distribution": distribution,
         "top_woofers":  top_woofers,
         "top_vehicles": top_vehicles,
+        "product_requests": len(product_requests),
         "last_feedback": feedback[-1]["timestamp"] if feedback else None,
     }

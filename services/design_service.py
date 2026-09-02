@@ -97,7 +97,7 @@ def run_design(
                 from core.design_modes import DesignConstraints
                 from core.conflict_resolver import ConflictResolver
 
-                bg = BoxGenerator(material_thickness_mm=18.0)
+                bg = BoxGenerator(material_thickness_mm=acoustic.material_thickness_mm)
                 constraints = DesignConstraints.compromise()
 
                 # BoxGenerator yalnızca 'rectangular_slot' destekliyor —
@@ -130,6 +130,7 @@ def run_design(
                     outer_h=geom.outer_h_mm,
                     outer_d=geom.outer_d_mm,
                     tuning_hz=acoustic.tuning_hz,
+                    material_thickness_mm=acoustic.material_thickness_mm,
                 )
 
                 c_dict = report.to_dict()
@@ -137,7 +138,7 @@ def run_design(
                 from core.validators import evaluate_physical_fit
                 for opt in c_dict.get("options", []):
                     dims = opt.get("outer_dimensions_mm", [0, 0, 0])
-                    wall_t = opt.get("material_thickness_mm", 18.0)
+                    wall_t = opt.get("material_thickness_mm", acoustic.material_thickness_mm)
                     inner_w = dims[0] - 2 * wall_t
                     inner_h = dims[1] - 2 * wall_t
                     inner_d = dims[2] - 2 * wall_t
@@ -288,16 +289,22 @@ def design_from_params(
     qts:            float | None = None,
     vas:            float | None = None,
     xmax:           float | None = None,
+    sd:             float | None = None,
+    re:             float | None = None,
     enclosure_type: str   = "aero",
     usage_domain:   str   = "car_audio",
     bass_char:      str   = "SQL",
+    material_thickness_mm: float = 10.0,
+    kerf_mm: float = 0.15,
+    resolution_method: str = "unknown",
+    driver_confidence: float = 0.0,
 ) -> dict:
     """FastAPI /design/enclosure endpoint'inin çağırdığı fonksiyon."""
     from schemas.intake_packet import TSParams, build_intake
 
     ts: TSParams | None = None
     if fs and qts and vas:
-        ts = TSParams(fs=fs, qts=qts, vas=vas, xmax=xmax)
+        ts = TSParams(fs=fs, qts=qts, vas=vas, xmax=xmax, sd=sd, re=re)
 
     intake = build_intake(
         raw_message="",
@@ -311,6 +318,10 @@ def design_from_params(
         enclosure_type=enclosure_type,
         usage_domain=usage_domain,
         bass_char=bass_char,
+        material_thickness_mm=material_thickness_mm,
+        kerf_mm=kerf_mm,
+        resolution_method=resolution_method,
+        driver_confidence=driver_confidence,
     )
     return run_design(intake)
 
@@ -460,4 +471,3 @@ def run_full_pipeline(
         )
 
     return result
-

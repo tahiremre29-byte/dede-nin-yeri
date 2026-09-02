@@ -65,6 +65,8 @@ class AcousticDesignPacket(BaseModel):
     vehicle:          str = "Sedan"
     purpose:          str = "SQL"
     rms_power:        float = 500.0
+    material_thickness_mm: float = Field(10.0, ge=6.0, le=40.0)
+    kerf_mm:               float = Field(0.15, ge=0.0, le=1.0)
 
     # ── Driver Identity — Dürüstlük katmanı ─────────────────
     exact_driver_name: str   = ""     # Örn: "JBL GT-S12" veya "12\" ampirik"
@@ -77,8 +79,8 @@ class AcousticDesignPacket(BaseModel):
     # Lazer Ajanı bunlara dokunmaz
     net_volume_l:     float = Field(..., ge=5, le=600)
     tuning_hz:        float = Field(..., ge=15, le=120)
-    port_area_cm2:    float = Field(..., ge=10)
-    port_length_cm:   float = Field(..., ge=1)
+    port_area_cm2:    float = Field(..., ge=0)
+    port_length_cm:   float = Field(..., ge=0)
     enclosure_type:   str   = "aero"
     internal_volume_constraints: InternalConstraints
     acoustic_notes:   str   = ""
@@ -122,6 +124,15 @@ class AcousticDesignPacket(BaseModel):
             self.packet_hash = hashlib.sha256(
                 json.dumps(locked_data, sort_keys=True).encode()
             ).hexdigest()[:16]
+        return self
+
+    @model_validator(mode="after")
+    def validate_port_for_enclosure(self) -> "AcousticDesignPacket":
+        if self.enclosure_type != "sealed":
+            if self.port_area_cm2 < 10:
+                raise ValueError("Portlu kabinde port alani en az 10 cm2 olmali.")
+            if self.port_length_cm < 1:
+                raise ValueError("Portlu kabinde port uzunlugu en az 1 cm olmali.")
         return self
 
 

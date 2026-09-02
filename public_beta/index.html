@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="DD1 ile doğrulanmış subwoofer verisine göre araç kabini hesaplayın.">
+  <title>DD1 Kabin Tasarımı | DD Sound Garage</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="DD Sound Garage ana sayfa">
+      <span class="brand-mark" aria-hidden="true">DD</span>
+      <span>
+        <strong>DD SOUND GARAGE</strong>
+        <small>DD1 Kabin Tasarımı</small>
+      </span>
+    </a>
+    <div class="system-status" id="systemStatus" role="status">
+      <span class="status-dot" aria-hidden="true"></span>
+      <span>Bağlantı kontrol ediliyor</span>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section class="intro" aria-labelledby="pageTitle">
+      <p class="eyebrow">HALKA AÇIK BETA</p>
+      <h1 id="pageTitle">Aracına uygun subwoofer kabinini hesapla.</h1>
+      <p>Doğrulanmış ürün verisini seç, araçtaki kullanılabilir alanı gir ve üretim öncesi kabin taslağını oluştur.</p>
+    </section>
+
+    <div class="workspace">
+      <form class="control-card" id="designForm">
+        <div class="card-heading">
+          <span class="step-number">01</span>
+          <div>
+            <h2>Ürünü seç</h2>
+            <p>Yalnızca beta için onaylanan ürünler gösterilir.</p>
+          </div>
+        </div>
+
+        <label class="field">
+          <span>Subwoofer</span>
+          <select id="wooferSelect" required disabled>
+            <option value="">Ürünler yükleniyor…</option>
+          </select>
+        </label>
+
+        <div class="catalog-message" id="catalogMessage" hidden>
+          <strong>Aradığın ürün listede yok mu?</strong>
+          <span>Modeli bildir; doğrulama kuyruğuna ekleyelim.</span>
+          <button class="text-button" type="button" id="openRequest">Ürün talebi bırak</button>
+        </div>
+
+        <div class="section-rule"></div>
+
+        <div class="card-heading compact">
+          <span class="step-number">02</span>
+          <div>
+            <h2>Aracı ve hedefi seç</h2>
+          </div>
+        </div>
+
+        <div class="field-grid two">
+          <label class="field">
+            <span>Araç tipi</span>
+            <select id="vehicleSelect" required>
+              <option value="Sedan">Sedan</option>
+              <option value="Hatchback">Hatchback</option>
+              <option value="SUV">SUV</option>
+              <option value="Van">Panelvan</option>
+              <option value="Pickup">Pickup</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>Ses hedefi</span>
+            <select id="purposeSelect" required>
+              <option value="SQL">Günlük dengeli</option>
+              <option value="SPL">Güçlü bass</option>
+              <option value="Günlük Bass">Derin ve yumuşak</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="section-rule"></div>
+
+        <div class="card-heading compact">
+          <span class="step-number">03</span>
+          <div>
+            <h2>Kullanılabilir alanı gir</h2>
+            <p>Bagaj girişini ve daralan bölümleri dikkate alarak ölç.</p>
+          </div>
+        </div>
+
+        <div class="field-grid three">
+          <label class="field">
+            <span>Genişlik <small>mm</small></span>
+            <input id="maxWidth" type="number" inputmode="numeric" min="200" max="2500" placeholder="Örn. 900">
+          </label>
+          <label class="field">
+            <span>Yükseklik <small>mm</small></span>
+            <input id="maxHeight" type="number" inputmode="numeric" min="200" max="1800" placeholder="Örn. 420">
+          </label>
+          <label class="field">
+            <span>Derinlik <small>mm</small></span>
+            <input id="maxDepth" type="number" inputmode="numeric" min="200" max="2500" placeholder="Örn. 500">
+          </label>
+        </div>
+
+        <div class="build-standard">
+          <span>Üretim standardı</span>
+          <strong>10 mm MDF</strong>
+          <i aria-hidden="true"></i>
+          <strong>0,15 mm kerf</strong>
+          <i aria-hidden="true"></i>
+          <strong>Slot port</strong>
+        </div>
+
+        <button class="primary-button" id="calculateButton" type="submit" disabled>
+          Kabini hesapla
+          <span aria-hidden="true">→</span>
+        </button>
+        <p class="form-error" id="formError" role="alert" hidden></p>
+      </form>
+
+      <section class="result-card is-empty" id="resultCard" aria-live="polite">
+        <div class="result-topline">
+          <span class="result-kicker">DD1 SONUCU</span>
+          <span class="result-state" id="resultState">Hesap bekleniyor</span>
+        </div>
+
+        <div class="empty-result" id="emptyResult">
+          <div class="empty-box" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </div>
+          <h2>Sonuç burada görünecek.</h2>
+          <p>Ürün ve araç bilgilerini seçerek ilk kabin taslağını oluştur.</p>
+        </div>
+
+        <div class="result-content" id="resultContent" hidden>
+          <div class="selected-product">
+            <span id="resultBrand">—</span>
+            <strong id="resultModel">—</strong>
+          </div>
+
+          <div class="metric-grid">
+            <div class="metric primary">
+              <span>Net hacim</span>
+              <strong id="netVolume">—</strong>
+            </div>
+            <div class="metric">
+              <span>Ayar frekansı</span>
+              <strong id="tuning">—</strong>
+            </div>
+            <div class="metric">
+              <span>Port alanı</span>
+              <strong id="portArea">—</strong>
+            </div>
+            <div class="metric">
+              <span>Port uzunluğu</span>
+              <strong id="portLength">—</strong>
+            </div>
+          </div>
+
+          <div class="blueprint-panel">
+            <div class="box-visual" id="boxVisual" aria-label="Kabin ölçü önizlemesi">
+              <div class="box-face front"></div>
+              <div class="box-face side"></div>
+              <div class="box-face top"></div>
+            </div>
+            <div class="dimensions">
+              <span>Dış kabin ölçüsü</span>
+              <strong id="dimensions">—</strong>
+              <small>Genişlik × Yükseklik × Derinlik</small>
+            </div>
+          </div>
+
+          <div class="fit-result" id="fitResult">
+            <span class="fit-icon" aria-hidden="true">•</span>
+            <div>
+              <strong id="fitTitle">Alan kontrolü</strong>
+              <p id="fitText">Bagaj ölçüsü girilmedi.</p>
+            </div>
+          </div>
+
+          <details class="panel-details">
+            <summary>Panel ölçü taslağını göster</summary>
+            <div class="panel-list" id="panelList"></div>
+          </details>
+
+          <div class="beta-note">
+            <strong id="reviewTitle">Üretimden önce son kontrol gerekir.</strong>
+            <p id="reviewText">Bu sonuç bir ön taslaktır. Bagaj girişi, trimler ve fiziksel montaj alanı araç üzerinde doğrulanmalıdır.</p>
+          </div>
+
+          <div class="feedback-box">
+            <span>Bu sonuç işine yaradı mı?</span>
+            <div>
+              <button type="button" data-feedback="5" data-comment="Sonuç uygun">Evet</button>
+              <button type="button" data-feedback="2" data-comment="Araca sığmadı">Araca sığmadı</button>
+              <button type="button" data-feedback="1" data-comment="Teknik sonuç hatalı görünüyor">Hata bildir</button>
+              <button type="button" id="openDetailedFeedback">Detaylı not bırak</button>
+            </div>
+            <p id="feedbackStatus" role="status"></p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <dialog class="request-dialog" id="requestDialog">
+    <form method="dialog" id="productRequestForm">
+      <button class="dialog-close" id="closeRequest" type="button" aria-label="Kapat">×</button>
+      <p class="eyebrow">ÜRÜN TALEBİ</p>
+      <h2>Hangi modeli ekleyelim?</h2>
+      <p>Marka ve tam model kodunu yaz. Teknik verisi doğrulandıktan sonra değerlendirme kuyruğuna alınır.</p>
+      <label class="field">
+        <span>Marka ve model</span>
+        <input id="requestedProduct" required maxlength="120" placeholder="Örn. Marka Model-12 D2">
+      </label>
+      <button class="primary-button" id="sendProductRequest" type="submit">Talebi gönder</button>
+      <p class="dialog-status" id="requestStatus" role="status"></p>
+    </form>
+  </dialog>
+
+  <dialog class="request-dialog" id="feedbackDialog">
+    <form id="detailedFeedbackForm">
+      <button class="dialog-close" id="closeDetailedFeedback" type="button" aria-label="Kapat">×</button>
+      <p class="eyebrow">BETA GERİ BİLDİRİMİ</p>
+      <h2>Ne gördün, ne bekliyordun?</h2>
+      <p>Ölçü, port, ses karakteri veya anlaşılmayan bir noktayı yaz. Notun bu tasarımın kayıt numarasıyla birlikte saklanır.</p>
+      <label class="field">
+        <span>Notun</span>
+        <textarea id="detailedFeedback" required maxlength="500" rows="5" placeholder="Örn. Port dönüşü bagaj ölçüsüne göre daha kısa olmalı…"></textarea>
+      </label>
+      <button class="primary-button" id="sendDetailedFeedback" type="submit">Notu gönder</button>
+      <p class="dialog-status" id="detailedFeedbackStatus" role="status"></p>
+    </form>
+  </dialog>
+
+  <footer>
+    <span>© 2026 DD Sound Garage</span>
+    <span>Mühendis gibi hesapla. Usta gibi üret.</span>
+  </footer>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>
